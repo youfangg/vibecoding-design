@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>交互动效资料库</title>
+  <meta name="description" content="250 条 AI Coding 交互动效案例。按关键词、主类与来源检索，打开官方演示，复制中文提示词。">
+  <meta name="theme-color" content="#f3eee4">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;1,6..72,500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <div class="topbar" aria-hidden="true"></div>
+  <a class="skip" href="#index">跳到案例目录</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <a class="brand" href="./index.html">
+        <span class="seal" aria-hidden="true">案</span>
+        <span class="brand-text">
+          <span class="kicker">AI Coding · 可复制提示词</span>
+          <h1 class="brand-title">交互动效资料库</h1>
+        </span>
+      </a>
+      <p class="mast-side">
+        <span class="mast-count" id="mast-count">250</span>
+        <span class="mast-date" id="mast-date">2026-11-24</span>
+      </p>
+    </div>
+  </header>
+  <noscript>
+    <p class="boot">请启用 JavaScript。页面本身是静态的，案例数据已经放在站点文件里，不需要构建。</p>
+  </noscript>
+  <p id="boot-error" class="boot" hidden>资料没有载入。请打开 docs/index.html，或在仓库里用静态服务器访问 /docs/。</p>
+  <main class="shell" id="app" hidden>
+    <aside class="rail">
+      <form class="search" id="search-form" role="search">
+        <label for="q">检索</label>
+        <input id="q" name="q" type="search" placeholder="标题、技术栈、提示词" autocomplete="off" enterkeyhint="search">
+      </form>
+      <h2>来源</h2>
+      <div id="sources"></div>
+      <h2>主类</h2>
+      <div id="cats"></div>
+      <p class="hint">按 / 聚焦检索，Esc 关闭案例。</p>
+    </aside>
+    <section class="index" id="index" aria-labelledby="index-heading">
+      <h2 class="visually-hidden" id="index-heading">案例目录</h2>
+      <div class="index-bar">
+        <p id="count" aria-live="polite" aria-atomic="true">250 条</p>
+        <button type="button" id="clear" hidden>清除筛选</button>
+      </div>
+      <p class="index-lead" id="index-lead">选定一条后，可以打开官方演示并复制提示词。</p>
+      <p class="filter-note" id="filter-note" hidden></p>
+      <div id="list" aria-label="案例目录"></div>
+    </section>
+    <article class="reader" id="reader"></article>
+  </main>
+  <script src="library.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

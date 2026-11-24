@@ -1,6 +1,6 @@
 # 翻转与 3D
 
-本类共 16 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `flip3d`。复制下方提示词即可用于 AI Coding。
+本类共 19 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `flip3d`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -20,6 +20,9 @@
 - [卡片对换 / Card Swap](#rb-card-swap)
 - [CSS 三维盒 / 3D CSS Box](#fancy-css-box)
 - [翻页 / Page Flip](#kokonut-page-flip)
+- [布料海报走马灯 / Cloth Posters Carousel](#cloth-carousel)
+- [立方盒走马灯 / Box Carousel](#fancy-box-carousel)
+- [FLIP 走马灯 / FLIP Carousel](#gsap-flip-carousel)
 
 ## 滚动 3D 走马灯 / On-Scroll 3D Carousel
 
@@ -471,4 +474,90 @@ Codrops 教程里的一组 R3F 实验性走马灯，探索不同的三维浏览�
 【触发】点击或拖拽页角。
 【运动】翻页 600–900ms，带卷曲或透视。提供键盘翻页。
 【不要】翻页中途让文字镜像难读。
+```
+
+## 布料海报走马灯 / Cloth Posters Carousel
+
+<a id="cloth-carousel"></a>
+
+- 来源：设计站点
+- 作者：Jesper Landberg / Codrops
+- 日期：2026-11-17
+- 子类：WebGPU 布料模拟的无限走马灯
+- 触发：virtual scroll / click
+- 技术栈：WebGPU / DomGL / 虚拟滚动
+- 官方演示：https://tympanus.net/Demos/ClothCarousel/
+- 原始出处：https://tympanus.net/codrops/2026/11/17/cloth-posters-webgpu/
+- 分册锚点：[cloth-carousel](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#cloth-carousel)
+
+无限横向走马灯里，每张海报都是一块布：滚动拉住中间，其余部分向后披垂。点击从被点处提起，细节页上的文字也会随布折叠。需要 WebGPU，没有回退。
+
+链接：
+
+- [打开 Cloth Carousel 演示](https://tympanus.net/Demos/ClothCarousel/)（Codrops Demo）
+- [阅读布料海报走马灯教程](https://tympanus.net/codrops/2026/11/17/cloth-posters-webgpu/)（Codrops，2026-11-17）
+
+### 提示词
+
+```
+【场景】作品海报做成可无限横滑的布料走马灯，滚动时布面从中部被拉动并披垂，点击一张则从点击处提起并展开详情。
+【触发】滚轮、触屏和拖拽驱动虚拟滚动；点击打开，再点或关闭收回。无 WebGPU 时明确提示，不要空白页。
+【运动】布料用粒子网格与空气阻力模拟，停止后缓缓展平；打开时从点击点领先，其余随后。详情文字在运动中贴在布上。
+【不要】在不支持 WebGPU 的浏览器假装可用；快速拖拽时布面剧烈自交且无法恢复。
+```
+
+## 立方盒走马灯 / Box Carousel
+
+<a id="fancy-box-carousel"></a>
+
+- 来源：AI Coding
+- 作者：Fancy Components
+- 日期：采集于 2026-11-24
+- 子类：可拖拽的立方体侧面走马灯
+- 触发：drag / autoplay
+- 技术栈：React / CSS 3D
+- 官方演示：https://www.fancycomponents.dev/docs/components/carousel/box-carousel
+- 分册锚点：[fancy-box-carousel](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#fancy-box-carousel)
+
+项目贴在旋转立方或盒体的各个面上，可拖拽并平滑转到下一面。比平面滑块更有体积感，适合少量精选作品。
+
+链接：
+
+- [打开 Fancy Box Carousel 演示](https://www.fancycomponents.dev/docs/components/carousel/box-carousel)（Fancy Components）
+
+### 提示词
+
+```
+【场景】精选作品或功能用立方盒四面展示，拖拽或按钮翻到下一面。
+【触发】拖拽带动量，也可自动缓慢旋转，悬停暂停。
+【运动】沿 Y 轴旋转 90° 的倍数落定，400–700ms；透视克制，正面内容始终可读。
+【不要】一次展示过多面导致文字反光难认；缺少键盘或按钮替代。
+```
+
+## FLIP 走马灯 / FLIP Carousel
+
+<a id="gsap-flip-carousel"></a>
+
+- 来源：设计站点
+- 作者：GSAP
+- 日期：采集于 2026-11-24
+- 子类：用 FLIP 记录布局再补间的走马灯
+- 触发：click / drag
+- 技术栈：GSAP Flip
+- 官方演示：https://demos.gsap.com/demo/flip-carousel/
+- 分册锚点：[gsap-flip-carousel](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#gsap-flip-carousel)
+
+官方 Demo Hub 的 FLIP 走马灯：先记录各卡片布局，再把它们补间到新位置，而不是只做轨道平移。切换时卡片像重新排版一样就位。
+
+链接：
+
+- [打开 GSAP FLIP Carousel 演示](https://demos.gsap.com/demo/flip-carousel/)（GSAP Demo Hub）
+
+### 提示词
+
+```
+【场景】卡片走马灯切换时，各卡从当前位置 FLIP 到新槽位，而不是整条轨道生硬平移。
+【触发】按钮、指示点或拖拽到阈值后切换。
+【运动】先记录布局再 Flip.from，300–600ms；进出焦点的卡片可有轻微缩放。
+【不要】只做 translateX 却称为 FLIP；动画中途再次点击导致布局错乱。
 ```

@@ -1,6 +1,6 @@
 # 加载与骨架
 
-本类共 13 条，来自分册「[加载与数据可视化](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a)」。在 `data/cases.json` 中对应 `category` 为 `loading`。复制下方提示词即可用于 AI Coding。
+本类共 14 条，来自分册「[加载与数据可视化](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a)」。在 `data/cases.json` 中对应 `category` 为 `loading`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -17,6 +17,7 @@
 - [图像生成加载 / Image Generation Loader](#image-generation-loader)
 - [点阵动画格 / Motion Grid](#animate-motion-grid)
 - [AI 状态加载 / AI State Loading](#kokonut-ai-loading)
+- [思考波文字 / AI Text Loading](#kokonut-ai-text-loading)
 
 ## 分阶段加载 / Multi Step Loader
 
@@ -380,4 +381,32 @@ Motion 官方例子演示无限列表：新一批到达时行项入场，而不�
 【触发】任务开始；文案可随实际阶段换。
 【运动】状态文案微入场，可配微弱脆骨或脉冲；切换 200–300ms。
 【不要】用泛转圈替代可读状态。
+```
+
+## 思考波文字 / AI Text Loading
+
+<a id="kokonut-ai-text-loading"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-24
+- 子类：字母波动并逐词替换的思考态
+- 触发：loading state
+- 技术栈：React / Motion
+- 官方演示：https://kokonutui.com/docs/ai/ai-text-loading
+- 分册锚点：[kokonut-ai-text-loading](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#kokonut-ai-text-loading)
+
+AI 思考态用一行文字表现：柔和的波从字母间走过，词会逐字替换成新的状态语。比转圈更像「正在组织语言」。
+
+链接：
+
+- [打开 Kokonut AI Text Loading 演示](https://kokonutui.com/docs/ai/ai-text-loading)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】助手思考时，状态行如「正在阅读来源」出现波浪，并逐字换成下一句状态。
+【触发】请求进行中循环；结束后切到回答，不要停在半句乱码。
+【运动】波从左到右轻轻走过字母；换词时逐字过渡，而不是整句淡入淡出。
+【不要】用无法阅读的乱码假装思考；结束后动画还在跑。
 ```

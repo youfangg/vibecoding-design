@@ -1,6 +1,6 @@
 # 导航与布局变形
 
-本类共 15 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `layout`。复制下方提示词即可用于 AI Coding。
+本类共 20 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `layout`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -19,6 +19,11 @@
 - [可展开工具栏 / Toolbar Expandable](#cult-toolbar-expandable)
 - [标记菜单 / Marking Menu](#kokonut-marking-menu)
 - [状态岛 / Status Island](#kokonut-status-island)
+- [反向缓动裁切菜单 / Ease Reverse Clip Menu](#ease-reverse-clip-menu)
+- [情境感知固定物 / Context-Aware Fixed Elements](#context-aware-fixed)
+- [按钮长成表单 / Morph Popover](#kokonut-morph-popover)
+- [浮动槽口导航 / Notch](#aceternity-notch)
+- [灵动岛 / Dynamic Island](#cult-dynamic-island)
 
 ## 整页滑移抽屉导航 / Page-Slide Drawer Nav
 
@@ -438,4 +443,148 @@ Motion 官方 layoutId 示例：两个不同树上的元素被识别为同一个
 【触发】状态出现时入场；点击扩展。
 【运动】紧凑与展开用布局动画 300–450ms。
 【不要】状态变化时跳动或挡住导航。
+```
+
+## 反向缓动裁切菜单 / Ease Reverse Clip Menu
+
+<a id="ease-reverse-clip-menu"></a>
+
+- 来源：设计站点
+- 作者：Manoela Ilic / Codrops
+- 日期：2026-04-22
+- 子类：开关使用不同缓动的裁切菜单
+- 触发：click / toggle
+- 技术栈：GSAP / clip-path / easeReverse
+- 官方演示：https://tympanus.net/Development/EaseReverseClipMenu/
+- 原始出处：https://tympanus.net/codrops/2026/04/22/a-playful-clip-menu-with-gsaps-easereverse/
+- 分册锚点：[ease-reverse-clip-menu](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#ease-reverse-clip-menu)
+
+全屏或大幅裁切菜单：打开用一种缓动，关闭用 easeReverse 换成更有弹性或更干脆的曲线。中途打断时时间轴反向仍保持设计好的关闭手感。
+
+链接：
+
+- [打开 Ease Reverse Clip Menu 演示](https://tympanus.net/Development/EaseReverseClipMenu/)（Codrops Demo）
+- [阅读 easeReverse 裁切菜单教程](https://tympanus.net/codrops/2026/04/22/a-playful-clip-menu-with-gsaps-easereverse/)（Codrops，2026-04-22）
+
+### 提示词
+
+```
+【场景】作品站导航：点击开关弹出以 clip-path 揭示的菜单，关闭时不要简单倒放打开动画。
+【触发】开关切换；可在动画中途再次点击打断。
+【运动】打开约 0.6–0.8s（如 expo）；关闭改用 easeReverse（如轻微 elastic）。条目可带微小旋转离场。
+【不要】开关共用同一缓动导致关闭发黏或过冲；打断后菜单停在半开状态。
+```
+
+## 情境感知固定物 / Context-Aware Fixed Elements
+
+<a id="context-aware-fixed"></a>
+
+- 来源：设计站点
+- 作者：Manoela Ilic / Codrops
+- 日期：2024-10-09
+- 子类：固定标识随内容让位或显现
+- 触发：scroll intersection
+- 技术栈：GSAP / ScrollTrigger / SplitType
+- 官方演示：https://tympanus.net/Development/ContextAwareLogoAnimationScroll/
+- 原始出处：https://tympanus.net/codrops/2024/10/09/exploring-playful-context-aware-animations-for-fixed-elements/
+- 分册锚点：[context-aware-fixed](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#context-aware-fixed)
+
+固定在视口上的标识或控件，遇到滚动内容时会躲让、隐藏或改形态，过后再出现。强调「看见前方内容再反应」，而不是简单的滚动缩导航。
+
+链接：
+
+- [打开 Context-Aware Fixed Elements 演示](https://tympanus.net/Development/ContextAwareLogoAnimationScroll/)（Codrops Demo）
+- [阅读情境感知固定物教程](https://tympanus.net/codrops/2024/10/09/exploring-playful-context-aware-animations-for-fixed-elements/)（Codrops，2024-10-09）
+
+### 提示词
+
+```
+【场景】固定在角落的标志或控件，当正文或大标题滚到它附近时让位或收起，离开后再出现。
+【触发】与特定内容块相交；而不是只按滚动方向隐藏。
+【运动】躲让带一点玩味（位移、拆字或淡出）但要在 200–400ms 内完成，不挡住阅读。
+【不要】与内容重叠无法阅读；仅做通用的向下滚动藏顶栏。
+```
+
+## 按钮长成表单 / Morph Popover
+
+<a id="kokonut-morph-popover"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-24
+- 子类：按钮展开为表单再收成确认
+- 触发：click / submit
+- 技术栈：React / Motion layout
+- 官方演示：https://kokonutui.com/docs/buttons/morph-popover
+- 分册锚点：[kokonut-morph-popover](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-morph-popover)
+
+「反馈」一类按钮用共享布局长成表单，标签上滑成为标题；提交后先进入发送态，再缩小成感谢小胶囊。
+
+链接：
+
+- [打开 Kokonut Morph Popover 演示](https://kokonutui.com/docs/buttons/morph-popover)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】页面上的反馈按钮点击后就地长成输入面板，提交后再收成「谢谢」胶囊。
+【触发】点击打开，Esc 关闭；提交若返回 Promise，先显示发送中。
+【运动】spring 约 0.42s 变形，标签滑成标题；发送后约 1.6s 显示确认再可复位。
+【不要】按钮消失后另弹一个无关联的弹层；焦点不进入输入框。
+```
+
+## 浮动槽口导航 / Notch
+
+<a id="aceternity-notch"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-24
+- 子类：贴边槽口在状态间变形
+- 触发：click / route change
+- 技术栈：React / Motion
+- 官方演示：https://ui.aceternity.com/components/notch
+- 分册锚点：[aceternity-notch](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#aceternity-notch)
+
+可配置的浮动槽口，钉在屏幕顶部或底部。传入带链接的项目后，切换时槽口外形与内容会动画到当前项。
+
+链接：
+
+- [打开 Aceternity Notch 演示](https://ui.aceternity.com/components/notch)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】移动端或桌面悬浮导航做成贴边槽口，切换栏目时外壳和内容一起变形。
+【触发】点击项目或路由变化。
+【运动】宽度、高度与圆角 300–450ms spring 过渡到当前项所需尺寸，内容交叉淡入。
+【不要】内容溢出圆角外壳；与系统手势条冲突且无法关闭。
+```
+
+## 灵动岛 / Dynamic Island
+
+<a id="cult-dynamic-island"></a>
+
+- 来源：AI Coding
+- 作者：Cult UI
+- 日期：采集于 2026-11-24
+- 子类：多尺寸预设的变形状态岛
+- 触发：state change
+- 技术栈：React / Motion
+- 官方演示：https://www.cult-ui.com/docs/components/dynamic-island
+- 分册锚点：[cult-dynamic-island](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#cult-dynamic-island)
+
+一套可组合的灵动岛：在紧凑、加宽、高耸、多行等预设之间变形，用于通知、播放中或进度。尺寸变化由状态机或排程动画驱动。
+
+链接：
+
+- [打开 Cult UI Dynamic Island 演示](https://www.cult-ui.com/docs/components/dynamic-island)（Cult UI）
+
+### 提示词
+
+```
+【场景】播放中、来消息或同步进度，用顶部状态岛在多种尺寸之间变形。
+【触发】应用事件调用 setSize，或按时间排程一组过渡。
+【运动】外壳宽高与圆角连续变形，内容随预设进入退出。动画过程中避免重复点击造成队列堆积。
+【不要】每种状态都突然切尺寸；内容在变形中被裁切到不可读。
 ```

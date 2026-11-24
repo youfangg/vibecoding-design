@@ -1,6 +1,6 @@
 # 微交互反馈
 
-本类共 11 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `micro`。复制下方提示词即可用于 AI Coding。
+本类共 16 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `micro`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -15,6 +15,11 @@
 - [链接预览 / Link Preview](#link-preview)
 - [方向感知悬停 / Direction Aware Hover](#direction-aware-hover)
 - [图像变焦 / Image Zoom](#animate-image-zoom)
+- [悬停全幅预览与小地图 / Hover Preview Mini Map](#hover-preview-minimap)
+- [撕票确认 / Tear Button](#kokonut-tear-button)
+- [倒计时撤销 / Undo Button](#kokonut-undo-button)
+- [语音波形输入 / AI Voice](#kokonut-ai-voice)
+- [弹性线 / Elastic Line](#fancy-elastic-line)
 
 ## 光标拖尾图集 / Image Motion Trail
 
@@ -324,4 +329,146 @@
 【触发】桌面悬停，触屏点击放大。
 【运动】放大跟手，比例约 1.5–2x；离开后收回。
 【不要】放大后无法关闭。
+```
+
+## 悬停全幅预览与小地图 / Hover Preview Mini Map
+
+<a id="hover-preview-minimap"></a>
+
+- 来源：设计站点
+- 作者：Manoela Ilic / Codrops
+- 日期：2022-03-01
+- 子类：全页预览配合光标小地图
+- 触发：hover
+- 技术栈：JavaScript / CSS
+- 官方演示：https://tympanus.net/Development/HoverPreviewMiniMap/
+- 原始出处：https://tympanus.net/codrops/2022/03/01/hover-preview-effect-with-mini-map/
+- 分册锚点：[hover-preview-minimap](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#hover-preview-minimap)
+
+悬停缩略图时，全页预览覆盖整个界面，同时用小地图显示指针落在哪一张上。演示有隐藏光标与自定义光标两个版本。移动端需要另做交互。
+
+链接：
+
+- [打开 Hover Preview Mini Map 演示](https://tympanus.net/Development/HoverPreviewMiniMap/)（Codrops Demo）
+- [阅读小地图悬停预览教程](https://tympanus.net/codrops/2022/03/01/hover-preview-effect-with-mini-map/)（Codrops，2022-03-01）
+
+### 提示词
+
+```
+【场景】三个作品缩略图：悬停时全页预览盖住原界面，角落小地图同步指示指针所在缩略图。
+【触发】桌面悬停进入，移出收回。提供无光标与自定义光标两种模式。
+【运动】预览与说明在 300–500ms 内展开；小地图中的指示器跟手，不要延迟过大。
+【不要】预览挡住后完全失去位置感；把同一交互硬套到触屏而不提供替代浏览。
+```
+
+## 撕票确认 / Tear Button
+
+<a id="kokonut-tear-button"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-24
+- 子类：沿齿孔撕下票根以确认
+- 触发：pointer drag
+- 技术栈：React
+- 官方演示：https://kokonutui.com/docs/buttons/tear-button
+- 分册锚点：[kokonut-tear-button](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-tear-button)
+
+危险操作做成票根：沿齿孔一孔一孔撕下后才确认。适合删除工作区这类不可轻易撤销的动作。
+
+链接：
+
+- [打开 Kokonut Tear Button 演示](https://kokonutui.com/docs/buttons/tear-button)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】删除工作区或类似不可轻易撤销的操作：按钮是一张票，必须沿齿孔撕下票根才确认。
+【触发】按住票根拖离，孔位依次断开；未撕完松开则复原。
+【运动】孔位逐个断开，票根离开后显示已确认文案，可选数秒后印出新票。
+【不要】单击就删除；没有明确的确认文案；触屏无法完成撕的手势。
+```
+
+## 倒计时撤销 / Undo Button
+
+<a id="kokonut-undo-button"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-24
+- 子类：沿按钮边缘倒计时的撤销窗
+- 触发：click / keyboard undo
+- 技术栈：React / Motion
+- 官方演示：https://kokonutui.com/docs/buttons/undo-button
+- 分册锚点：[kokonut-undo-button](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-undo-button)
+
+按下「归档」后进入可撤销窗口：边缘描边倒计时，按钮文案变成「已归档 | 撤销」。悬停或切走标签页会暂停计时，也可用快捷键撤销。
+
+链接：
+
+- [打开 Kokonut Undo Button 演示](https://kokonutui.com/docs/buttons/undo-button)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】归档或删除类操作先进入几秒撤销窗，时间沿按钮边缘消耗，确认后才真正执行。
+【触发】第一次点击打开撤销窗（默认约 5s）；再次点击或 ⌘Z / Ctrl+Z 撤销。鼠标悬停或页面隐藏时暂停。
+【运动】描边从顶部顺时针减少；宽度随文案平滑变化；数字按秒滚动。
+【不要】时间一到才给撤销却没有视觉倒计时；在输入框里误拦撤销快捷键。
+```
+
+## 语音波形输入 / AI Voice
+
+<a id="kokonut-ai-voice"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-24
+- 子类：录音波形与回放确认
+- 触发：press to talk
+- 技术栈：React / Canvas 或 SVG
+- 官方演示：https://kokonutui.com/docs/ai/ai-voice
+- 分册锚点：[kokonut-ai-voice](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-ai-voice)
+
+语音输入先出现滚动波形，录完后可以回放、丢弃或发送。重点是录音过程的波形运动，以及结束后的明确选择。
+
+链接：
+
+- [打开 Kokonut AI Voice 演示](https://kokonutui.com/docs/ai/ai-voice)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】聊天或助手的语音输入：按住或点击开始后出现滚动波形，结束给出回放、丢弃和发送。
+【触发】按下开始，松开或再次点击结束。
+【运动】波形随音量起伏并水平滚动；结束后波形停下，三个动作成组出现。
+【不要】没有回放就直接发送；波形纯装饰与声音无关；缺少静音与权限失败说明。
+```
+
+## 弹性线 / Elastic Line
+
+<a id="fancy-elastic-line"></a>
+
+- 来源：AI Coding
+- 作者：Fancy Components
+- 日期：采集于 2026-11-24
+- 子类：指针拉拽的弹簧 SVG 线
+- 触发：pointer move
+- 技术栈：React / SVG / 弹簧
+- 官方演示：https://www.fancycomponents.dev/docs/components/physics/elastic-line
+- 分册锚点：[fancy-elastic-line](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#fancy-elastic-line)
+
+一条 SVG 线被指针靠近或拉拽时像橡皮筋一样凹陷，离开后弹簧回正。适合分隔、签名线或轻量装饰交互。
+
+链接：
+
+- [打开 Fancy Elastic Line 演示](https://www.fancycomponents.dev/docs/components/physics/elastic-line)（Fancy Components）
+
+### 提示词
+
+```
+【场景】章节分隔或签名线：指针靠近时线被轻轻拉弯，离开后弹回。
+【触发】指针靠近或穿过；离开后回正。
+【运动】弹簧回正带一两下衰减，不要永久抖动。触屏可改为按住拖拽。
+【不要】整条页面布局被线的形变撑动；动画停不下来。
 ```

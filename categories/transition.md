@@ -1,6 +1,6 @@
 # 过渡与页面切换
 
-本类共 8 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `transition`。复制下方提示词即可用于 AI Coding。
+本类共 9 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `transition`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -12,6 +12,7 @@
 - [像素互换 / Pixel Swap](#rb-pixel-swap)
 - [对比拖拽 / Compare](#aceternity-compare)
 - [动画模态框 / Animated Modal](#aceternity-animated-modal)
+- [主题切换遮罩 / Animated Theme Toggler](#magic-theme-toggler)
 
 ## 并行页面转场 / Parallel Page Transitions
 
@@ -242,4 +243,32 @@
 【触发】点击打开；ESC 与点击遮罩关闭。
 【运动】入场 300–450ms 導缩放+淡入，离场稍快；焦点困在框内。
 【不要】突然出现/消失；忽略焦点管理。
+```
+
+## 主题切换遮罩 / Animated Theme Toggler
+
+<a id="magic-theme-toggler"></a>
+
+- 来源：AI Coding
+- 作者：Magic UI
+- 日期：采集于 2026-11-24
+- 子类：View Transitions 与裁切遮罩换主题
+- 触发：click
+- 技术栈：React / View Transitions / clip-path
+- 官方演示：https://magicui.design/docs/components/animated-theme-toggler
+- 分册锚点：[magic-theme-toggler](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#magic-theme-toggler)
+
+切换亮暗主题时，用 View Transitions 和圆形、多边形或星形裁切从按钮（或视口中心）扩散到全屏。比瞬间换色更有空间感。
+
+链接：
+
+- [打开 Magic UI Theme Toggler 演示](https://magicui.design/docs/components/animated-theme-toggler)（Magic UI）
+
+### 提示词
+
+```
+【场景】站点主题开关：点击后新主题从按钮处以圆形或多边形遮罩扩散到整页。
+【触发】点击切换；也要可用键盘操作。
+【运动】使用 View Transitions 或 clip-path，400–700ms；可选用圆、多边形或星形。不支持的浏览器回退为即时换色。
+【不要】只改颜色却没有遮罩；遮罩动画阻塞无法再次切换。
 ```

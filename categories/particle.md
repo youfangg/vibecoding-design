@@ -1,6 +1,6 @@
 # 粒子与流体
 
-本类共 19 条，来自分册「[粒子、流体与光标](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9)」。在 `data/cases.json` 中对应 `category` 为 `particle`。复制下方提示词即可用于 AI Coding。
+本类共 20 条，来自分册「[粒子、流体与光标](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9)」。在 `data/cases.json` 中对应 `category` 为 `particle`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -23,6 +23,7 @@
 - [点击粒子 / Cool Mode](#magic-cool-mode)
 - [点击视觉效果 / Click](#animate-click)
 - [弹性网格 / Elastic Mesh](#rb-elastic-mesh)
+- [字形矩阵 / Glyph Matrix](#magic-glyph-matrix)
 
 ## 黏性粘滞菜单 / Gooey Sticky Menu
 
@@ -558,4 +559,32 @@ Codrops 演示 A Drift：画面里的形象或质点像被水流拖着走，带�
 【触发】光标近似受力点；离开后 spring 回弹。
 【运动】受力有半径衰减；回弹要收敛，不要长期抖动。
 【不要】网格穿透正文。
+```
+
+## 字形矩阵 / Glyph Matrix
+
+<a id="magic-glyph-matrix"></a>
+
+- 来源：AI Coding
+- 作者：Magic UI
+- 日期：采集于 2026-11-24
+- 子类：画布上缓慢突变的字符格
+- 触发：idle loop
+- 技术栈：React / Canvas
+- 官方演示：https://magicui.design/docs/components/glyph-matrix
+- 分册锚点：[magic-glyph-matrix](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#magic-glyph-matrix)
+
+画布上的字符网格缓慢随机突变，颜色跟随主题，底部可做渐隐。像低密度的终端雨或装置背景，而不是具体标题动效。
+
+链接：
+
+- [打开 Magic UI Glyph Matrix 演示](https://magicui.design/docs/components/glyph-matrix)（Magic UI）
+
+### 提示词
+
+```
+【场景】技术或装置页的背景是一片字符网格，格子以很低的概率慢慢换成其他符号。
+【触发】进入后以固定节拍循环（约 90ms 一拍，突变率约 4%）。reduced-motion 时显示静止一帧。
+【运动】突变要稀、要慢，底部可渐隐。颜色由页面主题驱动。
+【不要】密度高到喧宾夺主；把这类背景当作正文。
 ```

@@ -1,6 +1,6 @@
 # 滚动叙事
 
-本类共 17 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `scroll`。复制下方提示词即可用于 AI Coding。
+本类共 22 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `scroll`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -21,6 +21,11 @@
 - [滚动三维圆字 / 3D Text Circle Scroll](#circle-text-scroll)
 - [滚动时间线 / Timeline](#aceternity-timeline)
 - [灯光章节头 / Lamp Effect](#lamp-effect)
+- [滚动拼装布局 / On-Scroll Layout Formations](#on-scroll-layout-formations)
+- [交错三维网格 / Staggered 3D Grid Animations](#staggered-3d-grid)
+- [单元素路径滚动 / One Element Scroll](#one-element-scroll)
+- [横向滚动画廊 / Horizontal Scrolling Gallery](#gsap-horizontal-gallery)
+- [滚动擦洗便当格 / Scrubbed Bento Gallery](#gsap-scrubbed-bento)
 
 ## 路径描边进度 / Tracing Beam
 
@@ -506,4 +511,150 @@ Codrops 演示把滚动编成电影感三维章节：镜头、光照与场景元
 【触发】进入视口后点亮。
 【运动】灯光 600–900ms 亮起，不要夺走标题对比。
 【不要】把灯做成闪烁幻灯。
+```
+
+## 滚动拼装布局 / On-Scroll Layout Formations
+
+<a id="on-scroll-layout-formations"></a>
+
+- 来源：设计站点
+- 作者：Manoela Ilic / Codrops
+- 日期：2024-09-18
+- 子类：钉住视口直到布局拼合完成
+- 触发：scroll pin
+- 技术栈：GSAP / ScrollTrigger
+- 官方演示：https://tympanus.net/Development/OnScrollLayoutFormations/
+- 原始出处：https://tympanus.net/codrops/2024/09/18/exploration-of-on-scroll-layout-formations/
+- 分册锚点：[on-scroll-layout-formations](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#on-scroll-layout-formations)
+
+内容被钉在视口里，网格或行列条目从分散状态逐步拼成最终版式，拼完才继续往下滚。有网格拼装、不同起点和行向编队等多种变体。
+
+链接：
+
+- [打开 On-Scroll Layout Formations 演示](https://tympanus.net/Development/OnScrollLayoutFormations/)（Codrops Demo）
+- [阅读滚动布局拼装教程](https://tympanus.net/codrops/2024/09/18/exploration-of-on-scroll-layout-formations/)（Codrops，2024-09-18）
+
+### 提示词
+
+```
+【场景】摄影或案例作品页：滚动时图片被钉住，从散落位置拼成最终网格或横向编队，完成后再释放滚动。
+【触发】ScrollTrigger pin + scrub。
+【运动】各条目沿各自路径归位，可错开起点与延迟；拼合过程中版面始终可理解。
+【不要】条目直接跳到终态；移动端布局崩溃仍只服务桌面。
+```
+
+## 交错三维网格 / Staggered 3D Grid Animations
+
+<a id="staggered-3d-grid"></a>
+
+- 来源：设计站点
+- 作者：Manoela Ilic / Codrops
+- 日期：2024-10-16
+- 子类：柱面透视的滚动网格
+- 触发：scroll
+- 技术栈：GSAP / ScrollTrigger / SplitText
+- 官方演示：https://tympanus.net/Development/Staggered3DGridAnimations/
+- 原始出处：https://tympanus.net/codrops/2024/10/16/staggered-3d-grid-animations-with-scroll-triggered-effects/
+- 分册锚点：[staggered-3d-grid](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#staggered-3d-grid)
+
+双列网格带柱面般的三维透视，条目与文字随滚动交错进出。也有偏平面的交错变体。注意线上使用 GSAP SplitText 需符合许可。
+
+链接：
+
+- [打开 Staggered 3D Grid 演示](https://tympanus.net/Development/Staggered3DGridAnimations/)（Codrops Demo）
+- [阅读交错三维网格教程](https://tympanus.net/codrops/2024/10/16/staggered-3d-grid-animations-with-scroll-triggered-effects/)（Codrops，2024-10-16）
+
+### 提示词
+
+```
+【场景】作品或人名网格随滚动以柱面透视交错进出，文字同步错开。
+【触发】滚动进度（scrub），建议中速滚动。
+【运动】两列沿相对方向旋转或位移，形成圆柱感；条目 stagger 与透视一致，避免穿帮。
+【不要】透视过陡导致内容不可读；未处理 reduced-motion。
+```
+
+## 单元素路径滚动 / One Element Scroll
+
+<a id="one-element-scroll"></a>
+
+- 来源：设计站点
+- 作者：Manoela Ilic / Codrops
+- 日期：2024-11-20
+- 子类：同一元素翻转到连续锚点
+- 触发：scroll scrub
+- 技术栈：GSAP Flip / ScrollTrigger
+- 官方演示：https://tympanus.net/Development/OneElementScroll/
+- 原始出处：https://tympanus.net/codrops/2024/11/20/consecutive-scroll-animations-with-one-element/
+- 分册锚点：[one-element-scroll](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#one-element-scroll)
+
+一张主图用 GSAP Flip 依次贴合后续章节里的占位框，滚动像在不同版式之间搬运同一个元素。占位用 data-step 标记。
+
+链接：
+
+- [打开 One Element Scroll 演示](https://tympanus.net/Development/OneElementScroll/)（Codrops Demo）
+- [阅读单元素连续滚动教程](https://tympanus.net/codrops/2024/11/20/consecutive-scroll-animations-with-one-element/)（Codrops，2024-11-20）
+
+### 提示词
+
+```
+【场景】品牌故事长页：同一张主图随滚动变换位置与尺寸，依次落入后续章节的占位框。
+【触发】父级与末个锚点之间 scrub，Flip.fit 连成一条时间轴。
+【运动】元素尺寸与位置连续拟合每个锚点，步骤之间可留短暂停顿。不要复制多张图做假连续。
+【不要】锚点之间跳切；忽略图片的对象裁切导致主体被切掉。
+```
+
+## 横向滚动画廊 / Horizontal Scrolling Gallery
+
+<a id="gsap-horizontal-gallery"></a>
+
+- 来源：设计站点
+- 作者：GSAP
+- 日期：采集于 2026-11-24
+- 子类：竖向滚轮驱动的横向画廊
+- 触发：scroll
+- 技术栈：GSAP / ScrollTrigger / 可选 ScrollSmoother
+- 官方演示：https://demos.gsap.com/demo/horizontal-scrolling-gallery/
+- 分册锚点：[gsap-horizontal-gallery](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#gsap-horizontal-gallery)
+
+官方 Demo Hub 中的横向图片画廊：页面仍上下滚动，画廊轨道被转换成左右移动。ScrollSmoother 是可选的顺滑层。
+
+链接：
+
+- [打开 GSAP Horizontal Scrolling Gallery 演示](https://demos.gsap.com/demo/horizontal-scrolling-gallery/)（GSAP Demo Hub）
+
+### 提示词
+
+```
+【场景】作品画廊：用户上下滚动时，图片轨道改为水平移动。
+【触发】ScrollTrigger 把垂直滚动映射为水平位移；平滑滚动可选。
+【运动】轨道位移与滚动进度一一对应，图片间距稳定，首尾留出进入与离开空间。
+【不要】出现原生横向滚动条与竖向滚动抢手；触屏无法滑过整组图片。
+```
+
+## 滚动擦洗便当格 / Scrubbed Bento Gallery
+
+<a id="gsap-scrubbed-bento"></a>
+
+- 来源：设计站点
+- 作者：GSAP
+- 日期：采集于 2026-11-24
+- 子类：滚动进度擦洗的便当格画廊
+- 触发：scroll scrub
+- 技术栈：GSAP / ScrollTrigger
+- 官方演示：https://demos.gsap.com/demo/scrubbed-bento-gallery/
+- 分册锚点：[gsap-scrubbed-bento](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#gsap-scrubbed-bento)
+
+便当格画廊的布局或焦点随滚动被擦洗播放，而不是一次性入场。适合把一组作品放进不规则格子里讲顺序。
+
+链接：
+
+- [打开 GSAP Scrubbed Bento Gallery 演示](https://demos.gsap.com/demo/scrubbed-bento-gallery/)（GSAP Demo Hub）
+
+### 提示词
+
+```
+【场景】作品或产品便当格：滚动时格子的缩放、位移或焦点按时间轴被擦洗。
+【触发】滚动进度（scrub）。
+【运动】格子变化连续可逆，焦点一次只强调一格或一组，其他格让位但不消失。
+【不要】做成与滚动无关的循环动画；格子重叠挡住可点区域。
 ```

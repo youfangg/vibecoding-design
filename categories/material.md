@@ -1,6 +1,6 @@
 # 光影与材质
 
-本类共 21 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `material`。复制下方提示词即可用于 AI Coding。
+本类共 22 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `material`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -25,6 +25,7 @@
 - [GSAP 驱动着色器 / Shader Animation GSAP](#shader-animation-gsap)
 - [网格到全幅预览 / Grid To Full Preview](#grid-to-full-preview)
 - [SDF 镜头模糊 / SDF Lens Blur](#sdf-lens-blur)
+- [色差位移图 / Chromatic Image](#aceternity-chromatic-image)
 
 ## 时装 Lookbook 悬停覆盖 / Lookbook Hover Effects
 
@@ -626,4 +627,32 @@
 【触发】光标或滚动移动焦点。
 【运动】模糊过渡连续，焦点形状可读。
 【不要】整图过度模糊到主体不清。
+```
+
+## 色差位移图 / Chromatic Image
+
+<a id="aceternity-chromatic-image"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-24
+- 子类：指针驱动的色差、位移与倾斜
+- 触发：pointer move
+- 技术栈：React / CSS 或 WebGL
+- 官方演示：https://ui.aceternity.com/components/chromatic-image
+- 分册锚点：[aceternity-chromatic-image](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-chromatic-image)
+
+图像随指针产生色彩分离、位移、倾斜或轻微缩放，像镜头色差。适合英雄图或作品特写，幅度要克制。
+
+链接：
+
+- [打开 Aceternity Chromatic Image 演示](https://ui.aceternity.com/components/chromatic-image)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】英雄图或作品图随指针出现轻微 RGB 分离、位移和倾斜。
+【触发】指针在图上移动；离开后 200–300ms 回正。触屏可改为跟随触摸或关闭。
+【运动】色差与倾斜跟手但有短滞后，幅度小到主体仍可辨认。
+【不要】分离过大导致图像破碎；对所有配图都启用。
 ```
