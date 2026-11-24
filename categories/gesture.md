@@ -1,6 +1,6 @@
 # 手势与拖拽
 
-本类共 16 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `gesture`。复制下方提示词即可用于 AI Coding。
+本类共 17 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `gesture`。复制下方提示词即可用于 AI Coding。
 
 ## 目录
 
@@ -20,6 +20,7 @@
 - [变形滑块 / Morph Slider](#rb-morph-slider)
 - [无限画布 / Infinite Canvas](#infinite-canvas)
 - [加入购物车导引 / Shopping Cart Animation](#shopping-cart-animation)
+- [拉绳开关 / Pull Cord](#kokonut-pull-cord)
 
 ## 弧形画廊 / Circular Gallery
 
@@ -473,4 +474,32 @@ iOS 风格的滚轮选择器，可拖、可滑、可吸到刻度。适合时间�
 【触发】点击加入。
 【运动】沿弧线 500–700ms 飞入，车图标短暂鼓起，数字更新。
 【不要】每次加入都做超长全屏动画。
+```
+
+## 拉绳开关 / Pull Cord
+
+<a id="kokonut-pull-cord"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-24
+- 子类：绳索物理的灯绳开关
+- 触发：pointer drag / release
+- 技术栈：React / 绳索模拟
+- 官方演示：https://kokonutui.com/docs/buttons/pull-cord
+- 分册锚点：[kokonut-pull-cord](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-pull-cord)
+
+一盏台灯的拉绳：绳子会摆动，向下拉并松开才切换开关。这是真正的拉拽手势，而不是点击按钮。
+
+链接：
+
+- [打开 Kokonut Pull Cord 演示](https://kokonutui.com/docs/buttons/pull-cord)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】设置或氛围灯用一根可摆动的拉绳来开关。
+【触发】抓住绳头下拉超过阈值再松开才切换；未拉够则弹回，不改变状态。提供可访问的名称。
+【运动】绳子用简易物理摆动，拉下有阻力，松开后回弹并完成开关。
+【不要】单击即切换而绳子只是装饰；触屏无法拉动。
 ```
