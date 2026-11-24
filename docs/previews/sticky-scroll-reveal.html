@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>从叶子到杯子</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f6f2ea; color: #241c16; }
+    .stage {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      padding: 12px 14px 10px;
+      background: #f6f2ea;
+      border-bottom: 1px solid #e5d9c8;
+    }
+    nav { display: flex; gap: 8px; }
+    nav a { color: #8a3b2c; font-size: 13px; }
+    .figure { display: flex; gap: 10px; align-items: center; margin-top: 8px; min-height: 72px; }
+    .swatch { width: 72px; height: 72px; flex: none; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.25rem; }
+    .figure p { margin: 2px 0 0; color: #65584c; font-size: 13px; }
+    section { padding: 28px 16px 64px; }
+    section h2 { margin: 0 0 8px; font-family: var(--serif); }
+    section p { margin: 0; color: #433a32; }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <nav aria-label="步骤">
+      <a href="#pick">选叶</a>
+      <a href="#fire">焙火</a>
+      <a href="#cup">冲泡</a>
+    </nav>
+    <div class="figure" id="figure"></div>
+  </div>
+  <section id="pick" data-step="pick">
+    <h2>选叶</h2>
+    <p>政和的白牡丹，一芽一叶。太嫩的只有芽头，香气短；太老的梗多，汤会粗。我们只要中间这一档，摊在竹匾上阴干半天。</p>
+  </section>
+  <section id="fire" data-step="fire">
+    <h2>焙火</h2>
+    <p>火要轻。白茶不是岩茶，焙过头会失去那点草香。师傅用手背试焙笼，温热就够，不要烫。</p>
+  </section>
+  <section id="cup" data-step="cup">
+    <h2>冲泡</h2>
+    <p>盖碗，八十五度，二十秒出汤。汤色浅杏的时候就是对的。若你赶时间，冷泡一晚也可以，味道更甜。</p>
+  </section>
+  <script src="kit.js"></script>
+  <script>
+    const steps = {
+      pick: { title: "选叶", text: "一芽一叶，摊在竹匾上", color: "#d5e4c8" },
+      fire: { title: "焙火", text: "焙笼温热，火很轻", color: "#e7c39a" },
+      cup: { title: "冲泡", text: "浅杏汤色，二十秒", color: "#f0ddb0" }
+    };
+    const figure = document.getElementById("figure");
+    let current = "";
+
+    function show(key) {
+      if (key === current) return;
+      current = key;
+      const step = steps[key];
+      figure.replaceChildren();
+      const swatch = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      swatch.setAttribute("viewBox", "0 0 72 72");
+      swatch.setAttribute("class", "swatch");
+      swatch.setAttribute("aria-hidden", "true");
+      swatch.innerHTML = '<rect width="72" height="72" fill="' + step.color + '"/><circle cx="36" cy="40" r="16" fill="#fffaf3" stroke="#241c16"/>';
+      const copy = document.createElement("div");
+      const heading = document.createElement("h1");
+      heading.textContent = step.title;
+      const text = document.createElement("p");
+      text.textContent = step.text;
+      copy.append(heading, text);
+      figure.append(swatch, copy);
+    }
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) show(entry.target.dataset.step);
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0.1 });
+
+    document.querySelectorAll("section").forEach(function (section) { observer.observe(section); });
+    show("pick");
+  </script>
+</body>
+</html>

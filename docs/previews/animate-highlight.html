@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>半亩茶单</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f6f0e6; color: #2a211c; }
+    .shop { height: 100%; display: flex; flex-direction: column; padding: 16px 16px 12px; }
+    .brand { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+    .brand h1 { margin: 0; font-family: var(--serif); font-size: 1.45rem; font-weight: 600; }
+    .brand p { margin: 0; color: #7a6a5c; font-family: var(--latin); font-style: italic; }
+    .chips, .places { position: relative; display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips { margin-top: 14px; }
+    .places { margin-top: 10px; }
+    .hl {
+      position: absolute;
+      left: 0; top: 0;
+      border-radius: 999px;
+      background: #8d3b2c;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .places .hl { background: #efe2c4; border-radius: 8px; opacity: 0; }
+    .chips button, .places button {
+      position: relative;
+      z-index: 1;
+      border: 0;
+      background: transparent;
+      border-radius: 999px;
+      padding: 7px 12px;
+      min-height: 36px;
+    }
+    .chips button { color: #3a2e28; }
+    .chips button[aria-pressed="true"] { color: #fffaf4; }
+    .places button { border-radius: 8px; color: #4d4036; padding: 6px 8px; }
+    .list { margin-top: 14px; overflow: auto; display: flex; flex-direction: column; gap: 8px; }
+    .tea {
+      display: grid;
+      grid-template-columns: 54px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      background: #fffaf3;
+      border: 1px solid #eadfce;
+    }
+    .tea b { display: block; font-family: var(--serif); font-size: 1.02rem; }
+    .tea span { color: #6f6258; font-size: 12px; }
+    .tea em { font-style: normal; font-variant-numeric: tabular-nums; font-family: var(--latin); font-size: 1.15rem; }
+    .cup { width: 54px; height: 54px; }
+  </style>
+</head>
+<body>
+  <div class="shop">
+    <div class="brand">
+      <h1>半亩 · 本季茶单</h1>
+      <p>周四寄出</p>
+    </div>
+    <div class="chips" role="group" aria-label="茶类">
+      <span class="hl" aria-hidden="true"></span>
+      <button type="button" data-key="all" aria-pressed="true">全部</button>
+      <button type="button" data-key="white" aria-pressed="false">春分白茶</button>
+      <button type="button" data-key="rock" aria-pressed="false">岩骨乌龙</button>
+      <button type="button" data-key="cold" aria-pressed="false">冷泡</button>
+    </div>
+    <div class="places" role="group" aria-label="本周寄出地，悬停移动高亮">
+      <span class="hl" aria-hidden="true"></span>
+      <button type="button">杭州</button>
+      <button type="button">武夷山</button>
+      <button type="button">福鼎</button>
+    </div>
+    <div class="list" id="list"></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const teas = [
+      { key: "white", name: "明前头采", meta: "杭州龙井村 · 50g", price: "168", tone: "#d7e2c8" },
+      { key: "rock", name: "牛栏坑肉桂", meta: "武夷山 · 8g", price: "96", tone: "#e7d2b8" },
+      { key: "cold", name: "白毫银针冷泡", meta: "福鼎 · 12 入", price: "72", tone: "#d5e4ea" },
+      { key: "white", name: "白牡丹饼", meta: "政和 · 30g", price: "128", tone: "#efe6cf" }
+    ];
+
+    function cup(tone) {
+      return '<svg class="cup" viewBox="0 0 54 54" aria-hidden="true"><rect width="54" height="54" fill="' + tone + '"/><path d="M14 22h20v8a10 10 0 0 1-20 0z" fill="#fffaf3" stroke="#2a211c" stroke-width="1.4"/><path d="M34 24h5a5 5 0 0 1 0 10h-5" fill="none" stroke="#2a211c" stroke-width="1.4"/><path d="M20 18c1 3 4 3 5 0" fill="none" stroke="#8d3b2c" stroke-width="1.2"/></svg>';
+    }
+
+    const list = document.getElementById("list");
+    function paint(key) {
+      list.replaceChildren();
+      teas.filter(function (tea) { return key === "all" || tea.key === key; }).forEach(function (tea) {
+        const row = document.createElement("article");
+        row.className = "tea";
+        row.innerHTML = cup(tea.tone) + "<div><b></b><span></span></div><em></em>";
+        row.querySelector("b").textContent = tea.name;
+        row.querySelector("span").textContent = tea.meta;
+        row.querySelector("em").textContent = "¥" + tea.price;
+        list.append(row);
+      });
+    }
+
+    const kit = window.PreviewKit;
+    const chips = document.querySelector(".chips");
+    const chipButtons = Array.from(chips.querySelectorAll("button"));
+    const chipHl = chips.querySelector(".hl");
+    let current = chipButtons[0];
+
+    function box(container, node) {
+      const parent = container.getBoundingClientRect();
+      const rect = node.getBoundingClientRect();
+      return {
+        l: rect.left - parent.left + container.scrollLeft,
+        t: rect.top - parent.top,
+        w: rect.width,
+        h: rect.height
+      };
+    }
+
+    const chipLoop = kit.springLoop(function () {
+      return box(chips, current);
+    }, function (value) {
+      chipHl.style.transform = "translate(" + value.l + "px," + value.t + "px)";
+      chipHl.style.width = value.w + "px";
+      chipHl.style.height = value.h + "px";
+    }, { stiffness: 500, damping: 40, keys: ["l", "t", "w", "h"] });
+
+    function select(button) {
+      current = button;
+      chipButtons.forEach(function (item) {
+        item.setAttribute("aria-pressed", item === button ? "true" : "false");
+      });
+      paint(button.dataset.key);
+      chipLoop.kick();
+    }
+    chipButtons.forEach(function (button) {
+      button.addEventListener("click", function () { select(button); });
+    });
+    paint("all");
+    chipLoop.kick(true);
+
+    const places = document.querySelector(".places");
+    const placeButtons = Array.from(places.querySelectorAll("button"));
+    const placeHl = places.querySelector(".hl");
+    let hovered = placeButtons[0];
+    let hideTimer = 0;
+    const placeLoop = kit.springLoop(function () {
+      return box(places, hovered);
+    }, function (value) {
+      placeHl.style.transform = "translate(" + value.l + "px," + value.t + "px)";
+      placeHl.style.width = value.w + "px";
+      placeHl.style.height = value.h + "px";
+    }, { stiffness: 500, damping: 40, keys: ["l", "t", "w", "h"] });
+
+    placeButtons.forEach(function (button) {
+      button.addEventListener("pointerenter", function (event) {
+        if (event.pointerType === "touch") return;
+        clearTimeout(hideTimer);
+        hovered = button;
+        placeHl.style.opacity = "1";
+        placeLoop.kick();
+      });
+    });
+    places.addEventListener("pointerleave", function () {
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { placeHl.style.opacity = "0"; }, kit.reduced() ? 0 : 200);
+    });
+    placeLoop.kick(true);
+    placeHl.style.opacity = "0";
+    window.addEventListener("resize", function () {
+      chipLoop.kick();
+      placeLoop.kick();
+    });
+  </script>
+</body>
+</html>

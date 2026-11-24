@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>夜市</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #141210; color: #f3ecdf; }
+    .hero { position: relative; height: 100%; overflow: hidden; padding: 22px 18px; }
+    .spot { position: absolute; inset: 0; pointer-events: none; }
+    .copy { position: relative; z-index: 1; max-width: 28rem; }
+    .kicker { margin: 0; letter-spacing: 0.14em; font-size: 12px; color: #d7b07a; }
+    h1 { margin: 10px 0 0; font-family: var(--serif); font-size: 2rem; line-height: 1.25; font-weight: 600; }
+    p { margin: 12px 0 0; color: #f3ecdf; }
+    ul { margin: 16px 0 0; padding: 0; list-style: none; }
+    li { padding: 8px 0; border-top: 1px solid rgba(243, 236, 223, 0.2); display: flex; justify-content: space-between; }
+  </style>
+</head>
+<body>
+  <section class="hero" id="hero">
+    <div class="spot" id="spot"></div>
+    <div class="copy">
+      <p class="kicker">星期六 · 河边</p>
+      <h1>夜市只开到九点，灯自己会跟着你。</h1>
+      <p>字在没有光斑时也读得清。光只是照一照摊位，不盖住菜单。</p>
+      <ul>
+        <li><span>阿陈的烤玉米</span><b>¥8</b></li>
+        <li><span>桂花酒酿</span><b>¥12</b></li>
+        <li><span>冷泡茶，走杯</span><b>¥10</b></li>
+      </ul>
+    </div>
+  </section>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const hero = document.getElementById("hero");
+    const spot = document.getElementById("spot");
+    const pos = { x: 80, y: 70 };
+    const target = { x: 120, y: 90 };
+    let raf = 0;
+
+    function paint() {
+      pos.x += (target.x - pos.x) * (kit.reduced() ? 1 : 0.12);
+      pos.y += (target.y - pos.y) * (kit.reduced() ? 1 : 0.12);
+      spot.style.background = "radial-gradient(240px circle at " + pos.x + "px " + pos.y + "px, rgba(255, 226, 176, 0.28), transparent 68%)";
+      if (Math.abs(target.x - pos.x) > 0.5 || Math.abs(target.y - pos.y) > 0.5) raf = requestAnimationFrame(paint);
+      else raf = 0;
+    }
+
+    function kick() {
+      if (!raf) raf = requestAnimationFrame(paint);
+    }
+
+    if (kit.finePointer()) {
+      hero.addEventListener("pointermove", function (event) {
+        if (event.pointerType === "touch") return;
+        const rect = hero.getBoundingClientRect();
+        target.x = event.clientX - rect.left;
+        target.y = event.clientY - rect.top;
+        kick();
+      });
+    }
+    paint();
+  </script>
+</body>
+</html>

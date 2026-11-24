@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>三种寄法</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #efe8dc; color: #241c16; }
+    .page { padding: 18px 14px 70vh; }
+    h1 { margin: 0 16px 8px; font-family: var(--serif); font-size: 1.5rem; }
+    .lead { margin: 0 16px 14px; color: #65584c; }
+    .tier {
+      position: sticky;
+      margin: 0 0 14px;
+      padding: 16px;
+      min-height: 180px;
+      border: 1px solid #241c16;
+      transform-origin: center top;
+    }
+    .tier.a { top: 12px; background: #f7f1e6; }
+    .tier.b { top: 24px; background: #f3e2cf; }
+    .tier.c { top: 36px; background: #e7efe6; }
+    .tier p { margin: 6px 0 0; }
+    .price { font-family: var(--latin); font-size: 1.8rem; }
+    h2 { margin: 8px 0 0; font-family: var(--serif); font-size: 1.3rem; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>半亩的三种寄法</h1>
+    <p class="lead">往下滚，后一张会盖住前一张。价格和包含的茶都写在卡片上。</p>
+    <article class="tier a">
+      <p>每月一包</p>
+      <h2>信差</h2>
+      <p class="price">¥68</p>
+      <p>一泡当季白茶，附一张手写水温。适合先试，不想囤。</p>
+    </article>
+    <article class="tier b">
+      <p>每月两泡</p>
+      <h2>茶桌</h2>
+      <p class="price">¥128</p>
+      <p>白茶加一泡乌龙。第二泡按你上次的反馈换山头。</p>
+    </article>
+    <article class="tier c">
+      <p>一季四次</p>
+      <h2>茶仓</h2>
+      <p class="price">¥460</p>
+      <p>含一饼可以再醒的白茶，和三次散茶。仓位写你的名字。</p>
+    </article>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const cards = Array.from(document.querySelectorAll(".tier"));
+    function place() {
+      cards.forEach(function (card, index) {
+        const next = cards[index + 1];
+        if (!next || kit.reduced()) {
+          card.style.transform = "none";
+          return;
+        }
+        const gap = next.getBoundingClientRect().top - card.getBoundingClientRect().top;
+        const t = Math.max(0, Math.min(1, 1 - gap / 200));
+        card.style.transform = "scale(" + (1 - t * 0.06) + ")";
+      });
+    }
+    place();
+    window.addEventListener("scroll", place, { passive: true });
+  </script>
+</body>
+</html>

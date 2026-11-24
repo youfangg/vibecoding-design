@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>醒茶</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #fbf7f0; color: #2a241c; }
+    .page { min-height: 100%; padding: 22px 18px; }
+    .kicker { margin: 0; color: #8a6240; font-size: 12px; letter-spacing: 0.08em; }
+    h1 { margin: 8px 0 12px; font-family: var(--serif); font-size: 1.45rem; }
+    blockquote { margin: 0; font-family: var(--serif); font-size: 1.25rem; line-height: 1.7; }
+    .mark {
+      background-image: linear-gradient(#f2d56a, #f2d56a);
+      background-repeat: no-repeat;
+      background-position: 0 88%;
+      background-size: 0% 0.42em;
+      animation: wipe 420ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .mark.from-right { background-position: 100% 88%; }
+    .note { margin-top: 14px; color: #66584a; }
+    .actions { display: flex; gap: 8px; margin-top: 16px; }
+    button { min-height: 40px; padding: 6px 12px; border: 1px solid #2a241c; background: transparent; }
+    button[aria-pressed="true"] { background: #2a241c; color: #fbf7f0; }
+    @keyframes wipe { to { background-size: 100% 0.42em; } }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <p class="kicker">焙火笔记 · 页边批注</p>
+    <h1>店主留下的一句</h1>
+    <blockquote id="quote">
+      这饼茶<span class="mark" id="mark">还要再醒两周</span>，现在开会发涩。
+    </blockquote>
+    <p class="note">荧光笔只抹过要记住的那半句，不把整段涂满。</p>
+    <div class="actions">
+      <button type="button" id="left" aria-pressed="true">从左抹</button>
+      <button type="button" id="right" aria-pressed="false">从右抹</button>
+      <button type="button" id="replay">再抹一次</button>
+    </div>
+  </article>
+  <script>
+    const mark = document.getElementById("mark");
+    const left = document.getElementById("left");
+    const right = document.getElementById("right");
+    let fromRight = false;
+
+    function run() {
+      mark.classList.toggle("from-right", fromRight);
+      mark.style.animation = "none";
+      void mark.offsetWidth;
+      mark.style.animation = "";
+    }
+
+    function setDir(next) {
+      fromRight = next;
+      left.setAttribute("aria-pressed", next ? "false" : "true");
+      right.setAttribute("aria-pressed", next ? "true" : "false");
+      run();
+    }
+
+    left.addEventListener("click", function () { setDir(false); });
+    right.addEventListener("click", function () { setDir(true); });
+    document.getElementById("replay").addEventListener("click", run);
+    document.getElementById("quote").addEventListener("pointerenter", function (event) {
+      if (event.pointerType === "touch") return;
+      run();
+    });
+  </script>
+</body>
+</html>

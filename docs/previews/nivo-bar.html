@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>茶叶销量</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f7f4ee; color: #241c16; }
+    .page { height: 100%; padding: 16px; display: flex; flex-direction: column; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.4rem; }
+    .sub { margin: 4px 0 0; color: #6d5e4e; }
+    .filters { display: flex; gap: 8px; margin: 12px 0; }
+    button { min-height: 36px; padding: 4px 10px; border: 1px solid #241c16; background: transparent; }
+    button[aria-pressed="true"] { background: #241c16; color: #f7f4ee; }
+    .chart { flex: 1; display: flex; align-items: flex-end; gap: 10px; min-height: 180px; padding-top: 12px; }
+    .col { flex: 1; display: flex; flex-direction: column; align-items: center; height: 100%; gap: 6px; min-width: 0; }
+    .bar-wrap { flex: 1; width: 100%; display: flex; align-items: flex-end; min-height: 120px; }
+    .bar {
+      width: 100%;
+      height: 100%;
+      background: #8a3b2c;
+      transform-origin: bottom center;
+      transform: scaleY(0);
+      transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .col span, .col b { font-size: 12px; }
+    .col b { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>本周茶叶销量</h1>
+    <p class="sub" id="sub">单位：饼。切换时柱子从当前高度长到新值。</p>
+    <div class="filters" role="group" aria-label="时间">
+      <button type="button" id="week" aria-pressed="true">本周</button>
+      <button type="button" id="last" aria-pressed="false">上周</button>
+    </div>
+    <div class="chart" id="chart" role="img" aria-label="分类销量"></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const sets = {
+      week: [["白茶", 72], ["岩茶", 54], ["红茶", 41], ["绿茶", 63]],
+      last: [["白茶", 48], ["岩茶", 70], ["红茶", 36], ["绿茶", 44]]
+    };
+    const chart = document.getElementById("chart");
+    const buttons = { week: document.getElementById("week"), last: document.getElementById("last") };
+    let mode = "week";
+
+    function draw(key) {
+      mode = key;
+      buttons.week.setAttribute("aria-pressed", key === "week" ? "true" : "false");
+      buttons.last.setAttribute("aria-pressed", key === "last" ? "true" : "false");
+      const rows = sets[key];
+      const max = 80;
+      if (!chart.children.length) {
+        rows.forEach(function (row) {
+          const col = document.createElement("div");
+          col.className = "col";
+          col.innerHTML = "<b></b><div class=\"bar-wrap\"><div class=\"bar\"></div></div><span></span>";
+          chart.append(col);
+        });
+      }
+      Array.from(chart.children).forEach(function (col, index) {
+        const row = rows[index];
+        col.querySelector("b").textContent = String(row[1]);
+        col.querySelector("span").textContent = row[0];
+        const scale = row[1] / max;
+        const bar = col.querySelector(".bar");
+        if (kit.reduced()) {
+          bar.style.transition = "none";
+          bar.style.transform = "scaleY(" + scale + ")";
+        } else {
+          requestAnimationFrame(function () { bar.style.transform = "scaleY(" + scale + ")"; });
+        }
+      });
+      chart.setAttribute("aria-label", rows.map(function (row) { return row[0] + row[1] + "饼"; }).join("，"));
+    }
+
+    buttons.week.addEventListener("click", function () { draw("week"); });
+    buttons.last.addEventListener("click", function () { draw("last"); });
+    draw("week");
+  </script>
+</body>
+</html>

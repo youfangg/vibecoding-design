@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>穀雨刊</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f7f1e8; color: #241c16; }
+    .page { min-height: 100%; padding: 22px 18px 28px; }
+    .kicker { margin: 0; font-family: var(--latin); font-style: italic; color: #8a3b2c; }
+    h1 { margin: 10px 0 0; font-family: var(--serif); font-size: 2rem; font-weight: 600; line-height: 1.25; }
+    .char { display: inline-block; animation: rise 620ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+    p { margin: 16px 0 0; color: #4d433b; font-size: 15px; }
+    button { margin-top: 18px; min-height: 40px; padding: 6px 12px; border: 1px solid #241c16; background: transparent; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <p class="kicker">穀雨刊 · 第四期</p>
+    <h1 id="title"></h1>
+    <p>编辑部把这篇放在卷首。正文不再逐字运动，只让标题进场一次。下面这段是已经排好的文章开头，读的时候它保持静止。</p>
+    <p>龙井村的头采比去年早了四天。茶农阿贵说，不是茶叶赶时间，是雨来得急，再晚两天叶子就老了。</p>
+    <button type="button" id="replay">再看一次标题</button>
+  </article>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const title = document.getElementById("title");
+    const text = "春分这一夜，喝完去年的白茶";
+
+    function play() {
+      title.setAttribute("aria-label", text);
+      title.replaceChildren();
+      Array.from(text).forEach(function (char, index) {
+        const span = document.createElement("span");
+        span.textContent = char;
+        span.setAttribute("aria-hidden", "true");
+        if (!kit.reduced()) {
+          span.className = "char";
+          span.style.animationDelay = Math.min(index * 40, 700) + "ms";
+        }
+        title.append(span);
+      });
+    }
+
+    document.getElementById("replay").addEventListener("click", play);
+    play();
+  </script>
+</body>
+</html>

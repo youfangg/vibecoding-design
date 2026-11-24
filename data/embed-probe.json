@@ -1,0 +1,1745 @@
+[
+  {
+    "url": "https://247artists.com/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://247artists.com/"
+  },
+  {
+    "url": "https://amber.isma.uy/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://amber.isma.uy/"
+  },
+  {
+    "url": "https://animata.design/docs/background/boids-ecosystem",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animata.design/docs/background/boids-ecosystem"
+  },
+  {
+    "url": "https://animata.design/docs/container/cursor-tracker",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animata.design/docs/container/cursor-tracker"
+  },
+  {
+    "url": "https://animata.design/docs/preloader/split-reveal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animata.design/docs/preloader/split-reveal"
+  },
+  {
+    "url": "https://animata.design/docs/preloader/vertical-tiles",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animata.design/docs/preloader/vertical-tiles"
+  },
+  {
+    "url": "https://animata.design/docs/skeleton/list",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animata.design/docs/skeleton/list"
+  },
+  {
+    "url": "https://animata.design/docs/skeleton/wide-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animata.design/docs/skeleton/wide-card"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/auto-height",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/auto-height"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/bottom-navigation",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/bottom-navigation"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/click",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/click"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/highlight",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/highlight"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/image-zoom",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/image-zoom"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/liquid-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/liquid-button"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/motion-grid",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/motion-grid"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/sliding-number",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/sliding-number"
+  },
+  {
+    "url": "https://demos.gsap.com/demo/flip-carousel/",
+    "allowed": false,
+    "reason": "x-frame-options sameorigin",
+    "status": 200,
+    "finalUrl": "https://demos.gsap.com/demo/flip-carousel/"
+  },
+  {
+    "url": "https://demos.gsap.com/demo/horizontal-scrolling-gallery/",
+    "allowed": false,
+    "reason": "x-frame-options sameorigin",
+    "status": 200,
+    "finalUrl": "https://demos.gsap.com/demo/horizontal-scrolling-gallery/"
+  },
+  {
+    "url": "https://demos.gsap.com/demo/scrubbed-bento-gallery/",
+    "allowed": false,
+    "reason": "x-frame-options sameorigin",
+    "status": 200,
+    "finalUrl": "https://demos.gsap.com/demo/scrubbed-bento-gallery/"
+  },
+  {
+    "url": "https://haoqi.design/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://haoqi.design/"
+  },
+  {
+    "url": "https://kokonutui.com/docs/ai/ai-loading",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/ai/ai-loading"
+  },
+  {
+    "url": "https://kokonutui.com/docs/ai/ai-text-loading",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/ai/ai-text-loading"
+  },
+  {
+    "url": "https://kokonutui.com/docs/ai/ai-voice",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/ai/ai-voice"
+  },
+  {
+    "url": "https://kokonutui.com/docs/backgrounds/caustics-background",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/backgrounds/caustics-background"
+  },
+  {
+    "url": "https://kokonutui.com/docs/backgrounds/ink-background",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/backgrounds/ink-background"
+  },
+  {
+    "url": "https://kokonutui.com/docs/backgrounds/rain-glass-background",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/backgrounds/rain-glass-background"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/hold-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/hold-button"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/morph-popover",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/morph-popover"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/pull-cord",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/pull-cord"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/slide-to-confirm",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/slide-to-confirm"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/tear-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/tear-button"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/undo-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/undo-button"
+  },
+  {
+    "url": "https://kokonutui.com/docs/cards/liquid-gauge",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/cards/liquid-gauge"
+  },
+  {
+    "url": "https://kokonutui.com/docs/cards/page-flip",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/cards/page-flip"
+  },
+  {
+    "url": "https://kokonutui.com/docs/cards/spending-ring",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/cards/spending-ring"
+  },
+  {
+    "url": "https://kokonutui.com/docs/inputs/wheel-picker",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/inputs/wheel-picker"
+  },
+  {
+    "url": "https://kokonutui.com/docs/navigation/marking-menu",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/navigation/marking-menu"
+  },
+  {
+    "url": "https://kokonutui.com/docs/navigation/status-island",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/navigation/status-island"
+  },
+  {
+    "url": "https://kokonutui.com/docs/texts/cradle-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/texts/cradle-text"
+  },
+  {
+    "url": "https://kokonutui.com/docs/texts/marker-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/texts/marker-text"
+  },
+  {
+    "url": "https://kokonutui.com/docs/texts/plucked-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/texts/plucked-text"
+  },
+  {
+    "url": "https://kokonutui.com/docs/texts/shadow-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/texts/shadow-text"
+  },
+  {
+    "url": "https://kokonutui.com/docs/texts/spoiler-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/texts/spoiler-text"
+  },
+  {
+    "url": "https://kokonutui.com/docs/texts/swoosh-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/texts/swoosh-text"
+  },
+  {
+    "url": "https://magicui.design/docs/components/animated-beam",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/animated-beam"
+  },
+  {
+    "url": "https://magicui.design/docs/components/animated-theme-toggler",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/animated-theme-toggler"
+  },
+  {
+    "url": "https://magicui.design/docs/components/blur-fade",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/blur-fade"
+  },
+  {
+    "url": "https://magicui.design/docs/components/confetti",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/confetti"
+  },
+  {
+    "url": "https://magicui.design/docs/components/cool-mode",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/cool-mode"
+  },
+  {
+    "url": "https://magicui.design/docs/components/dia-text-reveal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/dia-text-reveal"
+  },
+  {
+    "url": "https://magicui.design/docs/components/dock",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/dock"
+  },
+  {
+    "url": "https://magicui.design/docs/components/dotted-map",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/dotted-map"
+  },
+  {
+    "url": "https://magicui.design/docs/components/glyph-matrix",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/glyph-matrix"
+  },
+  {
+    "url": "https://magicui.design/docs/components/icon-cloud",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/icon-cloud"
+  },
+  {
+    "url": "https://magicui.design/docs/components/morphing-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/morphing-text"
+  },
+  {
+    "url": "https://magicui.design/docs/components/number-ticker",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/number-ticker"
+  },
+  {
+    "url": "https://magicui.design/docs/components/orbiting-circles",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/orbiting-circles"
+  },
+  {
+    "url": "https://magicui.design/docs/components/pointer",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/pointer"
+  },
+  {
+    "url": "https://magicui.design/docs/components/scroll-progress",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/scroll-progress"
+  },
+  {
+    "url": "https://magicui.design/docs/components/smooth-cursor",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/smooth-cursor"
+  },
+  {
+    "url": "https://magicui.design/docs/components/text-3d-flip",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/text-3d-flip"
+  },
+  {
+    "url": "https://magicui.design/docs/components/video-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/video-text"
+  },
+  {
+    "url": "https://motion.dev/examples/js-svg-loading-spinner",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://motion.dev/examples/js-svg-loading-spinner"
+  },
+  {
+    "url": "https://motion.dev/examples/react-exit-animation",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://motion.dev/examples/react-exit-animation"
+  },
+  {
+    "url": "https://motion.dev/examples/react-infinite-loading",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://motion.dev/examples/react-infinite-loading"
+  },
+  {
+    "url": "https://motion.dev/examples/react-loading-line-reveal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://motion.dev/examples/react-loading-line-reveal"
+  },
+  {
+    "url": "https://motion.dev/examples/react-reorder-items",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://motion.dev/examples/react-reorder-items"
+  },
+  {
+    "url": "https://motion.dev/examples/react-shared-layout-animation",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://motion.dev/examples/react-shared-layout-animation"
+  },
+  {
+    "url": "https://nivo.rocks/bar/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/bar/"
+  },
+  {
+    "url": "https://nivo.rocks/choropleth/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/choropleth/"
+  },
+  {
+    "url": "https://nivo.rocks/line/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/line/"
+  },
+  {
+    "url": "https://nivo.rocks/pie/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/pie/"
+  },
+  {
+    "url": "https://nivo.rocks/sankey/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/sankey/"
+  },
+  {
+    "url": "https://nivo.rocks/stream/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/stream/"
+  },
+  {
+    "url": "https://nivo.rocks/sunburst/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/sunburst/"
+  },
+  {
+    "url": "https://reactbits.dev/components/animated-list",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://reactbits.dev/components/animated-list"
+  },
+  {
+    "url": "https://reactbits.dev/components/bounce-cards",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://reactbits.dev/components/bounce-cards"
+  },
+  {
+    "url": "https://reactbits.dev/components/circular-gallery",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://reactbits.dev/components/circular-gallery"
+  },
+  {
+    "url": "https://reactbits.dev/components/stack",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://reactbits.dev/components/stack"
+  },
+  {
+    "url": "https://reactbits.dev/micro/lattice-loader",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://reactbits.dev/micro/lattice-loader"
+  },
+  {
+    "url": "https://reactbits.dev/text-animations/split-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://reactbits.dev/text-animations/split-text"
+  },
+  {
+    "url": "https://tympanus.net/Demos/ADrift/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Demos/ADrift/"
+  },
+  {
+    "url": "https://tympanus.net/Demos/ClothCarousel/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Demos/ClothCarousel/"
+  },
+  {
+    "url": "https://tympanus.net/Demos/DoNotScroll/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Demos/DoNotScroll/"
+  },
+  {
+    "url": "https://tympanus.net/Demos/GooeyStickyMenu/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Demos/GooeyStickyMenu/"
+  },
+  {
+    "url": "https://tympanus.net/Demos/LookbookHoverEffects/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Demos/LookbookHoverEffects/"
+  },
+  {
+    "url": "https://tympanus.net/Development/3DCarousel/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/3DCarousel/"
+  },
+  {
+    "url": "https://tympanus.net/Development/ContextAwareLogoAnimationScroll/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/ContextAwareLogoAnimationScroll/"
+  },
+  {
+    "url": "https://tympanus.net/Development/EaseReverseClipMenu/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/EaseReverseClipMenu/"
+  },
+  {
+    "url": "https://tympanus.net/Development/HoverPreviewMiniMap/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/HoverPreviewMiniMap/"
+  },
+  {
+    "url": "https://tympanus.net/Development/LetterShuffleMenu/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/LetterShuffleMenu/"
+  },
+  {
+    "url": "https://tympanus.net/Development/LineTextHoverAnimations/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/LineTextHoverAnimations/"
+  },
+  {
+    "url": "https://tympanus.net/Development/LineTypeEffect/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/LineTypeEffect/"
+  },
+  {
+    "url": "https://tympanus.net/Development/MotionTrailAnimations/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/MotionTrailAnimations/"
+  },
+  {
+    "url": "https://tympanus.net/Development/OnScrollLayoutFormations/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/OnScrollLayoutFormations/"
+  },
+  {
+    "url": "https://tympanus.net/Development/OnScrollSVGFilterText/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/OnScrollSVGFilterText/"
+  },
+  {
+    "url": "https://tympanus.net/Development/OnScrollTypographyAnimations/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/OnScrollTypographyAnimations/"
+  },
+  {
+    "url": "https://tympanus.net/Development/OneElementScroll/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/OneElementScroll/"
+  },
+  {
+    "url": "https://tympanus.net/Development/RepeatingImageTransition/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/RepeatingImageTransition/"
+  },
+  {
+    "url": "https://tympanus.net/Development/ScanEffect/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/ScanEffect/"
+  },
+  {
+    "url": "https://tympanus.net/Development/ScrollBlurTypography/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/ScrollBlurTypography/"
+  },
+  {
+    "url": "https://tympanus.net/Development/ScrollTextMotion/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/ScrollTextMotion/"
+  },
+  {
+    "url": "https://tympanus.net/Development/Staggered3DGridAnimations/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/Staggered3DGridAnimations/"
+  },
+  {
+    "url": "https://tympanus.net/Development/TypeShuffleAnimation/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Development/TypeShuffleAnimation/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/3DTextCircleScroll/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/3DTextCircleScroll/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/3DTextScroll/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/3DTextScroll/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/AnimatedLettersShader/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/AnimatedLettersShader/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/BayerDithering/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/BayerDithering/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/Cinematic3DScroll/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/Cinematic3DScroll/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/DreamyParticles/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/DreamyParticles/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/ElasticGridScroll/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/ElasticGridScroll/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/GridToFullPreview/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/GridToFullPreview/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/InfiniteCanvas/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/InfiniteCanvas/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/InfiniteLayersGrid/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/InfiniteLayersGrid/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/MotionPathTransition/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/MotionPathTransition/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/PalmerDraggableGrid/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/PalmerDraggableGrid/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/R3FExperimentalCarousels/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/R3FExperimentalCarousels/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/SDFLensBlur/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/SDFLensBlur/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/ShaderAnimationGSAP/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/ShaderAnimationGSAP/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/ShoppingCartAnimation/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/ShoppingCartAnimation/"
+  },
+  {
+    "url": "https://tympanus.net/Tutorials/ps1-jitter-shader/",
+    "allowed": false,
+    "reason": "http 403",
+    "status": 403,
+    "finalUrl": "https://tympanus.net/Tutorials/ps1-jitter-shader/"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/3d-card-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/3d-card-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/3d-marquee",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/3d-marquee"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/3d-pin",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/3d-pin"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/animated-modal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/animated-modal"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/apple-cards-carousel",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/apple-cards-carousel"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/background-beams-with-collision",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/background-beams-with-collision"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/canvas-reveal-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/canvas-reveal-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/canvas-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/canvas-text"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/chromatic-image",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/chromatic-image"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/compare",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/compare"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/container-scroll-animation",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/container-scroll-animation"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/direction-aware-hover",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/direction-aware-hover"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/draggable-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/draggable-card"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/evervault-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/evervault-card"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/expandable-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/expandable-card"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/flip-words",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/flip-words"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/github-globe",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/github-globe"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/gooey-input",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/gooey-input"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/google-gemini-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/google-gemini-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/hero-parallax",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/hero-parallax"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/image-generation-loader",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/image-generation-loader"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/lamp-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/lamp-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/link-preview",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/link-preview"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/liquid-glass",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/liquid-glass"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/macbook-scroll",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/macbook-scroll"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/multi-step-loader",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/multi-step-loader"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/notch",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/notch"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/parallax-scroll",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/parallax-scroll"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/placeholders-and-vanish-input",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/placeholders-and-vanish-input"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/resizable-navbar",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/resizable-navbar"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/spotlight",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/spotlight"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/squiggly-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/squiggly-text"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/sticky-scroll-reveal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/sticky-scroll-reveal"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/svg-mask-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/svg-mask-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/tabs",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/tabs"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/text-generate-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/text-generate-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/timeline",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/timeline"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/tracing-beam",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/tracing-beam"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/typewriter-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/typewriter-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/vortex",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/vortex"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/wobble-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/wobble-card"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/world-map",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/world-map"
+  },
+  {
+    "url": "https://und-ny.com/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://und-ny.com/"
+  },
+  {
+    "url": "https://vaul.emilkowal.ski/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://vaul.emilkowal.ski/"
+  },
+  {
+    "url": "https://www.cult-ui.com/docs/components/dynamic-island",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.cult-ui.com/docs/components/dynamic-island"
+  },
+  {
+    "url": "https://www.cult-ui.com/docs/components/fluted-glass",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.cult-ui.com/docs/components/fluted-glass"
+  },
+  {
+    "url": "https://www.cult-ui.com/docs/components/kanban-board",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.cult-ui.com/docs/components/kanban-board"
+  },
+  {
+    "url": "https://www.cult-ui.com/docs/components/loading-carousel",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.cult-ui.com/docs/components/loading-carousel"
+  },
+  {
+    "url": "https://www.cult-ui.com/docs/components/morph-surface",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.cult-ui.com/docs/components/morph-surface"
+  },
+  {
+    "url": "https://www.cult-ui.com/docs/components/toolbar-expandable",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.cult-ui.com/docs/components/toolbar-expandable"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/blocks/css-box",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/blocks/css-box"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/blocks/media-between-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/blocks/media-between-text"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/blocks/stacking-cards",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/blocks/stacking-cards"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/blocks/sticky-footer",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/blocks/sticky-footer"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/carousel/box-carousel",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/carousel/box-carousel"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/physics/elastic-line",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/physics/elastic-line"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/physics/gravity",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/physics/gravity"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/breathing-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/breathing-text"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/letter-3d-swap",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/letter-3d-swap"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/letter-swap",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/letter-swap"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/scramble-hover",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/scramble-hover"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/scramble-in",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/scramble-in"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/scroll-and-swap",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/scroll-and-swap"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/text-along-path",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/text-along-path"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/text-highlighter",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/text-highlighter"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/underline-to-background",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/underline-to-background"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/variable-font-hover-by-letter",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/variable-font-hover-by-letter"
+  },
+  {
+    "url": "https://www.fancycomponents.dev/docs/components/text/vertical-cut-reveal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.fancycomponents.dev/docs/components/text/vertical-cut-reveal"
+  },
+  {
+    "url": "https://www.inkgames.com/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.inkgames.com/"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/blob-cursor",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/blob-cursor"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/click-spark",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/click-spark"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/crosshair",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/crosshair"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/cubes",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/cubes"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/cursor-grid",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/cursor-grid"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/elastic-mesh",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/elastic-mesh"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/halftone-reveal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/halftone-reveal"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/laser-flow",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/laser-flow"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/magnet",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/magnet"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/meta-balls",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/meta-balls"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/pixel-swap",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/pixel-swap"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/pixel-trail",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/pixel-trail"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/pixel-transition",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/pixel-transition"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/ribbons",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/ribbons"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/scroll-expand",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/scroll-expand"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/splash-cursor",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/splash-cursor"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/sticker-peel",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/sticker-peel"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/swarm-cursor",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/swarm-cursor"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/target-cursor",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/target-cursor"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/aurora",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/aurora"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/ballpit",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/ballpit"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/ferrofluid",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/ferrofluid"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/hyperspeed",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/hyperspeed"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/liquid-ether",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/liquid-ether"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/particles",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/particles"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/plasma",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/plasma"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/silk",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/silk"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/accordion-gallery",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/accordion-gallery"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/bubble-menu",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/bubble-menu"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/card-swap",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/card-swap"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/depth-carousel",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/depth-carousel"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/elastic-slider",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/elastic-slider"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/flying-posters",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/flying-posters"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/folder",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/folder"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/gooey-nav",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/gooey-nav"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/holo-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/holo-card"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/lanyard",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/lanyard"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/morph-slider",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/morph-slider"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/ascii-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/ascii-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/blur-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/blur-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/decrypted-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/decrypted-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/echo-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/echo-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/falling-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/falling-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/fold-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/fold-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/glitch-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/glitch-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/particle-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/particle-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/rotating-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/rotating-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/scroll-float",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/scroll-float"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/scroll-velocity",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/scroll-velocity"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/shuffle",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/shuffle"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/split-flap-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/split-flap-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/stroke-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/stroke-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/tech-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/tech-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/text-pressure",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/text-pressure"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/true-focus",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/true-focus"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/variable-proximity",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/variable-proximity"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/warp-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/warp-text"
+  },
+  {
+    "url": "https://www.savor.it/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.savor.it/"
+  },
+  {
+    "url": "https://www.stabondar.com/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.stabondar.com/"
+  }
+]

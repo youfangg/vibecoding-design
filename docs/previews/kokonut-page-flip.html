@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>西湖茶事</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #ebe4d8; color: #241c16; }
+    .page { height: 100%; display: flex; flex-direction: column; padding: 14px; }
+    .book {
+      flex: 1;
+      position: relative;
+      perspective: 1400px;
+      min-height: 0;
+    }
+    .sheet, .leaf {
+      position: absolute;
+      inset: 0;
+      background: #fffaf3;
+      border: 1px solid #241c16;
+      padding: 16px;
+      transform-origin: left center;
+      backface-visibility: hidden;
+    }
+    .leaf { transform-style: preserve-3d; }
+    .face { position: absolute; inset: 0; padding: 16px; background: #fffaf3; backface-visibility: hidden; }
+    .face.back { transform: rotateY(180deg); }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.4rem; }
+    p { margin: 10px 0 0; color: #433a32; }
+    .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; }
+    button { min-height: 40px; padding: 6px 12px; border: 1px solid #241c16; background: #fffaf3; }
+    .corner { position: absolute; right: 0; bottom: 0; width: 64px; height: 64px; cursor: grab; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="book" id="book">
+      <article class="sheet" id="sheet"></article>
+    </div>
+    <div class="foot">
+      <button type="button" id="prev">上一页</button>
+      <span id="pager"></span>
+      <button type="button" id="next">下一页</button>
+    </div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const pages = [
+      ["龙井村", "头采比去年早了四天。阿贵说再晚两天，叶子就老了。我们只收一芽一叶。"],
+      ["九溪", "走路去茶园要四十分钟。溪水凉，用来洗杯正好，不要用来泡茶。"],
+      ["满觉陇", "桂花还没开的时候，茶已经做完了。花香是后来的事，不要写进这批茶里。"],
+      ["城里的桌子", "带回两罐。一罐这周喝，一罐写下名字，给秋天再醒一次。"]
+    ];
+    const sheet = document.getElementById("sheet");
+    const pager = document.getElementById("pager");
+    const book = document.getElementById("book");
+    let index = 0;
+    let busy = false;
+
+    function paint(node, page) {
+      node.replaceChildren();
+      const h = document.createElement("h1");
+      h.textContent = page[0];
+      const p = document.createElement("p");
+      p.textContent = page[1];
+      node.append(h, p);
+    }
+
+    function show() {
+      paint(sheet, pages[index]);
+      pager.textContent = (index + 1) + " / " + pages.length;
+    }
+
+    function flip(step) {
+      const next = index + step;
+      if (busy || next < 0 || next >= pages.length) return;
+      if (kit.reduced()) {
+        index = next;
+        show();
+        return;
+      }
+      busy = true;
+      const leaf = document.createElement("div");
+      leaf.className = "leaf";
+      const front = document.createElement("div");
+      front.className = "face";
+      const back = document.createElement("div");
+      back.className = "face back";
+      paint(front, pages[index]);
+      paint(back, pages[next]);
+      leaf.append(front, back);
+      book.append(leaf);
+      const sign = step > 0 ? -1 : 1;
+      leaf.style.transform = "rotateY(0deg)";
+      const anim = leaf.animate([
+        { transform: "rotateY(0deg)" },
+        { transform: "rotateY(" + (sign * 180) + "deg)" }
+      ], { duration: 760, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "forwards" });
+      anim.onfinish = function () {
+        index = next;
+        show();
+        leaf.remove();
+        busy = false;
+      };
+    }
+
+    document.getElementById("next").addEventListener("click", function () { flip(1); });
+    document.getElementById("prev").addEventListener("click", function () { flip(-1); });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowRight") flip(1);
+      if (event.key === "ArrowLeft") flip(-1);
+    });
+
+    const corner = document.createElement("div");
+    corner.className = "corner";
+    corner.setAttribute("aria-hidden", "true");
+    book.append(corner);
+    corner.addEventListener("pointerdown", function (event) {
+      if (busy || index >= pages.length - 1) return;
+      corner.setPointerCapture(event.pointerId);
+      const start = event.clientX;
+      function move(ev) {
+        if (start - ev.clientX > 70) {
+          corner.removeEventListener("pointermove", move);
+          flip(1);
+        }
+      }
+      function up() {
+        corner.removeEventListener("pointermove", move);
+        corner.removeEventListener("pointerup", up);
+      }
+      corner.addEventListener("pointermove", move);
+      corner.addEventListener("pointerup", up);
+    });
+    show();
+  </script>
+</body>
+</html>

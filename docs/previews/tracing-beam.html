@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>冲泡笔记</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f8f4ec; color: #241c16; }
+    .layout { display: grid; grid-template-columns: 36px 1fr; min-height: 100%; }
+    .rail { position: relative; }
+    svg { position: sticky; top: 0; width: 36px; height: 100vh; }
+    article { padding: 8px 16px 48px 4px; }
+    .kicker { margin: 12px 0 0; color: #8a6240; font-size: 12px; letter-spacing: 0.08em; }
+    h1 { margin: 6px 0 0; font-family: var(--serif); font-size: 1.6rem; }
+    section { padding: 22px 0; border-top: 1px solid #eadfce; }
+    h2 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.15rem; }
+    p { margin: 0; color: #4e433a; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+    nav a { color: #8a3b2c; }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="rail" aria-hidden="true">
+      <svg viewBox="0 0 36 800" preserveAspectRatio="none">
+        <path id="track" d="M18 8 C 28 120, 8 220, 18 320 S 30 520, 18 640 S 8 740, 18 792" fill="none" stroke="#e4d5c2" stroke-width="3"/>
+        <path id="beam" d="M18 8 C 28 120, 8 220, 18 320 S 30 520, 18 640 S 8 740, 18 792" fill="none" stroke="#8a3b2c" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <article>
+      <p class="kicker">焙火笔记 · 可以照着做</p>
+      <h1>一壶白茶的四步</h1>
+      <nav aria-label="章节">
+        <a href="#warm">温杯</a>
+        <a href="#leaf">投叶</a>
+        <a href="#pour">注水</a>
+        <a href="#wait">出汤</a>
+      </nav>
+      <section id="warm">
+        <h2>温杯</h2>
+        <p>先用热水过一遍盖碗。白瓷凉的时候，第一泡会被壁吸走温度，香气出不来。水倒掉之后不要擦干。</p>
+      </section>
+      <section id="leaf">
+        <h2>投叶</h2>
+        <p>三克白牡丹就够两个人。叶子蓬松，不要按实。若是饼茶，先撬成小块，醒上两周再喝。</p>
+      </section>
+      <section id="pour">
+        <h2>注水</h2>
+        <p>沿碗壁注，不要直冲叶面。水温大约八十五度。水声轻下来的时候，差不多满了。</p>
+      </section>
+      <section id="wait">
+        <h2>出汤</h2>
+        <p>第一泡二十秒。汤色应该是浅杏，不是黄。若发苦，下一泡少坐五秒，而不是再加热水。</p>
+        <p style="margin-top:10px">喝完把叶子摊在盖上。明天还能泡，不要捂在盖碗里过夜。</p>
+      </section>
+    </article>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const beam = document.getElementById("beam");
+    const length = beam.getTotalLength();
+    let lastY = window.scrollY;
+    let span = 0.14;
+    let settle = 0;
+
+    function draw() {
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const progress = kit.reduced() ? 1 : Math.min(1, Math.max(0, window.scrollY / max));
+      const visible = span * length;
+      beam.style.strokeDasharray = visible + " " + length;
+      beam.style.strokeDashoffset = String((1 - progress) * length - visible * 0.2);
+    }
+
+    draw();
+    window.addEventListener("scroll", function () {
+      const speed = Math.abs(window.scrollY - lastY);
+      lastY = window.scrollY;
+      if (!kit.reduced()) span = Math.min(0.46, 0.14 + speed / 280);
+      draw();
+      clearTimeout(settle);
+      settle = setTimeout(function () {
+        span = 0.14;
+        draw();
+      }, 260);
+    }, { passive: true });
+  </script>
+</body>
+</html>

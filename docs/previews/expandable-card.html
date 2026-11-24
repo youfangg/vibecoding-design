@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>本季唱片</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #efeae2; color: #241c16; }
+    .page { padding: 16px; }
+    h1 { margin: 0 0 12px; font-family: var(--serif); font-size: 1.4rem; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 8px;
+      text-align: left;
+      background: #fffaf4;
+      border: 1px solid #e3d5c4;
+    }
+    .card strong { font-family: var(--serif); }
+    .card span { color: #6d5e4e; font-size: 12px; }
+    .cover { width: 100%; aspect-ratio: 1; display: block; }
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(36, 28, 22, 0.46);
+    }
+    .sheet {
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px;
+      background: #fffaf4;
+      overflow: auto;
+      z-index: 2;
+    }
+    .sheet .cover { width: 100%; height: 148px; aspect-ratio: auto; }
+    .sheet header { display: flex; justify-content: space-between; gap: 8px; align-items: flex-start; }
+    .sheet h2 { margin: 0; font-family: var(--serif); font-size: 1.35rem; }
+    .sheet p { margin: 8px 0 0; color: #433a32; }
+    button.close { min-height: 36px; border: 1px solid #241c16; background: transparent; padding: 4px 8px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>本季在听</h1>
+    <div class="grid" id="grid"></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const albums = [
+      { title: "春分白", artist: "林夏", year: "2024", tracks: "9 首", note: "把白茶的香气写成慢板。第一首是清晨的龙井村，最后一首留白。", tone: "#d5e3c9" },
+      { title: "岩骨", artist: "周宁", year: "2023", tracks: "7 首", note: "吉他收得很干，像炭火。适合夜里第二泡肉桂。", tone: "#e7cbb0" },
+      { title: "冷露", artist: "阿禾", year: "2025", tracks: "11 首", note: "电子鼓很轻。封面那滴水是真的冷泡，拍了四次才停住。", tone: "#d5e2ea" }
+    ];
+    const grid = document.getElementById("grid");
+    let opener = null;
+    let backdrop = null;
+    let sheet = null;
+
+    function cover(tone) {
+      return '<svg class="cover" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" fill="' + tone + '"/><circle cx="60" cy="64" r="28" fill="#fffaf4" stroke="#241c16"/><circle cx="60" cy="64" r="6" fill="#241c16"/></svg>';
+    }
+
+    function close() {
+      if (backdrop) backdrop.remove();
+      if (sheet) sheet.remove();
+      backdrop = null;
+      sheet = null;
+      document.body.style.overflow = "";
+      if (opener) opener.focus();
+    }
+
+    function open(album, card) {
+      opener = card;
+      const from = card.getBoundingClientRect();
+      backdrop = document.createElement("div");
+      backdrop.className = "backdrop";
+      sheet = document.createElement("article");
+      sheet.className = "sheet";
+      sheet.setAttribute("role", "dialog");
+      sheet.setAttribute("aria-modal", "true");
+      sheet.setAttribute("aria-label", album.title);
+      sheet.innerHTML = cover(album.tone) + '<div class="body"><header><h2></h2><button type="button" class="close">关闭</button></header><p class="meta"></p><p class="note"></p></div>';
+      sheet.querySelector("h2").textContent = album.title;
+      sheet.querySelector(".meta").textContent = album.artist + " · " + album.year + " · " + album.tracks;
+      sheet.querySelector(".note").textContent = album.note;
+      document.body.append(backdrop, sheet);
+      document.body.style.overflow = "hidden";
+      const margin = 16;
+      const width = Math.min(420, window.innerWidth - margin * 2);
+      const to = {
+        left: (window.innerWidth - width) / 2,
+        top: 28,
+        width: width,
+        height: Math.min(460, window.innerHeight - 48)
+      };
+      sheet.style.left = from.left + "px";
+      sheet.style.top = from.top + "px";
+      sheet.style.width = from.width + "px";
+      sheet.style.height = from.height + "px";
+      const note = sheet.querySelector(".note");
+      note.style.opacity = "0";
+      const go = function () {
+        sheet.style.left = to.left + "px";
+        sheet.style.top = to.top + "px";
+        sheet.style.width = to.width + "px";
+        sheet.style.height = to.height + "px";
+        note.style.opacity = "1";
+      };
+      if (kit.reduced()) go();
+      else {
+        sheet.style.transition = "left 520ms cubic-bezier(0.22, 1, 0.36, 1), top 520ms cubic-bezier(0.22, 1, 0.36, 1), width 520ms cubic-bezier(0.22, 1, 0.36, 1), height 520ms cubic-bezier(0.22, 1, 0.36, 1)";
+        note.style.transition = "opacity 400ms ease 80ms";
+        requestAnimationFrame(go);
+      }
+      sheet.querySelector(".close").focus();
+      backdrop.addEventListener("click", close);
+      sheet.querySelector(".close").addEventListener("click", close);
+    }
+
+    albums.forEach(function (album) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "card";
+      button.innerHTML = cover(album.tone) + "<strong></strong><span></span>";
+      button.querySelector("strong").textContent = album.title;
+      button.querySelector("span").textContent = album.artist + " · " + album.year;
+      button.addEventListener("click", function () { open(album, button); });
+      grid.append(button);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && sheet) close();
+    });
+  </script>
+</body>
+</html>

@@ -23,7 +23,24 @@ python3 -m http.server 4173
 
 然后访问 http://127.0.0.1:4173/docs/
 
-站点是中文界面，可以按关键词检索，并按主类、来源筛选。每条案例给出标题、说明、主类、来源、触发与技术栈、官方演示、原始出处（若有）和可复制提示词。动效本身以官方演示为准。
+站点是中文界面，可以按关键词检索，并按主类、来源筛选。每条案例给出标题、说明、主类、来源、触发与技术栈、页内预览、官方演示、原始出处（若有）和可复制提示词。
+
+页内预览有三种状态，打开案例即可看到：
+
+- 官方页面允许被嵌入时，预览舞台用 iframe 打开该演示，下方仍保留官方演示链接。
+- 不允许嵌入、但已经做了站内复刻时，舞台里是按该条中文提示词重做的可交互场景。
+- 两者都有时，舞台默认嵌入官方页面，并可以改切到站内复刻。
+- 两者都没有时，舞台写明「暂无站内预览」，不留空白框。官方演示链接照常可用。
+
+允许嵌入的地址记在 [`docs/assets/embed-allowlist.js`](docs/assets/embed-allowlist.js)，由 [`scripts/probe-embeds.py`](scripts/probe-embeds.py) 根据响应头和页面里的 `X-Frame-Options`、`frame-ancestors` 生成。站内复刻登记在 [`docs/previews/registry.js`](docs/previews/registry.js)，每个复刻是同名的静态 HTML。
+
+新增一条复刻：在 `docs/previews/` 下新建 `<案例 id>.html`（可引用同目录的 `base.css` 与 `kit.js`），再把这个 id 写进 `registry.js`。复刻要做成有文案、数据和图像的完整场景，尊重 `prefers-reduced-motion`，装饰效果不能挡住内容。官方演示若已在允许列表里，舞台仍优先嵌入官方页面。
+
+重新探测嵌入许可：
+
+```bash
+python3 scripts/probe-embeds.py
+```
 
 GitHub Pages 的发布源是 `main` 分支上的 `/docs` 目录。仓库可以公开访问之后，地址是：
 
