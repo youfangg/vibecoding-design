@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>缄</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #161a17; color: #e7f2ea; }
+    .page { min-height: 100%; padding: 22px 18px; }
+    .kicker { margin: 0; letter-spacing: 0.16em; font-size: 12px; color: #8fbfa4; }
+    h1 { margin: 12px 0 0; font-family: var(--serif); font-size: 1.8rem; line-height: 1.35; min-height: 2.7em; }
+    .visual { font-variant-numeric: tabular-nums; }
+    .card { margin-top: 16px; padding: 12px; border: 1px solid #2d4638; }
+    .card p { margin: 0; color: #c5ddd0; }
+    button { margin-top: 16px; min-height: 40px; padding: 6px 12px; border: 1px solid #e7f2ea; background: transparent; color: inherit; }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <p class="kicker">缄 · 信件保险柜</p>
+    <h1>
+      <span class="sr" id="final">你的句子已经封好</span>
+      <span class="visual" id="visual" aria-hidden="true"></span>
+    </h1>
+    <div class="card">
+      <p>收件人 林夏 · 只在她的钥匙下打开。乱码只出现在标题上，下面的说明一直可读。</p>
+    </div>
+    <button type="button" id="replay">再封一次</button>
+  </article>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const finalText = "你的句子已经封好";
+    const glyphs = "0123456789ABCDEF#¥%";
+    const visual = document.getElementById("visual");
+    let timer = 0;
+
+    function glyph() {
+      return glyphs[Math.floor(Math.random() * glyphs.length)];
+    }
+
+    function play() {
+      clearInterval(timer);
+      const chars = Array.from(finalText);
+      if (kit.reduced()) {
+        visual.textContent = finalText;
+        return;
+      }
+      let step = 0;
+      const total = 28;
+      timer = setInterval(function () {
+        step += 1;
+        const locked = Math.floor((step / total) * chars.length);
+        visual.textContent = chars.map(function (char, index) {
+          if (char === " " || index < locked) return char;
+          return glyph();
+        }).join("");
+        if (step >= total) {
+          clearInterval(timer);
+          visual.textContent = finalText;
+        }
+      }, 42);
+    }
+
+    document.getElementById("replay").addEventListener("click", play);
+    play();
+  </script>
+</body>
+</html>

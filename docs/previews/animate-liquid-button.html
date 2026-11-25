@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>页边书店</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f3efe4; color: #241c16; }
+    .page { height: 100%; display: flex; flex-direction: column; justify-content: space-between; padding: 18px 16px 16px; }
+    .kicker { margin: 0; letter-spacing: 0.12em; font-size: 12px; color: #7b6b5c; }
+    h1 { margin: 6px 0 0; font-family: var(--serif); font-size: 1.7rem; line-height: 1.25; }
+    ul { list-style: none; margin: 16px 0 0; padding: 0; }
+    li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid #e4d8c6; }
+    li span { color: #6d5d4e; }
+    .total { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+    .total b { font-family: var(--latin); font-size: 2rem; font-weight: 500; }
+    .liquid {
+      position: relative;
+      width: 100%;
+      min-height: 52px;
+      border: 0;
+      overflow: hidden;
+      background: #e7e0d2;
+      color: #241c16;
+      isolation: isolate;
+    }
+    .liquid .label { position: relative; z-index: 1; font-family: var(--serif); font-size: 1.15rem; }
+    .liquid .fill {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 0;
+      background: #1e4f3d;
+      z-index: 0;
+    }
+    .liquid.is-hot .fill { animation: rise 0.6s cubic-bezier(0.25, 0.1, 0.35, 1) forwards; }
+    .liquid.is-drain .fill { animation: drain 0.6s cubic-bezier(0.25, 0.1, 0.35, 1) forwards; }
+    .liquid.is-hot { color: #f6f3ea; transition: color 0.2s linear 0.38s; }
+    .liquid.is-done { background: #1e4f3d; color: #f6f3ea; }
+    .liquid:active { transform: scale(0.97); }
+    .receipt { min-height: 1.4em; margin: 8px 0 0; color: #1e4f3d; }
+    @keyframes rise {
+      0% { height: 0; }
+      42% { height: 3px; }
+      100% { height: 100%; }
+    }
+    @keyframes drain {
+      0% { height: 100%; }
+      58% { height: 3px; }
+      100% { height: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .liquid:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div>
+      <p class="kicker">页边书店 · 外带</p>
+      <h1>两本书，今晚可以开始读。</h1>
+      <ul>
+        <li><span>海边的房间 · 林晚</span><b>¥58</b></li>
+        <li><span>焙火笔记 · 周宁</span><b>¥46</b></li>
+        <li><span>牛皮纸书衣</span><b>¥24</b></li>
+      </ul>
+      <p class="total"><span>合计</span><b>¥128</b></p>
+    </div>
+    <div>
+      <p class="receipt" id="receipt" role="status"></p>
+      <button type="button" class="liquid" id="pay">
+        <span class="fill" aria-hidden="true"></span>
+        <span class="label">付 ¥128，帮我包好</span>
+      </button>
+    </div>
+  </div>
+  <script>
+    const button = document.getElementById("pay");
+    const receipt = document.getElementById("receipt");
+    const label = button.querySelector(".label");
+    let hot = false;
+    let done = false;
+
+    function enter() {
+      if (done) return;
+      hot = true;
+      button.classList.remove("is-drain");
+      button.classList.add("is-hot");
+    }
+    function leave() {
+      if (done || !hot) return;
+      hot = false;
+      button.classList.remove("is-hot");
+      button.classList.add("is-drain");
+    }
+    button.addEventListener("pointerenter", function (event) {
+      if (event.pointerType === "touch") return;
+      enter();
+    });
+    button.addEventListener("pointerleave", leave);
+    button.addEventListener("focus", enter);
+    button.addEventListener("blur", leave);
+    button.addEventListener("click", function () {
+      if (done) return;
+      done = true;
+      button.classList.remove("is-drain");
+      button.classList.add("is-hot", "is-done");
+      label.textContent = "已包好，在柜台等你";
+      receipt.textContent = "订单 1048 · 两本书加书衣 · 可在一楼柜台取";
+    });
+  </script>
+</body>
+</html>

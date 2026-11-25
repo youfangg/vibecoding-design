@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>筛选市集</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { margin: 0; background: #f4efe6; color: #241c16; overflow: hidden; }
+    .page { height: 100%; padding: 16px; display: flex; flex-direction: column; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.45rem; }
+    .count { color: #6c5c4c; }
+    ul { list-style: none; padding: 0; margin: 12px 0; overflow: auto; }
+    li { padding: 8px 0; border-top: 1px solid #e6d9c8; display: flex; justify-content: space-between; }
+    .open { margin-top: auto; min-height: 44px; border: 0; background: #241c16; color: #f6f1e8; }
+    .backdrop { position: fixed; inset: 0; background: rgba(36, 28, 22, 0.4); }
+    .sheet {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      height: 78%;
+      background: #fffaf4;
+      border-radius: 16px 16px 0 0;
+      padding: 8px 16px 16px;
+      transform: translateY(100%);
+      touch-action: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .handle { width: 48px; height: 5px; border-radius: 99px; background: #d9cbb8; margin: 4px auto 10px; }
+    .sheet h2 { margin: 0 0 8px; font-family: var(--serif); font-size: 1.2rem; }
+    label { display: flex; gap: 8px; align-items: center; padding: 8px 0; }
+    .sheet .row { display: flex; justify-content: space-between; align-items: center; }
+    .close { min-height: 36px; border: 1px solid #241c16; background: transparent; padding: 4px 8px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>周末市集</h1>
+    <p class="count" id="count"></p>
+    <ul id="list"></ul>
+    <button type="button" class="open" id="open">筛选产地</button>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const stalls = [
+      ["阿陈香菜", "杭州"],
+      ["河虾桶", "舟山"],
+      ["春笋摊", "临安"],
+      ["白茶铺", "福鼎"],
+      ["岩茶桌", "武夷山"],
+      ["豆腐店", "杭州"]
+    ];
+    const places = ["杭州", "舟山", "临安", "福鼎", "武夷山"];
+    const selected = new Set(places);
+    const list = document.getElementById("list");
+    const count = document.getElementById("count");
+    let backdrop = null;
+    let sheet = null;
+    let offset = 0;
+    let drag = null;
+
+    function render() {
+      const shown = stalls.filter(function (row) { return selected.has(row[1]); });
+      count.textContent = shown.length + " 家正在出摊";
+      list.replaceChildren();
+      shown.forEach(function (row) {
+        const li = document.createElement("li");
+        li.innerHTML = "<span></span><b></b>";
+        li.querySelector("span").textContent = row[0];
+        li.querySelector("b").textContent = row[1];
+        list.append(li);
+      });
+    }
+
+    function sheetHeight() {
+      return sheet ? sheet.getBoundingClientRect().height : 0;
+    }
+
+    function apply(px, animate) {
+      offset = px;
+      sheet.style.transition = !animate || kit.reduced() ? "none" : "transform 500ms cubic-bezier(0.32, 0.72, 0, 1)";
+      sheet.style.transform = "translateY(" + px + "px)";
+    }
+
+    function close() {
+      if (!sheet) return;
+      const height = sheetHeight();
+      apply(height + 24, true);
+      const node = sheet;
+      const shade = backdrop;
+      setTimeout(function () {
+        node.remove();
+        if (shade) shade.remove();
+      }, kit.reduced() ? 0 : 480);
+      sheet = null;
+      backdrop = null;
+    }
+
+    function open() {
+      if (sheet) return;
+      backdrop = document.createElement("div");
+      backdrop.className = "backdrop";
+      sheet = document.createElement("section");
+      sheet.className = "sheet";
+      sheet.setAttribute("role", "dialog");
+      sheet.setAttribute("aria-modal", "true");
+      sheet.setAttribute("aria-label", "筛选产地");
+      sheet.innerHTML = '<div class="handle" id="handle"></div><div class="row"><h2>产地</h2><button type="button" class="close">完成</button></div><div id="checks"></div>';
+      const checks = sheet.querySelector("#checks");
+      places.forEach(function (place) {
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.checked = selected.has(place);
+        input.addEventListener("change", function () {
+          if (input.checked) selected.add(place);
+          else selected.delete(place);
+          render();
+        });
+        label.append(input, document.createTextNode(place));
+        checks.append(label);
+      });
+      document.body.append(backdrop, sheet);
+      const full = 0;
+      const half = Math.round(sheet.getBoundingClientRect().height * 0.42);
+      apply(sheetHeight(), false);
+      requestAnimationFrame(function () { apply(half, true); });
+      sheet.querySelector(".close").addEventListener("click", close);
+      backdrop.addEventListener("click", close);
+      sheet.querySelector(".close").focus();
+
+      function pointerDown(event) {
+        drag = { y: event.clientY, offset: offset, time: performance.now() };
+        sheet.setPointerCapture(event.pointerId);
+        apply(offset, false);
+      }
+      function pointerMove(event) {
+        if (!drag) return;
+        const next = Math.max(-30, drag.offset + (event.clientY - drag.y));
+        const resisted = next < 0 ? next * 0.35 : next;
+        apply(resisted, false);
+      }
+      function pointerUp() {
+        if (!drag) return;
+        const height = sheetHeight();
+        const velocity = (offset - drag.offset) / Math.max(1, performance.now() - drag.time);
+        drag = null;
+        if (offset > height * 0.72 || velocity > 0.6) close();
+        else if (offset < height * 0.22 || velocity < -0.45) apply(full, true);
+        else apply(half, true);
+      }
+      sheet.addEventListener("pointerdown", function (event) {
+        if (event.target.closest("input, label, button")) return;
+        pointerDown(event);
+      });
+      sheet.addEventListener("pointermove", pointerMove);
+      sheet.addEventListener("pointerup", pointerUp);
+      sheet.addEventListener("pointercancel", pointerUp);
+    }
+
+    document.getElementById("open").addEventListener("click", open);
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") close();
+    });
+    render();
+  </script>
+</body>
+</html>

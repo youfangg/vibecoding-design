@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>裁页</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f4f1ea; color: #241f1a; overflow: hidden; }
+    .app { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+    .toolbar { display: flex; justify-content: space-between; gap: 8px; align-items: center; padding: 10px 12px; border-bottom: 1px solid #e3d9cb; }
+    .toolbar h1 { margin: 0; font-family: var(--serif); font-size: 1.15rem; }
+    select { min-height: 36px; background: #fff; border: 1px solid #241f1a; padding: 0 8px; }
+    .canvas { position: relative; margin: 12px; background: #fffdf8; border: 1px solid #ddd2c2; overflow: hidden; }
+    .poster { position: absolute; inset: 18px; display: flex; flex-direction: column; justify-content: space-between; padding: 16px; background: #f3e6d4; pointer-events: none; }
+    .poster strong { font-family: var(--serif); font-size: 1.6rem; line-height: 1.2; }
+    .poster span { color: #6d5846; }
+    .fx { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+    .ring, .ripple, .cross, .burst, .dot { position: absolute; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <h1>裁页 · 封面稿</h1>
+      <label>点击效果
+        <select id="variant" aria-label="点击效果">
+          <option value="ring">环</option>
+          <option value="ripple">波纹</option>
+          <option value="crosshair">十字线</option>
+          <option value="burst">爆裂</option>
+          <option value="particles">粒子</option>
+        </select>
+      </label>
+    </div>
+    <div class="canvas" id="canvas">
+      <div class="poster">
+        <span>四月刊 · 试印</span>
+        <strong>把标题留在左下，不要再居中。</strong>
+        <span>点画面任意处看落点反馈。效果自己会消失。</span>
+      </div>
+      <div class="fx" id="fx"></div>
+    </div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const canvas = document.getElementById("canvas");
+    const fx = document.getElementById("fx");
+    const variant = document.getElementById("variant");
+    const maxNodes = 24;
+
+    function place(node, x, y) {
+      node.style.left = x + "px";
+      node.style.top = y + "px";
+      fx.append(node);
+    }
+
+    function drop(node, ms) {
+      setTimeout(function () { node.remove(); }, ms);
+    }
+
+    function play(x, y, kind) {
+      if (kit.reduced()) return;
+      if (fx.childElementCount > maxNodes) return;
+      const ms = 480;
+      if (kind === "ring" || kind === "ripple") {
+        const node = document.createElement("span");
+        node.className = kind;
+        node.style.width = "10px";
+        node.style.height = "10px";
+        node.style.margin = "-5px 0 0 -5px";
+        node.style.borderRadius = "999px";
+        node.style.border = kind === "ring" ? "2px solid #8d3b2c" : "0";
+        node.style.background = kind === "ripple" ? "rgba(141,59,44,0.35)" : "transparent";
+        place(node, x, y);
+        node.animate([
+          { transform: "scale(1)", opacity: 0.9 },
+          { transform: "scale(8)", opacity: 0 }
+        ], { duration: ms, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
+        drop(node, ms + 40);
+        return;
+      }
+      if (kind === "crosshair") {
+        ["h", "v"].forEach(function (axis) {
+          const node = document.createElement("span");
+          node.className = "cross";
+          node.style.background = "#8d3b2c";
+          if (axis === "h") {
+            node.style.width = "72px";
+            node.style.height = "2px";
+            node.style.margin = "-1px 0 0 -36px";
+          } else {
+            node.style.width = "2px";
+            node.style.height = "72px";
+            node.style.margin = "-36px 0 0 -1px";
+          }
+          place(node, x, y);
+          node.animate([{ opacity: 1, transform: "scale(0.4)" }, { opacity: 0, transform: "scale(1)" }], { duration: ms });
+          drop(node, ms + 40);
+        });
+        return;
+      }
+      const count = kind === "particles" ? 8 : 6;
+      for (let i = 0; i < count; i += 1) {
+        const node = document.createElement("span");
+        node.className = kind === "particles" ? "dot" : "burst";
+        const angle = (Math.PI * 2 * i) / count;
+        const dist = kind === "particles" ? 28 + (i % 3) * 10 : 36;
+        node.style.width = kind === "particles" ? "6px" : "16px";
+        node.style.height = kind === "particles" ? "6px" : "2px";
+        node.style.marginLeft = kind === "particles" ? "-3px" : "-8px";
+        node.style.marginTop = kind === "particles" ? "-3px" : "-1px";
+        node.style.borderRadius = kind === "particles" ? "999px" : "0";
+        node.style.background = "#8d3b2c";
+        place(node, x, y);
+        const delay = kind === "particles" ? i * 24 : 0;
+        node.animate([
+          { transform: "translate(0,0) rotate(" + (angle * 180 / Math.PI) + "deg)", opacity: 1 },
+          { transform: "translate(" + Math.cos(angle) * dist + "px," + Math.sin(angle) * dist + "px) rotate(" + (angle * 180 / Math.PI) + "deg)", opacity: 0 }
+        ], { duration: ms, delay: delay, easing: "cubic-bezier(0.22, 1, 0.36, 1)" });
+        drop(node, ms + delay + 40);
+      }
+    }
+
+    canvas.addEventListener("pointerup", function (event) {
+      if (event.target.closest("select")) return;
+      const rect = canvas.getBoundingClientRect();
+      play(event.clientX - rect.left, event.clientY - rect.top, variant.value);
+    });
+  </script>
+</body>
+</html>

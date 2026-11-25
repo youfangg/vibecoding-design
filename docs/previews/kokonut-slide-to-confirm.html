@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>确认付款</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f6f1e8; color: #241c16; }
+    .page { min-height: 100%; padding: 18px 16px; display: flex; flex-direction: column; }
+    .kicker { margin: 0; color: #7c6a58; font-size: 12px; letter-spacing: 0.08em; }
+    h1 { margin: 6px 0 0; font-family: var(--serif); font-size: 1.5rem; }
+    ul { list-style: none; padding: 0; margin: 14px 0; }
+    li { display: flex; justify-content: space-between; padding: 7px 0; border-top: 1px solid #e6d9c8; }
+    .track {
+      position: relative;
+      height: 56px;
+      border-radius: 999px;
+      background: #e7dfd2;
+      overflow: hidden;
+      touch-action: none;
+    }
+    .track.is-done { background: #1e4f3d; color: #f6f3ea; }
+    .fill { position: absolute; inset: 0 auto 0 0; width: 0; background: #d7ebe1; }
+    .hint { position: absolute; inset: 0; display: grid; place-items: center; color: #6d5d4e; pointer-events: none; }
+    .thumb {
+      position: absolute;
+      top: 4px; left: 4px;
+      width: 84px; height: 48px;
+      border: 0; border-radius: 999px;
+      background: #241c16; color: #f6f1e8;
+    }
+    .alt { margin-top: 10px; min-height: 40px; border: 0; background: transparent; color: #8a3b2c; text-decoration: underline; text-align: left; }
+    .status { margin-top: 12px; min-height: 1.4em; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <p class="kicker">半亩 · 待支付</p>
+    <h1>这一单寄给林夏</h1>
+    <ul>
+      <li><span>明前头采 50g</span><b>¥168</b></li>
+      <li><span>冷泡 12 入</span><b>¥72</b></li>
+      <li><span>运费</span><b>¥18</b></li>
+    </ul>
+    <div class="track" id="track">
+      <div class="fill" id="fill"></div>
+      <div class="hint" id="hint">滑动确认支付 ¥258</div>
+      <button type="button" class="thumb" id="thumb" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" role="slider" aria-label="拖到右端确认支付 258 元">支付</button>
+    </div>
+    <button type="button" class="alt" id="alt">无法拖拽时，点此确认</button>
+    <p class="status" id="status" role="status"></p>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const track = document.getElementById("track");
+    const thumb = document.getElementById("thumb");
+    const fill = document.getElementById("fill");
+    const hint = document.getElementById("hint");
+    const status = document.getElementById("status");
+    let ratio = 0;
+    let locked = false;
+    let dragging = false;
+    let startX = 0;
+    let startRatio = 0;
+
+    function maxTravel() {
+      return track.clientWidth - thumb.offsetWidth - 8;
+    }
+
+    function paint(next, animate) {
+      ratio = Math.max(0, Math.min(1, next));
+      const x = ratio * maxTravel();
+      thumb.style.transition = !animate || kit.reduced() ? "none" : "transform 320ms cubic-bezier(0.22, 1, 0.36, 1)";
+      fill.style.transition = thumb.style.transition;
+      thumb.style.transform = "translateX(" + x + "px)";
+      fill.style.width = (x + thumb.offsetWidth) + "px";
+      thumb.setAttribute("aria-valuenow", String(Math.round(ratio * 100)));
+    }
+
+    function succeed(via) {
+      if (locked) return;
+      locked = true;
+      paint(1, true);
+      track.classList.add("is-done");
+      hint.textContent = "已支付";
+      thumb.textContent = "完成";
+      status.textContent = (via === "key" ? "已用按键确认。" : "已滑动确认。") + " 订单 2091，周四随半亩寄出。";
+    }
+
+    thumb.addEventListener("pointerdown", function (event) {
+      if (locked) return;
+      dragging = true;
+      startX = event.clientX;
+      startRatio = ratio;
+      thumb.setPointerCapture(event.pointerId);
+      paint(ratio, false);
+    });
+    thumb.addEventListener("pointermove", function (event) {
+      if (!dragging || locked) return;
+      const delta = (event.clientX - startX) / maxTravel();
+      paint(startRatio + delta, false);
+    });
+    function release() {
+      if (!dragging || locked) return;
+      dragging = false;
+      if (ratio > 0.96) succeed("drag");
+      else paint(0, true);
+    }
+    thumb.addEventListener("pointerup", release);
+    thumb.addEventListener("pointercancel", release);
+    thumb.addEventListener("keydown", function (event) {
+      if (locked) return;
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        const next = Math.min(1, ratio + 0.12);
+        paint(next, true);
+        if (next > 0.96) succeed("drag");
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        paint(Math.max(0, ratio - 0.12), true);
+      }
+    });
+    document.getElementById("alt").addEventListener("click", function () { succeed("key"); });
+    paint(0, false);
+  </script>
+</body>
+</html>

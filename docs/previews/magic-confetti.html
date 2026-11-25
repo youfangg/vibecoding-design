@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>取货</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f7f3ea; color: #241c16; overflow: hidden; }
+    .page { position: relative; z-index: 1; height: 100%; padding: 18px 16px; display: flex; flex-direction: column; }
+    .kicker { margin: 0; color: #7a6a58; font-size: 12px; letter-spacing: 0.08em; }
+    h1 { margin: 6px 0 0; font-family: var(--serif); font-size: 1.6rem; }
+    ul { list-style: none; padding: 0; margin: 14px 0; }
+    li { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #e6d9c8; }
+    button { margin-top: auto; min-height: 48px; border: 0; background: #8a3b2c; color: #fff8f2; font-family: var(--serif); font-size: 1.1rem; }
+    button[disabled] { background: #1e4f3d; }
+    .bits { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 2; }
+    .bit { position: absolute; width: 8px; height: 12px; }
+  </style>
+</head>
+<body>
+  <div class="bits" id="bits"></div>
+  <div class="page">
+    <p class="kicker">订单 2091 · 柜台 3</p>
+    <h1>林夏的茶已经包好</h1>
+    <ul>
+      <li><span>明前头采 50g</span><b>一袋</b></li>
+      <li><span>冷泡 12 入</span><b>一盒</b></li>
+      <li><span>手写水温卡</span><b>夹在袋口</b></li>
+    </ul>
+    <button type="button" id="done">完成取货</button>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const bits = document.getElementById("bits");
+    const button = document.getElementById("done");
+    const colors = ["#8a3b2c", "#e3b15a", "#1e4f3d", "#f4efe4", "#355c7d"];
+    let played = false;
+
+    function burst(x, y) {
+      if (kit.reduced()) return;
+      for (let i = 0; i < 26; i += 1) {
+        const bit = document.createElement("i");
+        bit.className = "bit";
+        bit.style.left = x + "px";
+        bit.style.top = y + "px";
+        bit.style.background = colors[i % colors.length];
+        bits.append(bit);
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 50 + Math.random() * 90;
+        bit.animate([
+          { transform: "translate(0,0) rotate(0deg)", opacity: 1 },
+          { transform: "translate(" + Math.cos(angle) * dist + "px," + (Math.sin(angle) * dist + 110) + "px) rotate(" + (Math.random() * 240 - 120) + "deg)", opacity: 0 }
+        ], { duration: 900 + Math.random() * 400, easing: "cubic-bezier(.15,.7,.3,1)", fill: "forwards" });
+      }
+      setTimeout(function () { bits.replaceChildren(); }, 1400);
+    }
+
+    button.addEventListener("click", function (event) {
+      if (played) return;
+      played = true;
+      button.disabled = true;
+      button.textContent = "已取货";
+      const rect = button.getBoundingClientRect();
+      burst(rect.left + rect.width / 2, rect.top);
+    });
+  </script>
+</body>
+</html>

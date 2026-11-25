@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>问茶</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f7f4ee; color: #241f1a; }
+    .chat { height: 100%; display: flex; flex-direction: column; padding: 14px; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.3rem; }
+    .log { flex: 1; overflow: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+    .msg { max-width: 92%; padding: 8px 10px; }
+    .me { align-self: flex-end; background: #2c4036; color: #f6f3ea; }
+    .bot { align-self: flex-start; background: #fff; border: 1px solid #e4dccf; }
+    .composer { display: flex; gap: 8px; align-items: center; margin-top: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(5, 7px); gap: 3px; width: 47px; }
+    .cell { width: 7px; height: 7px; border-radius: 99px; background: #ddd4c6; transition: background-color 160ms linear; }
+    .cell.is-on { background: #2c4036; }
+    .status { flex: 1; color: #6c604f; font-size: 13px; }
+    button { min-height: 36px; padding: 4px 10px; border: 1px solid #241f1a; background: #fff; }
+  </style>
+</head>
+<body>
+  <div class="chat">
+    <h1>问茶</h1>
+    <div class="log">
+      <p class="msg me">周末两个人，想喝清一点的，不要焙得太重。</p>
+      <p class="msg bot">可以先看政和白牡丹。若想要香气，再加一泡武夷水仙，别上肉桂。</p>
+    </div>
+    <div class="composer">
+      <div class="grid" id="grid" aria-hidden="true"></div>
+      <p class="status" id="status">正在想今日茶单</p>
+      <button type="button" id="stop">停止</button>
+    </div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const grid = document.getElementById("grid");
+    const status = document.getElementById("status");
+    const cells = [];
+    for (let i = 0; i < 25; i += 1) {
+      const cell = document.createElement("span");
+      cell.className = "cell";
+      grid.append(cell);
+      cells.push(cell);
+    }
+    const frames = [
+      [[2, 2]],
+      [[1, 2], [2, 1], [2, 3], [3, 2]],
+      [[0, 2], [2, 0], [2, 4], [4, 2], [1, 1], [3, 3]],
+      [[0, 0], [0, 4], [4, 0], [4, 4], [2, 2]],
+      [[1, 0], [2, 0], [3, 0], [1, 4], [2, 4], [3, 4]],
+      []
+    ];
+    let frame = 0;
+    let timer = 0;
+    let running = true;
+
+    function draw() {
+      const on = new Set(frames[frame].map(function (pair) { return pair[0] + "," + pair[1]; }));
+      cells.forEach(function (cell, index) {
+        const col = index % 5;
+        const row = Math.floor(index / 5);
+        cell.classList.toggle("is-on", on.has(col + "," + row));
+      });
+    }
+
+    function tick() {
+      if (!running || document.hidden) return;
+      frame = (frame + 1) % frames.length;
+      draw();
+    }
+
+    function start() {
+      stop();
+      if (kit.reduced()) {
+        frame = 2;
+        draw();
+        return;
+      }
+      timer = setInterval(tick, 200);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = 0;
+    }
+
+    document.getElementById("stop").addEventListener("click", function () {
+      running = !running;
+      if (running) {
+        status.textContent = "正在想今日茶单";
+        this.textContent = "停止";
+        start();
+      } else {
+        stop();
+        frame = frames.length - 1;
+        draw();
+        status.textContent = "已停下。可以改口：想喝熟普。";
+        this.textContent = "继续想";
+      }
+    });
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) stop();
+      else if (running) start();
+    });
+    draw();
+    start();
+  </script>
+</body>
+</html>

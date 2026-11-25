@@ -113,6 +113,86 @@
     catch (error) { return ""; }
   }
 
+  function canEmbed(url) {
+    const allow = window.EMBED_ALLOW && window.EMBED_ALLOW.urls;
+    return Boolean(url && allow && allow[url] === true);
+  }
+
+  function recutSrc(item) {
+    if (!window.PREVIEW_RECUTS || !window.PREVIEW_RECUTS[item.id]) return "";
+    return "previews/" + item.id + ".html";
+  }
+
+  function previewPlan(item) {
+    const demo = safeUrl(item.officialDemoUrl);
+    const local = recutSrc(item);
+    if (canEmbed(demo)) return { mode: "embed", src: demo, local: local, embed: demo };
+    if (local) return { mode: "local", src: local, local: local, embed: "" };
+    return { mode: "none", src: "", local: "", embed: "" };
+  }
+
+  function applyFrame(frame, mode, src, title) {
+    if (mode === "embed") {
+      frame.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox");
+      frame.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+    } else {
+      frame.removeAttribute("sandbox");
+      frame.removeAttribute("referrerpolicy");
+    }
+    frame.title = (mode === "embed" ? "官方演示：" : "站内复刻：") + title;
+    frame.src = src;
+  }
+
+  function renderStage(item) {
+    const plan = previewPlan(item);
+    const stage = el("section", "stage is-" + plan.mode);
+    stage.setAttribute("aria-label", "案例预览");
+    const bar = el("div", "stage-bar");
+    bar.append(el("h3", "stage-kicker", "站内预览"));
+    if (plan.local && plan.embed) {
+      const group = el("div", "stage-switch");
+      group.setAttribute("role", "group");
+      group.setAttribute("aria-label", "预览来源");
+      [["embed", "官方页面"], ["local", "站内复刻"]].forEach(function (choice) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.dataset.previewSource = choice[0];
+        button.textContent = choice[1];
+        button.setAttribute("aria-pressed", plan.mode === choice[0] ? "true" : "false");
+        group.append(button);
+      });
+      bar.append(group);
+    } else {
+      const note = plan.mode === "embed"
+        ? "官方页面嵌入"
+        : plan.mode === "local"
+          ? "依据提示词复刻"
+          : "尚未嵌入";
+      bar.append(el("p", "stage-note", note));
+    }
+    stage.append(bar);
+    const viewport = el("div", "stage-viewport");
+    if (plan.mode === "none") {
+      const empty = el("div", "stage-empty");
+      empty.append(el("strong", null, "暂无站内预览"));
+      empty.append(el("p", null, safeUrl(item.officialDemoUrl)
+        ? "官方页面不允许被嵌入，这条也还没有站内复刻。请打开下方的官方演示核对运动。"
+        : "这条没有单独的官方演示地址，也还没有站内复刻。请从下方出处打开。"));
+      viewport.append(empty);
+    } else {
+      const frame = document.createElement("iframe");
+      frame.className = "stage-iframe";
+      frame.dataset.localSrc = plan.local;
+      frame.dataset.embedSrc = plan.embed;
+      frame.dataset.caseTitle = item.title;
+      frame.setAttribute("loading", plan.mode === "local" ? "eager" : "lazy");
+      applyFrame(frame, plan.mode, plan.src, item.title);
+      viewport.append(frame);
+    }
+    stage.append(viewport);
+    return stage;
+  }
+
   function readState() {
     const params = new URLSearchParams(location.search);
     let id = "";
@@ -213,7 +293,8 @@
         const desc = el("span", "entry-desc");
         fill(title, item.title, qToks);
         fill(desc, item.description, qToks);
-        body.append(title, desc, el("span", "entry-meta", item.categoryLabel + " · " + item.sourceLabel));
+        const previewMark = previewPlan(item).mode === "none" ? "" : " · 可预览";
+        body.append(title, desc, el("span", "entry-meta", item.categoryLabel + " · " + item.sourceLabel + previewMark));
         button.append(el("span", "entry-no", String(item.no).padStart(3, "0")), body);
         fragment.append(button);
       });
@@ -253,11 +334,12 @@
     const title = el("h2", "intro-title", "先核对运动，再复制提示词。");
     title.id = "intro-title";
     intro.append(title);
-    intro.append(el("p", "lead", taxonomy.total + " 条已核验案例，按 " + taxonomy.categories.length + " 个主类、" + taxonomy.sources.length + " 类来源收在 " + taxonomy.volumes.length + " 个分册里。"));
+    const previewable = ordered.filter(function (item) { return previewPlan(item).mode !== "none"; }).length;
+    intro.append(el("p", "lead", taxonomy.total + " 条已核验案例，按 " + taxonomy.categories.length + " 个主类、" + taxonomy.sources.length + " 类来源收在 " + taxonomy.volumes.length + " 个分册里。其中 " + previewable + " 条可以在页内直接看运动。"));
     const steps = el("ol", "steps");
     [
       ["检索", "用关键词、主类或来源把范围缩小。"],
-      ["核对", "打开官方演示，确认是不是要的运动。"],
+      ["核对", "先看页内预览。不能嵌入、也没有复刻的，再打开官方演示。"],
       ["复制", "提示词保持原文，贴进 AI Coding 工具。"]
     ].forEach(function (step) {
       const li = el("li");
@@ -325,6 +407,7 @@
     const lead = el("p", "lead");
     fill(lead, item.description, qToks);
     wrap.append(lead);
+    wrap.append(renderStage(item));
 
     const demoHref = safeUrl(item.officialDemoUrl);
     const originHref = safeUrl(item.originalUrl);
@@ -425,7 +508,7 @@
     const filtering = Boolean(state.q || state.cat || state.src);
     countEl.textContent = filtering ? results.length + " / " + ordered.length + " 条" : ordered.length + " 条";
     clearBtn.hidden = !filtering;
-    leadEl.textContent = taxonomy.total + " 条已核验案例。选定一条后，可以打开官方演示并复制提示词。";
+    leadEl.textContent = taxonomy.total + " 条已核验案例。选定一条后，可以在页内预览运动，并复制提示词。";
     document.getElementById("mast-count").textContent = String(taxonomy.total);
     document.getElementById("mast-date").textContent = taxonomy.asOf;
     updateNav(catsEl, "cat", state.cat, function (id) {
@@ -558,6 +641,20 @@
     if (setSrc) {
       state.src = setSrc.dataset.setSrc;
       commit("replace");
+      return;
+    }
+    const source = event.target.closest("[data-preview-source]");
+    if (source) {
+      if (source.getAttribute("aria-pressed") === "true") return;
+      const frame = source.closest(".stage").querySelector(".stage-iframe");
+      if (!frame) return;
+      const mode = source.dataset.previewSource;
+      const src = mode === "local" ? frame.dataset.localSrc : frame.dataset.embedSrc;
+      if (!src) return;
+      applyFrame(frame, mode, src, frame.dataset.caseTitle);
+      source.parentElement.querySelectorAll("[data-preview-source]").forEach(function (button) {
+        button.setAttribute("aria-pressed", button === source ? "true" : "false");
+      });
       return;
     }
     const copy = event.target.closest("[data-copy]");

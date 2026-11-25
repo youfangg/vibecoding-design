@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>茶讯</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f6f2ea; color: #241c16; }
+    .page { min-height: 100%; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+    #board { display: flex; flex-direction: column; gap: 10px; }
+    .card {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 12px;
+      padding: 10px;
+      background: #fffaf4;
+      border: 1px solid #e6dac8;
+    }
+    .cover { width: 108px; height: 84px; overflow: hidden; background: #e6dccb; }
+    .cover svg { width: 100%; height: 100%; display: block; filter: blur(8px); transition: filter 520ms ease; }
+    .copy h2, .copy p {
+      margin: 0;
+      border-radius: 4px;
+      color: transparent;
+      background: linear-gradient(90deg, #e4d9c8, #f4efe4, #e4d9c8);
+      background-size: 200% 100%;
+      animation: sheen 1.4s linear infinite;
+    }
+    .copy h2 { font-family: var(--serif); font-size: 1.05rem; line-height: 1.35; min-height: 2.7em; }
+    .copy p { margin-top: 6px; font-size: 13px; line-height: 1.45; min-height: 2.9em; }
+    .card.is-ready .cover svg { filter: blur(0); }
+    .card.is-ready h2, .card.is-ready p {
+      color: #241c16;
+      background: none;
+      animation: none;
+    }
+    .card.is-ready p { color: #5c5146; }
+    .error { padding: 12px; border: 1px solid #8a3b2c; background: #fff6f3; }
+    .actions { display: flex; gap: 8px; }
+    button { flex: 1; min-height: 40px; border: 1px solid #241c16; background: transparent; }
+    @keyframes sheen { to { background-position: -200% 0; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div id="board"></div>
+    <div class="actions">
+      <button type="button" id="reload">重新加载</button>
+      <button type="button" id="fail">模拟失败</button>
+    </div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const stories = [
+      { title: "春茶开园，龙井比去年早了四天", summary: "阿贵的竹匾已经摊满。雨若今晚来，这批就收摊。", tone: "#d5e3c8" },
+      { title: "福鼎的冷泡袋开始按打卖", summary: "十二入一盒，银针，写明是给办公室的。", tone: "#d5e4ea" }
+    ];
+    const board = document.getElementById("board");
+    let timer = 0;
+
+    function svg(tone) {
+      return '<svg viewBox="0 0 108 84" aria-hidden="true"><rect width="108" height="84" fill="' + tone + '"/><path d="M20 58c8-24 60-24 68 0" fill="#fffaf4" stroke="#241c16"/></svg>';
+    }
+
+    function renderLoading() {
+      clearTimeout(timer);
+      board.replaceChildren();
+      stories.forEach(function (story) {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = '<div class="cover"></div><div class="copy"><h2></h2><p></p></div>';
+        card.querySelector(".cover").innerHTML = svg(story.tone);
+        card.querySelector("h2").textContent = story.title;
+        card.querySelector("p").textContent = story.summary;
+        board.append(card);
+      });
+      if (kit.reduced()) {
+        board.querySelectorAll(".card").forEach(function (card) { card.classList.add("is-ready"); });
+        return;
+      }
+      timer = setTimeout(function () {
+        board.querySelectorAll(".card").forEach(function (card, index) {
+          setTimeout(function () { card.classList.add("is-ready"); }, index * 80);
+        });
+      }, 1300);
+    }
+
+    function renderError() {
+      clearTimeout(timer);
+      board.replaceChildren();
+      const box = document.createElement("div");
+      box.className = "error";
+      box.innerHTML = "<strong>茶讯没有送到</strong><p>线路在龙井村那边断了。可以稍后再试，已经写好的两篇还在编辑部。</p>";
+      board.append(box);
+    }
+
+    document.getElementById("reload").addEventListener("click", renderLoading);
+    document.getElementById("fail").addEventListener("click", renderError);
+    renderLoading();
+  </script>
+</body>
+</html>

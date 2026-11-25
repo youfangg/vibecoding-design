@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日菜场</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f3ecdf; color: #2b241c; overflow: hidden; }
+    .app { height: 100%; display: flex; flex-direction: column; }
+    header { padding: 14px 16px 8px; background: #f3ecdf; }
+    header p { margin: 0; color: #86745f; font-size: 12px; }
+    header h1 { margin: 2px 0 0; font-family: var(--serif); font-size: 1.4rem; }
+    main { flex: 1; overflow: auto; padding: 4px 14px 18px; }
+    .stall, .panel {
+      padding: 12px;
+      margin-bottom: 8px;
+      background: #fffaf3;
+      border: 1px solid #e6d8c4;
+    }
+    .stall { display: flex; justify-content: space-between; gap: 10px; }
+    .stall b, .panel h2 { font-family: var(--serif); font-weight: 600; }
+    .panel h2 { margin: 0 0 6px; font-size: 1.15rem; }
+    .stall span, .panel p { color: #6d5e4e; font-size: 13px; }
+    .stall em { font-style: normal; font-variant-numeric: tabular-nums; }
+    .dock {
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 8px 12px 12px;
+      background: #f3ecdf;
+    }
+    .bar { position: relative; display: flex; flex: 1; min-width: 0; padding: 4px; background: #fffaf3; border: 1px solid #ddcbb3; border-radius: 999px; }
+    .pill {
+      position: absolute;
+      left: 0; top: 0;
+      border-radius: 999px;
+      background: #efe2cf;
+      pointer-events: none;
+    }
+    .item {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      min-width: 0;
+      height: 58px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      color: inherit;
+      text-decoration: none;
+      border-radius: 999px;
+      transition: height 280ms ease, transform 160ms ease;
+    }
+    .item svg { width: 20px; height: 20px; }
+    .label { font-size: 11px; line-height: 1.15; max-height: 16px; overflow: hidden; transition: max-height 280ms ease, opacity 160ms ease; }
+    .item:active { transform: scale(0.97); }
+    .dock.is-min .item { height: 46px; }
+    .dock.is-min .label { max-height: 0; opacity: 0; }
+    .plus {
+      width: 58px; height: 58px;
+      border: 0; border-radius: 999px;
+      background: #8a3e2d; color: #fff8f2;
+      font-size: 1.5rem; line-height: 1;
+      transition: width 280ms ease, height 280ms ease;
+    }
+    .dock.is-min .plus { width: 46px; height: 46px; }
+    .note { background: #f4e3c4; }
+    @media (prefers-reduced-motion: reduce) {
+      .item:active { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <p>星期六 · 早市还开着</p>
+      <h1 id="title">今日菜场</h1>
+    </header>
+    <main id="feed"></main>
+    <nav class="dock" id="dock" aria-label="主导航">
+      <div class="bar" id="bar">
+        <span class="pill" id="pill" aria-hidden="true"></span>
+        <a class="item" href="#market" data-tab="market" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 10 12 4l8 6v9H4z"/></svg><span class="label">市集</span></a>
+        <a class="item" href="#recipes" data-tab="recipes"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M6 4v16M10 4c2 2 2 14 0 16M14 4v16M18 4c-2 3-2 13 0 16"/></svg><span class="label">菜谱</span></a>
+        <a class="item" href="#orders" data-tab="orders"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M6 7h12l-1 12H7zM9 7V5h6v2"/></svg><span class="label">订单</span></a>
+        <a class="item" href="#me" data-tab="me"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" d="M6 19c1.2-3 3.4-4 6-4s4.8 1 6 4"/></svg><span class="label">我的</span></a>
+      </div>
+      <button type="button" class="plus" id="plus" aria-label="记一笔">+</button>
+    </nav>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    const stalls = [
+      ["阿陈的香菜", "一把，刚淋过水", "2.40"],
+      ["河虾", "活水桶，半斤起", "28.00"],
+      ["春笋", "临安，去壳按斤", "9.80"],
+      ["土鸡蛋", "十枚一盒", "16.00"],
+      ["马兰头", "只剩两把", "6.00"],
+      ["带鱼", "舟山，今早到", "32.00"],
+      ["豆腐", "卤水，还热", "3.50"],
+      ["草莓", "建德，一篮", "22.00"]
+    ];
+    const pages = {
+      market: { title: "今日菜场", node: function () {
+        const frag = document.createDocumentFragment();
+        stalls.forEach(function (row) {
+          const article = document.createElement("article");
+          article.className = "stall";
+          article.innerHTML = "<div><b></b><span></span></div><em></em>";
+          article.querySelector("b").textContent = row[0];
+          article.querySelector("span").textContent = row[1];
+          article.querySelector("em").textContent = "¥" + row[2];
+          frag.append(article);
+        });
+        return frag;
+      }},
+      recipes: { title: "今晚可以做", node: function () {
+        const panel = document.createElement("section");
+        panel.className = "panel";
+        panel.innerHTML = "<h2>香菜虾仁</h2><p>虾仁先用料酒抓匀。香菜最后下锅，只要断生。配一碗白饭刚好两个人。</p>";
+        return panel;
+      }},
+      orders: { title: "未取的单", node: function () {
+        const panel = document.createElement("section");
+        panel.className = "panel";
+        panel.innerHTML = "<h2>周六 7:40 自取</h2><p>土鸡蛋一盒、春笋一斤。摊主阿陈留在蓝色篮子里。</p>";
+        return panel;
+      }},
+      me: { title: "我的菜场", node: function () {
+        const panel = document.createElement("section");
+        panel.className = "panel";
+        panel.innerHTML = "<h2>林夏</h2><p>本月已记 14 笔。常去的是香菜摊和河虾桶。</p>";
+        return panel;
+      }}
+    };
+
+    const feed = document.getElementById("feed");
+    const title = document.getElementById("title");
+    const dock = document.getElementById("dock");
+    const bar = document.getElementById("bar");
+    const pill = document.getElementById("pill");
+    const items = Array.from(document.querySelectorAll(".item"));
+    const kit = window.PreviewKit;
+    let active = items[0];
+    let minimized = false;
+    let lastY = 0;
+
+    function show(tab) {
+      const page = pages[tab];
+      title.textContent = page.title;
+      feed.replaceChildren(page.node());
+      feed.scrollTop = 0;
+      lastY = 0;
+      setMinimized(false);
+    }
+
+    const loop = kit.springLoop(function () {
+      return {
+        l: active.offsetLeft,
+        t: active.offsetTop,
+        w: active.offsetWidth,
+        h: active.offsetHeight
+      };
+    }, function (value) {
+      pill.style.transform = "translate(" + value.l + "px," + value.t + "px)";
+      pill.style.width = value.w + "px";
+      pill.style.height = value.h + "px";
+    }, { stiffness: 300, damping: 30, keys: ["l", "t", "w", "h"] });
+
+    function select(item) {
+      active = item;
+      items.forEach(function (link) {
+        if (link === item) link.setAttribute("aria-current", "page");
+        else link.removeAttribute("aria-current");
+      });
+      show(item.dataset.tab);
+      loop.kick();
+    }
+
+    function setMinimized(next) {
+      if (minimized === next) return;
+      minimized = next;
+      dock.classList.toggle("is-min", next);
+      requestAnimationFrame(function () { loop.kick(); });
+    }
+
+    items.forEach(function (item) {
+      item.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (minimized) setMinimized(false);
+        select(item);
+      });
+      item.addEventListener("focus", function () { setMinimized(false); });
+    });
+
+    feed.addEventListener("scroll", function () {
+      const y = feed.scrollTop;
+      if (y > lastY && y > 6) setMinimized(true);
+      else if (y < lastY - 2 || y <= 2) setMinimized(false);
+      lastY = y;
+    }, { passive: true });
+
+    document.getElementById("plus").addEventListener("click", function () {
+      if (active.dataset.tab !== "market") select(items[0]);
+      const note = document.createElement("article");
+      note.className = "stall note";
+      note.innerHTML = "<div><b>刚记下</b><span>香菜，一把</span></div><em>¥2.40</em>";
+      feed.prepend(note);
+      feed.scrollTop = 0;
+    });
+
+    show("market");
+    loop.kick(true);
+    window.addEventListener("resize", function () { loop.kick(); });
+  </script>
+</body>
+</html>

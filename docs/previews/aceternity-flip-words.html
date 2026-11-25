@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>星期日厨房</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #fbf6ee; color: #2a2118; }
+    .page { min-height: 100%; padding: 22px 18px; }
+    .kicker { margin: 0; color: #8d5a32; letter-spacing: 0.08em; font-size: 12px; }
+    h1 { margin: 12px 0 0; font-family: var(--serif); font-size: 1.85rem; font-weight: 600; line-height: 1.35; }
+    .slot { display: inline-grid; vertical-align: bottom; overflow: hidden; height: 1.25em; }
+    .word { grid-area: 1 / 1; animation: flip 480ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .menu { margin-top: 18px; padding-top: 8px; border-top: 1px solid #eadfce; }
+    .menu li { padding: 6px 0; }
+    button { margin-top: 16px; min-height: 40px; padding: 6px 12px; border: 1px solid #2a2118; background: transparent; }
+    @keyframes flip {
+      from { transform: translateY(70%) rotateX(-55deg); opacity: 0; }
+      to { transform: none; opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <p class="kicker">星期日厨房 · 只做一桌</p>
+    <h1 id="line">今晚把餐桌让给 <span class="slot" id="slot"></span></h1>
+    <p class="sr" id="live" aria-live="polite"></p>
+    <ul class="menu">
+      <li>一碗面 · 葱油，不加辣</li>
+      <li>一条鱼 · 清蒸鲈鱼，只要姜</li>
+      <li>一碟青 · 蒜苗炒蚕豆</li>
+    </ul>
+    <button type="button" id="pause" aria-pressed="false">暂停换词</button>
+  </article>
+  <script src="kit.js"></script>
+  <script>
+    const kit = window.PreviewKit;
+    const words = ["一碗面", "一条鱼", "一碟青"];
+    const slot = document.getElementById("slot");
+    const live = document.getElementById("live");
+    const pause = document.getElementById("pause");
+    const line = document.getElementById("line");
+    let index = 0;
+    let timer = 0;
+    let paused = false;
+
+    function show(next) {
+      index = next;
+      const word = document.createElement("span");
+      word.className = "word";
+      word.textContent = words[index];
+      word.setAttribute("aria-hidden", "true");
+      slot.replaceChildren(word);
+      live.textContent = "今晚把餐桌让给" + words[index];
+    }
+
+    function queue() {
+      clearInterval(timer);
+      if (paused || kit.reduced()) return;
+      timer = setInterval(function () {
+        show((index + 1) % words.length);
+      }, 2400);
+    }
+
+    pause.addEventListener("click", function () {
+      paused = !paused;
+      pause.setAttribute("aria-pressed", paused ? "true" : "false");
+      pause.textContent = paused ? "继续换词" : "暂停换词";
+      queue();
+    });
+    line.addEventListener("pointerenter", function () {
+      if (!paused) {
+        clearInterval(timer);
+      }
+    });
+    line.addEventListener("pointerleave", queue);
+    show(0);
+    queue();
+  </script>
+</body>
+</html>
