@@ -1,7 +1,10 @@
 # 加载与骨架
 
-本类共 14 条，来自分册「[加载与数据可视化](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a)」。在 `data/cases.json` 中对应 `category` 为 `loading`。复制下方提示词即可用于 AI Coding。
+本类共 17 条，来自分册「[加载与数据可视化](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a)」。在 `data/cases.json` 中对应 `category` 为 `loading`。复制下方提示词即可用于 AI Coding。
 
+- [状态符变形 / Status Mark](#rb-status-mark)
+- [分步精修画框 / Refine Frame](#rb-refine-frame)
+- [思考轨迹折叠 / Thought Line](#rb-thought-line)
 ## 目录
 
 - [分阶段加载 / Multi Step Loader](#multi-step-loader)
@@ -409,4 +412,88 @@ AI 思考态用一行文字表现：柔和的波从字母间走过，词会逐�
 【触发】请求进行中循环；结束后切到回答，不要停在半句乱码。
 【运动】波从左到右轻轻走过字母；换词时逐字过渡，而不是整句淡入淡出。
 【不要】用无法阅读的乱码假装思考；结束后动画还在跑。
+```
+
+## 状态符变形 / Status Mark
+
+<a id="rb-status-mark"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：从空闲环到进度弧再到对勾
+- 触发：state change
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/status-mark
+- 分册锚点：[rb-status-mark](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#rb-status-mark)
+
+一枚状态符号在空闲圆环、进行中的进度弧和完成对勾之间变形，适合代理任务、后台作业或清单项。
+
+链接：
+
+- [打开 React Bits Status Mark 演示](https://www.reactbits.dev/micro/status-mark)（React Bits）
+
+### 提示词
+
+```
+【场景】「墨蓝」把会议记要变成任务时，一行「整理 42:18 录音」左侧是状态符：空闲是细环，开始后环变成进度弧（文案「正在转写 36%」），完成时弧收成对勾，文案「已生成 3 个任务」。失败则变成可重试的感叹号。
+【触发】任务状态变化时变形一次，不要循环播放完成态。
+【运动】环→弧→勾 300–500ms 路径变形，中间不要闪成空白。进度弧跟真实百分比走。
+【不要】只用颜色区分状态；读屏不播报变化；失败仍显示对勾。
+```
+
+## 分步精修画框 / Refine Frame
+
+<a id="rb-refine-frame"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：在同一画框里走完生成阶段
+- 触发：generation in progress
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/refine-frame
+- 分册锚点：[rb-refine-frame](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#rb-refine-frame)
+
+媒体画框在生成过程中依次经过草稿、清晰化、上色或精修等阶段，框的尺寸始终不变，避免布局跳动。
+
+链接：
+
+- [打开 React Bits Refine Frame 演示](https://www.reactbits.dev/micro/refine-frame)（React Bits）
+
+### 提示词
+
+```
+【场景】「织光」海报生成：画框固定 4:5。先出现灰块构图，再到模糊的「南窗书局春季窗景」轮廓，再上色出黄花与书店招牌，最后锐化完成。框下步骤写「构图 → 上色 → 精修」，当前是「精修 2/3」。全程框不缩放。
+【触发】生成开始走阶段；可暂停或重试；完成后停留在成片。
+【运动】阶段切换用 400–700ms 溶解或轻微模糊过渡，不要闪白。尺寸锁定。
+【不要】阶段切换导致页面跳动；没有失败态；用假进度欺骗已完成。reduced-motion 时直接显示当前阶段静帧与文字。
+```
+
+## 思考轨迹折叠 / Thought Line
+
+<a id="rb-thought-line"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：推理步骤在完成后折成一行
+- 触发：agent running
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/thought-line
+- 分册锚点：[rb-thought-line](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#rb-thought-line)
+
+推理或思考过程有实时计时，进行中逐步展开步骤，完成后把步骤折成一行摘要，避免占满屏幕。
+
+链接：
+
+- [打开 React Bits Thought Line 演示](https://www.reactbits.dev/micro/thought-line)（React Bits）
+
+### 提示词
+
+```
+【场景】「墨蓝」助手正在处理「从这次会议里列出任务」。展开区依次出现「识别发言人」「抽取待办」「合并重复项」，右侧有计时 00:08。完成后折成一行「已思考 8 秒 · 生成 3 个任务」，可再展开回看步骤。
+【触发】任务开始展开；结束折叠；用户可手动展开。
+【运动】折叠 300–450ms，高度收回；计时停止。步骤不要无限往下蹦。
+【不要】把内部链思想法原样铺满；完成后仍不停计时；没有折叠入口。reduced-motion 时取消折叠动画，瞬时收成一行。
 ```

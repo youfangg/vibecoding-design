@@ -1,7 +1,11 @@
 # 数据可视化动效
 
-本类共 16 条，来自分册「[加载与数据可视化](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a)」。在 `data/cases.json` 中对应 `category` 为 `dataviz`。复制下方提示词即可用于 AI Coding。
+本类共 20 条，来自分册「[加载与数据可视化](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a)」。在 `data/cases.json` 中对应 `category` 为 `dataviz`。复制下方提示词即可用于 AI Coding。
 
+- [环形百分比 / Circular Progress](#magic-circular-progress)
+- [Nivo 雷达图展开](#nivo-radar)
+- [Nivo 日历热力 / Calendar](#nivo-calendar)
+- [Nivo 矩形树图 / Treemap](#nivo-treemap)
 ## 目录
 
 - [数值滚动 / Number Ticker](#number-ticker)
@@ -467,4 +471,116 @@ Stream 图把多系列随时间堆成柔性带状。入场时带状像浪一样�
 【触发】进入视口后慢速循环；可暂停以便读取名称。
 【运动】多轨道速度微差，单圈 12–20s。图标要有文字名称。
 【不要】转得太快；忽略 reduced-motion（改为静止排布）。
+```
+
+## 环形百分比 / Circular Progress
+
+<a id="magic-circular-progress"></a>
+
+- 来源：AI Coding
+- 作者：Magic UI
+- 日期：采集于 2026-11-25
+- 子类：圆轨上行走的百分比仪表
+- 触发：value change / in-view
+- 技术栈：React / Motion
+- 官方演示：https://magicui.design/docs/components/animated-circular-progress-bar
+- 分册锚点：[magic-circular-progress](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#magic-circular-progress)
+
+圆环仪表把百分比从 0 走到目标值，用于配额、完成度或存储，数字与弧应同步，并有明确的总量含义。
+
+链接：
+
+- [打开 Magic UI Circular Progress 演示](https://magicui.design/docs/components/animated-circular-progress-bar)（Magic UI）
+
+### 提示词
+
+```
+【场景】「云帆」企业后台的「本月包车额度」：环形仪表走到 72%，中央写「72% · 已用 36 / 50 趟」。弧是青绿，剩余是浅灰。旁注「额度将于 12 月 1 日重置」。
+【触发】进入视口从 0 走到当前值；数值更新时从旧值补间到新值。
+【运动】弧与数字同步，600–900ms，缓出。不要数字跳变而弧还在走。
+【不要】没有总量与单位；颜色作为唯一状态（还需文字）；减动效时直接显示终值。
+```
+
+## Nivo 雷达图展开
+
+<a id="nivo-radar"></a>
+
+- 来源：AI Coding
+- 作者：nivo
+- 日期：采集于 2026-11-25
+- 子类：坐标轴与多边形同步长出
+- 触发：data load / change
+- 技术栈：React / nivo
+- 官方演示：https://nivo.rocks/radar/
+- 分册锚点：[nivo-radar](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#nivo-radar)
+
+雷达图在数据到达后，轴、网格与多边形一同展开或变形到新的值，适合能力模型或对比评分，需要清晰图例与数值。
+
+链接：
+
+- [打开 nivo Radar 演示](https://nivo.rocks/radar/)（nivo）
+
+### 提示词
+
+```
+【场景】「山海科考」公开课反馈：「课程评分」雷达对比两门课。轴为「内容深度、可操作性、材料完整、节奏、答疑」。绿色多边形是「海岸线测量」，琥珀是「潮汐观测入门」，分数例如 4.6 / 4.1 / 4.8 / 3.9 / 4.7。
+【触发】数据到达或筛选切换时，从中心或上一组形态补间到新多边形。
+【运动】网格先或同时出现，多边形 500–800ms 变形，点上的数值延迟显现。
+【不要】没有图例和数值只靠颜色；多系列完全重叠无法读；忽略减动效。
+```
+
+## Nivo 日历热力 / Calendar
+
+<a id="nivo-calendar"></a>
+
+- 来源：AI Coding
+- 作者：nivo
+- 日期：采集于 2026-11-25
+- 子类：按日格子渐现的贡献热力
+- 触发：data load / hover
+- 技术栈：React / nivo
+- 官方演示：https://nivo.rocks/calendar/
+- 分册锚点：[nivo-calendar](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#nivo-calendar)
+
+年或月的日历热力在加载后按日或按周渐现，悬停给出当天的准确数值与日期，适合活跃度、训练或供稿记录。
+
+链接：
+
+- [打开 nivo Calendar 演示](https://nivo.rocks/calendar/)（nivo）
+
+### 提示词
+
+```
+【场景】「青浦影像」投稿日历：2026 年每日投稿量热力。深青格子是多投日，浅格是空档。悬停 11 月 24 日显示「11 月 24 日 · 3 件 / 码头铁索、湿窗、河面黄昏」。图例从 0 到 5+。
+【触发】数据到达后按周 stagger 显现；悬停出准确值；可切年份。
+【运动】格子 20–40ms 错开淡入或亮度升起，整年不超过约 1s。
+【不要】只用颜色不给数值；把无数据与零值混为一谈；移动端无法查看某日详情。reduced-motion 时取消错开入场，直接显示全年格子。
+```
+
+## Nivo 矩形树图 / Treemap
+
+<a id="nivo-treemap"></a>
+
+- 来源：AI Coding
+- 作者：nivo
+- 日期：采集于 2026-11-25
+- 子类：占比矩形分区展开
+- 触发：data load / click drill
+- 技术栈：React / nivo
+- 官方演示：https://nivo.rocks/treemap/
+- 分册锚点：[nivo-treemap](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#nivo-treemap)
+
+矩形树图按占比展开分区，可下钻到子类，适合预算、空间或流量构成，矩形上要有可读标签与数值。
+
+链接：
+
+- [打开 nivo Treemap 演示](https://nivo.rocks/treemap/)（nivo）
+
+### 提示词
+
+```
+【场景】「云帆」运营月报：「11 月行程构成」。最大块「通勤班线 62% · 1,240 趟」，其次「跨城拼车 23% · 460 趟」，「企业包车 15% · 300 趟」。点击「企业包车」下钻到「机场 / 会议 / 景区」。
+【触发】数据到达时分区从 0 面积或透明度展开；点击下钻，返回键回到上层。
+【运动】布局 500–800ms 重新分配，标签在面积稳定后出现，过小块放到 tooltip。
+【不要】小块上硬塞看不清的字；下钻无路径面包屑；颜色无图例。reduced-motion 时取消面积补间，直接切到新布局。
 ```

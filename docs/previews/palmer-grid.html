@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>白潮货架</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f7f3ec; color: #241c16; }
+    .page { height: 100%; padding: 14px; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.3rem; }
+    .example { margin: 4px 0 10px; color: #7a6a58; font-size: 12px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .item { min-height: 92px; padding: 8px; border: 1px solid #e4d8c8; background: #fffaf4; text-align: left; cursor: grab; }
+    .item b { display: block; font-family: var(--serif); }
+    .item:focus-visible { outline: 2px solid #8a3b2c; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>白潮货架</h1>
+    <p class="example">示例价格 · 拖动换位，方向键也可移动</p>
+    <div class="grid" id="grid"></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var goods = [["海盐洁面", "¥168"], ["雾面乳", "¥210"], ["赤陶皂", "¥64"], ["旅行装", "¥88"]];
+    var grid = document.getElementById("grid");
+    var nodes = goods.map(function (good, index) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "item";
+      button.draggable = true;
+      button.dataset.index = String(index);
+      button.innerHTML = "<b></b><span></span>";
+      button.querySelector("b").textContent = good[0];
+      button.querySelector("span").textContent = good[1];
+      grid.append(button);
+      return button;
+    });
+    var from = null;
+    function swap(a, b) {
+      if (a === b || a < 0 || b < 0) return;
+      var item = nodes.splice(a, 1)[0];
+      nodes.splice(b, 0, item);
+      nodes.forEach(function (node) { grid.append(node); });
+    }
+    nodes.forEach(function (node, index) {
+      node.addEventListener("dragstart", function () { from = nodes.indexOf(node); });
+      node.addEventListener("dragover", function (event) { event.preventDefault(); });
+      node.addEventListener("drop", function () { swap(from, nodes.indexOf(node)); });
+      node.addEventListener("keydown", function (event) {
+        var i = nodes.indexOf(node);
+        var next = i;
+        if (event.key === "ArrowRight" || event.key === "ArrowDown") next = Math.min(nodes.length - 1, i + 1);
+        else if (event.key === "ArrowLeft" || event.key === "ArrowUp") next = Math.max(0, i - 1);
+        else return;
+        event.preventDefault();
+        swap(i, next);
+        nodes[next].focus();
+      });
+    });
+  </script>
+</body>
+</html>

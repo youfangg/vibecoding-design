@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>白潮中间季</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f7f3ec; color: #241c16; }
+    .page { height: 100%; overflow: auto; padding: 14px; }
+    .head { display: flex; justify-content: space-between; gap: 8px; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.35rem; }
+    .example { margin: 0; color: #7a6a58; font-size: 12px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .look { position: relative; aspect-ratio: 3/4; padding: 0; border: 0; background: #efe6da; text-align: left; overflow: hidden; }
+    .look svg { width: 100%; height: 100%; display: block; }
+    .cap { position: absolute; inset: auto 0 0 0; padding: 8px; background: rgba(36,28,22,.78); color: #f7f1e7; transform: translateY(100%); }
+    .look:hover .cap, .look:focus-visible .cap, .look.is-on .cap { transform: none; }
+    .cap b { display: block; font-family: var(--serif); }
+    .cap span { font-size: 12px; }
+    @media (prefers-reduced-motion: reduce) { .cap { transform: none; background: rgba(36,28,22,.55); } }
+    @media (max-width: 560px) { .grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="head"><h1>白潮 · 中间季</h1><p class="example">示例价格</p></div>
+    <div class="grid" id="grid"></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var looks = [
+      ["海盐衬衫", "¥680", "#d7e4ea"],
+      ["雾灰长裤", "¥820", "#d9d3cb"],
+      ["赤陶外套", "¥1460", "#e7c2b0"],
+      ["亚麻背心", "¥540", "#efe2c4"],
+      ["墨蓝裙", "¥980", "#c9d0dc"],
+      ["米白大衣", "¥1680", "#f3eee6"]
+    ];
+    var grid = document.getElementById("grid");
+    looks.forEach(function (item, index) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "look";
+      button.innerHTML = '<svg viewBox="0 0 80 110" aria-hidden="true"><rect width="80" height="110" fill="' + item[2] + '"/><path d="M28 28h24l6 18-8 48H30L22 46z" fill="#fffaf3" stroke="#241c16"/><circle cx="40" cy="20" r="7" fill="#f3d2c4" stroke="#241c16"/></svg><span class="cap"><b></b><span></span></span>';
+      button.querySelector("b").textContent = item[0];
+      button.querySelector(".cap span").textContent = item[1];
+      button.addEventListener("click", function () { button.classList.toggle("is-on"); });
+      grid.append(button);
+      if (!window.PreviewKit.reduced() && index === 0) setTimeout(function () { button.classList.add("is-on"); }, 600);
+    });
+  </script>
+</body>
+</html>

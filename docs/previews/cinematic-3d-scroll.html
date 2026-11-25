@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>河仓库礼堂</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { margin: 0; background: #14181c; color: #f6f1e8; overflow: hidden; }
+    .scroll { height: 100%; overflow: auto; }
+    .runway { height: 300%; }
+    .pin { position: sticky; top: 0; height: 100vh; perspective: 700px; overflow: hidden; }
+    .layer { position: absolute; inset: 18% 12%; transform-style: preserve-3d; }
+    .facade { background: #c46a4a; }
+    .beam { left: 42%; right: 42%; top: 0; height: 70%; background: rgba(231,196,138,.45); }
+    .caption { position: absolute; left: 16px; bottom: 16px; margin: 0; font-family: var(--serif); }
+    .example { position: absolute; top: 12px; right: 12px; margin: 0; font-size: 12px; color: #cbbba8; }
+    .stills { display: none; padding: 20px; }
+    .stills div { height: 120px; margin-bottom: 12px; }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll { display: none; }
+      .stills { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <p class="example">示例分镜 · 无 WebGL</p>
+  <div class="scroll" id="scroll">
+    <div class="runway">
+      <div class="pin" id="pin">
+        <div class="layer facade" id="facade"></div>
+        <div class="layer beam" id="beam"></div>
+        <p class="caption" id="caption">外立面</p>
+      </div>
+    </div>
+  </div>
+  <div class="stills">
+    <div style="background:#c46a4a"></div>
+    <p>外立面</p>
+    <div style="background:#e7c48a"></div>
+    <p>梁下光柱</p>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var scroll = document.getElementById("scroll");
+    var facade = document.getElementById("facade");
+    var beam = document.getElementById("beam");
+    var caption = document.getElementById("caption");
+    function sync() {
+      var max = scroll.scrollHeight - scroll.clientHeight;
+      var p = max ? scroll.scrollTop / max : 0;
+      facade.style.transform = "translateZ(" + (p * 180) + "px)";
+      beam.style.transform = "translateY(" + ((1 - p) * 40) + "px)";
+      beam.style.opacity = String(0.2 + p * 0.8);
+      caption.textContent = p > 0.55 ? "梁下光柱" : "外立面";
+    }
+    scroll.addEventListener("scroll", sync, { passive: true });
+    sync();
+    if (!window.PreviewKit.reduced()) {
+      var n = 0;
+      var timer = setInterval(function () {
+        scroll.scrollTop += 16;
+        n += 1;
+        if (n > 20) clearInterval(timer);
+      }, 160);
+    }
+  </script>
+</body>
+</html>

@@ -1,7 +1,13 @@
 # 翻转与 3D
 
-本类共 19 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `flip3d`。复制下方提示词即可用于 AI Coding。
+本类共 25 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `flip3d`。复制下方提示词即可用于 AI Coding。
 
+- [层叠视差字 / Depth Text](#rb-depth-text)
+- [半球穹顶画廊 / Dome Gallery](#rb-dome-gallery)
+- [产品三维观察 / Model Viewer](#rb-model-viewer)
+- [彗星透视卡 / Comet Card](#aceternity-comet-card)
+- [立方网格涟漪 / Background Cubes Grid](#aceternity-background-cubes-grid)
+- [多层视差英雄图 / Parallax Hero Images](#aceternity-parallax-hero-images)
 ## 目录
 
 - [滚动 3D 走马灯 / On-Scroll 3D Carousel](#scroll-3d-carousel)
@@ -560,4 +566,172 @@ Codrops 教程里的一组 R3F 实验性走马灯，探索不同的三维浏览�
 【触发】按钮、指示点或拖拽到阈值后切换。
 【运动】先记录布局再 Flip.from，300–600ms；进出焦点的卡片可有轻微缩放。
 【不要】只做 translateX 却称为 FLIP；动画中途再次点击导致布局错乱。
+```
+
+## 层叠视差字 / Depth Text
+
+<a id="rb-depth-text"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：随指针错动的挤出层叠字
+- 触发：pointer move / in-view
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/text-animations/depth-text
+- 分册锚点：[rb-depth-text](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-depth-text)
+
+标题由多层挤出的字形叠加，指针移动时各层以不同视差错开，形成浅浮雕深度，而不是单纯的立体长阴影。
+
+链接：
+
+- [打开 React Bits Depth Text 演示](https://www.reactbits.dev/text-animations/depth-text)（React Bits）
+
+### 提示词
+
+```
+【场景】建筑事务所「折纸」作品集封面，巨大标题「折纸」叠了四五层浅灰到深石墨的挤出字。指针左右移动时，前层跟得快、后层跟得慢，露出层间的细缝。副标题「把河边的仓库折出一座礼堂」保持平面。
+【触发】进入视口先有一次轻微展开；此后指针在标题附近移动驱动视差。触屏可用设备倾斜或轻拖。
+【运动】视差位移克制，前层 8–14px，后层更少；不要把字母拆散。reduced-motion 时只保留静止层叠。
+【不要】层数多到花、看不清字；与「挤压立体字」那种静态长阴影混为一谈。
+```
+
+## 半球穹顶画廊 / Dome Gallery
+
+<a id="rb-dome-gallery"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：把图像投影在可转的半球面上
+- 触发：drag / wheel / click
+- 技术栈：React / Three
+- 官方演示：https://www.reactbits.dev/components/dome-gallery
+- 分册锚点：[rb-dome-gallery](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-dome-gallery)
+
+照片被投射在半球或穹顶内壁，拖拽或滚轮改变视角，点击某张将其带到前方并给出说明。
+
+链接：
+
+- [打开 React Bits Dome Gallery 演示](https://www.reactbits.dev/components/dome-gallery)（React Bits）
+
+### 提示词
+
+```
+【场景】展览「青浦十年」的三维展厅：半球内壁贴着十二张江边照片。拖转视角，点击「湿窗」那张，它来到前方，下方出现「湿窗 · 2018 / 青浦老街」。
+【触发】拖拽、滚轮改变视角；点击聚焦；Esc 或再点空白回到全览。
+【运动】视角阻尼跟手；聚焦 500–800ms。图像不要在极边缘严重拉伸到无法认。
+【不要】没有列表回退；初次进入没有操作提示；移动端手势与页面滚动冲突。
+```
+
+## 产品三维观察 / Model Viewer
+
+<a id="rb-model-viewer"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：自带画框与软阴影的模型查看器
+- 触发：drag / autoplay
+- 技术栈：React / Three
+- 官方演示：https://www.reactbits.dev/components/model-viewer
+- 分册锚点：[rb-model-viewer](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-model-viewer)
+
+产品级三维模型查看器，模型被轻轻框住，下方有一摊软阴影，可自动缓转，拖拽观察细节。
+
+链接：
+
+- [打开 React Bits Model Viewer 演示](https://www.reactbits.dev/components/model-viewer)（React Bits）
+
+### 提示词
+
+```
+【场景】「流光」产品页中央是一只腕表的三维模型，坐在浅灰画框里，脚下有软阴影。默认缓慢自转；拖拽可看表背「LUMINA 1964」与表扣。旁白：「珍珠贝母盘 · 真皮表带 · 手动上链」。
+【触发】进入后慢速自转；拖拽接管，松开后短暂惯性再恢复慢转。提供「重置视角」。
+【运动】转速极慢（20–30s/圈）；拖拽跟手。阴影随转动轻微变形。
+【不要】模型加载时空白无骨架；无法缩放看细节；WebGL 失败没有多角度静帧。reduced-motion 时关闭自转，仅保留手动拖拽或静帧。
+```
+
+## 彗星透视卡 / Comet Card
+
+<a id="aceternity-comet-card"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：随指针倾斜的透视产品卡
+- 触发：pointer move
+- 技术栈：React / Motion
+- 官方演示：https://ui.aceternity.com/components/comet-card
+- 分册锚点：[aceternity-comet-card](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-comet-card)
+
+一张有透视深度的产品卡，随指针倾斜，常见于展示硬件、应用或空间产品，强调层与高光而不是翻面。
+
+链接：
+
+- [打开 Aceternity Comet Card 演示](https://ui.aceternity.com/components/comet-card)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】灵感来自硬件发布的「拾光」相机周边卡：正面是一台小型胶片相机渲染，标题「拾光口袋机」。指针移动时卡片做透视倾斜，上层镜头与下层机身有轻微视差，边缘露出一抹高光。价格「¥2,480 · 预售」。
+【触发】指针在卡上移动；离开后 300–400ms 回正。
+【运动】倾斜角度克制（约 8–12°），层间视差 4–8px，回正用短弹簧。
+【不要】倾斜过大导致眩晕或文字透视变形难读；没有焦点态。reduced-motion 时取消倾斜，只用边框或阴影表示悬停。
+```
+
+## 立方网格涟漪 / Background Cubes Grid
+
+<a id="aceternity-background-cubes-grid"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：光标下起伏的立方网格
+- 触发：pointer move / click
+- 技术栈：React / Three
+- 官方演示：https://ui.aceternity.com/components/background-cubes-grid
+- 分册锚点：[aceternity-background-cubes-grid](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-background-cubes-grid)
+
+一片等距或透视的立方网格，光标经过时方块像涟漪一样抬起，点击可激起一圈波峰。
+
+链接：
+
+- [打开 Aceternity Background Cubes Grid 演示](https://ui.aceternity.com/components/background-cubes-grid)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】「折纸」事务所首页深色英雄区，标题「把结构看成可以折叠的光」下方是一片石墨色立方网格。光标经过时方块沿法线抬起，点击在落点激起一圈波。右下角「查看河仓库礼堂」。
+【触发】指针移动掀起邻近立方；点击扩散一圈。滚动出视口暂停。
+【运动】抬起高度有限，波浪衰减 400–700ms。网格不要抢标题对比。
+【不要】默认狂转或自动乱跳；移动端无触控替代；无 WebGL 回退。
+```
+
+## 多层视差英雄图 / Parallax Hero Images
+
+<a id="aceternity-parallax-hero-images"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：鼠标驱动不同深度的图片层
+- 触发：pointer move / in-view
+- 技术栈：React / Motion
+- 官方演示：https://ui.aceternity.com/components/parallax-hero-images
+- 分册锚点：[aceternity-parallax-hero-images](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-parallax-hero-images)
+
+英雄区若干图片位于不同深度，随指针以不同速度平移并带一点入场模糊，适合品牌或作品集首页。
+
+链接：
+
+- [打开 Aceternity Parallax Hero Images 演示](https://ui.aceternity.com/components/parallax-hero-images)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】「候鸟旅馆」首页：中心是「今晚住进别人的窗景」，四周漂着四张图——青岛蓝窗、大理天井、京都窄梯、海边晒被——远近不同。指针右移时近景移得多、远景移得少，图片入场时从轻微模糊到清晰。
+【触发】进入视口错落入场；此后指针驱动视差。触屏可用轻微陀螺或关闭视差。
+【运动】入场 600–900ms，模糊 8px 收到 0；视差幅度克制，不要露出明显空边。
+【不要】层数过多遮挡标题；视差幅度大到眩晕；没有减动效方案。
 ```

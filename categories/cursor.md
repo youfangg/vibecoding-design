@@ -1,7 +1,8 @@
 # 指针与光标
 
-本类共 10 条，来自分册「[粒子、流体与光标](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9)」。在 `data/cases.json` 中对应 `category` 为 `cursor`。复制下方提示词即可用于 AI Coding。
+本类共 11 条，来自分册「[粒子、流体与光标](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9)」。在 `data/cases.json` 中对应 `category` 为 `cursor`。复制下方提示词即可用于 AI Coding。
 
+- [文字拖尾光标 / Text Cursor](#rb-text-cursor)
 ## 目录
 
 - [软体光标 / Blob Cursor](#rb-blob-cursor)
@@ -293,4 +294,32 @@
 【触发】移动跟随。
 【运动】滞后短而稳；文字要可读。
 【不要】坐标层挡住真正的交互。
+```
+
+## 文字拖尾光标 / Text Cursor
+
+<a id="rb-text-cursor"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：光标后落下字或符号的拖尾
+- 触发：pointer move
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/text-animations/text-cursor
+- 分册锚点：[rb-text-cursor](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-text-cursor)
+
+光标移动时在身后落下文字、符号或短词，可以是盖章般的拷贝、一条跟随的字链，或缎带一样的字母。
+
+链接：
+
+- [打开 React Bits Text Cursor 演示](https://www.reactbits.dev/text-animations/text-cursor)（React Bits）
+
+### 提示词
+
+```
+【场景】诗歌节「南窗」专题页自定义光标，移动时身后落下「风」「窗」「夜」「读」四个交替汉字，像被盖在浅米色纸上，短暂停留后淡出。页面标题「周四晚上，把诗读出声」。
+【触发】指针移动时在轨迹上盖印；速度高时间距拉大，低时更密。静止后拖尾在 400–700ms 内消失。
+【运动】字的旋转轻微、不转圈发晕；数量有上限，避免拖一条长蛇。
+【不要】拖尾挡住链接与按钮热区；在输入框里仍盖字；没有系统光标回退（尤其是触摸设备可关闭）。
 ```

@@ -141,25 +141,30 @@
     return { mode: "none", src: "", local: "", embed: "" };
   }
 
-  function statusLine(plan) {
-    if (plan.mode === "none") return { live: false, text: "暂无预览" };
-    if (plan.local && plan.embed) return { live: true, text: "可预览 · 官方 / 复刻" };
-    if (plan.mode === "local") return { live: true, text: "可预览 · 站内复刻" };
-    return { live: true, text: "可预览 · 官方页面" };
+  function hasRecut(item) {
+    return Boolean(previewPlan(item).local);
   }
 
-  // Cards prefer a registered recut: it is a full scene sized to the frame.
-  // The case stage still opens the official page first when embedding is allowed.
+  function statusLine(plan) {
+    if (plan.local) return { kind: "live", text: "可预览 · 站内复刻" };
+    if (plan.mode === "embed") return { kind: "official", text: "官方页面" };
+    return { kind: "idle", text: "暂无预览" };
+  }
+
+  // Gallery iframes are only local recuts. An allowlisted docs page is not
+  // treated as a verified effect: the card says 官方页面 and keeps a still scene.
   function cardFrame(plan) {
     if (plan.local) return { mode: "local", src: plan.local };
-    return { mode: plan.mode, src: plan.src };
+    return { mode: "none", src: "" };
   }
 
   function cardStatus(plan) {
-    if (plan.mode === "none") return { live: false, text: "暂无预览" };
-    if (plan.local) return { live: true, text: "可预览 · 站内复刻" };
-    if (plan.mode === "embed") return { live: true, text: "可预览 · 官方页面" };
-    return { live: true, text: "可预览" };
+    return statusLine(plan);
+  }
+
+  function openingPlan(plan) {
+    if (plan.local) return { mode: "local", src: plan.local, local: plan.local, embed: plan.embed };
+    return plan;
   }
 
   function applyFrame(frame, mode, src, title) {
@@ -202,17 +207,20 @@
 
   function renderStage(item) {
     const plan = previewPlan(item);
-    const stage = el("section", "stage is-" + plan.mode);
+    const opened = openingPlan(plan);
+    const stage = el("section", "stage is-" + opened.mode);
     stage.setAttribute("aria-label", "案例预览");
     const bar = el("div", "stage-bar");
     const titles = el("div", "stage-titles");
-    titles.append(el("h3", "stage-kicker", "站内预览"));
+    const kicker = opened.mode === "local" ? "站内复刻" : opened.mode === "embed" ? "官方文档页" : "站内预览";
+    titles.append(el("h3", "stage-kicker", kicker));
     const noteBits = [];
     if (item.trigger) noteBits.push("触发 · " + item.trigger);
-    if (!(plan.local && plan.embed)) {
-      noteBits.push(plan.mode === "embed" ? "官方页面嵌入" : plan.mode === "local" ? "依据提示词复刻" : "尚未嵌入");
-    }
-    if (noteBits.length) titles.append(el("p", "stage-note", noteBits.join("  ·  ")));
+    if (plan.local && plan.embed) noteBits.push("复刻可切换到官方文档页；文档页未必把效果放在首屏");
+    else if (opened.mode === "embed") noteBits.push("官方文档页，效果未经逐条核验");
+    else if (opened.mode === "local") noteBits.push("依据提示词复刻的示例场景");
+    else noteBits.push("尚未嵌入");
+    titles.append(el("p", "stage-note", noteBits.join("  ·  ")));
     bar.append(titles);
 
     const actions = el("div", "stage-actions");
@@ -220,12 +228,12 @@
       const group = el("div", "stage-switch");
       group.setAttribute("role", "group");
       group.setAttribute("aria-label", "预览来源");
-      [["embed", "官方页面"], ["local", "站内复刻"]].forEach(function (choice) {
+      [["local", "站内复刻"], ["embed", "官方页面"]].forEach(function (choice) {
         const button = document.createElement("button");
         button.type = "button";
         button.dataset.previewSource = choice[0];
         button.textContent = choice[1];
-        button.setAttribute("aria-pressed", plan.mode === choice[0] ? "true" : "false");
+        button.setAttribute("aria-pressed", opened.mode === choice[0] ? "true" : "false");
         group.append(button);
       });
       actions.append(group);
@@ -262,7 +270,7 @@
       frame.dataset.embedSrc = plan.embed;
       frame.dataset.caseTitle = item.title;
       frame.addEventListener("load", function () { viewport.classList.add("is-ready"); });
-      applyFrame(frame, plan.mode, plan.src, item.title);
+      applyFrame(frame, opened.mode, opened.src, item.title);
       viewport.append(frame);
     }
     stage.append(viewport);
@@ -390,7 +398,8 @@
     stage.dataset.mode = framePlan.mode;
     stage.dataset.src = framePlan.src || "";
     stage.dataset.caseTitle = item.title;
-    stage.append(renderPoster(item.category, plan.mode === "none" ? "暂无站内预览" : "", glyphOf(item)));
+    const flag = plan.local ? "" : (plan.mode === "embed" ? "官方文档页" : "暂无站内预览");
+    stage.append(renderPoster(item.category, flag, glyphOf(item)));
 
     const caption = el("div", "card-caption");
     const title = el("p", "card-title");
@@ -412,7 +421,7 @@
       fill(desc, item.description, qToks);
       caption.append(desc);
     }
-    const statusP = el("p", "card-status " + (status.live ? "is-live" : "is-idle"));
+    const statusP = el("p", "card-status is-" + status.kind);
     statusP.id = statusId;
     statusP.append(el("span", "card-status-text", status.text));
     caption.append(statusP);
@@ -443,9 +452,7 @@
         const head = el("header", "shelf-head");
         const heading = el("h3", null, meta ? meta.label : group.category);
         heading.id = headId;
-        const previewN = group.items.filter(function (item) {
-          return previewPlan(item).mode !== "none";
-        }).length;
+        const previewN = group.items.filter(hasRecut).length;
         const sub = (meta ? meta.volumeTitle + " · " : "") + previewN + " 可预览 / " + group.items.length;
         head.append(heading, el("p", null, sub));
         const grid = el("div", "grid");
@@ -525,7 +532,7 @@
       catBtn,
       el("span", "eyebrow-sep", "·"),
       srcBtn,
-      el("span", "preview-pill " + (status.live ? "is-live" : "is-idle"), status.text)
+      el("span", "preview-pill is-" + status.kind, status.text)
     );
     dossier.append(eyebrow);
 
@@ -622,9 +629,9 @@
     aboutEl.append(el("h2", null, "怎么用这份画廊"));
     const steps = el("ol", "steps");
     [
-      ["看效果", "画廊里能预览的卡片会直接播放运动。不能嵌入、也没有复刻的，卡片写明暂无预览。"],
-      ["打开", "点进案例后，预览占主画面。官方页面和站内复刻都有时，可以在预览上切换。"],
-      ["复制", "提示词保持原文，贴进 AI Coding 工具。"]
+      ["看效果", "画廊只播放站内复刻。只有官方文档页的条目标成「官方页面」，不把文档壳当成已经核验的效果。"],
+      ["打开", "有复刻时，案例页先放复刻，也可以改切官方文档页。"],
+      ["复制", "提示词保持原文。提示词里的品牌、价格和数字是示例，不是外部统计。"]
     ].forEach(function (step) {
       const li = el("li");
       li.append(el("span", null, step[0]), document.createTextNode(step[1]));
@@ -739,9 +746,7 @@
     mast.inert = Boolean(state.id) && narrowQuery.matches;
   }
 
-  const previewableTotal = ordered.filter(function (item) {
-    return previewPlan(item).mode !== "none";
-  }).length;
+  const previewableTotal = ordered.filter(hasRecut).length;
 
   function render() {
     const wasReading = document.body.classList.contains("is-reading");
@@ -753,16 +758,14 @@
     const willRead = Boolean(state.id);
     const changed = lastId !== state.id;
     const filtering = Boolean(state.q || state.cat || state.src);
-    const previewableShown = filtered.filter(function (item) {
-      return previewPlan(item).mode !== "none";
-    }).length;
+    const previewableShown = filtered.filter(hasRecut).length;
 
     if (q.value !== state.q) q.value = state.q;
     countEl.textContent = filtering
       ? filtered.length + " / " + ordered.length + " 条 · " + previewableShown + " 可预览"
       : ordered.length + " 条 · " + previewableTotal + " 可预览";
     clearBtn.hidden = !filtering;
-    leadEl.textContent = "先看效果。点开卡片可以在页内交互，并复制提示词。";
+    leadEl.textContent = "卡片只播放站内复刻。官方文档页会标明「官方页面」，点开后可以嵌入，但不算已经核验的效果。";
     document.getElementById("mast-count").textContent = String(taxonomy.total);
     document.getElementById("mast-previewable").textContent = previewableTotal + " 可预览";
     document.getElementById("mast-date").textContent = taxonomy.asOf;

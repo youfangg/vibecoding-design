@@ -1,7 +1,14 @@
 # 粒子与流体
 
-本类共 20 条，来自分册「[粒子、流体与光标](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9)」。在 `data/cases.json` 中对应 `category` 为 `particle`。复制下方提示词即可用于 AI Coding。
+本类共 27 条，来自分册「[粒子、流体与光标](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9)」。在 `data/cases.json` 中对应 `category` 为 `particle`。复制下方提示词即可用于 AI Coding。
 
+- [水面位移畸变 / Ripple Distortion](#rb-ripple-distortion)
+- [玻璃球中的光谱丝 / Strands](#rb-strands)
+- [晶格电球 / Crystalized Ball](#rb-crystalized-ball)
+- [指向性闪电 / Lightning](#rb-lightning)
+- [故障终端墙 / Faulty Terminal](#rb-faulty-terminal)
+- [丝线让路 / Threads](#rb-threads)
+- [反重力粒子环 / Antigravity](#rb-antigravity)
 ## 目录
 
 - [黏性粘滞菜单 / Gooey Sticky Menu](#gooey-sticky-menu)
@@ -587,4 +594,200 @@ Codrops 演示 A Drift：画面里的形象或质点像被水流拖着走，带�
 【触发】进入后以固定节拍循环（约 90ms 一拍，突变率约 4%）。reduced-motion 时显示静止一帧。
 【运动】突变要稀、要慢，底部可渐隐。颜色由页面主题驱动。
 【不要】密度高到喧宾夺主；把这类背景当作正文。
+```
+
+## 水面位移畸变 / Ripple Distortion
+
+<a id="rb-ripple-distortion"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：指针在内容上掀起衰减的水面
+- 触发：pointer / click
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/animations/ripple-distortion
+- 分册锚点：[rb-ripple-distortion](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-ripple-distortion)
+
+指针在画面上掀起水位位移，内容被掀起的波纹扭曲，并留下逐渐衰减的尾迹，点击可激起更大一圈。
+
+链接：
+
+- [打开 React Bits Ripple Distortion 演示](https://www.reactbits.dev/animations/ripple-distortion)（React Bits）
+
+### 提示词
+
+```
+【场景】「白潮」品牌片头是一盆清水上的盐粒特写。指针划过，水面把瓶子与标题「海盐洁面」轻轻扭曲，并留下一圈圈衰减的波。点击激起更大一浪。
+【触发】移动产生尾迹；点击激波；离开视口停止模拟。
+【运动】波是位移而不是半透明圈，衰减自然（约 0.8–1.2s）。文字扭曲幅度以仍可读为限。
+【不要】波纹永不平复；低端设备无降级；reduced-motion 时关闭位移。
+```
+
+## 玻璃球中的光谱丝 / Strands
+
+<a id="rb-strands"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：在磨砂球里扭结并鼓起的光丝
+- 触发：pointer / idle
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/animations/strands
+- 分册锚点：[rb-strands](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-strands)
+
+光谱般的细丝在磨砂玻璃球里扭转，汇合处鼓起平滑的包，指针靠近时丝线让开或聚拢，气质接近一种语音球体。
+
+链接：
+
+- [打开 React Bits Strands 演示](https://www.reactbits.dev/animations/strands)（React Bits）
+
+### 提示词
+
+```
+【场景】语音助手「潮汐」等待页：一枚磨砂玻璃球里有青与暖白的细丝在缓缓扭转，汇合处鼓起。指针靠近时丝线让出一条通路。球下写「我在听。你可以问今晚青岛会不会下雨。」
+【触发】空闲呼吸；指针靠近改变丝线场；开始录音时丝线加密。
+【运动】丝线连续、无硬折；鼓起平滑。帧率稳定，不可见时暂停。
+【不要】做成廉价彩带风暴；没有文字状态；reduced-motion 时改为静止球体与文案。
+```
+
+## 晶格电球 / Crystalized Ball
+
+<a id="rb-crystalized-ball"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：带电裂纹与尘埃的玻璃球
+- 触发：pointer / idle
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/animations/crystalized-ball
+- 分册锚点：[rb-crystalized-ball](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-crystalized-ball)
+
+一枚玻璃球边缘有裂纹般的电流，球内发光尘埃随光标旋转，适合作为生成、加载或品牌物件，而不是背景噪声。
+
+链接：
+
+- [打开 React Bits Crystalized Ball 演示](https://www.reactbits.dev/animations/crystalized-ball)（React Bits）
+
+### 提示词
+
+```
+【场景】生成工具「织光」的等待物件：一枚玻璃球放在「正在生成季节海报」旁边，球缘有细裂纹电流，内部金尘随光标缓缓旋转。完成后电流熄灭，球内浮出缩略图。
+【触发】生成过程中循环；指针搅动尘埃；完成后收束一次。
+【运动】电流沿裂纹走，尘埃有动量。完成时 400–600ms 收光。
+【不要】与页面加载圈重复两套无说明动画；失败时球仍无限转。reduced-motion 时显示静止球体与阶段文案。
+```
+
+## 指向性闪电 / Lightning
+
+<a id="rb-lightning"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：弯向光标并在点击处落下的闪电
+- 触发：pointer / click
+- 技术栈：React / OGL
+- 官方演示：https://www.reactbits.dev/backgrounds/lightning
+- 分册锚点：[rb-lightning](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-lightning)
+
+背景或舞台上的分支闪电会弯向光标，并在点击位置落下一次完整的击打，适合天气、能量或演出主题，使用需克制。
+
+链接：
+
+- [打开 React Bits Lightning 演示](https://www.reactbits.dev/backgrounds/lightning)（React Bits）
+
+### 提示词
+
+```
+【场景】音乐节「灯塔将亮」预热页夜空背景：远处有低频闪电。光标移动时最近的一支弯向指针，点击落下一道短促的击打，照亮标题「灯塔将亮 / 12 月 4 日」。不要连续狂闪。
+【触发】空闲偶发远雷；指针影响走向；点击击打一次，带短冷却。
+【运动】分支自然、瞬间亮起并在 150–300ms 内衰减。不要持续曝光。
+【不要】闪烁频率伤害用户；与正文对比不足或过曝；忽略减动效与光敏提示。
+```
+
+## 故障终端墙 / Faulty Terminal
+
+<a id="rb-faulty-terminal"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：带磷光拖尾的闪烁字符场
+- 触发：pointer / click
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/backgrounds/faulty-terminal
+- 分册锚点：[rb-faulty-terminal](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-faulty-terminal)
+
+一整面 CRT 终端墙由发光字符组成，光标划过留下磷光拖尾，点击引发局部故障，适合极客或叙事封面，不是正文载体。
+
+链接：
+
+- [打开 React Bits Faulty Terminal 演示](https://www.reactbits.dev/backgrounds/faulty-terminal)（React Bits）
+
+### 提示词
+
+```
+【场景】「墨蓝」开发者文档封面：深色字符场缓缓滚过片段 `molan capture --from meeting.wav`。光标划过留下磷光，点击让局部字符闪错一帧再恢复。前景有清晰的标题「把会议变成任务」。
+【触发】空闲滚动与闪烁；指针留下拖尾；点击局部故障。
+【运动】闪烁低频，拖尾短；前景文字始终可读。
+【不要】把文档正文放进字符场；高频闪烁；无静态封面回退。
+```
+
+## 丝线让路 / Threads
+
+<a id="rb-threads"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：在光标处分开再弹回的流动丝线
+- 触发：pointer / idle
+- 技术栈：React / OGL
+- 官方演示：https://www.reactbits.dev/backgrounds/threads
+- 分册锚点：[rb-threads](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-threads)
+
+密集的流动细线像丝绸一样摆动，在光标处分开并在离开后弹回原位，可用于封面或章节间隔，线要细、对比要克制。
+
+链接：
+
+- [打开 React Bits Threads 演示](https://www.reactbits.dev/backgrounds/threads)（React Bits）
+
+### 提示词
+
+```
+【场景】「织光工作室」首页浅色底上是一层极细的暖灰丝线，慢波流动。光标移到「为南窗书局做的季节海报」标题附近，丝线分开让出一条通路，离开后弹回。
+【触发】空闲摆动；指针分开丝线；离开后弹簧恢复。
+【运动】分开半径明确，回弹 300–500ms。线宽细，不与标题抢对比。
+【不要】线过密导致摩尔纹或卡顿；深浅主题下都看不见或太脏。reduced-motion 时冻结丝线，不再随指针分开。
+```
+
+## 反重力粒子环 / Antigravity
+
+<a id="rb-antigravity"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：在光标周围升起圆环并在点击时炸开
+- 触发：pointer / click
+- 技术栈：React / OGL
+- 官方演示：https://www.reactbits.dev/backgrounds/antigravity
+- 分册锚点：[rb-antigravity](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-antigravity)
+
+粒子场会在光标周围升起一圈发光的环，点击则向外爆开再缓缓回落，适合庆祝或引力主题的英雄区。
+
+链接：
+
+- [打开 React Bits Antigravity 演示](https://www.reactbits.dev/backgrounds/antigravity)（React Bits）
+
+### 提示词
+
+```
+【场景】公益活动「把灯留下」捐赠页：深色英雄区有细小的悬浮尘埃。光标所到之处尘埃升起成一圈柔光环；点击「捐赠 ¥50」之前的预览，环向外炸开再落下，像把光撒开。主文案「为南窗夜读留下一盏灯」。
+【触发】指针移动形成环；点击爆开，带短冷却。
+【运动】环的形成 200–350ms，爆炸 500–800ms 后回落。粒子数量有上限。
+【不要】爆炸遮挡按钮；自动不断爆炸；减动效时改为静态尘埃。
 ```

@@ -7241,5 +7241,1853 @@
     "volumeTitle": "加载与数据可视化",
     "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
     "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#kokonut-ai-text-loading"
+  },
+  {
+    "id": "rb-curved-loop",
+    "title": "曲线循环字 / Curved Loop",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "沿弧线循环的可拖标语",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "idle / drag",
+    "stack": "React / GSAP",
+    "description": "一行标语带着插图沿自定义弧线无缝循环，可拖动改方向与速度，松手后惯性回到基础节奏。",
+    "prompt": "【场景】独立书店「南窗书局」活动页英雄区：一条沿缓弧线循环的活动带，文案为「每周四晚 19:30 · 诗人朗诵会 · 南窗书局 · 预约席位有限」，中间穿插封面《春天的十二封信》《夜航船》与一杯窗边咖啡的照片。读者可拖动带子改方向。\n【触发】进入后自动慢速循环；拖拽或触滑改速度与方向；松开后惯性回落到基础速度。\n【运动】文字与封面沿 SVG 曲线无缝衔接，基础速度约 40–60px/s；拖拽跟手，松开后 400–600ms 惯性衰减。封面沿切线轻微倾斜。\n【不要】出现接缝或空白段；把长段落放上曲线；忽略 reduced-motion（改为静态弧排，可横滑阅读）。",
+    "links": [
+      {
+        "title": "打开 React Bits Curved Loop 演示",
+        "href": "https://www.reactbits.dev/text-animations/curved-loop",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/text-animations/curved-loop",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-curved-loop"
+  },
+  {
+    "id": "rb-circular-text",
+    "title": "环形绕字 / Circular Text",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "绕圆旋转的环排标题",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "idle loop / hover",
+    "stack": "React / GSAP",
+    "description": "把短句沿圆周排列并缓慢旋转，悬停可暂停或反向，适合徽章、专辑或活动标识，而不是长标题。",
+    "prompt": "【场景】黑胶店「回声唱片」专辑页：一张封面（蓝绿渐变、浪尖上的一座灯塔）居中，环上排「回声唱片 · 新专发行 · 灯塔将亮 · 2026.12.04 ·」，顺时针慢转。悬停环带暂停，点击进入试听。\n【触发】进入后自动旋转；悬停暂停；移出后 200–300ms 恢复。\n【运动】字母沿正圆均分，转速约 8–12s 一圈；字距稳定，不要在 12 点位置跳变。环内侧留出封面安全距。\n【不要】把句子排成难以阅读的反向字；在长文或多行标题上使用；reduced-motion 时静止展示完整句，仍可点击。",
+    "links": [
+      {
+        "title": "打开 React Bits Circular Text 演示",
+        "href": "https://www.reactbits.dev/text-animations/circular-text",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/text-animations/circular-text",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-circular-text"
+  },
+  {
+    "id": "rb-fuzzy-text",
+    "title": "绒毛抖动字 / Fuzzy Text",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "悬停加剧的绒毛振动字",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "idle / hover",
+    "stack": "React / Canvas",
+    "description": "标题带一层可控的绒毛或射频抖动，默认很轻，悬停时强度上升，离开后收敛。适合警示、限量或故障美学，不适合长文。",
+    "prompt": "【场景】户外品牌「原野」限量配色发布页：主标题「原野 · 霜降配色 限量 200 套」，副标题「预购于 12 月 1 日 10:00 开放」。标题有一层细密绒毛抖动，光标靠近时振动加强，像寒霜在字上发抖。\n【触发】默认低强度空闲抖动；指针进入标题加强；离开后 300–500ms 回到低强度。reduced-motion 时完全静止。\n【运动】抖动位移控制在 1–2px，悬停不超过 3–4px，频率高但幅度小；不要让字形散开无法识别。原文字留给读屏。\n【不要】在段落正文或小字号上使用；把抖动做成廉价闪烁或彩虹故障。",
+    "links": [
+      {
+        "title": "打开 React Bits Fuzzy Text 演示",
+        "href": "https://www.reactbits.dev/text-animations/fuzzy-text",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/text-animations/fuzzy-text",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-fuzzy-text"
+  },
+  {
+    "id": "rb-masked-heading",
+    "title": "蒙版透图标题 / Masked Heading",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "字内透出漂移纹理的揭示",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "in-view / idle",
+    "stack": "React / GSAP",
+    "description": "标题充当蒙版，字内露出缓慢漂移的色彩网格或实拍图片，并按词依次显现。适合英雄标题，不要用于大段正文。",
+    "prompt": "【场景】影像节「青浦十年」首页英雄标题：「江边的光，还在路上」。字内透出一组实拍：黄昏河面、码头铁索、一排湿漉漉的窗。纹理在字内缓慢平移。标题按词依次揭开。\n【触发】标题进入视口后播放一次揭示；此后纹理继续慢速漂移。reduced-motion 时直接显示成品字与静态纹理。\n【运动】按词 stagger 80–120ms，每个词用软遮罩向上揭示 500–700ms；纹理平移极慢（约 20–30s 循环），不要抢字。整句不超过约 1.4s。\n【不要】让图片在字外泄漏；用低对比纹理导致标题读不清；忽略读屏原文。",
+    "links": [
+      {
+        "title": "打开 React Bits Masked Heading 演示",
+        "href": "https://www.reactbits.dev/text-animations/masked-heading",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/text-animations/masked-heading",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-masked-heading"
+  },
+  {
+    "id": "rb-scrambled-text",
+    "title": "光标扰动字 / Scrambled Text",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "随光标位置扭曲的正文",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer proximity",
+    "stack": "React / GSAP",
+    "description": "检测光标在一行或一段文字中的位置，只扰动邻近字母的形状或位置，离开后字形归位。与整句乱码揭示不是同一类效果。",
+    "prompt": "【场景】建筑事务所「折纸」简介页有一段短文：「我们把河边仓库改成礼堂，把光从屋脊引进来。」光标在行上移动时，邻近两三个字轻微拉斜、错位，像纸被手指掀起，离开后弹回。\n【触发】指针在文字盒内移动时持续更新；离开后 200–300ms 弹簧归位。键盘焦点时不要扰动。\n【运动】影响半径约 2–3 个字，位移 2–6px，可带轻微旋转或字重变化；衰减光滑。原文字保持可选中。\n【不要】整段同时扭曲；做成无法阅读的乱码风暴；与「解密文本 / 悬停乱码」混用同一套全句洗牌。",
+    "links": [
+      {
+        "title": "打开 React Bits Scrambled Text 演示",
+        "href": "https://www.reactbits.dev/text-animations/scrambled-text",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/text-animations/scrambled-text",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-scrambled-text"
+  },
+  {
+    "id": "magic-aurora-text",
+    "title": "极光字 / Aurora Text",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "字内流动的极光渐变",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Magic UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "idle loop",
+    "stack": "React / Motion",
+    "description": "标题填充一层缓慢流动的极光渐变，色彩在字内游走，而不是简单的左右扫光。用于短标题或关键词。",
+    "prompt": "【场景】旅行品牌「北纬」冬季线路页主标题「去看没有被命名的光」，关键词「光」与整句共用一层青绿到品红的极光。背景是深夜雪原，标题下有「芬兰 / 挪威 / 冰岛 · 12 日」。\n【触发】进入后循环流动；reduced-motion 时改为静态渐变，不再位移。\n【运动】渐变在字内缓慢扭曲、平移，循环 8–12s，避免高频闪烁。色彩对比保证白底或深底都能识读。\n【不要】把整段正文都做成极光；用过饱和彩虹抢内容；忽略深浅色主题下的对比度。",
+    "links": [
+      {
+        "title": "打开 Magic UI Aurora Text 演示",
+        "href": "https://magicui.design/docs/components/aurora-text",
+        "site": "Magic UI"
+      }
+    ],
+    "officialDemoUrl": "https://magicui.design/docs/components/aurora-text",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#magic-aurora-text"
+  },
+  {
+    "id": "magic-terminal",
+    "title": "终端打字日志 / Terminal",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "逐行打出的产品终端窗",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Magic UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "in-view / interval",
+    "stack": "React / Motion",
+    "description": "一个终端窗口按节奏打出命令与日志，光标闪烁，行与行之间有短暂停顿，适合用真实产品文案讲述发布或部署，而不是无意义乱码。",
+    "prompt": "【场景】协作工具「墨蓝笔记」产品页中部有一扇深色终端，用来演示「把会议记要变成任务」。依次打出：`$ molan capture --from meeting.wav`、`transcribing 42:18 … done`、`3 tasks added to 「季度规划」`、`share link copied`。窗口标题栏写「墨蓝 · 本地实验室」。\n【触发】区块进入视口后开始播放；可循环，但每轮之间停 1.5–2s。提供重放按钮。\n【运动】逐字打出，每字 30–50ms，命令行稍快、结果行稍慢；光标闪 500ms；新行把窗口顶起，高度跟内容走。复制成功那一行可短暂高亮。\n【不要】用假乱码或看不清的滚动；打字过程中布局抖动；忽略 reduced-motion（改为一次给出全部日志）。",
+    "links": [
+      {
+        "title": "打开 Magic UI Terminal 演示",
+        "href": "https://magicui.design/docs/components/terminal",
+        "site": "Magic UI"
+      }
+    ],
+    "officialDemoUrl": "https://magicui.design/docs/components/terminal",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#magic-terminal"
+  },
+  {
+    "id": "aceternity-text-hover-effect",
+    "title": "轮廓扫光字 / Text Hover Effect",
+    "category": "type",
+    "categoryLabel": "文字动效",
+    "subcategory": "悬停描出渐变轮廓的字",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "hover / pointer move",
+    "stack": "React / Motion / SVG",
+    "description": "标题默认是克制的填充或细轮廓；指针经过时，渐变描边沿字形走一遍并点亮，常见于沉稳的品牌或研究站英雄区。",
+    "prompt": "【场景】研究机构「山海科考」网站首页深色英雄区，巨大标题「把海岸线重新量一遍」。默认是细白轮廓字；指针在字上移动时，一条青绿到琥珀的描边从指针处沿笔画走，像在测深。下方小字：「东海观测计划 · 2026 公开课」。\n【触发】指针进入标题才点亮，跟随指针位置；离开后 300–500ms 描边熄灭。\n【运动】描边沿路径 400–700ms 走完可见段，光晕柔和；不要整句同时闪白。移动速度快时描边跟上，不要拖出残影带。\n【不要】在小字号段落上使用；做成廉价霓虹闪烁；没有读屏原文。",
+    "links": [
+      {
+        "title": "打开 Aceternity Text Hover Effect 演示",
+        "href": "https://ui.aceternity.com/components/text-hover-effect",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/text-hover-effect",
+    "originalUrl": null,
+    "volume": "type",
+    "volumeTitle": "文字动效与进入离场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#aceternity-text-hover-effect"
+  },
+  {
+    "id": "rb-drift-wall",
+    "title": "漂流行进墙 / Drift Wall",
+    "category": "scroll",
+    "categoryLabel": "滚动叙事",
+    "subcategory": "透视墙面中不断漂过的图块",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "scroll / pointer",
+    "stack": "React / Three",
+    "description": "一面有透视的图墙持续向深处或一侧漂过，悬停时单块抬起并显示标题，适合作品集或旅行相册的滚动叙事。",
+    "prompt": "【场景】旅拍账号「候鸟旅馆」作品志：滚动时一面微微倾斜的照片墙向深处漂去，格子里是真实房间与旅途照片——青岛的蓝窗、大理的天井、京都的窄楼梯、海边晒被单。悬停某张，它向前抬起，左下出现「青岛 · 蓝窗房 / 入住 32 晚」。\n【触发】滚动驱动墙的行进；指针悬停抬起单块；点击进入该房详情。reduced-motion 时改为普通网格，可横滑。\n【运动】墙面匀速或随滚动量轻微加速，透视稳定；抬起 250–400ms，带短阴影。行进不要突然转向。\n【不要】图块密度高到卡顿；没有图片说明；让人无法停下看一张。",
+    "links": [
+      {
+        "title": "打开 React Bits Drift Wall 演示",
+        "href": "https://www.reactbits.dev/components/drift-wall",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/drift-wall",
+    "originalUrl": null,
+    "volume": "scroll",
+    "volumeTitle": "滚动叙事与页面转场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#rb-drift-wall"
+  },
+  {
+    "id": "animate-page-transition",
+    "title": "页面视图转场 / Page Transition",
+    "category": "transition",
+    "categoryLabel": "过渡与页面切换",
+    "subcategory": "基于 View Transitions 的路由切换",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Animate UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "route change",
+    "stack": "React / Motion / View Transitions",
+    "description": "路由切换时用 View Transitions 做共享元素或整页擦除，可接入 Next.js、React Router 或 TanStack Router，而不是生硬地卸挂载。",
+    "prompt": "【场景】护肤品牌「白潮」官网：从首页「晨间护理三步」卡片进入「海盐洁面」详情。卡片上的产品瓶、名称「海盐洁面 120ml」和价格「¥168」在两次路由之间共享，背景用一次软擦除切到浅沙色详情页。\n【触发】点击卡片、浏览器后退或内部链接时播放；中途再导航则打断并跟上新目标。\n【运动】共享元素 400–600ms  morph 到新位置；其余内容短淡入，不要整页闪白。尊重 prefers-reduced-motion，改为瞬时切换或 150ms 淡入。\n【不要】忘记回退路由；在不支持 View Transitions 的浏览器空白；把不该共享的区块硬连在一起。",
+    "links": [
+      {
+        "title": "打开 Animate UI Page Transition 演示",
+        "href": "https://animate-ui.com/docs/primitives/animate-ui/page-transition",
+        "site": "Animate UI"
+      }
+    ],
+    "officialDemoUrl": "https://animate-ui.com/docs/primitives/animate-ui/page-transition",
+    "originalUrl": null,
+    "volume": "scroll",
+    "volumeTitle": "滚动叙事与页面转场",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#animate-page-transition"
+  },
+  {
+    "id": "rb-card-nav",
+    "title": "卡片展开导航 / Card Nav",
+    "category": "layout",
+    "categoryLabel": "导航与布局变形",
+    "subcategory": "导航栏弹开成一组功能卡",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "click / keyboard",
+    "stack": "React / Motion",
+    "description": "顶栏或菜单按钮弹开后，导航变成一排（或一列）卡片，每张卡有自己的标题、短句和链接，关闭时再收回条状。",
+    "prompt": "【场景】出行应用「云帆」官网顶栏：点击「产品」后，导航弹开成三张卡——「通勤班线 / 准点率 96%」「跨城拼车 / 今晚 19:40 还有 2 座」「企业包车 / 发票当天开」。每张卡有一张小图（车窗晨光、高速公路夜色、会议室）。再点空白或 Esc 收起。\n【触发】点击触发器打开；Esc、再次点击或点击遮罩关闭。键盘左右可在卡之间走。\n【运动】条到卡的高度与宽度用 spring，400–600ms；卡内文字 stagger 40–60ms。关闭时反向，不要先卸内容再折叠。\n【不要】打开时把页面布局顶得剧烈跳动；移动端仍用过宽的三列；没有焦点管理。",
+    "links": [
+      {
+        "title": "打开 React Bits Card Nav 演示",
+        "href": "https://www.reactbits.dev/components/card-nav",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/card-nav",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-card-nav"
+  },
+  {
+    "id": "rb-flowing-menu",
+    "title": "流动菜单带 / Flowing Menu",
+    "category": "layout",
+    "categoryLabel": "导航与布局变形",
+    "subcategory": "行间滑动的液态色带菜单",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "hover / keyboard",
+    "stack": "React / Motion",
+    "description": "全高或大幅菜单里，一条液态色带在行与行之间滑移，当前行露出横向滚动的图文走马灯。",
+    "prompt": "【场景】餐厅「北岛」预订站的全屏菜单，四行：午餐 11:30–14:00、晚市 17:30–21:30、酒吧、私人包间。色带滑到「晚市」时，行内跑过「烟熏鲈鱼 / 葱油手擀 / 桂花酒酿」的菜图与价格「¥128 / ¥68 / ¥36」。\n【触发】悬停或焦点移动到一行，色带跟随；键盘上下切换。\n【运动】色带 250–400ms 滑到新行，边缘有一点黏滞；走马灯仅在当前行播放，离开后暂停。\n【不要】所有行同时滚动；色带穿过文字导致对比不足；没有键盘与读屏标签。",
+    "links": [
+      {
+        "title": "打开 React Bits Flowing Menu 演示",
+        "href": "https://www.reactbits.dev/components/flowing-menu",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/flowing-menu",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-flowing-menu"
+  },
+  {
+    "id": "rb-magic-bento",
+    "title": "光边便当格 / Magic Bento",
+    "category": "layout",
+    "categoryLabel": "导航与布局变形",
+    "subcategory": "光标边缘光与点击波的功能格",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / click",
+    "stack": "React / Motion",
+    "description": "一组大小不一的功能便当格，格内是活的插画或数据，边缘光随光标游走，点击时从落点扩散一圈波纹。",
+    "prompt": "【场景】笔记应用「墨蓝」功能页用六格便当介绍：大格「离线先写，联网再同步」配手写页动画；「分享只读链接」；「任务从记要里长出来」显示三条真实任务（写季度综述、约设计师、整理录音）；「白板」「标签」「回收站」。光标靠近时该格边缘走一圈柔光，点击扩散浅波。\n【触发】指针移动更新边缘光；点击播放一次波纹。触屏用点按。\n【运动】边缘光 150–250ms 跟上，不要甩尾太长；波纹 400–600ms 淡出。格内动画各自循环但要节流，离开视口暂停。\n【不要】所有格子同时高亮；把文案只写成「Feature 1」；忽略键盘焦点态。",
+    "links": [
+      {
+        "title": "打开 React Bits Magic Bento 演示",
+        "href": "https://www.reactbits.dev/components/magic-bento",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/magic-bento",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-magic-bento"
+  },
+  {
+    "id": "rb-infinite-menu",
+    "title": "球面无限菜单 / Infinite Menu",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "可拖拽的球面图块菜单",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / wheel / click",
+    "stack": "React / Three",
+    "description": "图像块贴在可拖拽的球面上，松手后最近的一块弹到前方并给出标题，适合作品集或目的地选择。",
+    "prompt": "【场景】建筑设计展「回廊」导航：球面贴着六个项目照片——「河仓库礼堂」「窄巷咖啡馆」「山顶气象站」「小学食堂改造」「港口书店」「夜桥」。拖转球体，松手后最近一项弹到前方，下方出现项目名与城市「青岛」。点击进入案例。\n【触发】拖拽或滚轮旋转；松手吸附；点击前方项进入。\n【运动】拖拽跟手，松手 400–700ms 弹到最近槽位；标题随就位短淡入。惯性不要无限转。\n【不要】没有文字标签就让人猜图；移动端只有细小热区；WebGL 失败时没有列表回退。",
+    "links": [
+      {
+        "title": "打开 React Bits Infinite Menu 演示",
+        "href": "https://www.reactbits.dev/components/infinite-menu",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/infinite-menu",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-infinite-menu"
+  },
+  {
+    "id": "rb-option-wheel",
+    "title": "弧形选项轮 / Option Wheel",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "可滚可拖的弧形选择器",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / scroll / keyboard",
+    "stack": "React / Motion",
+    "description": "选项沿一条弧排列，滚轮、拖拽或方向键旋转，远离中心的项会倾斜并变淡，当前项停在前方。",
+    "prompt": "【场景】咖啡订阅「北岛月卡」结算页选择烘焙度：弧上五项「浅烘 / 浅中 / 中烘 / 中深 / 深烘」，当前「中烘」正对前方，副文案「坚果、红糖、低酸，适合牛奶」。两侧项倾斜变淡。\n【触发】拖拽、滚轮或上下键旋转；松手吸附到最近项；也可点击一项直接就位。\n【运动】旋转跟手，吸附 300–500ms；非当前项透明度 0.35–0.5，并向弧外倾斜。选定后上方预览豆子照片切换一次。\n【不要】一次转过多项却无吸附；没有当前值的表单语义；reduced-motion 时改普通下拉或列表。",
+    "links": [
+      {
+        "title": "打开 React Bits Option Wheel 演示",
+        "href": "https://www.reactbits.dev/components/option-wheel",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/option-wheel",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-option-wheel"
+  },
+  {
+    "id": "rb-curved-input",
+    "title": "弧形输入条 / Curved Input",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "文字与按钮贴在弧上的输入栏",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "focus / submit",
+    "stack": "React / Motion / SVG",
+    "description": "搜索或留言输入条整体弯成弧，文字、插入符和提交按钮都沿着曲线走，提交时有一次轻反馈。",
+    "prompt": "【场景】播客「回声」节目页底部的留言弧：「对第 48 集《在夜船上读书》说一句」。占位「你在哪一页合上的？」用户输入「我在码头那章停了很久。」插入符贴着弧走，右侧是弧上的「送出」按钮。\n【触发】聚焦开始输入；提交播放一次短反馈；失焦保持已输入文本。\n【运动】字符沿弧排列，插入符不离线；提交按钮 150–250ms 轻按，成功后弧上闪一句「已送到第 48 集」。\n【不要】弯曲到难以阅读或选中；移动端键盘把弧顶出屏幕却无滚动；缺少 label 与错误态。",
+    "links": [
+      {
+        "title": "打开 React Bits Curved Input 演示",
+        "href": "https://www.reactbits.dev/components/curved-input",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/curved-input",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-curved-input"
+  },
+  {
+    "id": "rb-shredder",
+    "title": "碎纸删除 / Shredder",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "拖到碎纸口再切成卷条",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / keyboard",
+    "stack": "React / Motion",
+    "description": "列表底部有一台碎纸机。把一行拖进去，纸会被切成卷曲纸条落下；也可键盘删除并看到同样的下场。",
+    "prompt": "【场景】邮件客户端「昼伏」的垃圾清理：列表里是「会员即将到期」「您的包裹滞留」等真实主题行。底部有一台浅灰碎纸机。把「中奖通知」那行拖到口里，纸被切成细条卷曲落下，并弹出「已删除 1 封，可撤销 5 秒」。\n【触发】拖到碎纸口松手，或选中后按删除；撤销则纸条收回成行。\n【运动】切入 400–700ms，纸条有轻微物理下落；不要瞬间消失。同时删多行时排队，不要卡死。\n【不要】没有撤销；把重要邮件和促销做成无法区分；reduced-motion 时改为划掉并淡出。",
+    "links": [
+      {
+        "title": "打开 React Bits Shredder 演示",
+        "href": "https://www.reactbits.dev/micro/shredder",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/shredder",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-shredder"
+  },
+  {
+    "id": "rb-sling-button",
+    "title": "弹弓发送 / Sling Button",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "拉回再松开的弹射发送",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer drag / release",
+    "stack": "React / Motion",
+    "description": "发送按钮可以像弹弓一样被拉回，松开后向前弹出以完成发送；拉力不够则弹回原位。",
+    "prompt": "【场景】即时通讯「潮汐」聊天页，输入框已写好「晚上七点在北岛见，我先占座。」发送键是一枚小石子按钮。向下拉满后松开，按钮弹向前方，消息入列，状态从「发送中」到「已送达」。拉得不够则弹回，不发送。\n【触发】按住下拉，松开时按拉力阈值决定发送或取消；键盘仍可用 Enter 直接发送。\n【运动】拉伸跟手，带橡皮筋感；发送 250–400ms 弹出并复位；失败回弹 300ms。\n【不要】阈值不明导致误发；没有普通点击/回车的后备；把弹弓用在破坏性、不可撤销的操作上。",
+    "links": [
+      {
+        "title": "打开 React Bits Sling Button 演示",
+        "href": "https://www.reactbits.dev/micro/sling-button",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/sling-button",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-sling-button"
+  },
+  {
+    "id": "rb-scrub-field",
+    "title": "拖拽微调数值 / Scrub Field",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "横向拖动的橡皮筋数值芯片",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / click / keyboard",
+    "stack": "React / Motion",
+    "description": "一枚数值芯片可横向拖动微调，到边界有橡皮筋回弹，单击则变为可键入。",
+    "prompt": "【场景】修图工具「拾光」右侧面板，「曝光」芯片显示「+0.3 EV」。按住左右拖，数值以 0.1 步进变化，预览图同步。拖到 +2.0 或 -2.0 时橡皮筋拉住。单击芯片后可直接键入「0.5」。\n【触发】拖动改变；单击进入输入；方向键微调；失焦或回车提交。\n【运动】拖拽跟手，边界橡皮筋 200–300ms；数值变化无抖动。输入态下芯片略拓宽。\n【不要】没有单位和范围提示；拖动与输入态冲突；不提供键盘替代。",
+    "links": [
+      {
+        "title": "打开 React Bits Scrub Field 演示",
+        "href": "https://www.reactbits.dev/micro/scrub-field",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/scrub-field",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-scrub-field"
+  },
+  {
+    "id": "rb-spring-check",
+    "title": "弹簧勾选 / Spring Check",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "一次弹簧完成勾选与划线",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "click / keyboard",
+    "stack": "React / Motion",
+    "description": "勾选一行时，弹簧先填满方框、再勾出对勾，同时在标签上划掉一条线，取消则反向收回。",
+    "prompt": "【场景】旅行清单「候鸟」：三行「带护照复印件」「确认青岛蓝窗房 12/4 入住」「给南窗书局发取书短信」。勾选第一行时，方框被弹簧填满，对勾画出，文字「带护照复印件」被一条稳稳的线划过。\n【触发】点击行或复选框；空格在聚焦时切换。\n【运动】填充、对勾、划线是一次 350–500ms 的连贯弹簧，不要分成三段生硬动画。取消时反向 250–350ms。\n【不要】漏掉真实的 checkbox 语义；划线把字衬得无法阅读；组里没有全选/计数。reduced-motion 时改为瞬时勾选与划线。",
+    "links": [
+      {
+        "title": "打开 React Bits Spring Check 演示",
+        "href": "https://www.reactbits.dev/micro/spring-check",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/spring-check",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-spring-check"
+  },
+  {
+    "id": "rb-squish-switch",
+    "title": "挤压开关 / Squish Switch",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "拇指会被速度拉长并撞停",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "click / drag",
+    "stack": "React / Motion",
+    "description": "开关滑块随甩动速度被拉长，撞到两端时挤扁再回弹，比普通开关更有物理感。",
+    "prompt": "【场景】天气应用「潮汐」的通知设置：「降雨前提醒我」一行，右侧是开关。打开时滑块被速度拉长，撞到右端挤扁再回弹，标签从「关闭」换成「已开启 · 提前 30 分钟」。\n【触发】点击切换；也可拖到另一端松开。\n【运动】位移 200–350ms，拉伸与挤压跟速度走，结束有短回弹。不要无限抖动。\n【不要】没有选中态对比；把开关做得过大或拖得脱出轨道；忽略开关的可访问名称。reduced-motion 时取消拉伸与碰撞，只做位置切换。",
+    "links": [
+      {
+        "title": "打开 React Bits Squish Switch 演示",
+        "href": "https://www.reactbits.dev/micro/squish-switch",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/squish-switch",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-squish-switch"
+  },
+  {
+    "id": "rb-swipe-row",
+    "title": "滑动操作行 / Swipe Row",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "滑出行内操作或整行删除",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / keyboard",
+    "stack": "React / Motion",
+    "description": "列表行向一侧滑动露出操作，滑过阈值则执行删除或归档，可跟手并在松手后就位。",
+    "prompt": "【场景】待办「昼伏配送」骑手端：一行「12:20 取 北岛咖啡 / 送 折纸事务所，超时风险」。左滑露出「完成」「改派」；继续滑过阈值则归档，行被收走，顶部提示「已完成，可撤销」。\n【触发】水平拖拽；松手根据阈值打开操作或执行；键盘提供相同操作。\n【运动】跟手，松手 200–300ms 吸附；删除时行高收至 0，约 250ms。不要垂直滚动和滑动打架。\n【不要】没有撤销；操作色块没有文字；把滑动作为唯一删除途径。",
+    "links": [
+      {
+        "title": "打开 React Bits Swipe Row 演示",
+        "href": "https://www.reactbits.dev/micro/swipe-row",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/swipe-row",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-swipe-row"
+  },
+  {
+    "id": "rb-wake-slider",
+    "title": "尾流滑杆 / Wake Slider",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "拖速会在杆后掀起尾流",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / keyboard",
+    "stack": "React / Motion",
+    "description": "没有传统圆钮的细柱滑杆，拖动越快，柄后的尾流越高，停下后尾流落下。",
+    "prompt": "【场景】音乐应用里为「回声」第 48 集调音量：一条由细柱组成的滑杆，当前 68%。拖得快时，柄后的柱子依次抬起像船尾浪，停下后落下，旁边数字同步为「68%」。\n【触发】拖动或点击落点；方向键步进 5%。\n【运动】值跟手更新；尾流高度映射速度，200–400ms 落下。不要让柱子打断当前值的可读性。\n【不要】没有数值与 aria 更新；把尾流做成持续噪音动画；触区过窄。",
+    "links": [
+      {
+        "title": "打开 React Bits Wake Slider 演示",
+        "href": "https://www.reactbits.dev/micro/wake-slider",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/wake-slider",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-wake-slider"
+  },
+  {
+    "id": "magic-lens",
+    "title": "放大镜检视 / Lens",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "可在图或视频上移动的透镜",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Magic UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / press",
+    "stack": "React / Motion",
+    "description": "一块圆形或圆角透镜跟随指针，放大图片、视频或细节图中的局部，适合产品材质或地图检视。",
+    "prompt": "【场景】钟表品牌「流光」产品页，主图是一只银色腕表的侧面。指针移到表盘上时出现圆形透镜，放大夜光刻度与「流光 1964」字样；移到表带上看见皮革纹理。透镜旁小字「按住可固定」。\n【触发】指针在图上移动时跟随；按住可固定位置；离开图片后收起。触屏用拖动。\n【运动】透镜 80–120ms 跟上，放大倍率约 1.8–2.2，边缘清晰不要模糊重影。\n【不要】透镜挡住关键操作按钮；在小图上放大到像素块却无提示；没有键盘可及的细节图替代。",
+    "links": [
+      {
+        "title": "打开 Magic UI Lens 演示",
+        "href": "https://magicui.design/docs/components/lens",
+        "site": "Magic UI"
+      }
+    ],
+    "officialDemoUrl": "https://magicui.design/docs/components/lens",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#magic-lens"
+  },
+  {
+    "id": "aceternity-focus-cards",
+    "title": "焦点模糊卡片组 / Focus Cards",
+    "category": "layout",
+    "categoryLabel": "导航与布局变形",
+    "subcategory": "悬停一张则其余失焦",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "hover / focus",
+    "stack": "React / Motion",
+    "description": "一组卡片默认同等清晰；悬停或聚焦其中一张时，其余迅速虚化，被选中的那张保持清晰并略微前移。",
+    "prompt": "【场景】展览「回廊」落地页四张策展卡：「河仓库礼堂」「窄巷咖啡馆」「山顶气象站」「港口书店」，各配一张现场照片与一句说明。悬停「山顶气象站」时它保持清晰，其余三张柔焦，说明「把一座废弃测风塔改成过夜小屋」完整显现。\n【触发】悬停或键盘焦点；离开后 250–350ms 全部回到清晰。\n【运动】模糊 0 到 8–12px，200–300ms；焦点卡轻微上浮 4–8px。不要让文字在模糊层里抖动。\n【不要】只有悬停没有焦点态；一次高亮多张；移动端无法选择。",
+    "links": [
+      {
+        "title": "打开 Aceternity Focus Cards 演示",
+        "href": "https://ui.aceternity.com/components/focus-cards",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/focus-cards",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#aceternity-focus-cards"
+  },
+  {
+    "id": "aceternity-file-upload",
+    "title": "拖放上传 / File Upload",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "带网格背景与微交互的拖放上传",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / click",
+    "stack": "React / Motion",
+    "description": "一个带背景网格的上传区，支持拖放与点击选择，文件进入时有入场与进度，失败有明确回退。",
+    "prompt": "【场景】「青浦影像」投稿页：虚线框写「把作品拖到这里，或选择文件」，背景是浅网格。拖入三张图「码头铁索.jpg 2.4MB」「湿窗.jpg 1.8MB」「河面黄昏.jpg 3.1MB」后，每张以缩略图落入列表，下有进度条，完成后显示尺寸与「可删除」。\n【触发】拖入、点击选择或键盘激活；校验失败就地提示。\n【运动】文件卡 250–400ms 落入，进度平滑；删除时收起高度。拖入悬停时框线与网格轻微点亮。\n【不要】没有类型/大小限制说明；失败只 toast 一下就丢文件；进度假跳到 100%。",
+    "links": [
+      {
+        "title": "打开 Aceternity File Upload 演示",
+        "href": "https://ui.aceternity.com/components/file-upload",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/file-upload",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#aceternity-file-upload"
+  },
+  {
+    "id": "kokonut-attract-button",
+    "title": "铁屑磁吸按钮 / Magnet Button",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "铁屑随磁场倒向按钮",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Kokonut UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / hover",
+    "stack": "React / Canvas",
+    "description": "呼叫行动按钮周围有一圈铁屑或细针，它们顺着磁场排列，并随光标向按钮倾斜，与普通磁吸位移不是同一效果。",
+    "prompt": "【场景】课程站点「山海科考」报名区，主按钮「预约公开课」。按钮周围是一圈细铁屑，平时沿按钮外磁场排列；光标靠近时铁屑倒向指针与按钮之间，像被吸住。按钮文案下有「12 月 6 日 · 青岛观象台」。\n【触发】指针在按钮附近移动时更新磁场；离开后 300–500ms 回到环状排列。\n【运动】铁屑转动要跟手但带一点阻尼，不要闪烁。按钮本身可有轻微磁吸位移，幅度克制。\n【不要】铁屑挡住文字；做成廉价粒子喷发；reduced-motion 时只保留静止构图与普通悬停。",
+    "links": [
+      {
+        "title": "打开 Kokonut Magnet Button 演示",
+        "href": "https://kokonutui.com/docs/buttons/attract-button",
+        "site": "Kokonut UI"
+      }
+    ],
+    "officialDemoUrl": "https://kokonutui.com/docs/buttons/attract-button",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-attract-button"
+  },
+  {
+    "id": "kokonut-particle-button",
+    "title": "粒子完成按钮 / Particle Button",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "异步动作后勾画与粒子爆发",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Kokonut UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "click / async process",
+    "stack": "React / Motion",
+    "description": "用于异步操作的状态按钮：进行中显示spinner，成功时画出对勾并爆出一小圈粒子，失败则回退到可重试。",
+    "prompt": "【场景】票务「南窗书局朗诵会」座位页，按钮「锁定 2 个座位」。点击后按钮进入加载，文案「正在锁定…」，成功则画出对勾并爆出一小圈纸屑般的粒子，文案改为「已锁定 12 排 7–8 座，10 分钟内付款」。\n【触发】点击发起请求；成功/失败各播一次；可重试。\n【运动】spinner 不打断按钮宽度；对勾 300–450ms 画出；粒子 400–600ms 散开并消失，数量克制。\n【不要】成功粒子无限循环；失败仍显示成功；没有加载与禁用态导致连点。reduced-motion 时取消粒子，只切换文案与对勾。",
+    "links": [
+      {
+        "title": "打开 Kokonut Particle Button 演示",
+        "href": "https://kokonutui.com/docs/buttons/particle-button",
+        "site": "Kokonut UI"
+      }
+    ],
+    "officialDemoUrl": "https://kokonutui.com/docs/buttons/particle-button",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-particle-button"
+  },
+  {
+    "id": "kokonut-cart-button",
+    "title": "就地变成数量步进 / Cart Button",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "加购后在原位展开步进器",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Kokonut UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "click / press",
+    "stack": "React / Motion",
+    "description": "「加入」按钮在原位变形为带加减的数量步进，数量为 1 时可以收到回收桶，长按加减可持续改变。",
+    "prompt": "【场景】咖啡店「北岛」小程序点单：「桂花酒酿拿铁 ¥36」旁是「加入」。点一次，按钮在原位展开成「−  1  +」，再点加到 2。减到 0 时出现垃圾桶并收回成「加入」。长按加减会重复步进。\n【触发】点击加入或加减；长按重复；到 0 收起。\n【运动】宽度与内容 300–450ms 变形，数字滑动切换。不要跳出页面或另开抽屉才改数量。\n【不要】没有最大库存限制；动画期间丢点击；读屏无法听到数量变化。",
+    "links": [
+      {
+        "title": "打开 Kokonut Cart Button 演示",
+        "href": "https://kokonutui.com/docs/buttons/cart-button",
+        "site": "Kokonut UI"
+      }
+    ],
+    "officialDemoUrl": "https://kokonutui.com/docs/buttons/cart-button",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-cart-button"
+  },
+  {
+    "id": "animate-input-otp",
+    "title": "弹出式验证码格 / Input OTP",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "逐格弹入与粘贴错落入场",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Animate UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "focus / submit",
+    "stack": "React / Motion",
+    "description": "验证码输入格在键入时逐字弹出，粘贴整段时按格错落入场，API 与常见 OTP 输入兼容，需保证可访问。",
+    "prompt": "【场景】「星港支付」转账确认：标题「输入短信验证码」，说明「已发送至 138 **** 2164」。六格空位，用户键入 4 时该格弹入；若一次粘贴「839201」，六格从左到右 stagger 弹出。成功后短促勾选，进入「已转账 ¥1,280 给折纸事务所」。\n【触发】键入、退格、粘贴；满格自动提交或等用户确认。\n【运动】单字 180–250ms 弹出；粘贴 stagger 40–60ms。错误时格子轻摇一次并清空。\n【不要】阻断粘贴；用无标签的裸 input；错误不说明原因。reduced-motion 时取消弹出，直接显示已填数字。",
+    "links": [
+      {
+        "title": "打开 Animate UI Input OTP 演示",
+        "href": "https://animate-ui.com/docs/primitives/animate-ui/input-otp",
+        "site": "Animate UI"
+      }
+    ],
+    "officialDemoUrl": "https://animate-ui.com/docs/primitives/animate-ui/input-otp",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-input-otp"
+  },
+  {
+    "id": "animate-pinned-list",
+    "title": "钉选分组列表 / Pinned List",
+    "category": "layout",
+    "categoryLabel": "导航与布局变形",
+    "subcategory": "在置顶与普通组之间滑动的项",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Animate UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "click / drag",
+    "stack": "React / Motion",
+    "description": "列表分成置顶与未置顶两组，钉上或取消时该项在两组之间滑移就位，高度与空隙一起补间。",
+    "prompt": "【场景】「墨蓝笔记」侧栏：置顶组有「季度规划」「青浦十年文案」；下方是「会议 11/24」「北岛菜单」「待读」。把「北岛菜单」钉上后，它从下部滑入置顶组第二位，其余行让位。\n【触发】点击钉图标或拖到置顶区；再次点击取消。\n【运动】共享布局 350–500ms，项不瞬移；组标题在变空/变有时高度平滑。\n【不要】顺序错乱或丢失滚动位置；没有「已置顶」的语义提示。reduced-motion 时瞬时换组，不播放滑移。",
+    "links": [
+      {
+        "title": "打开 Animate UI Pinned List 演示",
+        "href": "https://animate-ui.com/docs/primitives/animate-ui/pinned-list",
+        "site": "Animate UI"
+      }
+    ],
+    "officialDemoUrl": "https://animate-ui.com/docs/primitives/animate-ui/pinned-list",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-pinned-list"
+  },
+  {
+    "id": "animate-spring",
+    "title": "弹簧拉回 / Spring",
+    "category": "gesture",
+    "categoryLabel": "手势与拖拽",
+    "subcategory": "被弹簧拴住的可拖元素",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Animate UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer drag / release",
+    "stack": "React / Motion",
+    "description": "元素可被拖离原位，身后是一条可见的弹簧线圈，松开后拉回原处并短暂振铃。",
+    "prompt": "【场景】活动页「南窗朗诵会」门票卡片可以轻轻拉起来看背面座位图：正面「12 月 4 日 19:30 / 南窗书局 / ¥80」。向下拉，卡片与顶栏之间出现弹簧线圈，松开后弹回，并短暂晃一下。拉过阈值则翻到背面「12 排 7–8 座」。\n【触发】拖拽拉离；松开回弹；超过阈值触发翻面或打开。\n【运动】拖拽跟手，弹簧可见；回弹 400–700ms 并衰减振荡，不要永久晃动。\n【不要】看不出可拖；回弹把页面其它部分带跑；没有非拖拽的打开方式。reduced-motion 时隐藏弹簧，改为点击翻面。",
+    "links": [
+      {
+        "title": "打开 Animate UI Spring 演示",
+        "href": "https://animate-ui.com/docs/primitives/animate-ui/spring",
+        "site": "Animate UI"
+      }
+    ],
+    "officialDemoUrl": "https://animate-ui.com/docs/primitives/animate-ui/spring",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-spring"
+  },
+  {
+    "id": "animate-flip-button",
+    "title": "翻面按钮 / Flip Button",
+    "category": "micro",
+    "categoryLabel": "微交互反馈",
+    "subcategory": "悬停翻到背面的行动按钮",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Animate UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "hover / focus",
+    "stack": "React / Motion",
+    "description": "按钮在悬停或聚焦时沿轴翻到背面，背面给出补充信息或另一种行动，离开后翻回。",
+    "prompt": "【场景】「白潮」产品卡底部按钮，正面「加入购物袋 · ¥168」；悬停翻到背面「库存 14 件 · 今日截单 18:00」。聚焦时同样翻转，方便键盘用户。\n【触发】悬停或聚焦翻转；离开或失焦翻回。点击仍执行加入。\n【运动】沿水平或垂直轴 300–450ms 翻转，背面不可在翻到一半时被点到。\n【不要】背面信息只存在于动画里、读屏读不到；翻转时布局高度跳动。",
+    "links": [
+      {
+        "title": "打开 Animate UI Flip Button 演示",
+        "href": "https://animate-ui.com/docs/primitives/animate-ui/flip-button",
+        "site": "Animate UI"
+      }
+    ],
+    "officialDemoUrl": "https://animate-ui.com/docs/primitives/animate-ui/flip-button",
+    "originalUrl": null,
+    "volume": "gesture",
+    "volumeTitle": "手势、导航与微交互",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-flip-button"
+  },
+  {
+    "id": "rb-depth-text",
+    "title": "层叠视差字 / Depth Text",
+    "category": "flip3d",
+    "categoryLabel": "翻转与 3D",
+    "subcategory": "随指针错动的挤出层叠字",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / in-view",
+    "stack": "React / Motion",
+    "description": "标题由多层挤出的字形叠加，指针移动时各层以不同视差错开，形成浅浮雕深度，而不是单纯的立体长阴影。",
+    "prompt": "【场景】建筑事务所「折纸」作品集封面，巨大标题「折纸」叠了四五层浅灰到深石墨的挤出字。指针左右移动时，前层跟得快、后层跟得慢，露出层间的细缝。副标题「把河边的仓库折出一座礼堂」保持平面。\n【触发】进入视口先有一次轻微展开；此后指针在标题附近移动驱动视差。触屏可用设备倾斜或轻拖。\n【运动】视差位移克制，前层 8–14px，后层更少；不要把字母拆散。reduced-motion 时只保留静止层叠。\n【不要】层数多到花、看不清字；与「挤压立体字」那种静态长阴影混为一谈。",
+    "links": [
+      {
+        "title": "打开 React Bits Depth Text 演示",
+        "href": "https://www.reactbits.dev/text-animations/depth-text",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/text-animations/depth-text",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-depth-text"
+  },
+  {
+    "id": "rb-dither-veil",
+    "title": "抖动揭示幕 / Dither Veil",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "光标把一位抖动图烧回彩色",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / idle",
+    "stack": "React / WebGL",
+    "description": "照片先呈现为一位抖动的黑白网点，光标经过处像被烧掉一层纱，露出全彩，离开后又逐格织回去。",
+    "prompt": "【场景】「青浦影像」专题封面是一张码头铁索的照片，默认是粗颗粒的黑白抖动。光标走过的地方烧回彩色：锈、湿木和傍晚的水。离开后网点从边缘一格格织回来。左下角标题「铁索 · 2019」。\n【触发】指针移动揭示；静止数秒后慢慢织回。点击可把全图锁定为彩色。\n【运动】揭示半径跟手，边缘是硬边网点而不是高斯模糊；织回要慢（1–1.5s）且按格。\n【不要】默认就全彩只加一层滤镜；WebGL 失败时没有静态原图；把效果铺在正文上。reduced-motion 时直接显示彩色原图。",
+    "links": [
+      {
+        "title": "打开 React Bits Dither Veil 演示",
+        "href": "https://www.reactbits.dev/animations/dither-veil",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/animations/dither-veil",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-dither-veil"
+  },
+  {
+    "id": "rb-electric-border",
+    "title": "电流边框 / Electric Border",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "沿边缘窜动并在近处跳火的电流",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer proximity / idle",
+    "stack": "React / Canvas",
+    "description": "任何卡片或按钮的轮廓上爬着细电流，靠近光标时更密、更亮，偶尔向外迸出火花。",
+    "prompt": "【场景】音乐节「灯塔将亮」票种卡「内场通票 ¥680」，深色底，边框有细电流缓缓爬行。光标靠近右上角时该处电流加密，偶尔迸出一两点火花。卡上写「含 12 月 4 日全部场次 · 剩余 126 张」。\n【触发】空闲时低频游走；指针靠近加强；点击可短促放电一次。\n【运动】电流沿路径连续，不要一闪一闪的 PNG 循环；火花粒子立即消失。性能上只在可见时绘制。\n【不要】电流粗到盖住文字；整页每个元素都带电；忽略 reduced-motion（改为静态细边）。",
+    "links": [
+      {
+        "title": "打开 React Bits Electric Border 演示",
+        "href": "https://www.reactbits.dev/animations/electric-border",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/animations/electric-border",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-electric-border"
+  },
+  {
+    "id": "rb-electric-logo",
+    "title": "闪电标识 / Electric Logo",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "从标识轮廓上跃出的电弧",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "idle / pointer",
+    "stack": "React / Canvas",
+    "description": "把 Logo 或短词变成活的闪电轮廓，电弧沿边缘流动，并会从尖角处向外跃出。",
+    "prompt": "【场景】户外品牌「原野」导航栏左侧标识是一个简化的山形与「原野」二字，深色顶栏上，细电沿着山脊和笔画走，偶尔从山尖跃出短弧。旁边是「霜降配色 · 限量 200」。\n【触发】空闲循环；指针靠近时电弧更活跃。\n【运动】电弧贴合 SVG 轮廓，跃出短、收得快；不要把标识本身扭曲变形。\n【不要】对比不足导致标识不可认；在大段文字上使用；reduced-motion 时显示静态线稿标识。",
+    "links": [
+      {
+        "title": "打开 React Bits Electric Logo 演示",
+        "href": "https://www.reactbits.dev/animations/electric-logo",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/animations/electric-logo",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-electric-logo"
+  },
+  {
+    "id": "rb-metallic-paint",
+    "title": "液态金属涂覆 / Metallic Paint",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "液态铬在标识上流动",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / idle",
+    "stack": "React / WebGL",
+    "description": "一层液态铬或液态金属在 Logo 或短标题上流过，表面有高光和黏滞，可被指针搅动。",
+    "prompt": "【场景】钟表品牌「流光」发布页，单词「LUMINA」被一层液态铬缓缓涂满，高光从左上滑到右下。指针可以轻轻搅动金属表面。下方是「1964 手动上链 · 限量 50」。\n【触发】进入后自动涂覆一次；此后指针搅动；离开后表面慢慢抚平。\n【运动】金属有黏滞与反射，不要像纯色渐变扫过。涂覆约 1–1.5s，搅动阻尼明显。\n【不要】用在长段落；WebGL 不可用时没有纯色字回退；闪烁或摩尔纹过强。",
+    "links": [
+      {
+        "title": "打开 React Bits Metallic Paint 演示",
+        "href": "https://www.reactbits.dev/animations/metallic-paint",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/animations/metallic-paint",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-metallic-paint"
+  },
+  {
+    "id": "rb-chroma-grid",
+    "title": "灰度回彩网格 / Chroma Grid",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "聚光灯把灰照片唤回彩色",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move",
+    "stack": "React / Motion",
+    "description": "网格里的照片默认是灰度，一束聚光随光标移动，被照到的卡片恢复彩色，离开后慢慢退回灰度。",
+    "prompt": "【场景】「候鸟旅馆」房源网格：青岛蓝窗、大理天井、京都窄梯、海边晒被。默认都是灰度。光标移到「青岛蓝窗」上，这张恢复蓝色窗框与橙瓦，标题「青岛 · 蓝窗房 / 从 ¥480 晚」显现。\n【触发】指针移动更新聚光；触屏点按锁定一张。\n【运动】颜色恢复 200–350ms，退回更慢一点。聚光边缘柔软，一次主要照亮一张，邻近可有弱光。\n【不要】全部同时彩色；灰度对比差到看不清构图；没有标题的纯图网格。reduced-motion 时始终彩色，只用边框表示焦点。",
+    "links": [
+      {
+        "title": "打开 React Bits Chroma Grid 演示",
+        "href": "https://www.reactbits.dev/components/chroma-grid",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/chroma-grid",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-chroma-grid"
+  },
+  {
+    "id": "rb-decay-card",
+    "title": "溶蚀卡片 / Decay Card",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "指针把图像撕开再自行缝合",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / leave",
+    "stack": "React / WebGL",
+    "description": "一张图片卡在指针经过时像被撕开或熔化，露出底层或破口，离开后自行拉回完整。",
+    "prompt": "【场景】时尚看片「白潮」中间季形象卡：一张人物靠在生锈铁门上的照片。指针划过时，画面像湿颜料被撕开一道口，底下隐约是同一场景的反转片。离开后破口在 600–900ms 内缝合。\n【触发】指针在卡上移动产生破口；离开后自动修复。\n【运动】撕裂跟手，边缘有黏连，不要马赛克方块。修复用弹性而不是硬切。\n【不要】破口常驻导致主体不可认；在文字卡上使用；无 WebGL 时整卡空白。reduced-motion 时关闭撕裂，只保留静止照片。",
+    "links": [
+      {
+        "title": "打开 React Bits Decay Card 演示",
+        "href": "https://www.reactbits.dev/components/decay-card",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/decay-card",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-decay-card"
+  },
+  {
+    "id": "rb-dome-gallery",
+    "title": "半球穹顶画廊 / Dome Gallery",
+    "category": "flip3d",
+    "categoryLabel": "翻转与 3D",
+    "subcategory": "把图像投影在可转的半球面上",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / wheel / click",
+    "stack": "React / Three",
+    "description": "照片被投射在半球或穹顶内壁，拖拽或滚轮改变视角，点击某张将其带到前方并给出说明。",
+    "prompt": "【场景】展览「青浦十年」的三维展厅：半球内壁贴着十二张江边照片。拖转视角，点击「湿窗」那张，它来到前方，下方出现「湿窗 · 2018 / 青浦老街」。\n【触发】拖拽、滚轮改变视角；点击聚焦；Esc 或再点空白回到全览。\n【运动】视角阻尼跟手；聚焦 500–800ms。图像不要在极边缘严重拉伸到无法认。\n【不要】没有列表回退；初次进入没有操作提示；移动端手势与页面滚动冲突。",
+    "links": [
+      {
+        "title": "打开 React Bits Dome Gallery 演示",
+        "href": "https://www.reactbits.dev/components/dome-gallery",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/dome-gallery",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-dome-gallery"
+  },
+  {
+    "id": "rb-fluid-glass",
+    "title": "流体玻璃折射 / Fluid Glass",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "可变形的玻璃体折射后方内容",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / idle",
+    "stack": "React / Three",
+    "description": "一枚三维玻璃体放在标题、图片或视频前方，折射后方内容，跟随指针，并可在几种形状之间融化切换。",
+    "prompt": "【场景】护肤品牌「白潮」英雄区：标题「把海里的盐，放进洗手台」上方悬浮一滴玻璃，折射后方的浪与瓶子。指针移动时玻璃体跟随并拉长，点击在「水滴 / 薄片 / 卵石」三种形状间融化切换。\n【触发】指针移动跟随；点击或按钮切换形状；空闲时缓慢呼吸。\n【运动】折射真实、边缘有厚度；形变 500–800ms 融化，不要瞬间换 mesh。\n【不要】玻璃挡住全部标题无法阅读；高性能消耗时没有降级；reduced-motion 时改为静止玻璃。",
+    "links": [
+      {
+        "title": "打开 React Bits Fluid Glass 演示",
+        "href": "https://www.reactbits.dev/components/fluid-glass",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/fluid-glass",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-fluid-glass"
+  },
+  {
+    "id": "rb-reflective-card",
+    "title": "镜面身份卡 / Reflective Card",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "倾斜时反射环境或循环影像",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move",
+    "stack": "React / WebGL",
+    "description": "一张金属质感的身份卡或会员卡，倾斜时反射摄像头画面或一段循环视频，并在边缘打出高光。",
+    "prompt": "【场景】「流光」会员卡预览：金属卡面写「LUMINA CLUB · 林夏 · MEMBER 026」，右下有小型表盘纹样。指针倾斜卡片时，卡面反射一段工坊循环影像（齿轮、光源），边缘打出一条白光。\n【触发】指针移动改变倾角与高光；无摄像头时只用循环视频或环境贴图，不要向用户强要权限。\n【运动】倾斜跟手、阻尼短；反射与高光同步。松开或离开后 300–500ms 回正。\n【不要】未经说明就打开摄像头；反射强到文字读不清；移动端没有等价的轻倾效果。reduced-motion 时保持平视静止卡面。",
+    "links": [
+      {
+        "title": "打开 React Bits Reflective Card 演示",
+        "href": "https://www.reactbits.dev/components/reflective-card",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/reflective-card",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-reflective-card"
+  },
+  {
+    "id": "rb-model-viewer",
+    "title": "产品三维观察 / Model Viewer",
+    "category": "flip3d",
+    "categoryLabel": "翻转与 3D",
+    "subcategory": "自带画框与软阴影的模型查看器",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "drag / autoplay",
+    "stack": "React / Three",
+    "description": "产品级三维模型查看器，模型被轻轻框住，下方有一摊软阴影，可自动缓转，拖拽观察细节。",
+    "prompt": "【场景】「流光」产品页中央是一只腕表的三维模型，坐在浅灰画框里，脚下有软阴影。默认缓慢自转；拖拽可看表背「LUMINA 1964」与表扣。旁白：「珍珠贝母盘 · 真皮表带 · 手动上链」。\n【触发】进入后慢速自转；拖拽接管，松开后短暂惯性再恢复慢转。提供「重置视角」。\n【运动】转速极慢（20–30s/圈）；拖拽跟手。阴影随转动轻微变形。\n【不要】模型加载时空白无骨架；无法缩放看细节；WebGL 失败没有多角度静帧。reduced-motion 时关闭自转，仅保留手动拖拽或静帧。",
+    "links": [
+      {
+        "title": "打开 React Bits Model Viewer 演示",
+        "href": "https://www.reactbits.dev/components/model-viewer",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/components/model-viewer",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-model-viewer"
+  },
+  {
+    "id": "rb-balatro",
+    "title": "油漆旋涡背景 / Balatro",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "可被光标搅动的油漆着色器",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / click",
+    "stack": "React / OGL",
+    "description": "一层像素感的油漆旋涡铺在背景，光标可以搅动颜料，点击激起漩涡，风格鲜明但不应当抢走前景文字。",
+    "prompt": "【场景】独立游戏「灯塔将亮」预告页：背景是深红与金的油漆在旋，像素边缘清晰。光标搅动颜料，点击激起一小涡。前景是清晰的标题「灯塔将亮」与日期「12 月 4 日，南窗书局隔壁的旧仓库」。\n【触发】指针移动搅动；点击激涡；离开视口暂停着色器。\n【运动】油漆黏滞、像素感保留；不要高频率闪烁。前景文字与按钮始终高对比。\n【不要】把背景对比做到字不可读；低端设备没有降帧或静态回退；reduced-motion 时冻结一帧油漆。",
+    "links": [
+      {
+        "title": "打开 React Bits Balatro 演示",
+        "href": "https://www.reactbits.dev/backgrounds/balatro",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/backgrounds/balatro",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-balatro"
+  },
+  {
+    "id": "magic-border-beam",
+    "title": "沿边走的光梁 / Border Beam",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "一束光沿容器边框旅行",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Magic UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "idle loop",
+    "stack": "React / Motion",
+    "description": "一束短光沿着卡片或按钮的边框循环旅行，用于强调定价卡、高亮功能或进行中的容器，而不是满屏扫光。",
+    "prompt": "【场景】「云帆出行」定价区三张卡，中间「企业包车」被标为「团队在用」。一条浅青的短光沿该卡圆角边框缓缓走一圈。卡上写「含司机与发票 · 起 ¥680 / 趟」。\n【触发】进入视口后循环；非推荐卡无光梁。\n【运动】光梁 2.5–4s 走完一圈，亮度克制，经过圆角时不要断裂。\n【不要】三张卡同时走光；光梁粗到像霓虹广告；reduced-motion 时改为静态描边。",
+    "links": [
+      {
+        "title": "打开 Magic UI Border Beam 演示",
+        "href": "https://magicui.design/docs/components/border-beam",
+        "site": "Magic UI"
+      }
+    ],
+    "officialDemoUrl": "https://magicui.design/docs/components/border-beam",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#magic-border-beam"
+  },
+  {
+    "id": "aceternity-comet-card",
+    "title": "彗星透视卡 / Comet Card",
+    "category": "flip3d",
+    "categoryLabel": "翻转与 3D",
+    "subcategory": "随指针倾斜的透视产品卡",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move",
+    "stack": "React / Motion",
+    "description": "一张有透视深度的产品卡，随指针倾斜，常见于展示硬件、应用或空间产品，强调层与高光而不是翻面。",
+    "prompt": "【场景】灵感来自硬件发布的「拾光」相机周边卡：正面是一台小型胶片相机渲染，标题「拾光口袋机」。指针移动时卡片做透视倾斜，上层镜头与下层机身有轻微视差，边缘露出一抹高光。价格「¥2,480 · 预售」。\n【触发】指针在卡上移动；离开后 300–400ms 回正。\n【运动】倾斜角度克制（约 8–12°），层间视差 4–8px，回正用短弹簧。\n【不要】倾斜过大导致眩晕或文字透视变形难读；没有焦点态。reduced-motion 时取消倾斜，只用边框或阴影表示悬停。",
+    "links": [
+      {
+        "title": "打开 Aceternity Comet Card 演示",
+        "href": "https://ui.aceternity.com/components/comet-card",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/comet-card",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-comet-card"
+  },
+  {
+    "id": "aceternity-background-cubes-grid",
+    "title": "立方网格涟漪 / Background Cubes Grid",
+    "category": "flip3d",
+    "categoryLabel": "翻转与 3D",
+    "subcategory": "光标下起伏的立方网格",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / click",
+    "stack": "React / Three",
+    "description": "一片等距或透视的立方网格，光标经过时方块像涟漪一样抬起，点击可激起一圈波峰。",
+    "prompt": "【场景】「折纸」事务所首页深色英雄区，标题「把结构看成可以折叠的光」下方是一片石墨色立方网格。光标经过时方块沿法线抬起，点击在落点激起一圈波。右下角「查看河仓库礼堂」。\n【触发】指针移动掀起邻近立方；点击扩散一圈。滚动出视口暂停。\n【运动】抬起高度有限，波浪衰减 400–700ms。网格不要抢标题对比。\n【不要】默认狂转或自动乱跳；移动端无触控替代；无 WebGL 回退。",
+    "links": [
+      {
+        "title": "打开 Aceternity Background Cubes Grid 演示",
+        "href": "https://ui.aceternity.com/components/background-cubes-grid",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/background-cubes-grid",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-background-cubes-grid"
+  },
+  {
+    "id": "aceternity-parallax-hero-images",
+    "title": "多层视差英雄图 / Parallax Hero Images",
+    "category": "flip3d",
+    "categoryLabel": "翻转与 3D",
+    "subcategory": "鼠标驱动不同深度的图片层",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move / in-view",
+    "stack": "React / Motion",
+    "description": "英雄区若干图片位于不同深度，随指针以不同速度平移并带一点入场模糊，适合品牌或作品集首页。",
+    "prompt": "【场景】「候鸟旅馆」首页：中心是「今晚住进别人的窗景」，四周漂着四张图——青岛蓝窗、大理天井、京都窄梯、海边晒被——远近不同。指针右移时近景移得多、远景移得少，图片入场时从轻微模糊到清晰。\n【触发】进入视口错落入场；此后指针驱动视差。触屏可用轻微陀螺或关闭视差。\n【运动】入场 600–900ms，模糊 8px 收到 0；视差幅度克制，不要露出明显空边。\n【不要】层数过多遮挡标题；视差幅度大到眩晕；没有减动效方案。",
+    "links": [
+      {
+        "title": "打开 Aceternity Parallax Hero Images 演示",
+        "href": "https://ui.aceternity.com/components/parallax-hero-images",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/parallax-hero-images",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-parallax-hero-images"
+  },
+  {
+    "id": "aceternity-pixelated-canvas",
+    "title": "像素画布畸变 / Pixelated Canvas",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "把图像打成可被指针搅动的像素",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move",
+    "stack": "React / Canvas",
+    "description": "把任意图片转成像素画布，指针在上面搅动会产生局部畸变，类似某些设计系统站点的交互封面。",
+    "prompt": "【场景】「织光工作室」作品封面用一张办公室窗边的照片，被打成粗像素。指针经过时局部像素被搅开又弹回，像在拨动马赛克。下方「为南窗书局做的季节海报」。\n【触发】指针移动扰动；离开后 300–500ms 复位。\n【运动】像素块有黏滞弹性，不要整图随机闪烁。像素尺寸保证主体仍可辨认。\n【不要】默认分辨率低到完全抽象却无原图入口；性能上全屏无节流。reduced-motion 时显示未扰动的像素图或原图。",
+    "links": [
+      {
+        "title": "打开 Aceternity Pixelated Canvas 演示",
+        "href": "https://ui.aceternity.com/components/pixelated-canvas",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/pixelated-canvas",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-pixelated-canvas"
+  },
+  {
+    "id": "aceternity-glowing-effect",
+    "title": "自适应发光边 / Glowing Effect",
+    "category": "material",
+    "categoryLabel": "光影与材质",
+    "subcategory": "贴合任意容器的游走辉光",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Aceternity UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / idle",
+    "stack": "React / Motion",
+    "description": "一道辉光贴合卡片或按钮的真实轮廓游走或随指针滑动，可套在任意容器上，而不是固定矩形贴图。",
+    "prompt": "【场景】协作工具「墨蓝」功能卡「从会议里长出任务」，圆角容器边有一道柔和白青辉光随指针在边缘滑动，像光在金属包边上走。卡内是三条真实任务和一段 42:18 的会议时长。\n【触发】指针在卡上时辉光跟随最近点；离开后回到缓慢沿边循环或熄灭。\n【运动】辉光贴合圆角，不要在拐角断开；跟随 80–150ms。亮度克制，深浅主题都要可见但不刺眼。\n【不要】与电流边框简单地重复成同一套火花；辉光泄漏到邻卡。reduced-motion 时改为静态细边，不再游走。",
+    "links": [
+      {
+        "title": "打开 Aceternity Glowing Effect 演示",
+        "href": "https://ui.aceternity.com/components/glowing-effect",
+        "site": "Aceternity UI"
+      }
+    ],
+    "officialDemoUrl": "https://ui.aceternity.com/components/glowing-effect",
+    "originalUrl": null,
+    "volume": "space",
+    "volumeTitle": "三维与光影材质",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-glowing-effect"
+  },
+  {
+    "id": "rb-text-cursor",
+    "title": "文字拖尾光标 / Text Cursor",
+    "category": "cursor",
+    "categoryLabel": "指针与光标",
+    "subcategory": "光标后落下字或符号的拖尾",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer move",
+    "stack": "React / Motion",
+    "description": "光标移动时在身后落下文字、符号或短词，可以是盖章般的拷贝、一条跟随的字链，或缎带一样的字母。",
+    "prompt": "【场景】诗歌节「南窗」专题页自定义光标，移动时身后落下「风」「窗」「夜」「读」四个交替汉字，像被盖在浅米色纸上，短暂停留后淡出。页面标题「周四晚上，把诗读出声」。\n【触发】指针移动时在轨迹上盖印；速度高时间距拉大，低时更密。静止后拖尾在 400–700ms 内消失。\n【运动】字的旋转轻微、不转圈发晕；数量有上限，避免拖一条长蛇。\n【不要】拖尾挡住链接与按钮热区；在输入框里仍盖字；没有系统光标回退（尤其是触摸设备可关闭）。",
+    "links": [
+      {
+        "title": "打开 React Bits Text Cursor 演示",
+        "href": "https://www.reactbits.dev/text-animations/text-cursor",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/text-animations/text-cursor",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-text-cursor"
+  },
+  {
+    "id": "rb-ripple-distortion",
+    "title": "水面位移畸变 / Ripple Distortion",
+    "category": "particle",
+    "categoryLabel": "粒子与流体",
+    "subcategory": "指针在内容上掀起衰减的水面",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / click",
+    "stack": "React / WebGL",
+    "description": "指针在画面上掀起水位位移，内容被掀起的波纹扭曲，并留下逐渐衰减的尾迹，点击可激起更大一圈。",
+    "prompt": "【场景】「白潮」品牌片头是一盆清水上的盐粒特写。指针划过，水面把瓶子与标题「海盐洁面」轻轻扭曲，并留下一圈圈衰减的波。点击激起更大一浪。\n【触发】移动产生尾迹；点击激波；离开视口停止模拟。\n【运动】波是位移而不是半透明圈，衰减自然（约 0.8–1.2s）。文字扭曲幅度以仍可读为限。\n【不要】波纹永不平复；低端设备无降级；reduced-motion 时关闭位移。",
+    "links": [
+      {
+        "title": "打开 React Bits Ripple Distortion 演示",
+        "href": "https://www.reactbits.dev/animations/ripple-distortion",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/animations/ripple-distortion",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-ripple-distortion"
+  },
+  {
+    "id": "rb-strands",
+    "title": "玻璃球中的光谱丝 / Strands",
+    "category": "particle",
+    "categoryLabel": "粒子与流体",
+    "subcategory": "在磨砂球里扭结并鼓起的光丝",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / idle",
+    "stack": "React / WebGL",
+    "description": "光谱般的细丝在磨砂玻璃球里扭转，汇合处鼓起平滑的包，指针靠近时丝线让开或聚拢，气质接近一种语音球体。",
+    "prompt": "【场景】语音助手「潮汐」等待页：一枚磨砂玻璃球里有青与暖白的细丝在缓缓扭转，汇合处鼓起。指针靠近时丝线让出一条通路。球下写「我在听。你可以问今晚青岛会不会下雨。」\n【触发】空闲呼吸；指针靠近改变丝线场；开始录音时丝线加密。\n【运动】丝线连续、无硬折；鼓起平滑。帧率稳定，不可见时暂停。\n【不要】做成廉价彩带风暴；没有文字状态；reduced-motion 时改为静止球体与文案。",
+    "links": [
+      {
+        "title": "打开 React Bits Strands 演示",
+        "href": "https://www.reactbits.dev/animations/strands",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/animations/strands",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-strands"
+  },
+  {
+    "id": "rb-crystalized-ball",
+    "title": "晶格电球 / Crystalized Ball",
+    "category": "particle",
+    "categoryLabel": "粒子与流体",
+    "subcategory": "带电裂纹与尘埃的玻璃球",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / idle",
+    "stack": "React / WebGL",
+    "description": "一枚玻璃球边缘有裂纹般的电流，球内发光尘埃随光标旋转，适合作为生成、加载或品牌物件，而不是背景噪声。",
+    "prompt": "【场景】生成工具「织光」的等待物件：一枚玻璃球放在「正在生成季节海报」旁边，球缘有细裂纹电流，内部金尘随光标缓缓旋转。完成后电流熄灭，球内浮出缩略图。\n【触发】生成过程中循环；指针搅动尘埃；完成后收束一次。\n【运动】电流沿裂纹走，尘埃有动量。完成时 400–600ms 收光。\n【不要】与页面加载圈重复两套无说明动画；失败时球仍无限转。reduced-motion 时显示静止球体与阶段文案。",
+    "links": [
+      {
+        "title": "打开 React Bits Crystalized Ball 演示",
+        "href": "https://www.reactbits.dev/animations/crystalized-ball",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/animations/crystalized-ball",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-crystalized-ball"
+  },
+  {
+    "id": "rb-lightning",
+    "title": "指向性闪电 / Lightning",
+    "category": "particle",
+    "categoryLabel": "粒子与流体",
+    "subcategory": "弯向光标并在点击处落下的闪电",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / click",
+    "stack": "React / OGL",
+    "description": "背景或舞台上的分支闪电会弯向光标，并在点击位置落下一次完整的击打，适合天气、能量或演出主题，使用需克制。",
+    "prompt": "【场景】音乐节「灯塔将亮」预热页夜空背景：远处有低频闪电。光标移动时最近的一支弯向指针，点击落下一道短促的击打，照亮标题「灯塔将亮 / 12 月 4 日」。不要连续狂闪。\n【触发】空闲偶发远雷；指针影响走向；点击击打一次，带短冷却。\n【运动】分支自然、瞬间亮起并在 150–300ms 内衰减。不要持续曝光。\n【不要】闪烁频率伤害用户；与正文对比不足或过曝；忽略减动效与光敏提示。",
+    "links": [
+      {
+        "title": "打开 React Bits Lightning 演示",
+        "href": "https://www.reactbits.dev/backgrounds/lightning",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/backgrounds/lightning",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-lightning"
+  },
+  {
+    "id": "rb-faulty-terminal",
+    "title": "故障终端墙 / Faulty Terminal",
+    "category": "particle",
+    "categoryLabel": "粒子与流体",
+    "subcategory": "带磷光拖尾的闪烁字符场",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / click",
+    "stack": "React / WebGL",
+    "description": "一整面 CRT 终端墙由发光字符组成，光标划过留下磷光拖尾，点击引发局部故障，适合极客或叙事封面，不是正文载体。",
+    "prompt": "【场景】「墨蓝」开发者文档封面：深色字符场缓缓滚过片段 `molan capture --from meeting.wav`。光标划过留下磷光，点击让局部字符闪错一帧再恢复。前景有清晰的标题「把会议变成任务」。\n【触发】空闲滚动与闪烁；指针留下拖尾；点击局部故障。\n【运动】闪烁低频，拖尾短；前景文字始终可读。\n【不要】把文档正文放进字符场；高频闪烁；无静态封面回退。",
+    "links": [
+      {
+        "title": "打开 React Bits Faulty Terminal 演示",
+        "href": "https://www.reactbits.dev/backgrounds/faulty-terminal",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/backgrounds/faulty-terminal",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-faulty-terminal"
+  },
+  {
+    "id": "rb-threads",
+    "title": "丝线让路 / Threads",
+    "category": "particle",
+    "categoryLabel": "粒子与流体",
+    "subcategory": "在光标处分开再弹回的流动丝线",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / idle",
+    "stack": "React / OGL",
+    "description": "密集的流动细线像丝绸一样摆动，在光标处分开并在离开后弹回原位，可用于封面或章节间隔，线要细、对比要克制。",
+    "prompt": "【场景】「织光工作室」首页浅色底上是一层极细的暖灰丝线，慢波流动。光标移到「为南窗书局做的季节海报」标题附近，丝线分开让出一条通路，离开后弹回。\n【触发】空闲摆动；指针分开丝线；离开后弹簧恢复。\n【运动】分开半径明确，回弹 300–500ms。线宽细，不与标题抢对比。\n【不要】线过密导致摩尔纹或卡顿；深浅主题下都看不见或太脏。reduced-motion 时冻结丝线，不再随指针分开。",
+    "links": [
+      {
+        "title": "打开 React Bits Threads 演示",
+        "href": "https://www.reactbits.dev/backgrounds/threads",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/backgrounds/threads",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-threads"
+  },
+  {
+    "id": "rb-antigravity",
+    "title": "反重力粒子环 / Antigravity",
+    "category": "particle",
+    "categoryLabel": "粒子与流体",
+    "subcategory": "在光标周围升起圆环并在点击时炸开",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "pointer / click",
+    "stack": "React / OGL",
+    "description": "粒子场会在光标周围升起一圈发光的环，点击则向外爆开再缓缓回落，适合庆祝或引力主题的英雄区。",
+    "prompt": "【场景】公益活动「把灯留下」捐赠页：深色英雄区有细小的悬浮尘埃。光标所到之处尘埃升起成一圈柔光环；点击「捐赠 ¥50」之前的预览，环向外炸开再落下，像把光撒开。主文案「为南窗夜读留下一盏灯」。\n【触发】指针移动形成环；点击爆开，带短冷却。\n【运动】环的形成 200–350ms，爆炸 500–800ms 后回落。粒子数量有上限。\n【不要】爆炸遮挡按钮；自动不断爆炸；减动效时改为静态尘埃。",
+    "links": [
+      {
+        "title": "打开 React Bits Antigravity 演示",
+        "href": "https://www.reactbits.dev/backgrounds/antigravity",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/backgrounds/antigravity",
+    "originalUrl": null,
+    "volume": "particle",
+    "volumeTitle": "粒子、流体与光标",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9#rb-antigravity"
+  },
+  {
+    "id": "rb-status-mark",
+    "title": "状态符变形 / Status Mark",
+    "category": "loading",
+    "categoryLabel": "加载与骨架",
+    "subcategory": "从空闲环到进度弧再到对勾",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "state change",
+    "stack": "React / Motion",
+    "description": "一枚状态符号在空闲圆环、进行中的进度弧和完成对勾之间变形，适合代理任务、后台作业或清单项。",
+    "prompt": "【场景】「墨蓝」把会议记要变成任务时，一行「整理 42:18 录音」左侧是状态符：空闲是细环，开始后环变成进度弧（文案「正在转写 36%」），完成时弧收成对勾，文案「已生成 3 个任务」。失败则变成可重试的感叹号。\n【触发】任务状态变化时变形一次，不要循环播放完成态。\n【运动】环→弧→勾 300–500ms 路径变形，中间不要闪成空白。进度弧跟真实百分比走。\n【不要】只用颜色区分状态；读屏不播报变化；失败仍显示对勾。",
+    "links": [
+      {
+        "title": "打开 React Bits Status Mark 演示",
+        "href": "https://www.reactbits.dev/micro/status-mark",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/status-mark",
+    "originalUrl": null,
+    "volume": "loading",
+    "volumeTitle": "加载与数据可视化",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#rb-status-mark"
+  },
+  {
+    "id": "rb-refine-frame",
+    "title": "分步精修画框 / Refine Frame",
+    "category": "loading",
+    "categoryLabel": "加载与骨架",
+    "subcategory": "在同一画框里走完生成阶段",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "generation in progress",
+    "stack": "React / Motion",
+    "description": "媒体画框在生成过程中依次经过草稿、清晰化、上色或精修等阶段，框的尺寸始终不变，避免布局跳动。",
+    "prompt": "【场景】「织光」海报生成：画框固定 4:5。先出现灰块构图，再到模糊的「南窗书局春季窗景」轮廓，再上色出黄花与书店招牌，最后锐化完成。框下步骤写「构图 → 上色 → 精修」，当前是「精修 2/3」。全程框不缩放。\n【触发】生成开始走阶段；可暂停或重试；完成后停留在成片。\n【运动】阶段切换用 400–700ms 溶解或轻微模糊过渡，不要闪白。尺寸锁定。\n【不要】阶段切换导致页面跳动；没有失败态；用假进度欺骗已完成。reduced-motion 时直接显示当前阶段静帧与文字。",
+    "links": [
+      {
+        "title": "打开 React Bits Refine Frame 演示",
+        "href": "https://www.reactbits.dev/micro/refine-frame",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/refine-frame",
+    "originalUrl": null,
+    "volume": "loading",
+    "volumeTitle": "加载与数据可视化",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#rb-refine-frame"
+  },
+  {
+    "id": "rb-thought-line",
+    "title": "思考轨迹折叠 / Thought Line",
+    "category": "loading",
+    "categoryLabel": "加载与骨架",
+    "subcategory": "推理步骤在完成后折成一行",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "React Bits",
+    "date": "采集于 2026-11-25",
+    "trigger": "agent running",
+    "stack": "React / Motion",
+    "description": "推理或思考过程有实时计时，进行中逐步展开步骤，完成后把步骤折成一行摘要，避免占满屏幕。",
+    "prompt": "【场景】「墨蓝」助手正在处理「从这次会议里列出任务」。展开区依次出现「识别发言人」「抽取待办」「合并重复项」，右侧有计时 00:08。完成后折成一行「已思考 8 秒 · 生成 3 个任务」，可再展开回看步骤。\n【触发】任务开始展开；结束折叠；用户可手动展开。\n【运动】折叠 300–450ms，高度收回；计时停止。步骤不要无限往下蹦。\n【不要】把内部链思想法原样铺满；完成后仍不停计时；没有折叠入口。reduced-motion 时取消折叠动画，瞬时收成一行。",
+    "links": [
+      {
+        "title": "打开 React Bits Thought Line 演示",
+        "href": "https://www.reactbits.dev/micro/thought-line",
+        "site": "React Bits"
+      }
+    ],
+    "officialDemoUrl": "https://www.reactbits.dev/micro/thought-line",
+    "originalUrl": null,
+    "volume": "loading",
+    "volumeTitle": "加载与数据可视化",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#rb-thought-line"
+  },
+  {
+    "id": "magic-circular-progress",
+    "title": "环形百分比 / Circular Progress",
+    "category": "dataviz",
+    "categoryLabel": "数据可视化动效",
+    "subcategory": "圆轨上行走的百分比仪表",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "Magic UI",
+    "date": "采集于 2026-11-25",
+    "trigger": "value change / in-view",
+    "stack": "React / Motion",
+    "description": "圆环仪表把百分比从 0 走到目标值，用于配额、完成度或存储，数字与弧应同步，并有明确的总量含义。",
+    "prompt": "【场景】「云帆」企业后台的「本月包车额度」：环形仪表走到 72%，中央写「72% · 已用 36 / 50 趟」。弧是青绿，剩余是浅灰。旁注「额度将于 12 月 1 日重置」。\n【触发】进入视口从 0 走到当前值；数值更新时从旧值补间到新值。\n【运动】弧与数字同步，600–900ms，缓出。不要数字跳变而弧还在走。\n【不要】没有总量与单位；颜色作为唯一状态（还需文字）；减动效时直接显示终值。",
+    "links": [
+      {
+        "title": "打开 Magic UI Circular Progress 演示",
+        "href": "https://magicui.design/docs/components/animated-circular-progress-bar",
+        "site": "Magic UI"
+      }
+    ],
+    "officialDemoUrl": "https://magicui.design/docs/components/animated-circular-progress-bar",
+    "originalUrl": null,
+    "volume": "loading",
+    "volumeTitle": "加载与数据可视化",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#magic-circular-progress"
+  },
+  {
+    "id": "nivo-radar",
+    "title": "Nivo 雷达图展开",
+    "category": "dataviz",
+    "categoryLabel": "数据可视化动效",
+    "subcategory": "坐标轴与多边形同步长出",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "nivo",
+    "date": "采集于 2026-11-25",
+    "trigger": "data load / change",
+    "stack": "React / nivo",
+    "description": "雷达图在数据到达后，轴、网格与多边形一同展开或变形到新的值，适合能力模型或对比评分，需要清晰图例与数值。",
+    "prompt": "【场景】「山海科考」公开课反馈：「课程评分」雷达对比两门课。轴为「内容深度、可操作性、材料完整、节奏、答疑」。绿色多边形是「海岸线测量」，琥珀是「潮汐观测入门」，分数例如 4.6 / 4.1 / 4.8 / 3.9 / 4.7。\n【触发】数据到达或筛选切换时，从中心或上一组形态补间到新多边形。\n【运动】网格先或同时出现，多边形 500–800ms 变形，点上的数值延迟显现。\n【不要】没有图例和数值只靠颜色；多系列完全重叠无法读；忽略减动效。",
+    "links": [
+      {
+        "title": "打开 nivo Radar 演示",
+        "href": "https://nivo.rocks/radar/",
+        "site": "nivo"
+      }
+    ],
+    "officialDemoUrl": "https://nivo.rocks/radar/",
+    "originalUrl": null,
+    "volume": "loading",
+    "volumeTitle": "加载与数据可视化",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#nivo-radar"
+  },
+  {
+    "id": "nivo-calendar",
+    "title": "Nivo 日历热力 / Calendar",
+    "category": "dataviz",
+    "categoryLabel": "数据可视化动效",
+    "subcategory": "按日格子渐现的贡献热力",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "nivo",
+    "date": "采集于 2026-11-25",
+    "trigger": "data load / hover",
+    "stack": "React / nivo",
+    "description": "年或月的日历热力在加载后按日或按周渐现，悬停给出当天的准确数值与日期，适合活跃度、训练或供稿记录。",
+    "prompt": "【场景】「青浦影像」投稿日历：2026 年每日投稿量热力。深青格子是多投日，浅格是空档。悬停 11 月 24 日显示「11 月 24 日 · 3 件 / 码头铁索、湿窗、河面黄昏」。图例从 0 到 5+。\n【触发】数据到达后按周 stagger 显现；悬停出准确值；可切年份。\n【运动】格子 20–40ms 错开淡入或亮度升起，整年不超过约 1s。\n【不要】只用颜色不给数值；把无数据与零值混为一谈；移动端无法查看某日详情。reduced-motion 时取消错开入场，直接显示全年格子。",
+    "links": [
+      {
+        "title": "打开 nivo Calendar 演示",
+        "href": "https://nivo.rocks/calendar/",
+        "site": "nivo"
+      }
+    ],
+    "officialDemoUrl": "https://nivo.rocks/calendar/",
+    "originalUrl": null,
+    "volume": "loading",
+    "volumeTitle": "加载与数据可视化",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#nivo-calendar"
+  },
+  {
+    "id": "nivo-treemap",
+    "title": "Nivo 矩形树图 / Treemap",
+    "category": "dataviz",
+    "categoryLabel": "数据可视化动效",
+    "subcategory": "占比矩形分区展开",
+    "source": "ai",
+    "sourceLabel": "AI Coding",
+    "author": "nivo",
+    "date": "采集于 2026-11-25",
+    "trigger": "data load / click drill",
+    "stack": "React / nivo",
+    "description": "矩形树图按占比展开分区，可下钻到子类，适合预算、空间或流量构成，矩形上要有可读标签与数值。",
+    "prompt": "【场景】「云帆」运营月报：「11 月行程构成」。最大块「通勤班线 62% · 1,240 趟」，其次「跨城拼车 23% · 460 趟」，「企业包车 15% · 300 趟」。点击「企业包车」下钻到「机场 / 会议 / 景区」。\n【触发】数据到达时分区从 0 面积或透明度展开；点击下钻，返回键回到上层。\n【运动】布局 500–800ms 重新分配，标签在面积稳定后出现，过小块放到 tooltip。\n【不要】小块上硬塞看不清的字；下钻无路径面包屑；颜色无图例。reduced-motion 时取消面积补间，直接切到新布局。",
+    "links": [
+      {
+        "title": "打开 nivo Treemap 演示",
+        "href": "https://nivo.rocks/treemap/",
+        "site": "nivo"
+      }
+    ],
+    "officialDemoUrl": "https://nivo.rocks/treemap/",
+    "originalUrl": null,
+    "volume": "loading",
+    "volumeTitle": "加载与数据可视化",
+    "volumeUrl": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
+    "canvasAnchor": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a#nivo-treemap"
   }
 ]

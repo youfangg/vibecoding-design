@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>流光腕表</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #171411; color: #f6f1e8; overflow: hidden; }
+    .scroll { height: 100%; overflow: auto; }
+    .runway { height: 320%; }
+    .stage { position: sticky; top: 0; height: 100vh; display: grid; place-items: center; }
+    .scene { width: min(100%, 420px); height: 240px; perspective: 800px; position: relative; }
+    .ring { position: absolute; inset: 40px 0; transform-style: preserve-3d; }
+    .watch {
+      position: absolute; left: 50%; top: 20px; width: 120px; margin-left: -60px; height: 150px;
+      background: #2a2420; border: 1px solid #e7c48a; display: grid; place-items: center; text-align: center;
+    }
+    .watch b { font-family: var(--serif); }
+    .caption { position: absolute; left: 16px; right: 16px; bottom: 64px; margin: 0; text-align: center; }
+    .example { position: absolute; top: 14px; right: 14px; margin: 0; color: #cbbba8; font-size: 12px; }
+    button { position: absolute; bottom: 18px; min-height: 36px; padding: 0 10px; border: 1px solid #e7c48a; background: transparent; color: #f6f1e8; }
+    #prev { left: 16px; } #next { right: 16px; }
+  </style>
+</head>
+<body>
+  <p class="example">示例价格</p>
+  <div class="scroll" id="scroll">
+    <div class="runway">
+      <div class="stage">
+        <div class="scene"><div class="ring" id="ring"></div></div>
+        <p class="caption" id="caption"></p>
+      </div>
+    </div>
+  </div>
+  <button type="button" id="prev">上一款</button>
+  <button type="button" id="next">下一款</button>
+  <script src="kit.js"></script>
+  <script>
+    var items = [
+      ["珍珠贝母盘", "¥2,480", "#f4efe6"],
+      ["墨蓝夜盘", "¥2,680", "#1d3348"],
+      ["赤陶表圈", "¥2,320", "#a85a3c"]
+    ];
+    var ring = document.getElementById("ring");
+    var faces = items.map(function (item, i) {
+      var face = document.createElement("article");
+      face.className = "watch";
+      face.innerHTML = "<b></b>";
+      face.firstChild.textContent = item[0];
+      face.style.background = item[2];
+      face.style.color = i === 1 ? "#f6f1e8" : "#241c16";
+      ring.append(face);
+      return face;
+    });
+    var index = 0;
+    var kit = window.PreviewKit;
+    function layout(pos) {
+      faces.forEach(function (face, i) {
+        var delta = i - pos;
+        face.style.transform = "rotateY(" + (delta * -48) + "deg) translateZ(140px)";
+        face.style.opacity = Math.abs(delta) > 1.2 ? "0.35" : "1";
+      });
+      var i = Math.round(pos) % items.length;
+      if (i < 0) i += items.length;
+      document.getElementById("caption").textContent = items[i][0] + " · " + items[i][1];
+    }
+    function go(next) { index = (next + items.length) % items.length; layout(index); }
+    document.getElementById("prev").addEventListener("click", function () { go(index - 1); });
+    document.getElementById("next").addEventListener("click", function () { go(index + 1); });
+    var scroll = document.getElementById("scroll");
+    scroll.addEventListener("scroll", function () {
+      if (kit.reduced()) return;
+      var max = scroll.scrollHeight - scroll.clientHeight;
+      var p = max ? scroll.scrollTop / max : 0;
+      layout(p * (items.length - 1));
+    }, { passive: true });
+    layout(0);
+    if (!kit.reduced()) setInterval(function () { go(index + 1); }, 2200);
+  </script>
+</body>
+</html>

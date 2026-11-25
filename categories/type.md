@@ -1,7 +1,15 @@
 # 文字动效
 
-本类共 57 条，来自分册「[文字动效与进入离场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8)」。在 `data/cases.json` 中对应 `category` 为 `type`。复制下方提示词即可用于 AI Coding。
+本类共 65 条，来自分册「[文字动效与进入离场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8)」。在 `data/cases.json` 中对应 `category` 为 `type`。复制下方提示词即可用于 AI Coding。
 
+- [曲线循环字 / Curved Loop](#rb-curved-loop)
+- [环形绕字 / Circular Text](#rb-circular-text)
+- [绒毛抖动字 / Fuzzy Text](#rb-fuzzy-text)
+- [蒙版透图标题 / Masked Heading](#rb-masked-heading)
+- [光标扰动字 / Scrambled Text](#rb-scrambled-text)
+- [极光字 / Aurora Text](#magic-aurora-text)
+- [终端打字日志 / Terminal](#magic-terminal)
+- [轮廓扫光字 / Text Hover Effect](#aceternity-text-hover-effect)
 ## 目录
 
 - [口语节奏逐词 / Scroll-Driven Kinetic Type](#do-not-scroll)
@@ -1675,4 +1683,228 @@ HTML 标题套用 SVG 滤镜，滚动时出现波纹、碎裂或扭曲，每段�
 【触发】in-view 一次。
 【运动】残影沿运动方向错开，400–700ms 内并入正字并消失。正字始终是 DOM 文本。
 【不要】残影一直闪个不停；层数多到字不可读。
+```
+
+## 曲线循环字 / Curved Loop
+
+<a id="rb-curved-loop"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：沿弧线循环的可拖标语
+- 触发：idle / drag
+- 技术栈：React / GSAP
+- 官方演示：https://www.reactbits.dev/text-animations/curved-loop
+- 分册锚点：[rb-curved-loop](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-curved-loop)
+
+一行标语带着插图沿自定义弧线无缝循环，可拖动改方向与速度，松手后惯性回到基础节奏。
+
+链接：
+
+- [打开 React Bits Curved Loop 演示](https://www.reactbits.dev/text-animations/curved-loop)（React Bits）
+
+### 提示词
+
+```
+【场景】独立书店「南窗书局」活动页英雄区：一条沿缓弧线循环的活动带，文案为「每周四晚 19:30 · 诗人朗诵会 · 南窗书局 · 预约席位有限」，中间穿插封面《春天的十二封信》《夜航船》与一杯窗边咖啡的照片。读者可拖动带子改方向。
+【触发】进入后自动慢速循环；拖拽或触滑改速度与方向；松开后惯性回落到基础速度。
+【运动】文字与封面沿 SVG 曲线无缝衔接，基础速度约 40–60px/s；拖拽跟手，松开后 400–600ms 惯性衰减。封面沿切线轻微倾斜。
+【不要】出现接缝或空白段；把长段落放上曲线；忽略 reduced-motion（改为静态弧排，可横滑阅读）。
+```
+
+## 环形绕字 / Circular Text
+
+<a id="rb-circular-text"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：绕圆旋转的环排标题
+- 触发：idle loop / hover
+- 技术栈：React / GSAP
+- 官方演示：https://www.reactbits.dev/text-animations/circular-text
+- 分册锚点：[rb-circular-text](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-circular-text)
+
+把短句沿圆周排列并缓慢旋转，悬停可暂停或反向，适合徽章、专辑或活动标识，而不是长标题。
+
+链接：
+
+- [打开 React Bits Circular Text 演示](https://www.reactbits.dev/text-animations/circular-text)（React Bits）
+
+### 提示词
+
+```
+【场景】黑胶店「回声唱片」专辑页：一张封面（蓝绿渐变、浪尖上的一座灯塔）居中，环上排「回声唱片 · 新专发行 · 灯塔将亮 · 2026.12.04 ·」，顺时针慢转。悬停环带暂停，点击进入试听。
+【触发】进入后自动旋转；悬停暂停；移出后 200–300ms 恢复。
+【运动】字母沿正圆均分，转速约 8–12s 一圈；字距稳定，不要在 12 点位置跳变。环内侧留出封面安全距。
+【不要】把句子排成难以阅读的反向字；在长文或多行标题上使用；reduced-motion 时静止展示完整句，仍可点击。
+```
+
+## 绒毛抖动字 / Fuzzy Text
+
+<a id="rb-fuzzy-text"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：悬停加剧的绒毛振动字
+- 触发：idle / hover
+- 技术栈：React / Canvas
+- 官方演示：https://www.reactbits.dev/text-animations/fuzzy-text
+- 分册锚点：[rb-fuzzy-text](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-fuzzy-text)
+
+标题带一层可控的绒毛或射频抖动，默认很轻，悬停时强度上升，离开后收敛。适合警示、限量或故障美学，不适合长文。
+
+链接：
+
+- [打开 React Bits Fuzzy Text 演示](https://www.reactbits.dev/text-animations/fuzzy-text)（React Bits）
+
+### 提示词
+
+```
+【场景】户外品牌「原野」限量配色发布页：主标题「原野 · 霜降配色 限量 200 套」，副标题「预购于 12 月 1 日 10:00 开放」。标题有一层细密绒毛抖动，光标靠近时振动加强，像寒霜在字上发抖。
+【触发】默认低强度空闲抖动；指针进入标题加强；离开后 300–500ms 回到低强度。reduced-motion 时完全静止。
+【运动】抖动位移控制在 1–2px，悬停不超过 3–4px，频率高但幅度小；不要让字形散开无法识别。原文字留给读屏。
+【不要】在段落正文或小字号上使用；把抖动做成廉价闪烁或彩虹故障。
+```
+
+## 蒙版透图标题 / Masked Heading
+
+<a id="rb-masked-heading"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：字内透出漂移纹理的揭示
+- 触发：in-view / idle
+- 技术栈：React / GSAP
+- 官方演示：https://www.reactbits.dev/text-animations/masked-heading
+- 分册锚点：[rb-masked-heading](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-masked-heading)
+
+标题充当蒙版，字内露出缓慢漂移的色彩网格或实拍图片，并按词依次显现。适合英雄标题，不要用于大段正文。
+
+链接：
+
+- [打开 React Bits Masked Heading 演示](https://www.reactbits.dev/text-animations/masked-heading)（React Bits）
+
+### 提示词
+
+```
+【场景】影像节「青浦十年」首页英雄标题：「江边的光，还在路上」。字内透出一组实拍：黄昏河面、码头铁索、一排湿漉漉的窗。纹理在字内缓慢平移。标题按词依次揭开。
+【触发】标题进入视口后播放一次揭示；此后纹理继续慢速漂移。reduced-motion 时直接显示成品字与静态纹理。
+【运动】按词 stagger 80–120ms，每个词用软遮罩向上揭示 500–700ms；纹理平移极慢（约 20–30s 循环），不要抢字。整句不超过约 1.4s。
+【不要】让图片在字外泄漏；用低对比纹理导致标题读不清；忽略读屏原文。
+```
+
+## 光标扰动字 / Scrambled Text
+
+<a id="rb-scrambled-text"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：随光标位置扭曲的正文
+- 触发：pointer proximity
+- 技术栈：React / GSAP
+- 官方演示：https://www.reactbits.dev/text-animations/scrambled-text
+- 分册锚点：[rb-scrambled-text](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#rb-scrambled-text)
+
+检测光标在一行或一段文字中的位置，只扰动邻近字母的形状或位置，离开后字形归位。与整句乱码揭示不是同一类效果。
+
+链接：
+
+- [打开 React Bits Scrambled Text 演示](https://www.reactbits.dev/text-animations/scrambled-text)（React Bits）
+
+### 提示词
+
+```
+【场景】建筑事务所「折纸」简介页有一段短文：「我们把河边仓库改成礼堂，把光从屋脊引进来。」光标在行上移动时，邻近两三个字轻微拉斜、错位，像纸被手指掀起，离开后弹回。
+【触发】指针在文字盒内移动时持续更新；离开后 200–300ms 弹簧归位。键盘焦点时不要扰动。
+【运动】影响半径约 2–3 个字，位移 2–6px，可带轻微旋转或字重变化；衰减光滑。原文字保持可选中。
+【不要】整段同时扭曲；做成无法阅读的乱码风暴；与「解密文本 / 悬停乱码」混用同一套全句洗牌。
+```
+
+## 极光字 / Aurora Text
+
+<a id="magic-aurora-text"></a>
+
+- 来源：AI Coding
+- 作者：Magic UI
+- 日期：采集于 2026-11-25
+- 子类：字内流动的极光渐变
+- 触发：idle loop
+- 技术栈：React / Motion
+- 官方演示：https://magicui.design/docs/components/aurora-text
+- 分册锚点：[magic-aurora-text](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#magic-aurora-text)
+
+标题填充一层缓慢流动的极光渐变，色彩在字内游走，而不是简单的左右扫光。用于短标题或关键词。
+
+链接：
+
+- [打开 Magic UI Aurora Text 演示](https://magicui.design/docs/components/aurora-text)（Magic UI）
+
+### 提示词
+
+```
+【场景】旅行品牌「北纬」冬季线路页主标题「去看没有被命名的光」，关键词「光」与整句共用一层青绿到品红的极光。背景是深夜雪原，标题下有「芬兰 / 挪威 / 冰岛 · 12 日」。
+【触发】进入后循环流动；reduced-motion 时改为静态渐变，不再位移。
+【运动】渐变在字内缓慢扭曲、平移，循环 8–12s，避免高频闪烁。色彩对比保证白底或深底都能识读。
+【不要】把整段正文都做成极光；用过饱和彩虹抢内容；忽略深浅色主题下的对比度。
+```
+
+## 终端打字日志 / Terminal
+
+<a id="magic-terminal"></a>
+
+- 来源：AI Coding
+- 作者：Magic UI
+- 日期：采集于 2026-11-25
+- 子类：逐行打出的产品终端窗
+- 触发：in-view / interval
+- 技术栈：React / Motion
+- 官方演示：https://magicui.design/docs/components/terminal
+- 分册锚点：[magic-terminal](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#magic-terminal)
+
+一个终端窗口按节奏打出命令与日志，光标闪烁，行与行之间有短暂停顿，适合用真实产品文案讲述发布或部署，而不是无意义乱码。
+
+链接：
+
+- [打开 Magic UI Terminal 演示](https://magicui.design/docs/components/terminal)（Magic UI）
+
+### 提示词
+
+```
+【场景】协作工具「墨蓝笔记」产品页中部有一扇深色终端，用来演示「把会议记要变成任务」。依次打出：`$ molan capture --from meeting.wav`、`transcribing 42:18 … done`、`3 tasks added to 「季度规划」`、`share link copied`。窗口标题栏写「墨蓝 · 本地实验室」。
+【触发】区块进入视口后开始播放；可循环，但每轮之间停 1.5–2s。提供重放按钮。
+【运动】逐字打出，每字 30–50ms，命令行稍快、结果行稍慢；光标闪 500ms；新行把窗口顶起，高度跟内容走。复制成功那一行可短暂高亮。
+【不要】用假乱码或看不清的滚动；打字过程中布局抖动；忽略 reduced-motion（改为一次给出全部日志）。
+```
+
+## 轮廓扫光字 / Text Hover Effect
+
+<a id="aceternity-text-hover-effect"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：悬停描出渐变轮廓的字
+- 触发：hover / pointer move
+- 技术栈：React / Motion / SVG
+- 官方演示：https://ui.aceternity.com/components/text-hover-effect
+- 分册锚点：[aceternity-text-hover-effect](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8#aceternity-text-hover-effect)
+
+标题默认是克制的填充或细轮廓；指针经过时，渐变描边沿字形走一遍并点亮，常见于沉稳的品牌或研究站英雄区。
+
+链接：
+
+- [打开 Aceternity Text Hover Effect 演示](https://ui.aceternity.com/components/text-hover-effect)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】研究机构「山海科考」网站首页深色英雄区，巨大标题「把海岸线重新量一遍」。默认是细白轮廓字；指针在字上移动时，一条青绿到琥珀的描边从指针处沿笔画走，像在测深。下方小字：「东海观测计划 · 2026 公开课」。
+【触发】指针进入标题才点亮，跟随指针位置；离开后 300–500ms 描边熄灭。
+【运动】描边沿路径 400–700ms 走完可见段，光晕柔和；不要整句同时闪白。移动速度快时描边跟上，不要拖出残影带。
+【不要】在小字号段落上使用；做成廉价霓虹闪烁；没有读屏原文。
 ```

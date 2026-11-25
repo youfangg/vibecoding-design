@@ -484,6 +484,8 @@ a { color: var(--seal); }
 
 .card-status.is-live .card-status-text::before { background: var(--seal); }
 
+.card-status.is-official .card-status-text::before { background: var(--gold); }
+
 .card-hit {
   position: absolute;
   inset: 0;
@@ -1285,6 +1287,11 @@ mark { background: var(--mark); color: inherit; }
 .preview-pill.is-live {
   border-color: var(--seal);
   color: var(--seal);
+}
+
+.preview-pill.is-official {
+  border-color: var(--gold);
+  color: #6d5424;
 }
 
 .case-title {
