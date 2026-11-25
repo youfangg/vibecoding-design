@@ -5,7 +5,10 @@
     S[id] = function (root) {
       var ui = H.shell(root, { title: title, limit: setup.limit });
       var api = setup(ui);
-      ui.reset.addEventListener("click", function () { (api.reset || api.play)(); });
+      ui.reset.addEventListener("click", function () {
+        if (api.reset) api.reset();
+        api.play();
+      });
       H.expose(id, mechanism, { trigger: api.play, reset: api.reset || api.play, read: api.read, page: ui.page, expectAfter: expectAfter });
       if (api.boot) api.boot();
     };
@@ -43,15 +46,114 @@
     input.addEventListener("input", function () { mode = Number(input.value) > 60 ? "pulled" : "rest"; });
     return { play: function () { input.value = "80"; mode = "pulled"; }, reset: function () { input.value = "20"; mode = "rest"; }, read: function () { return mode; } };
   });
-  add("rb-lanyard", "挂绳", "pulled", "pendulum-drag", function (ui) {
-    ui.page.append(H.el("p", "host-limit", "二维摆绳，不是三维绳带网格。"));
-    var cord = H.el("div");
-    cord.style.cssText = "margin:10px auto;width:2px;height:70px;background:#241c16;transform-origin:top";
-    var badge = H.el("div", null, "证");
-    badge.style.cssText = "margin:0 auto;width:36px;height:28px;background:#e7c48a;text-align:center";
-    ui.body.append(cord, badge);
-    var mode = "hang";
-    return { play: function () { mode = "pulled"; cord.style.transform = "rotate(28deg)"; }, reset: function () { mode = "hang"; cord.style.transform = "none"; }, read: function () { return mode; } };
+  add("rb-lanyard", "挂绳", "pulled", "verlet-lanyard", function (ui) {
+    var note = H.el("p", null, "示例数据 · 南窗入场。绳是一串定长约束，证卡拖得动，松手后垂回去。");
+    note.style.cssText = "margin:8px 12px 0;font-size:12px;color:#7a6a58";
+    var canvas = document.createElement("canvas");
+    canvas.width = 320;
+    canvas.height = 200;
+    canvas.tabIndex = 0;
+    canvas.style.cssText = "display:block;width:calc(100% - 16px);margin:8px;background:#efe6d8";
+    ui.body.append(note, canvas);
+    var ctx = canvas.getContext("2d");
+    var rest = 12;
+    var pts = [];
+    function hang() {
+      pts = [];
+      for (var i = 0; i < 12; i++) pts.push({ x: 160, y: 18 + i * rest, px: 160, py: 18 + i * rest });
+    }
+    function step(grab) {
+      for (var i = 1; i < pts.length; i++) {
+        var p = pts[i];
+        var vx = (p.x - p.px) * 0.98;
+        var vy = (p.y - p.py) * 0.98;
+        p.px = p.x;
+        p.py = p.y;
+        p.x += vx;
+        p.y += vy + 0.45;
+      }
+      if (grab) {
+        pts[pts.length - 1].x = grab.x;
+        pts[pts.length - 1].y = grab.y;
+        pts[pts.length - 1].px = grab.x;
+        pts[pts.length - 1].py = grab.y;
+      }
+      for (var n = 0; n < 8; n++) {
+        pts[0].x = 160;
+        pts[0].y = 18;
+        for (var j = 0; j < pts.length - 1; j++) {
+          var a = pts[j];
+          var b = pts[j + 1];
+          var dx = b.x - a.x;
+          var dy = b.y - a.y;
+          var dist = Math.hypot(dx, dy) || 1;
+          var diff = (dist - rest) / dist;
+          var ox = dx * diff * 0.5;
+          var oy = dy * diff * 0.5;
+          if (j > 0) { a.x += ox; a.y += oy; }
+          b.x -= ox;
+          b.y -= oy;
+        }
+      }
+    }
+    function draw() {
+      ctx.clearRect(0, 0, 320, 200);
+      ctx.fillStyle = "#d7e4ea";
+      ctx.fillRect(0, 0, 320, 36);
+      ctx.fillStyle = "#241c16";
+      ctx.font = "12px sans-serif";
+      ctx.fillText("南窗入场", 12, 22);
+      ctx.beginPath();
+      pts.forEach(function (p, i) {
+        if (i === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      });
+      ctx.strokeStyle = "#241c16";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      var end = pts[pts.length - 1];
+      ctx.fillStyle = "#e7c48a";
+      ctx.fillRect(end.x - 28, end.y - 8, 56, 36);
+      ctx.fillStyle = "#241c16";
+      ctx.fillText("林夏", end.x - 14, end.y + 8);
+      ctx.fillText("嘉宾", end.x - 14, end.y + 22);
+    }
+    var hold = null;
+    function place(event) {
+      var r = canvas.getBoundingClientRect();
+      hold = {
+        x: (event.clientX - r.left) / r.width * 320,
+        y: (event.clientY - r.top) / r.height * 200
+      };
+    }
+    canvas.addEventListener("pointerdown", function (event) { place(event); step(hold); draw(); });
+    canvas.addEventListener("pointermove", function (event) { if (!hold) return; place(event); step(hold); draw(); });
+    canvas.addEventListener("pointerup", function () { hold = null; });
+    canvas.addEventListener("keydown", function (event) {
+      var end = pts[pts.length - 1];
+      var x = end.x;
+      var y = end.y;
+      if (event.key === "ArrowLeft") x -= 16;
+      else if (event.key === "ArrowRight") x += 16;
+      else if (event.key === "ArrowUp") y -= 12;
+      else if (event.key === "ArrowDown") y += 12;
+      else return;
+      event.preventDefault();
+      for (var i = 0; i < 6; i++) step({ x: x, y: y });
+      draw();
+    });
+    hang();
+    draw();
+    return {
+      play: function () {
+        for (var i = 0; i < 16; i++) step({ x: 248, y: 96 });
+        hold = null;
+        for (var j = 0; j < 10; j++) step(null);
+        draw();
+      },
+      reset: function () { hold = null; hang(); draw(); },
+      read: function () { return pts[pts.length - 1].x > 190 ? "pulled" : "hang"; }
+    };
   });
   add("aceternity-draggable-card", "自由拖卡", "moved", "free-drag", function (ui) {
     var card = H.el("div", null, "便签");

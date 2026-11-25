@@ -426,7 +426,7 @@
   add("r3f-carousels", "环绕走马灯", "turned", "ring-carousel", function (ui) {
     var c = sheet(ui, 320, 200);
     var ctx = c.getContext("2d");
-    var names = ["诗", "茶", "船", "夜", "碟"];
+    var names = ["诗集", "岩茶", "夜航", "渡口", "唱片"];
     var spin = 0;
     function draw() {
       ctx.fillStyle = "#f3eee6";
@@ -438,16 +438,18 @@
         return { name: name, z: z, x: x };
       }).sort(function (a, b) { return a.z - b.z; });
       order.forEach(function (item) {
-        var f = 140 / (2.6 - item.z);
-        var w = 54 * f / 70;
-        var h = 72 * f / 70;
-        var x = 160 + item.x * f - w / 2;
-        ctx.globalAlpha = 0.45 + (item.z + 1) * 0.28;
-        ctx.fillStyle = item.z > 0.4 ? "#9f2d20" : "#fffaf4";
-        ctx.fillRect(x, 100 - h / 2, w, h);
+        var f = 150 / (2.4 - item.z);
+        var w = Math.max(64, 78 * f / 90);
+        var h = Math.max(78, 96 * f / 90);
+        var x = 160 + item.x * f * 0.85 - w / 2;
+        var y = 104 - h / 2;
+        ctx.globalAlpha = 0.55 + (item.z + 1) * 0.22;
+        ctx.fillStyle = item.z > 0.35 ? "#9f2d20" : "#fffaf4";
+        ctx.fillRect(x, y, w, h);
         ctx.globalAlpha = 1;
-        ctx.fillStyle = "#241c16";
-        ctx.fillText(item.name, x + 8, 104);
+        ctx.fillStyle = item.z > 0.35 ? "#f6f1e8" : "#241c16";
+        ctx.font = Math.max(16, Math.floor(w / 3.2)) + "px serif";
+        ctx.fillText(item.name, x + 10, y + h / 2 + 6);
       });
     }
     track(c, function (p) { spin = p.x * Math.PI; draw(); });

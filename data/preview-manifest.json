@@ -379,9 +379,9 @@
     "title": "着色器字母 / Animated Letters Shader",
     "intended": "GLSL 交互字母 · pointer / time",
     "mechanism": "type.js",
-    "status": "review",
+    "status": "ready",
     "entrypoint": "previews/frame.html?id=animated-letters-shader",
-    "limitation": "画布逐字位移，不是着色器。",
+    "limitation": "",
     "evidence": "scripts/test-previews.mjs"
   },
   {
@@ -841,9 +841,9 @@
     "title": "证件挂绳 / Lanyard",
     "intended": "三维挂绳物理 · drag",
     "mechanism": "gesture.js",
-    "status": "review",
+    "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-lanyard",
-    "limitation": "二维摆绳，不是三维挂绳网格。",
+    "limitation": "",
     "evidence": "scripts/test-previews.mjs"
   },
   {
@@ -1558,7 +1558,7 @@
     "mechanism": "material.js",
     "status": "review",
     "entrypoint": "previews/frame.html?id=shader-animation-gsap",
-    "limitation": "自写时间轴驱动像素涟漪，不是 GSAP。",
+    "limitation": "片段着色器已做涟漪、揭示和多重采样模糊。驱动均匀量的是自写时间轴，不是 GSAP 库。",
     "evidence": "scripts/test-previews.mjs"
   },
   {
@@ -1677,9 +1677,9 @@
     "title": "磁流体 / Ferrofluid",
     "intended": "磁性流体 · pointer / idle",
     "mechanism": "particle.js",
-    "status": "review",
+    "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-ferrofluid",
-    "limitation": "尖刺朝向力场，不是磁流体体积网格。",
+    "limitation": "",
     "evidence": "scripts/test-previews.mjs"
   },
   {
@@ -1699,9 +1699,9 @@
     "title": "梦境粒子 / Dreamy Particles",
     "intended": "GPGPU 互动粒子 · pointer",
     "mechanism": "particle.js",
-    "status": "review",
+    "status": "ready",
     "entrypoint": "previews/frame.html?id=dreamy-particles",
-    "limitation": "CPU 粒子聚拢，不是 GPGPU。",
+    "limitation": "",
     "evidence": "scripts/test-previews.mjs"
   },
   {
@@ -1809,9 +1809,9 @@
     "title": "飘洒光标 / Splash Cursor",
     "intended": "流体飘洒拖尾 · pointer move",
     "mechanism": "cursor.js",
-    "status": "review",
+    "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-splash-cursor",
-    "limitation": "粒子飞溅，不是流体方程。",
+    "limitation": "",
     "evidence": "scripts/test-previews.mjs"
   },
   {

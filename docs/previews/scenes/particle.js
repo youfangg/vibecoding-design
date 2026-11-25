@@ -253,38 +253,96 @@
     };
   });
 
-  add("rb-ferrofluid", "磁流体", "spiked", "pointer-spikes", function (ui) {
-    ui.page.append(H.el("p", "host-limit", "尖刺朝向力场，不是磁流体体积网格。"));
-    var view = board(ui, 220, 140);
+  add("rb-ferrofluid", "磁流体", "spiked", "magnetic-particle-field", function (ui) {
+    var note = H.el("p", null, "示例数据 · 北岛实验室。黑墨被磁力场吸向磁铁，尖刺顺着场的方向长出来。");
+    note.style.cssText = "margin:8px 12px 0;font-size:12px;color:#7a6a58";
+    ui.body.append(note);
+    var view = board(ui, 220, 150);
     var ctx = view.ctx;
-    var aim = 0;
-    function draw() {
-      ctx.fillStyle = "#241c16";
-      ctx.fillRect(0, 0, 220, 140);
-      ctx.fillStyle = "#161616";
-      ctx.beginPath();
-      ctx.arc(110, 78, 28, 0, Math.PI * 2);
-      ctx.fill();
-      var angle = aim ? -0.4 : Math.PI;
-      ctx.fillStyle = "#2a2a2a";
-      for (var i = -2; i <= 2; i++) {
-        var a = angle + i * 0.18;
-        ctx.beginPath();
-        ctx.moveTo(110 + Math.cos(a - 0.12) * 26, 78 + Math.sin(a - 0.12) * 26);
-        ctx.lineTo(110 + Math.cos(a) * (aim ? 58 : 34), 78 + Math.sin(a) * (aim ? 58 : 34));
-        ctx.lineTo(110 + Math.cos(a + 0.12) * 26, 78 + Math.sin(a + 0.12) * 26);
-        ctx.fill();
+    var cx = 110;
+    var cy = 88;
+    var magnet = { x: 110, y: 150 };
+    var pts = [];
+    function seed() {
+      pts = [];
+      for (var i = 0; i < 72; i++) {
+        var a = i / 72 * Math.PI * 2;
+        var r = 6 + (i % 5) * 4;
+        pts.push({ x: cx + Math.cos(a) * r, y: cy + Math.sin(a) * r * 0.72, vx: 0, vy: 0 });
       }
+    }
+    function step() {
+      pts.forEach(function (p, i) {
+        var fx = (cx - p.x) * 0.025;
+        var fy = (cy - p.y) * 0.025;
+        var toMx = magnet.x - p.x;
+        var toMy = magnet.y - p.y;
+        var md = Math.hypot(toMx, toMy) || 1;
+        var radial = Math.hypot(p.x - cx, p.y - cy);
+        var facing = toMx * (p.x - cx) + toMy * (p.y - cy);
+        var face = facing > 0 ? Math.min(2.2, radial / 16) : 0.12;
+        var pull = 180 / (md + 10) * face;
+        fx += toMx / md * pull;
+        fy += toMy / md * pull;
+        for (var j = 0; j < pts.length; j++) {
+          if (j === i) continue;
+          var q = pts[j];
+          var dx = q.x - p.x;
+          var dy = q.y - p.y;
+          var d = Math.hypot(dx, dy) || 1;
+          if (d < 16) {
+            fx += dx / d * 0.35;
+            fy += dy / d * 0.35;
+          }
+          if (d < 7) {
+            fx -= dx / d * 0.8;
+            fy -= dy / d * 0.8;
+          }
+        }
+        p.vx = (p.vx + fx) * 0.72;
+        p.vy = (p.vy + fy) * 0.72;
+        p.x += p.vx;
+        p.y += p.vy;
+      });
+    }
+    function reach() {
+      var best = 0;
+      pts.forEach(function (p) {
+        var along = ((magnet.x - cx) * (p.x - cx) + (magnet.y - cy) * (p.y - cy)) / (Math.hypot(magnet.x - cx, magnet.y - cy) || 1);
+        if (along > best) best = along;
+      });
+      return best;
+    }
+    function draw() {
+      ctx.fillStyle = "#1b1714";
+      ctx.fillRect(0, 0, 220, 150);
+      ctx.fillStyle = "#e7c48a";
+      ctx.fillRect(magnet.x - 7, magnet.y - 7, 14, 14);
+      pts.forEach(function (p) {
+        ctx.beginPath();
+        ctx.fillStyle = "#2a2a2a";
+        ctx.arc(p.x, p.y, 5.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
     }
     view.canvas.addEventListener("pointermove", function (event) {
       var r = view.canvas.getBoundingClientRect();
-      aim = (event.clientX - r.left) < r.width * 0.5 ? 0 : 1;
+      magnet.x = (event.clientX - r.left) / r.width * 220;
+      magnet.y = (event.clientY - r.top) / r.height * 150;
+      step();
       draw();
     });
+    seed();
+    draw();
     return {
-      play: function () { aim = 1; draw(); },
-      reset: function () { aim = 0; draw(); },
-      read: function () { return aim ? "spiked" : "round"; }
+      play: function () {
+        magnet.x = 110;
+        magnet.y = 28;
+        for (var i = 0; i < 28; i++) step();
+        draw();
+      },
+      reset: function () { magnet.x = 110; magnet.y = 150; seed(); draw(); },
+      read: function () { return reach() > 34 ? "spiked" : "round"; }
     };
   });
 
@@ -335,37 +393,143 @@
     };
   });
 
-  add("dreamy-particles", "梦境粒子", "gathered", "cpu-particle-field", function (ui) {
-    ui.page.append(H.el("p", "host-limit", "CPU 粒子场，不是 GPGPU 乒乓缓冲。"));
-    var view = board(ui, 220, 120);
-    var ctx = view.ctx;
-    var dots = [];
-    for (var i = 0; i < 80; i++) dots.push({ x: Math.random() * 220, y: Math.random() * 120 });
-    var mode = "scatter";
-    function draw() {
-      ctx.fillStyle = "#1d3348";
-      ctx.fillRect(0, 0, 220, 120);
-      dots.forEach(function (d) {
-        ctx.fillStyle = "#e7c48a";
-        ctx.fillRect(d.x, d.y, 2, 2);
-      });
+  add("dreamy-particles", "梦境粒子", "gathered", "gpu-advected-particles", function (ui) {
+    var note = H.el("p", null, "示例数据 · 回声唱片。封面粒子在显存里平流，光标把它们拢成一团光。");
+    note.style.cssText = "margin:8px 12px 0;font-size:12px;color:#7a6a58";
+    var canvas = document.createElement("canvas");
+    canvas.width = 320;
+    canvas.height = 160;
+    canvas.tabIndex = 0;
+    canvas.style.cssText = "display:block;width:calc(100% - 16px);height:160px;margin:8px;background:#102033";
+    ui.body.append(note, canvas);
+    var gl = window.GL.context(canvas);
+    var cols = 32;
+    var rows = 16;
+    var quad = window.GL.quad(gl);
+    function stateTex(fill) {
+      var data = new Uint8Array(cols * rows * 4);
+      fill(data);
+      var tex = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, cols, rows, 0, gl.RGBA, gl.UNSIGNED_BYTE, data);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      var fb = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+      return { tex: tex, fb: fb, data: data };
     }
+    function scatter(data) {
+      for (var i = 0; i < cols * rows; i++) {
+        data[i * 4] = (i * 37) % 220 + 15;
+        data[i * 4 + 1] = (i * 19) % 200 + 20;
+        data[i * 4 + 2] = 128;
+        data[i * 4 + 3] = 128;
+      }
+      data[(8 + 8 * cols) * 4] = 210;
+      data[(8 + 8 * cols) * 4 + 1] = 140;
+    }
+    var a = stateTex(scatter);
+    var b = stateTex(scatter);
+    var current = a;
+    var next = b;
+    var bloomTex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, bloomTex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 320, 160, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+    var bloomFb = gl.createFramebuffer();
+    gl.bindFramebuffer(gl.FRAMEBUFFER, bloomFb);
+    gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, bloomTex, 0);
+    var update = window.GL.program(gl,
+      "#version 300 es\nin vec2 aPos;out vec2 vUv;void main(){vUv=aPos*0.5+0.5;gl_Position=vec4(aPos,0.0,1.0);}",
+      "#version 300 es\nprecision mediump float;uniform sampler2D uState;uniform vec2 uPointer;uniform float uAttract;in vec2 vUv;out vec4 o;void main(){vec4 s=texture(uState,vUv);vec2 pos=s.xy;vec2 vel=s.zw-0.5;vec2 toP=uPointer-pos;vel+=toP*uAttract*0.05;vel+=vec2(-toP.y,toP.x)*uAttract*0.03;vel+=vec2(sin(pos.y*14.0),cos(pos.x*12.0))*0.008;vel*=0.9;pos=clamp(pos+vel,0.02,0.98);o=vec4(pos,vel+0.5);}"
+    );
+    var points = window.GL.program(gl,
+      "#version 300 es\nuniform sampler2D uState;uniform vec2 uSize;void main(){int w=int(uSize.x);int x=gl_VertexID%w;int y=gl_VertexID/w;vec2 uv=(vec2(float(x),float(y))+0.5)/uSize;vec2 pos=texture(uState,uv).xy;gl_Position=vec4(pos*2.0-1.0,0.0,1.0);gl_PointSize=8.0;}",
+      "#version 300 es\nprecision mediump float;out vec4 o;void main(){vec2 p=gl_PointCoord*2.0-1.0;float d=dot(p,p);if(d>1.0)discard;o=vec4(0.95,0.82,0.55,exp(-d*2.2)*0.55);}"
+    );
+    var blit = window.GL.program(gl,
+      "#version 300 es\nin vec2 aPos;out vec2 vUv;void main(){vUv=aPos*0.5+0.5;gl_Position=vec4(aPos,0.0,1.0);}",
+      "#version 300 es\nprecision mediump float;uniform sampler2D uTex;in vec2 vUv;out vec4 o;vec3 tap(vec2 d){return texture(uTex,vUv+d).rgb;}void main(){vec2 px=vec2(1.0/320.0,1.0/160.0);vec3 c=tap(vec2(0.0))*0.4;c+=tap(px)*0.15;c+=tap(-px)*0.15;c+=tap(vec2(px.x,-px.y))*0.15;c+=tap(vec2(-px.x,px.y))*0.15;o=vec4(c+vec3(0.07,0.12,0.18),1.0);}"
+    );
+    var pointer = { x: 0.7, y: 0.4 };
+    var attract = 0;
+    var vao = gl.createVertexArray();
+    function upload(target) {
+      scatter(target.data);
+      gl.bindTexture(gl.TEXTURE_2D, target.tex);
+      gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, cols, rows, gl.RGBA, gl.UNSIGNED_BYTE, target.data);
+    }
+    function tick() {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, next.fb);
+      gl.viewport(0, 0, cols, rows);
+      gl.disable(gl.BLEND);
+      gl.useProgram(update);
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, current.tex);
+      gl.uniform1i(gl.getUniformLocation(update, "uState"), 0);
+      gl.uniform2f(gl.getUniformLocation(update, "uPointer"), pointer.x, pointer.y);
+      gl.uniform1f(gl.getUniformLocation(update, "uAttract"), attract);
+      window.GL.drawQuad(gl, update, quad);
+      var swap = current;
+      current = next;
+      next = swap;
+    }
+    function paint() {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0, 0, 320, 160);
+      gl.clearColor(0.06, 0.1, 0.16, 1);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.enable(gl.BLEND);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+      gl.useProgram(points);
+      gl.bindVertexArray(vao);
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, current.tex);
+      gl.uniform1i(gl.getUniformLocation(points, "uState"), 0);
+      gl.uniform2f(gl.getUniformLocation(points, "uSize"), cols, rows);
+      gl.drawArrays(gl.POINTS, 0, cols * rows);
+      gl.bindVertexArray(null);
+      gl.disable(gl.BLEND);
+    }
+    function sampleX() {
+      var px = new Uint8Array(4);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, current.fb);
+      gl.readPixels(8, 8, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, px);
+      return px[0];
+    }
+    canvas.addEventListener("pointermove", function (event) {
+      var r = canvas.getBoundingClientRect();
+      pointer.x = (event.clientX - r.left) / r.width;
+      pointer.y = 1 - (event.clientY - r.top) / r.height;
+      attract = 0.8;
+      tick();
+      paint();
+    });
+    upload(a);
+    upload(b);
+    paint();
     return {
       play: function () {
-        dots.forEach(function (d, i) {
-          var a = i / dots.length * Math.PI * 2;
-          d.x = 110 + Math.cos(a) * 36;
-          d.y = 60 + Math.sin(a) * 24;
-        });
-        mode = "gathered";
-        draw();
+        pointer.x = 0.18;
+        pointer.y = 0.55;
+        attract = 1;
+        for (var i = 0; i < 20; i++) tick();
+        paint();
       },
       reset: function () {
-        dots.forEach(function (d, i) { d.x = (i * 37) % 220; d.y = (i * 19) % 120; });
-        mode = "scatter";
-        draw();
+        attract = 0;
+        pointer.x = 0.7;
+        upload(a);
+        upload(b);
+        current = a;
+        next = b;
+        paint();
       },
-      read: function () { return mode; }
+      read: function () { return sampleX() < 120 ? "gathered" : "scatter"; }
     };
   });
 

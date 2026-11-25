@@ -25,7 +25,7 @@ python3 -m http.server 4173
 
 站点是中文界面。浏览以预览为先：目录是画廊，卡片只播放本站按案例说明独立实现的参考组件，并标明「已实现 · 参考组件」。范围还没对齐的标成「待核验」，还没做成的标成「待实现」。官方地址只作为外链，不会嵌进页面。名称、主类、来源、进度、官方演示和可复制提示词放在一旁。这些组件不是官方演示的逐像素复刻。
 
-当前进度：**310** 已实现，**6** 待核验，**0** 待实现。逐条清单在 [`data/preview-manifest.json`](data/preview-manifest.json)，页面读取由 [`scripts/build-preview-status.py`](scripts/build-preview-status.py) 生成的 [`docs/previews/status.js`](docs/previews/status.js)。待核验是 `animated-letters-shader`（画布位移，不是着色器）、`rb-lanyard`（二维摆绳，不是三维挂绳）、`shader-animation-gsap`（自写时间轴，不是 GSAP）、`rb-ferrofluid`（尖刺朝向力场，不是磁流体网格）、`dreamy-particles`（CPU 粒子，不是 GPGPU）、`rb-splash-cursor`（粒子飞溅，不是流体方程）。
+当前进度：**315** 已实现，**1** 待核验，**0** 待实现。逐条清单在 [`data/preview-manifest.json`](data/preview-manifest.json)，页面读取由 [`scripts/build-preview-status.py`](scripts/build-preview-status.py) 生成的 [`docs/previews/status.js`](docs/previews/status.js)。唯一待核验是 `shader-animation-gsap`：片段着色器已经做了涟漪、揭示和多重采样模糊，但驱动均匀量的是自写时间轴，不是 GSAP 库。
 
 可以按关键词检索，并按主类、来源筛选。地址栏保留检索参数和 `#案例id` 深链。每条案例给出标题、说明、主类、来源、触发与技术栈、页内预览、官方演示、原始出处（若有）和可复制提示词。
 

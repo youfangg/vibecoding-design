@@ -2,11 +2,82 @@
   var S = window.SCENES;
   var H = window.Host;
 
+  var LEDE = {
+    "physics-about-me": ["青浦人物页", "页首是阿贵的介绍。往下滚动时，名字会落到段落前面。"],
+    "rb-ascii-text": ["南窗海报", "远看是「窗」字，走近才看出它由网点排成。"],
+    "rb-blur-text": ["周四开门", "门牌先是糊的，字一个个清楚之后才读得到时间。"],
+    "rb-falling-text": ["栏目标题", "栏目名从栏外落进版心，停在正文上方。"],
+    "rb-glitch-text": ["白潮限量", "这批衬衫只做 200 件，标题在库存旁轻轻错位。"],
+    "rb-particle-text": ["散场", "朗诵会结束，标题化成纸屑，仍停在同一行。"],
+    "rb-rotating-text": ["场次条", "同一行轮换席位、夜航和周四的安排。"],
+    "rb-scroll-float": ["诗集内页", "诗题贴着滚动轻轻浮起，正文还留在原处。"],
+    "rb-scroll-velocity": ["航行日志", "滚动越快，航线标题拉得越开。"],
+    "rb-shuffle": ["座位牌", "打乱的姓氏停回「林夏」，旁边是二楼靠窗。"],
+    "rb-split-flap": ["班次牌", "翻牌停在「青浦 19:30」，下面是剩余席位。"],
+    "rb-text-pressure": ["封面压字", "手指按住书名时，字重才顶到最黑。"],
+    "rb-true-focus": ["目录", "视线停在当前篇名上，其余篇名退到后面。"],
+    "rb-variable-proximity": ["靠窗座位", "光标靠近哪个字，那个字就加重，像在点名。"],
+    "magic-morphing-text": ["白潮昼夜", "同一行从白昼换成夜航，字距一起打开。"],
+    "magic-video-text": ["灯塔夜", "字里填的是海面的颜色，不是一张空标题。"],
+    "magic-text-3d-flip": ["书脊", "正面是书名，翻过去是这一册的篇目。"],
+    "fancy-letter-3d-swap": ["换季", "春字翻成夏字，仍留在同一块海报上。"],
+    "fancy-scramble-hover": ["店招", "鼠标停上店名时，字母才按顺序排好。"],
+    "fancy-text-along-path": ["环湖步道", "路名沿着步道的弧写，不单独飘在空白里。"],
+    "fancy-variable-hover": ["字重试样", "同一句诗，停在哪个字上就把那个字加粗。"],
+    "aceternity-typewriter": ["朗诵预告", "句子是当场要读的那一行，不是孤立的两个字。"],
+    "aceternity-text-generate": ["墨蓝纪要", "会议标题一个字一个字写进笔记标题栏。"],
+    "scroll-text-motion": ["章节名", "滚过这一节时，章名才滑进栏宽。"],
+    "codrops-3d-text-scroll": ["展览墙", "展题随着滚动转到正面，说明留在墙下。"],
+    "letter-shuffle-menu": ["导航", "菜单先是错位的「店书」，点一下才落成「书店」。"],
+    "kokonut-spoiler-text": ["书评", "结局先被挡住，点开才是「结局在周四」。"],
+    "type-shuffle-animation": ["发车时刻", "站牌先刷乱码，停稳后是 12:04 的班次。"],
+    "on-scroll-typography-animations": ["游记首段", "滚到这一段，句子才完成入场。"],
+    "line-type-effect": ["一行简介", "这句话属于南窗的开场白，打完才换行。"],
+    "on-scroll-svg-filter-text": ["滤镜下的标题", "滚动把标题从扭曲滤镜里拉直。"],
+    "terminal-typography-hover": ["票价终端", "停在票价上时，数字才用等宽字重写一遍。"],
+    "kokonut-plucked-text": ["琴弦标题", "拨一下，标题像弦一样弹回原位。"],
+    "kokonut-cradle-text": ["摇篮曲", "标题左右摇，副题「摇到睡着」留在下面。"],
+    "kokonut-shadow-text": ["夜海报", "标题的影子单独移动，正文不跟着跑。"],
+    "kokonut-marker-text": ["划重点的诗", "记号笔只涂在这一句的关键词上。"],
+    "kokonut-extruded-text": ["门头字", "店名有厚度，光从左侧打过来。"],
+    "fancy-media-between-text": ["图文标题", "两个词中间夹着渡口的色块，不是孤零零一个词。"],
+    "fancy-breathing-text": ["灯塔", "标题随着呼吸变轻，坐标仍是候鸟旅馆。"],
+    "fancy-letter-swap": ["上下册", "上册两个字对调位置，书名还在封面。"],
+    "fancy-scramble-in": ["正文入场", "乱码退去之后，留下的是这一段的第一句。"],
+    "fancy-scroll-and-swap": ["分章", "从第一章滚到第二章，章名换掉，页边还在。"],
+    "magic-dia-text-reveal": ["主题色带", "一条色带扫过「南窗春季」，扫完句子恢复可读。"],
+    "aceternity-squiggly-text": ["手写标注", "老师在诗句底下画了一道波浪线。"],
+    "aceternity-canvas-text": ["沿路的字", "路名写在步道曲线上，旁边是里程。"],
+    "rb-tech-text": ["航线编号", "技术标题是云帆的班次号，不是样品字。"],
+    "rb-fold-text": ["折叠海报", "标题折进纸里，打开才看见全名。"],
+    "rb-stroke-text": ["线框店名", "先看到描边，填充随后补上。"],
+    "rb-echo-text": ["回声", "喊出去的店名在山谷里又出现一次。"],
+    "rb-curved-loop": ["环岛线", "站名绕着圈走，圈心里是发车间隔。"],
+    "rb-circular-text": ["杯套", "店名绕着杯口写，中间是今日的茶。"],
+    "rb-fuzzy-text": ["起雾的窗", "窗上的字先是毛的，擦开才读得见。"],
+    "rb-masked-heading": ["遮幅标题", "标题从遮幅里显出来，下面是这一期的目录。"],
+    "rb-scrambled-text": ["密码席位", "乱码停成席位号，旁边注明二楼。"],
+    "magic-aurora-text": ["夜航标题", "标题上飘着一层极光，句子本身仍可读。"],
+    "magic-terminal": ["订座终端", "命令行里是还剩的席位，不是空提示符。"],
+    "aceternity-text-hover-effect": ["篇名", "停在篇名上，下划线才长出来。"]
+  };
+
   function add(id, title, expectAfter, mechanism, setup) {
     S[id] = function (root) {
       var ui = H.shell(root, { title: title, limit: setup.limit });
+      var copy = LEDE[id];
+      if (copy) {
+        var kicker = H.el("p", null, "示例数据 · " + copy[0]);
+        kicker.style.cssText = "margin:8px 12px 0;color:#7a6a58;font-size:12px";
+        var lede = H.el("p", null, copy[1]);
+        lede.style.cssText = "margin:2px 12px 0;font-size:13px;line-height:1.55";
+        ui.body.append(kicker, lede);
+      }
       var api = setup(ui);
-      ui.reset.addEventListener("click", function () { (api.reset || api.play)(); });
+      ui.reset.addEventListener("click", function () {
+        if (api.reset) api.reset();
+        api.play();
+      });
       H.expose(id, mechanism, {
         trigger: api.play,
         reset: api.reset || api.play,
@@ -270,13 +341,37 @@
   });
 
   add("rb-warp-text", "网格扭曲", "warp", "pointer-grid-warp", function (ui) {
-    var nodes = chars(ui.body, "扭曲标题");
+    var card = H.el("article");
+    card.style.cssText = "margin:8px;padding:12px;background:#fffaf4;border:1px solid #e6d9c8";
+    var kicker = H.el("p", null, "示例数据 · 白潮春季");
+    kicker.style.cssText = "margin:0 0 6px;color:#7a6a58;font-size:12px";
+    card.append(kicker);
+    var nodes = chars(card, "把衬衫穿到海边");
+    nodes.forEach(function (n) { n.style.fontSize = "1.35rem"; });
+    var lede = H.el("p", null, "海盐衬衫，周四到店。标题会跟着光标扭一下，价钱和按钮留在原处。");
+    lede.style.cssText = "margin:8px 0;font-size:13px;line-height:1.6";
+    var row = H.el("div");
+    ["看系列", "预约到店"].forEach(function (label) {
+      var b = H.el("button", null, label);
+      b.type = "button";
+      b.style.cssText = "min-height:36px;margin-right:8px;border:1px solid #241c16;background:#fffaf4";
+      row.append(b);
+    });
+    var price = H.el("p", null, "海盐白 ¥268 · 墨蓝 ¥268");
+    price.style.cssText = "margin:8px 0 0;font-size:12px;color:#7a6a58";
+    card.append(lede, row, price);
+    ui.body.append(card);
+    card.tabIndex = 0;
     var mode = "flat";
-    return {
-      play: function () { mode = "warp"; nodes.forEach(function (n, i) { n.style.transform = "translateY(" + (i % 2 ? -8 : 8) + "px) rotate(" + (i - 2) * 6 + "deg)"; }); },
-      reset: function () { mode = "flat"; nodes.forEach(function (n) { n.style.transform = "none"; }); },
-      read: function () { return mode; }
-    };
+    function warp(on) {
+      mode = on ? "warp" : "flat";
+      nodes.forEach(function (n, i) {
+        n.style.transform = on ? "translateY(" + (i % 2 ? -5 : 5) + "px) rotate(" + ((i % 5) - 2) * 4 + "deg)" : "none";
+      });
+    }
+    card.addEventListener("pointermove", function () { warp(true); });
+    card.addEventListener("pointerleave", function () { warp(false); });
+    return { play: function () { warp(true); }, reset: function () { warp(false); }, read: function () { return mode; } };
   });
 
   add("magic-morphing-text", "形态过渡", "night", "word-morph", function (ui) {
@@ -424,26 +519,55 @@
     };
   });
 
-  add("animated-letters-shader", "着色字母", "waved", "canvas-wave-letters", function (ui) {
-    ui.page.querySelector(".host-limit") || ui.page.append(H.el("p", "host-limit", "画布逐字位移，不是外部着色器源码。"));
+  add("animated-letters-shader", "着色字母", "waved", "glyph-fragment-shader", function (ui) {
+    var card = H.el("article");
+    card.style.cssText = "margin:8px;padding:10px 12px 12px;background:#fffaf4;border:1px solid #e6d9c8";
+    var kicker = H.el("p", null, "示例数据 · 南窗书局");
+    kicker.style.cssText = "margin:0;color:#7a6a58;font-size:12px";
     var canvas = document.createElement("canvas");
-    canvas.width = 280; canvas.height = 80;
-    canvas.style.margin = "12px";
-    ui.body.append(canvas);
-    var ctx = canvas.getContext("2d");
-    var mode = "flat";
-    function draw(wave) {
-      ctx.clearRect(0, 0, 280, 80);
-      ctx.font = "32px serif";
-      ctx.fillStyle = "#241c16";
-      var text = "南窗";
-      for (var i = 0; i < text.length; i++) ctx.fillText(text[i], 40 + i * 40, 48 + (wave ? Math.sin(i) * 10 : 0));
+    canvas.width = 320;
+    canvas.height = 84;
+    canvas.style.cssText = "display:block;width:100%;height:auto;background:#f6f1e8";
+    var copy = H.el("p", null, "周四 19:30 · 二楼靠窗。还剩 6 席，标题由片段着色器逐列推动。");
+    copy.style.cssText = "margin:8px 0;font-size:13px;line-height:1.55";
+    var btn = H.el("button", null, "看场次");
+    btn.type = "button";
+    btn.style.cssText = "min-height:36px;border:1px solid #241c16;background:#fffaf4";
+    card.append(kicker, canvas, copy, btn);
+    ui.body.append(card);
+    var gl = window.GL.context(canvas);
+    var amp = 0;
+    var vs = "#version 300 es\nin vec2 aPos;out vec2 vUv;void main(){vUv=aPos*0.5+0.5;gl_Position=vec4(aPos,0.0,1.0);}";
+    var fs = "#version 300 es\nprecision mediump float;uniform sampler2D uTex;uniform float uAmp;in vec2 vUv;out vec4 o;void main(){float col=floor(vUv.x*8.0);float shift=sin(col*1.7+uAmp*18.0)*uAmp;vec2 uv=vec2(vUv.x,1.0-(vUv.y-shift));vec4 c=texture(uTex,uv);vec4 fringe=texture(uTex,uv+vec2(uAmp*0.35,0.0));o=vec4(fringe.r,c.g,c.b,1.0);if(uv.x<0.0||uv.x>1.0||uv.y<0.0||uv.y>1.0)o=vec4(0.965,0.945,0.910,1.0);}";
+    var prog = window.GL.program(gl, vs, fs);
+    var buf = window.GL.quad(gl);
+    var sheet = document.createElement("canvas");
+    sheet.width = 320;
+    sheet.height = 84;
+    var ctx = sheet.getContext("2d");
+    ctx.fillStyle = "#f6f1e8";
+    ctx.fillRect(0, 0, 320, 84);
+    ctx.fillStyle = "#241c16";
+    ctx.font = "46px serif";
+    ctx.fillText("把诗读出声", 18, 56);
+    var texture = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, texture);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, sheet);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    function draw() {
+      gl.viewport(0, 0, 320, 84);
+      gl.useProgram(prog);
+      gl.uniform1f(gl.getUniformLocation(prog, "uAmp"), amp);
+      window.GL.drawQuad(gl, prog, buf);
     }
+    btn.addEventListener("click", function () { amp = 0.045; draw(); });
     return {
-      play: function () { mode = "waved"; draw(true); },
-      reset: function () { mode = "flat"; draw(false); },
-      read: function () { return mode; },
-      boot: function () { draw(false); }
+      play: function () { amp = 0.045; draw(); },
+      reset: function () { amp = 0; draw(); },
+      read: function () { return amp > 0.02 ? "waved" : "flat"; },
+      boot: function () { draw(); }
     };
   });
 
@@ -475,13 +599,39 @@
   });
 
   add("scroll-blur-typography", "滚动去模糊", "clear", "scroll-blur", function (ui) {
-    var word = H.el("div", null, "远景");
-    word.style.cssText = "margin:24px;font-family:serif;font-size:2rem;filter:blur(8px)";
-    ui.body.append(word);
+    var scroller = H.el("div");
+    scroller.tabIndex = 0;
+    scroller.style.cssText = "margin:8px;height:210px;overflow:auto;background:#fffaf4;border:1px solid #e6d9c8;padding:12px";
+    var kicker = H.el("p", null, "示例数据 · 青浦一日");
+    kicker.style.cssText = "margin:0 0 6px;color:#7a6a58;font-size:12px";
+    var title = H.el("h2", null, "远山还在雾里");
+    title.style.cssText = "margin:0 0 8px;font-family:serif;font-size:1.6rem;filter:blur(8px)";
+    function section(heading, text) {
+      var h = H.el("h3", null, heading);
+      h.style.cssText = "margin:14px 0 4px;font-family:serif;font-size:1.05rem";
+      var p = H.el("p", null, text);
+      p.style.cssText = "margin:0;font-size:13px;line-height:1.65";
+      scroller.append(h, p);
+    }
+    scroller.append(kicker, title);
+    section("渡口", "第一班船 7:40。雾大的时候，对岸的房子只剩一条线。");
+    section("南窗", "上岸走到书局，周四 19:30 还有朗诵。靠窗还剩 6 席。");
+    section("回程", "末班 21:10。标题随滚动变清楚，这三段正文一直可读。");
+    ui.body.append(scroller);
     var mode = "blur";
+    function sync() {
+      var amount = Math.min(1, scroller.scrollTop / 70);
+      title.style.filter = "blur(" + ((1 - amount) * 8) + "px)";
+      mode = amount > 0.65 ? "clear" : "blur";
+    }
+    scroller.addEventListener("scroll", sync);
+    scroller.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowDown") scroller.scrollTop += 40;
+      if (event.key === "ArrowUp") scroller.scrollTop -= 40;
+    });
     return {
-      play: function () { mode = "clear"; word.style.filter = "none"; },
-      reset: function () { mode = "blur"; word.style.filter = "blur(8px)"; },
+      play: function () { scroller.scrollTop = 120; sync(); mode = "clear"; title.style.filter = "none"; },
+      reset: function () { scroller.scrollTop = 0; mode = "blur"; title.style.filter = "blur(8px)"; },
       read: function () { return mode; }
     };
   });
@@ -667,12 +817,20 @@
   });
 
   add("fancy-underline-to-background", "下划线铺底", "filled", "underline-grows", function (ui) {
-    var word = H.el("span", null, "重点");
-    word.style.cssText = "font-family:serif;font-size:1.8rem;background:linear-gradient(#f0d0c8,#f0d0c8) left bottom/100% 2px no-repeat";
-    var wrap = H.el("div");
-    wrap.style.margin = "24px";
-    wrap.append(word);
-    ui.body.append(wrap);
+    var card = H.el("article");
+    card.style.cssText = "margin:8px;padding:12px;background:#fffaf4;border:1px solid #e6d9c8";
+    var kicker = H.el("p", null, "示例数据 · 南窗周刊");
+    kicker.style.cssText = "margin:0 0 6px;color:#7a6a58;font-size:12px";
+    var para = H.el("p");
+    para.style.cssText = "margin:0;font-family:serif;font-size:1.15rem;line-height:1.7";
+    para.append("把已经排好的诗，");
+    var word = H.el("span", null, "读出声");
+    word.style.cssText = "background:linear-gradient(#f0d0c8,#f0d0c8) left bottom/100% 2px no-repeat";
+    para.append(word, "。周四 19:30，二楼靠窗还剩 6 席。");
+    var note = H.el("p", null, "下划线会长成整句的底色，句子其余的字保持不动。");
+    note.style.cssText = "margin:8px 0 0;font-size:12px;color:#7a6a58";
+    card.append(kicker, para, note);
+    ui.body.append(card);
     var mode = "line";
     return {
       play: function () { mode = "filled"; word.style.backgroundSize = "100% 100%"; },

@@ -34,12 +34,7 @@ if manifest_path.exists():
 
 # Simplified stand-ins stay out of the verified count.
 REVIEW = {
-    "rb-lanyard": "二维摆绳，不是三维挂绳网格。",
-    "animated-letters-shader": "画布逐字位移，不是着色器。",
-    "rb-splash-cursor": "粒子飞溅，不是流体方程。",
-    "shader-animation-gsap": "自写时间轴驱动像素涟漪，不是 GSAP。",
-    "dreamy-particles": "CPU 粒子聚拢，不是 GPGPU。",
-    "rb-ferrofluid": "尖刺朝向力场，不是磁流体体积网格。",
+    "shader-animation-gsap": "片段着色器已做涟漪、揭示和多重采样模糊。驱动均匀量的是自写时间轴，不是 GSAP 库。",
 }
 LIMITS = {
     "cloth-carousel": "质点弹簧网格，不是外部布料求解器。",

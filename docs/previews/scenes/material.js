@@ -430,19 +430,72 @@
     };
   });
 
-  add("shader-animation-gsap", "点击涟漪", "rippled", "timeline-ripple", function (ui) {
-    ui.page.append(H.el("p", "host-limit", "自写时间轴驱动像素涟漪，不是 GSAP 库。"));
-    var view = raster(ui, function (x, y, u) {
-      var dx = x - u.x * 160;
-      var dy = y - u.y * 90;
-      var wave = Math.sin(Math.hypot(dx, dy) * 0.45 - u.t * 8);
-      var v = u.t > 0 ? Math.max(0, wave) : 0;
-      return [clamp(30 + v * 200), clamp(40 + v * 120), clamp(50)];
+  add("shader-animation-gsap", "点击涟漪", "rippled", "timeline-fragment-shader", function (ui) {
+    ui.page.append(H.el("p", "host-limit", "片段着色器负责涟漪、揭示和多重采样模糊。驱动均匀量的是自写时间轴，不是 GSAP 库。"));
+    var note = H.el("p", null, "示例数据 · 白潮封面。点一下，海面从中间漾开。");
+    note.style.cssText = "margin:8px 12px 0;font-size:12px;color:#7a6a58";
+    var canvas = document.createElement("canvas");
+    canvas.width = 320;
+    canvas.height = 140;
+    canvas.tabIndex = 0;
+    canvas.style.cssText = "display:block;width:calc(100% - 16px);margin:8px";
+    var btn = H.el("button", null, "播放封面");
+    btn.type = "button";
+    btn.style.cssText = "margin:0 12px 8px;min-height:36px";
+    ui.body.append(note, canvas, btn);
+    var gl = window.GL.context(canvas);
+    var poster = document.createElement("canvas");
+    poster.width = 320;
+    poster.height = 140;
+    var ctx = poster.getContext("2d");
+    ctx.fillStyle = "#7ea0b8";
+    ctx.fillRect(0, 0, 320, 140);
+    ctx.fillStyle = "#e7c48a";
+    ctx.fillRect(0, 90, 320, 50);
+    ctx.fillStyle = "#fffaf4";
+    ctx.beginPath();
+    ctx.moveTo(40, 90);
+    ctx.lineTo(150, 48);
+    ctx.lineTo(250, 90);
+    ctx.fill();
+    ctx.fillStyle = "#241c16";
+    ctx.font = "28px serif";
+    ctx.fillText("白潮 · 中间季", 28, 36);
+    var prog = window.GL.program(gl,
+      "#version 300 es\nin vec2 aPos;out vec2 vUv;void main(){vUv=vec2(aPos.x*0.5+0.5,0.5-aPos.y*0.5);gl_Position=vec4(aPos,0.0,1.0);}",
+      "#version 300 es\nprecision mediump float;uniform sampler2D uTex;uniform float uTime;uniform vec2 uCenter;in vec2 vUv;out vec4 o;void main(){vec2 d=vUv-uCenter;float dist=length(d);vec2 off=dist>0.001?normalize(d)*sin(dist*36.0-uTime*6.0)*uTime*0.02:vec2(0.0);vec2 uv=vUv+off;vec4 c=texture(uTex,uv);vec4 a=texture(uTex,uv+vec2(0.006,0.0)*uTime);vec4 b=texture(uTex,uv-vec2(0.0,0.006)*uTime);vec4 blur=mix(c,(a+b)*0.5,clamp(uTime,0.0,1.0));float reveal=smoothstep(0.0,0.2,uTime+0.02);o=mix(vec4(0.09,0.12,0.16,1.0),blur,reveal);}"
+    );
+    var buf = window.GL.quad(gl);
+    var tex = gl.createTexture();
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, poster);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+    var time = 0;
+    var center = [0.5, 0.45];
+    function draw() {
+      gl.viewport(0, 0, 320, 140);
+      gl.useProgram(prog);
+      gl.uniform1f(gl.getUniformLocation(prog, "uTime"), time);
+      gl.uniform2f(gl.getUniformLocation(prog, "uCenter"), center[0], center[1]);
+      window.GL.drawQuad(gl, prog, buf);
+    }
+    function playAt(x, y) {
+      center = [x, y];
+      time = 1;
+      draw();
+    }
+    canvas.addEventListener("pointerdown", function (event) {
+      var r = canvas.getBoundingClientRect();
+      playAt((event.clientX - r.left) / r.width, (event.clientY - r.top) / r.height);
     });
+    btn.addEventListener("click", function () { playAt(0.5, 0.45); });
     return {
-      play: function () { view.u.x = 0.5; view.u.y = 0.5; view.u.t = 1; view.draw(); },
-      reset: function () { view.u.t = 0; view.draw(); },
-      read: function () { return view.u.t > 0 ? "rippled" : "still"; }
+      play: function () { playAt(0.5, 0.45); },
+      reset: function () { time = 0; draw(); },
+      read: function () { return time > 0.5 ? "rippled" : "still"; },
+      boot: function () { draw(); }
     };
   });
 

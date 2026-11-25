@@ -58,36 +58,142 @@
   };
 
   S["rb-splash-cursor"] = function (root) {
-    var ui = H.shell(root, { title: "飞溅拖尾", limit: "粒子飞溅，不是流体方程求解。" });
-    var box = field(ui.body);
-    var drops = [];
-    function spawn(x, y) {
-      var d = { x: x, y: y, vx: (Math.random() - 0.5) * 4, vy: -2 - Math.random() * 2, el: H.el("i") };
-      d.el.style.cssText = "position:absolute;width:6px;height:6px;border-radius:50%;background:#7ea0b8;pointer-events:none";
-      box.append(d.el);
-      drops.push(d);
-      if (drops.length > 24) box.removeChild(drops.shift().el);
+    var ui = H.shell(root, { title: "墨水台" });
+    var note = H.el("p", null, "示例数据 · 候鸟前台。墨在格子上平流、扩散，再把散度投掉，光标是搅动它的力。");
+    note.style.cssText = "margin:8px 12px 0;font-size:12px;color:#7a6a58";
+    var canvas = document.createElement("canvas");
+    canvas.width = 192;
+    canvas.height = 108;
+    canvas.tabIndex = 0;
+    canvas.style.cssText = "display:block;width:calc(100% - 16px);margin:8px;background:#1b1714";
+    ui.body.append(note, canvas);
+    var ctx = canvas.getContext("2d");
+    var N = 48;
+    var dens = new Float32Array(N * N);
+    var vx = new Float32Array(N * N);
+    var vy = new Float32Array(N * N);
+    var tmp = new Float32Array(N * N);
+    var tmpx = new Float32Array(N * N);
+    var tmpy = new Float32Array(N * N);
+    var div = new Float32Array(N * N);
+    var pressure = new Float32Array(N * N);
+    function id(x, y) { return y * N + x; }
+    function sample(src, x, y) {
+      if (x < 0.5) x = 0.5;
+      if (y < 0.5) y = 0.5;
+      if (x > N - 1.5) x = N - 1.5;
+      if (y > N - 1.5) y = N - 1.5;
+      var x0 = Math.floor(x);
+      var y0 = Math.floor(y);
+      var tx = x - x0;
+      var ty = y - y0;
+      var i = id(x0, y0);
+      return src[i] * (1 - tx) * (1 - ty) + src[i + 1] * tx * (1 - ty) + src[i + N] * (1 - tx) * ty + src[i + N + 1] * tx * ty;
     }
-    pointer(box, function (x, y) { if (!H.reduced()) spawn(x, y); });
-    var spawned = 0;
-    function tick() {
-      drops.forEach(function (d) {
-        d.vy += 0.15;
-        d.x += d.vx;
-        d.y += d.vy;
-        d.el.style.left = d.x + "px";
-        d.el.style.top = d.y + "px";
-      });
-      if (!H.reduced()) requestAnimationFrame(tick);
+    function advect(src, dest) {
+      for (var y = 1; y < N - 1; y++) for (var x = 1; x < N - 1; x++) {
+        var i = id(x, y);
+        dest[i] = sample(src, x - vx[i] * 1.1, y - vy[i] * 1.1);
+      }
     }
-    tick();
-    function burst() { spawned += 8; for (var i = 0; i < 8; i++) spawn(100 + i * 6, 80); }
-    function clearDrops() {
-      spawned = 0;
-      while (drops.length) box.removeChild(drops.pop().el);
+    function project() {
+      for (var y = 1; y < N - 1; y++) for (var x = 1; x < N - 1; x++) {
+        var i = id(x, y);
+        div[i] = -0.5 * (vx[i + 1] - vx[i - 1] + vy[i + N] - vy[i - N]);
+        pressure[i] = 0;
+      }
+      for (var k = 0; k < 10; k++) {
+        for (var y2 = 1; y2 < N - 1; y2++) for (var x2 = 1; x2 < N - 1; x2++) {
+          var i2 = id(x2, y2);
+          tmp[i2] = (pressure[i2 - 1] + pressure[i2 + 1] + pressure[i2 - N] + pressure[i2 + N] + div[i2]) * 0.25;
+        }
+        for (var n = 0; n < pressure.length; n++) pressure[n] = tmp[n];
+      }
+      for (var y3 = 1; y3 < N - 1; y3++) for (var x3 = 1; x3 < N - 1; x3++) {
+        var i3 = id(x3, y3);
+        vx[i3] -= 0.5 * (pressure[i3 + 1] - pressure[i3 - 1]);
+        vy[i3] -= 0.5 * (pressure[i3 + N] - pressure[i3 - N]);
+      }
     }
-    ui.reset.addEventListener("click", function () { clearDrops(); burst(); });
-    H.expose("rb-splash-cursor", "particle-splash", { trigger: burst, reset: clearDrops, expectAfter: 8, page: ui.page, read: function () { return spawned; } });
+    function step() {
+      advect(vx, tmpx);
+      advect(vy, tmpy);
+      for (var i = 0; i < vx.length; i++) { vx[i] = tmpx[i] * 0.996; vy[i] = tmpy[i] * 0.996; }
+      project();
+      advect(dens, tmp);
+      for (var j = 0; j < dens.length; j++) dens[j] = tmp[j] * 0.992;
+    }
+    function stir(x, y) {
+      var cx = x / canvas.width * N;
+      var cy = y / canvas.height * N;
+      for (var j = -3; j <= 3; j++) for (var i = -3; i <= 3; i++) {
+        var px = Math.round(cx) + i;
+        var py = Math.round(cy) + j;
+        if (px < 1 || py < 1 || px >= N - 1 || py >= N - 1) continue;
+        var index = id(px, py);
+        vx[index] += -j * 0.8;
+        vy[index] += i * 0.8;
+        dens[index] += 0.8;
+      }
+    }
+    function blob() {
+      dens.fill(0);
+      vx.fill(0);
+      vy.fill(0);
+      for (var y = 18; y < 30; y++) for (var x = 18; x < 30; x++) dens[id(x, y)] = 1;
+    }
+    function spread() {
+      var n = 0;
+      for (var i = 0; i < dens.length; i++) if (dens[i] > 0.25) n++;
+      return n;
+    }
+    function draw() {
+      var img = ctx.createImageData(N, N);
+      for (var i = 0; i < dens.length; i++) {
+        var d = Math.max(0, Math.min(1, dens[i]));
+        img.data[i * 4] = 20 + d * 210;
+        img.data[i * 4 + 1] = 16 + d * 80;
+        img.data[i * 4 + 2] = 14;
+        img.data[i * 4 + 3] = 255;
+      }
+      var tiny = document.createElement("canvas");
+      tiny.width = N;
+      tiny.height = N;
+      tiny.getContext("2d").putImageData(img, 0, 0);
+      ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(tiny, 0, 0, 192, 108);
+    }
+    canvas.addEventListener("pointermove", function (event) {
+      var r = canvas.getBoundingClientRect();
+      stir((event.clientX - r.left) / r.width * canvas.width, (event.clientY - r.top) / r.height * canvas.height);
+      step();
+      draw();
+    });
+    canvas.addEventListener("keydown", function (event) {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      stir(96, 54);
+      step();
+      draw();
+    });
+    blob();
+    draw();
+    ui.reset.addEventListener("click", function () {
+      blob();
+      stir(96, 40);
+      for (var i = 0; i < 8; i++) step();
+      draw();
+    });
+    H.expose("rb-splash-cursor", "stable-fluid-advection", {
+      trigger: function () {
+        stir(120, 30);
+        for (var i = 0; i < 14; i++) step();
+        draw();
+      },
+      reset: function () { blob(); draw(); },
+      expectAfter: "flowing",
+      page: ui.page,
+      read: function () { return spread() > 180 ? "flowing" : "still"; }
+    });
   };
 
   S["rb-target-cursor"] = function (root) {
