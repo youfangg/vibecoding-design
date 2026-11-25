@@ -107,7 +107,9 @@
     var y = nodes.map(function () { return 0; });
     var v = nodes.map(function () { return 0; });
     var fallen = "rest";
-    function tick() {
+    var job = 0;
+    function tick(mine) {
+      if (mine !== job) return;
       var done = true;
       nodes.forEach(function (n, i) {
         v[i] += 0.6;
@@ -116,12 +118,12 @@
         if (Math.abs(v[i]) > 0.4) done = false;
         n.style.transform = "translateY(" + y[i] + "px) rotate(" + (y[i] / 8) + "deg)";
       });
-      if (!done && !H.reduced()) requestAnimationFrame(tick);
+      if (!done && !H.reduced()) requestAnimationFrame(function () { tick(mine); });
       else fallen = "fallen";
     }
     return {
-      play: function () { fallen = "falling"; y = nodes.map(function () { return 0; }); v = nodes.map(function () { return 1 + Math.random(); }); tick(); },
-      reset: function () { fallen = "rest"; nodes.forEach(function (n) { n.style.transform = "none"; }); },
+      play: function () { job += 1; fallen = "falling"; y = nodes.map(function () { return 0; }); v = nodes.map(function () { return 1 + Math.random(); }); tick(job); },
+      reset: function () { job += 1; fallen = "rest"; nodes.forEach(function (n) { n.style.transform = "none"; }); },
       read: function () { return fallen === "falling" ? "fallen" : fallen; },
       boot: function () { this.play(); }
     };
@@ -832,6 +834,7 @@
     card.append(kicker, para, note);
     ui.body.append(card);
     var mode = "line";
+    word.addEventListener("click", function () { mode = "filled"; word.style.backgroundSize = "100% 100%"; });
     return {
       play: function () { mode = "filled"; word.style.backgroundSize = "100% 100%"; },
       reset: function () { mode = "line"; word.style.backgroundSize = "100% 2px"; },

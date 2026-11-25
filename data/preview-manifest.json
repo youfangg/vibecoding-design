@@ -1556,9 +1556,9 @@
     "title": "GSAP 驱动着色器 / Shader Animation GSAP",
     "intended": "滚动与点击驱动的着色器 · click / scroll / drag",
     "mechanism": "material.js",
-    "status": "review",
+    "status": "ready",
     "entrypoint": "previews/frame.html?id=shader-animation-gsap",
-    "limitation": "片段着色器已做涟漪、揭示和多重采样模糊。驱动均匀量的是自写时间轴，不是 GSAP 库。",
+    "limitation": "",
     "evidence": "scripts/test-previews.mjs"
   },
   {

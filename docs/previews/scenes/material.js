@@ -430,15 +430,14 @@
     };
   });
 
-  add("shader-animation-gsap", "点击涟漪", "rippled", "timeline-fragment-shader", function (ui) {
-    ui.page.append(H.el("p", "host-limit", "片段着色器负责涟漪、揭示和多重采样模糊。驱动均匀量的是自写时间轴，不是 GSAP 库。"));
-    var note = H.el("p", null, "示例数据 · 白潮封面。点一下，海面从中间漾开。");
+  add("shader-animation-gsap", "点击涟漪", "rippled", "gsap-shader-timeline", function (ui) {
+    var note = H.el("p", null, "示例数据 · 白潮封面。GSAP 时间轴推动着色器的时间与中心，海面从点击处漾开。");
     note.style.cssText = "margin:8px 12px 0;font-size:12px;color:#7a6a58";
     var canvas = document.createElement("canvas");
     canvas.width = 320;
-    canvas.height = 140;
+    canvas.height = 150;
     canvas.tabIndex = 0;
-    canvas.style.cssText = "display:block;width:calc(100% - 16px);margin:8px";
+    canvas.style.cssText = "display:block;width:calc(100% - 16px);height:150px;margin:8px;background:#173044";
     var btn = H.el("button", null, "播放封面");
     btn.type = "button";
     btn.style.cssText = "margin:0 12px 8px;min-height:36px";
@@ -446,24 +445,26 @@
     var gl = window.GL.context(canvas);
     var poster = document.createElement("canvas");
     poster.width = 320;
-    poster.height = 140;
+    poster.height = 150;
     var ctx = poster.getContext("2d");
     ctx.fillStyle = "#7ea0b8";
-    ctx.fillRect(0, 0, 320, 140);
+    ctx.fillRect(0, 0, 320, 150);
     ctx.fillStyle = "#e7c48a";
-    ctx.fillRect(0, 90, 320, 50);
+    ctx.fillRect(0, 98, 320, 52);
     ctx.fillStyle = "#fffaf4";
     ctx.beginPath();
-    ctx.moveTo(40, 90);
-    ctx.lineTo(150, 48);
-    ctx.lineTo(250, 90);
+    ctx.moveTo(36, 98);
+    ctx.lineTo(150, 46);
+    ctx.lineTo(250, 98);
     ctx.fill();
     ctx.fillStyle = "#241c16";
     ctx.font = "28px serif";
-    ctx.fillText("白潮 · 中间季", 28, 36);
+    ctx.fillText("白潮 · 中间季", 24, 36);
+    ctx.font = "14px sans-serif";
+    ctx.fillText("周四到店 · 海盐白 ¥268", 24, 128);
     var prog = window.GL.program(gl,
       "#version 300 es\nin vec2 aPos;out vec2 vUv;void main(){vUv=vec2(aPos.x*0.5+0.5,0.5-aPos.y*0.5);gl_Position=vec4(aPos,0.0,1.0);}",
-      "#version 300 es\nprecision mediump float;uniform sampler2D uTex;uniform float uTime;uniform vec2 uCenter;in vec2 vUv;out vec4 o;void main(){vec2 d=vUv-uCenter;float dist=length(d);vec2 off=dist>0.001?normalize(d)*sin(dist*36.0-uTime*6.0)*uTime*0.02:vec2(0.0);vec2 uv=vUv+off;vec4 c=texture(uTex,uv);vec4 a=texture(uTex,uv+vec2(0.006,0.0)*uTime);vec4 b=texture(uTex,uv-vec2(0.0,0.006)*uTime);vec4 blur=mix(c,(a+b)*0.5,clamp(uTime,0.0,1.0));float reveal=smoothstep(0.0,0.2,uTime+0.02);o=mix(vec4(0.09,0.12,0.16,1.0),blur,reveal);}"
+      "#version 300 es\nprecision mediump float;uniform sampler2D uTex;uniform float uTime;uniform vec2 uCenter;in vec2 vUv;out vec4 o;void main(){vec2 d=vUv-uCenter;float dist=length(d);vec2 off=dist>0.001?normalize(d)*sin(dist*36.0-uTime*6.0)*uTime*0.028:vec2(0.0);vec2 uv=clamp(vUv+off,0.001,0.999);vec4 c=texture(uTex,uv);vec4 a=texture(uTex,clamp(uv+vec2(0.008,0.0)*uTime,0.001,0.999));vec4 b=texture(uTex,clamp(uv-vec2(0.0,0.008)*uTime,0.001,0.999));vec4 blur=mix(c,(a+b)*0.5,clamp(uTime,0.0,1.0));float reveal=smoothstep(0.0,0.25,uTime);o=mix(vec4(0.09,0.14,0.2,1.0),blur,reveal);}"
     );
     var buf = window.GL.quad(gl);
     var tex = gl.createTexture();
@@ -472,30 +473,74 @@
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    var time = 0;
-    var center = [0.5, 0.45];
+    var proxy = { time: 0 };
+    var center = [0.5, 0.48];
     function draw() {
-      gl.viewport(0, 0, 320, 140);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0, 0, canvas.width, canvas.height);
       gl.useProgram(prog);
-      gl.uniform1f(gl.getUniformLocation(prog, "uTime"), time);
+      gl.uniform1f(gl.getUniformLocation(prog, "uTime"), proxy.time);
       gl.uniform2f(gl.getUniformLocation(prog, "uCenter"), center[0], center[1]);
       window.GL.drawQuad(gl, prog, buf);
     }
     function playAt(x, y) {
       center = [x, y];
-      time = 1;
+      if (!window.gsap) {
+        proxy.time = 0;
+        window.__gsapDriven = "";
+        window.__shaderTween = null;
+        draw();
+        return;
+      }
+      window.gsap.killTweensOf(proxy);
+      if (H.reduced()) {
+        proxy.time = 1;
+        window.__gsapDriven = "reduced";
+        window.__shaderTween = null;
+        draw();
+        return;
+      }
+      proxy.time = 0;
       draw();
+      window.__gsapDriven = "running";
+      window.__shaderTween = window.gsap.to(proxy, {
+        time: 1,
+        duration: 0.22,
+        ease: "power2.out",
+        onUpdate: function () {
+          window.__gsapDriven = "gsap";
+          draw();
+        }
+      });
     }
     canvas.addEventListener("pointerdown", function (event) {
       var r = canvas.getBoundingClientRect();
       playAt((event.clientX - r.left) / r.width, (event.clientY - r.top) / r.height);
     });
-    btn.addEventListener("click", function () { playAt(0.5, 0.45); });
+    btn.addEventListener("click", function () { playAt(0.62, 0.42); });
+    canvas.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") playAt(0.35, 0.5);
+    });
     return {
-      play: function () { playAt(0.5, 0.45); },
-      reset: function () { time = 0; draw(); },
-      read: function () { return time > 0.5 ? "rippled" : "still"; },
-      boot: function () { draw(); }
+      play: function () { playAt(0.62, 0.42); },
+      reset: function () {
+        if (window.gsap) window.gsap.killTweensOf(proxy);
+        proxy.time = H.reduced() ? 1 : 0;
+        window.__gsapDriven = H.reduced() ? "reduced" : "";
+        window.__shaderTween = null;
+        draw();
+      },
+      read: function () {
+        var driven = window.__gsapDriven === "gsap" || window.__gsapDriven === "reduced";
+        return proxy.time > 0.5 && driven ? "rippled" : "still";
+      },
+      boot: function () {
+        if (window.gsap) window.gsap.killTweensOf(proxy);
+        proxy.time = H.reduced() ? 1 : 0;
+        window.__gsapDriven = H.reduced() ? "reduced" : "";
+        window.__shaderTween = null;
+        draw();
+      }
     };
   });
 

@@ -1,0 +1,10 @@
+GSAP 3.15.1
+Copyright 2026, GreenSock. All rights reserved.
+https://gsap.com
+
+This directory keeps the official gsap.min.js build so the static site can
+load it from the same origin. It is used under the standard no-charge license:
+https://gsap.com/standard-license
+
+The file is the published package build, not a copied demo. The shader and
+scene around it are written for this catalog.

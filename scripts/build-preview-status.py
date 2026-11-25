@@ -33,9 +33,7 @@ if manifest_path.exists():
         old[row["id"]] = row
 
 # Simplified stand-ins stay out of the verified count.
-REVIEW = {
-    "shader-animation-gsap": "片段着色器已做涟漪、揭示和多重采样模糊。驱动均匀量的是自写时间轴，不是 GSAP 库。",
-}
+REVIEW = {}
 LIMITS = {
     "cloth-carousel": "质点弹簧网格，不是外部布料求解器。",
     "cinematic-3d-scroll": "透视投影推进，不是外部三维引擎。",

@@ -35,11 +35,20 @@ await new Promise((resolve, reject) => {
 let seq = 0;
 const pending = new Map();
 let loadWait = null;
+const pageErrors = [];
 ws.addEventListener("message", (ev) => {
   const msg = JSON.parse(ev.data);
   if (msg.method === "Page.loadEventFired" && loadWait) {
     loadWait();
     loadWait = null;
+  }
+  if (msg.method === "Runtime.exceptionThrown") {
+    const details = msg.params && msg.params.exceptionDetails;
+    const text = details && details.exception && (details.exception.description || details.text) || "";
+    pageErrors.push(String(text).slice(0, 240));
+  }
+  if (msg.method === "Runtime.consoleAPICalled" && msg.params && msg.params.type === "error") {
+    pageErrors.push(msg.params.args.map((arg) => arg.value || arg.description || "").join(" ").slice(0, 240));
   }
   if (msg.id && pending.has(msg.id)) {
     const job = pending.get(msg.id);
@@ -120,6 +129,123 @@ for (const [id, row] of targets) {
   }
 }
 
+const grabExpr = `(() => {
+  const canvas = document.querySelector("canvas");
+  let pixels = null;
+  if (canvas && canvas.width && canvas.height) {
+    let data = null;
+    const gl = canvas.getContext("webgl2");
+    if (gl) {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      const buf = new Uint8Array(canvas.width * canvas.height * 4);
+      gl.readPixels(0, 0, canvas.width, canvas.height, gl.RGBA, gl.UNSIGNED_BYTE, buf);
+      data = buf;
+    } else {
+      const ctx = canvas.getContext("2d");
+      if (ctx) data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    }
+    if (data) {
+      let n = 0, sum = 0, sum2 = 0, hash = 0;
+      for (let i = 0; i < data.length; i += 64) {
+        const v = data[i] + data[i + 1] + data[i + 2];
+        sum += v;
+        sum2 += v * v;
+        hash = (hash * 33 + v) >>> 0;
+        n++;
+      }
+      const mean = sum / n;
+      pixels = { variance: Math.round(sum2 / n - mean * mean), hash, mean: Math.round(mean) };
+    }
+  }
+  const nodes = [...document.querySelectorAll(".host-body *")].slice(0, 24);
+  const style = nodes.map((el) => {
+    const cs = getComputedStyle(el);
+    return [el.tagName, cs.transform, cs.filter, cs.width, cs.backgroundSize, (el.textContent || "").slice(0, 8)].join("|");
+  }).join(";");
+  const tween = window.__shaderTween;
+  return {
+    pixels,
+    text: (document.body.innerText || "").replace(/\\s+/g, " ").slice(0, 140),
+    style,
+    gsap: window.gsap && window.gsap.version || "",
+    driven: window.__gsapDriven || "",
+    tween: tween && typeof tween.progress === "function" ? Math.round(tween.progress() * 100) / 100 : null
+  };
+})()`;
+
+const visualPlan = [
+  { id: "shader-animation-gsap", canvas: true, script: `[...document.querySelectorAll("button")].find((b) => b.textContent.includes("播放封面")).click()` },
+  { id: "animated-letters-shader", canvas: true, script: `[...document.querySelectorAll("button")].find((b) => b.textContent.includes("看场次")).click()` },
+  { id: "dreamy-particles", canvas: true, script: `(() => { const el = document.querySelector("canvas"); const r = el.getBoundingClientRect(); el.dispatchEvent(new PointerEvent("pointermove", { bubbles: true, clientX: r.left + r.width * 0.2, clientY: r.top + r.height * 0.45 })); })()` },
+  { id: "rb-lanyard", canvas: true, script: `(() => { const el = document.querySelector("canvas"); const r = el.getBoundingClientRect(); const x = r.left + r.width * 0.78; const y = r.top + r.height * 0.45; el.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true, clientX: x, clientY: y })); })()` },
+  { id: "rb-ferrofluid", canvas: true, script: `(() => { const el = document.querySelector("canvas"); const r = el.getBoundingClientRect(); el.dispatchEvent(new PointerEvent("pointermove", { bubbles: true, clientX: r.left + r.width * 0.5, clientY: r.top + r.height * 0.18 })); })()` },
+  { id: "rb-splash-cursor", canvas: true, script: `(() => { const el = document.querySelector("canvas"); const r = el.getBoundingClientRect(); el.dispatchEvent(new PointerEvent("pointermove", { bubbles: true, clientX: r.left + r.width * 0.7, clientY: r.top + r.height * 0.3 })); })()` },
+  { id: "fancy-underline-to-background", script: `document.querySelector("article span").click()` },
+  { id: "scroll-blur-typography", script: `(() => { const el = document.querySelector("[tabindex]"); el.scrollTop = 140; el.dispatchEvent(new Event("scroll")); })()` },
+  { id: "rb-warp-text", script: `(() => { const el = document.querySelector("article"); const r = el.getBoundingClientRect(); el.dispatchEvent(new PointerEvent("pointermove", { bubbles: true, clientX: r.left + 40, clientY: r.top + 30 })); })()` },
+  { id: "macbook-scroll", script: `(() => { const el = document.querySelector("[tabindex]"); el.focus(); el.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowUp", bubbles: true })); })()` },
+  { id: "blur-fade", script: `document.querySelector(".host-reset").click()` },
+  { id: "aceternity-compare", script: `(() => { const el = [...document.querySelectorAll("button")].find((b) => b.textContent.includes("拖")); el.focus(); el.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true })); })()` }
+];
+
+const visual = [];
+if (!only.length) {
+  for (const plan of visualPlan) {
+    pageErrors.length = 0;
+    const row = table[plan.id];
+    await send("Page.navigate", { url: new URL(row.entry, BASE).href });
+    await waitLoad();
+    await sleep(150);
+    try {
+      await evaluate(`(() => { if (window.__preview && window.__preview.reset) window.__preview.reset(); return true; })()`);
+      await sleep(80);
+      const before = await evaluate(grabExpr);
+      await evaluate(`(() => { ${plan.script}; return true; })()`);
+      await sleep(plan.canvas ? 420 : 280);
+      const after = await evaluate(grabExpr);
+      const pixelMoved = before.pixels && after.pixels && before.pixels.hash !== after.pixels.hash;
+      const styleMoved = JSON.stringify(before.style) !== JSON.stringify(after.style) || before.text !== after.text;
+      const moved = Boolean(pixelMoved || styleMoved);
+      const blank = plan.canvas && (!after.pixels || after.pixels.variance < 12);
+      const shaderNoise = pageErrors.filter((line) => /shader|compile|link|WebGL|TypeError/i.test(line));
+      const gsapOk = plan.id !== "shader-animation-gsap" || (String(after.gsap).startsWith("3.") && after.driven === "gsap" && after.tween >= 0.99);
+      if (!moved || blank || shaderNoise.length || !gsapOk) {
+        failures.push({
+          id: plan.id,
+          error: "rendered output did not change",
+          changed: { moved, blank, gsap: after.gsap, driven: after.driven, tween: after.tween, before: before.pixels || before.style, after: after.pixels || after.style, errors: shaderNoise }
+        });
+      }
+      visual.push({
+        id: plan.id,
+        moved,
+        blank: Boolean(blank),
+        variance: after.pixels && after.pixels.variance,
+        gsap: after.gsap,
+        driven: after.driven,
+        tween: after.tween,
+        style: after.style
+      });
+    } catch (error) {
+      failures.push({ id: plan.id, error: "visual check failed: " + String(error).slice(0, 180) });
+    }
+  }
+
+  pageErrors.length = 0;
+  await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] });
+  await send("Page.navigate", { url: new URL(table["shader-animation-gsap"].entry, BASE).href });
+  await waitLoad();
+  await sleep(200);
+  const reduced = await evaluate(grabExpr);
+  const reducedText = await evaluate(`(document.body.innerText || "").includes("白潮")`);
+  const reducedOk = reduced.pixels && reduced.pixels.variance > 40 && reduced.driven === "reduced" && reducedText && !pageErrors.length;
+  if (!reducedOk) {
+    failures.push({ id: "shader-animation-gsap", error: "reduced motion fallback unreadable", changed: { reduced, reducedText, errors: pageErrors.slice() } });
+  }
+  visual.push({ id: "shader-animation-gsap-reduced", variance: reduced.pixels && reduced.pixels.variance, driven: reduced.driven, text: reducedText });
+  await send("Emulation.setEmulatedMedia", { features: [] });
+}
+
 await send("Page.navigate", { url: BASE + "index.html" });
 await sleep(800);
 const gallery = await evaluate(`(() => {
@@ -135,6 +261,7 @@ const summary = {
   checked: targets.length,
   failures: failures.length,
   gallery,
+  visual,
   failureSample: failures.slice(0, 40)
 };
 writeFileSync("/tmp/preview-test-report.json", JSON.stringify(summary, null, 2));
