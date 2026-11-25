@@ -7,7 +7,6 @@
     return;
   }
 
-  const EMBED_SANDBOX = "allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox";
   const MAX_CARD_FRAMES = 8;
 
   const taxonomy = lib.taxonomy;
@@ -49,6 +48,7 @@
   const q = document.getElementById("q");
   const catsEl = document.getElementById("cats");
   const sourcesEl = document.getElementById("sources");
+  const viewsEl = document.getElementById("views");
   const listEl = document.getElementById("list");
   const reader = document.getElementById("reader");
   const gallery = document.getElementById("gallery");
@@ -61,7 +61,7 @@
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const narrowQuery = window.matchMedia("(max-width: 1099px)");
 
-  let state = { q: "", cat: "", src: "", id: "" };
+  let state = { q: "", cat: "", src: "", view: "", id: "" };
   let lastId = null;
   let booted = false;
   let savedScroll = 0;
@@ -104,6 +104,7 @@
   function matches(item, filter) {
     if (filter.cat && item.category !== filter.cat) return false;
     if (filter.src && item.source !== filter.src) return false;
+    if (filter.view && previewRecord(item).status !== filter.view) return false;
     return filter.qToks.every(function (token) { return item.hay.includes(token); });
   }
 
@@ -123,59 +124,33 @@
     catch (error) { return ""; }
   }
 
-  function canEmbed(url) {
-    const allow = window.EMBED_ALLOW && window.EMBED_ALLOW.urls;
-    return Boolean(url && allow && allow[url] === true);
+  function previewRecord(item) {
+    const table = window.PREVIEW_STATUS || {};
+    const row = table[item.id] || {};
+    const status = row.status === "ready" || row.status === "review" ? row.status : "todo";
+    const entry = status === "todo" ? "" : (row.entry || "");
+    if (/^https?:/i.test(entry)) return { status: "todo", src: "", limitation: row.limitation || "" };
+    return { status: status, src: entry, limitation: row.limitation || "", mechanism: row.mechanism || "" };
   }
 
-  function recutSrc(item) {
-    if (!window.PREVIEW_RECUTS || !window.PREVIEW_RECUTS[item.id]) return "";
-    return "previews/" + item.id + ".html";
+  function isReady(item) {
+    return previewRecord(item).status === "ready";
   }
 
-  function previewPlan(item) {
-    const demo = safeUrl(item.officialDemoUrl);
-    const local = recutSrc(item);
-    if (canEmbed(demo)) return { mode: "embed", src: demo, local: local, embed: demo };
-    if (local) return { mode: "local", src: local, local: local, embed: "" };
-    return { mode: "none", src: "", local: "", embed: "" };
+  function statusLine(rec) {
+    if (rec.status === "ready") return { kind: "live", text: "已实现 · 参考组件" };
+    if (rec.status === "review") return { kind: "official", text: "待核验" };
+    return { kind: "idle", text: "待实现" };
   }
 
-  function hasRecut(item) {
-    return Boolean(previewPlan(item).local);
-  }
-
-  function statusLine(plan) {
-    if (plan.local) return { kind: "live", text: "可预览 · 站内复刻" };
-    if (plan.mode === "embed") return { kind: "official", text: "官方页面" };
-    return { kind: "idle", text: "暂无预览" };
-  }
-
-  // Gallery iframes are only local recuts. An allowlisted docs page is not
-  // treated as a verified effect: the card says 官方页面 and keeps a still scene.
-  function cardFrame(plan) {
-    if (plan.local) return { mode: "local", src: plan.local };
-    return { mode: "none", src: "" };
-  }
-
-  function cardStatus(plan) {
-    return statusLine(plan);
-  }
-
-  function openingPlan(plan) {
-    if (plan.local) return { mode: "local", src: plan.local, local: plan.local, embed: plan.embed };
-    return plan;
-  }
-
-  function applyFrame(frame, mode, src, title) {
-    if (mode === "embed") {
-      frame.setAttribute("sandbox", EMBED_SANDBOX);
-      frame.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
-    } else {
-      frame.removeAttribute("sandbox");
-      frame.removeAttribute("referrerpolicy");
+  function applyLocalFrame(frame, src, title) {
+    frame.removeAttribute("sandbox");
+    frame.removeAttribute("referrerpolicy");
+    if (!src || /^https?:/i.test(src)) {
+      frame.removeAttribute("src");
+      return;
     }
-    frame.title = (mode === "embed" ? "官方演示：" : "站内复刻：") + title;
+    frame.title = "参考组件：" + title;
     frame.src = src;
   }
 
@@ -206,38 +181,21 @@
   }
 
   function renderStage(item) {
-    const plan = previewPlan(item);
-    const opened = openingPlan(plan);
-    const stage = el("section", "stage is-" + opened.mode);
+    const rec = previewRecord(item);
+    const stage = el("section", "stage is-" + rec.status);
     stage.setAttribute("aria-label", "案例预览");
     const bar = el("div", "stage-bar");
     const titles = el("div", "stage-titles");
-    const kicker = opened.mode === "local" ? "站内复刻" : opened.mode === "embed" ? "官方文档页" : "站内预览";
+    const kicker = rec.status === "ready" ? "参考组件" : rec.status === "review" ? "待核验" : "尚未实现";
     titles.append(el("h3", "stage-kicker", kicker));
     const noteBits = [];
     if (item.trigger) noteBits.push("触发 · " + item.trigger);
-    if (plan.local && plan.embed) noteBits.push("复刻可切换到官方文档页；文档页未必把效果放在首屏");
-    else if (opened.mode === "embed") noteBits.push("官方文档页，效果未经逐条核验");
-    else if (opened.mode === "local") noteBits.push("依据提示词复刻的示例场景");
-    else noteBits.push("尚未嵌入");
+    if (rec.status === "ready") noteBits.push("按案例说明独立实现，不是官方演示的逐像素复刻");
+    else if (rec.status === "review") noteBits.push(rec.limitation || "实现与标题的范围还没对齐，先不计入已实现");
+    else noteBits.push("还没有按说明做成参考组件");
     titles.append(el("p", "stage-note", noteBits.join("  ·  ")));
     bar.append(titles);
-
     const actions = el("div", "stage-actions");
-    if (plan.local && plan.embed) {
-      const group = el("div", "stage-switch");
-      group.setAttribute("role", "group");
-      group.setAttribute("aria-label", "预览来源");
-      [["local", "站内复刻"], ["embed", "官方页面"]].forEach(function (choice) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.dataset.previewSource = choice[0];
-        button.textContent = choice[1];
-        button.setAttribute("aria-pressed", opened.mode === choice[0] ? "true" : "false");
-        group.append(button);
-      });
-      actions.append(group);
-    }
     const demoHref = safeUrl(item.officialDemoUrl);
     if (demoHref) {
       const anchor = document.createElement("a");
@@ -250,27 +208,22 @@
     }
     bar.append(actions);
     stage.append(bar);
-
     const viewport = el("div", "stage-viewport");
-    if (plan.mode === "none") {
+    if (!rec.src) {
       const empty = el("div", "stage-empty");
-      empty.append(renderPoster(item.category, "暂无站内预览", glyphOf(item)));
+      empty.append(renderPoster(item.category, "待实现", glyphOf(item)));
       const copy = el("div", "stage-empty-copy");
-      copy.append(el("strong", null, "暂无站内预览"));
-      copy.append(el("p", null, demoHref
-        ? "官方页面不允许被嵌入，这条也还没有站内复刻。请打开官方演示核对运动。"
-        : "这条没有单独的官方演示地址，也还没有站内复刻。请从下方出处打开。"));
+      copy.append(el("strong", null, "待实现"));
+      copy.append(el("p", null, "这条还没有本地参考组件。官方地址只作为外链，不会嵌进页面。"));
       empty.append(copy);
       viewport.append(empty);
     } else {
-      viewport.append(renderPoster(item.category, "正在打开预览", glyphOf(item)));
+      viewport.append(renderPoster(item.category, rec.status === "review" ? "待核验" : "正在打开参考组件", glyphOf(item)));
       const frame = document.createElement("iframe");
       frame.className = "stage-iframe";
-      frame.dataset.localSrc = plan.local;
-      frame.dataset.embedSrc = plan.embed;
       frame.dataset.caseTitle = item.title;
       frame.addEventListener("load", function () { viewport.classList.add("is-ready"); });
-      applyFrame(frame, opened.mode, opened.src, item.title);
+      applyLocalFrame(frame, rec.src, item.title);
       viewport.append(frame);
     }
     stage.append(viewport);
@@ -288,6 +241,7 @@
       q: params.get("q") || "",
       cat: params.get("cat") || "",
       src: params.get("src") || "",
+      view: params.get("view") || "",
       id: id
     };
   }
@@ -295,6 +249,7 @@
   function sanitize(next) {
     if (next.cat && !catIds.has(next.cat)) next.cat = "";
     if (next.src && !srcIds.has(next.src)) next.src = "";
+    if (next.view && next.view !== "ready" && next.view !== "review" && next.view !== "todo") next.view = "";
     if (next.id && !byId.has(next.id)) next.id = "";
     return next;
   }
@@ -306,6 +261,7 @@
     if (state.q) params.set("q", state.q);
     if (state.cat) params.set("cat", state.cat);
     if (state.src) params.set("src", state.src);
+    if (state.view) params.set("view", state.view);
     url.search = params.toString();
     url.hash = state.id || "";
     const next = url.pathname + url.search + url.hash;
@@ -329,6 +285,9 @@
   }
 
   function buildNav() {
+    [["", "全部"], ["ready", "已实现"], ["review", "待核验"], ["todo", "待实现"]].forEach(function (item) {
+      viewsEl.append(navButton(item[0], item[1], "view"));
+    });
     sourcesEl.append(navButton("", "全部", "src"));
     taxonomy.sources.forEach(function (source) {
       sourcesEl.append(navButton(source.id, source.label, "src"));
@@ -369,9 +328,9 @@
     groups.forEach(function (group) {
       group.items.sort(function (a, b) {
         function rank(item) {
-          const plan = previewPlan(item);
-          if (plan.local) return 0;
-          if (plan.mode !== "none") return 1;
+          const rec = previewRecord(item);
+          if (rec.status === "ready") return 0;
+          if (rec.status === "review") return 1;
           return 2;
         }
         return rank(a) - rank(b) || a.no - b.no;
@@ -389,16 +348,15 @@
   }
 
   function renderCard(item, qToks) {
-    const plan = previewPlan(item);
-    const framePlan = cardFrame(plan);
-    const status = cardStatus(plan);
+    const rec = previewRecord(item);
+    const status = statusLine(rec);
     const card = el("article", "card");
     const stage = el("div", "card-stage");
     stage.dataset.previewHost = "1";
-    stage.dataset.mode = framePlan.mode;
-    stage.dataset.src = framePlan.src || "";
+    stage.dataset.mode = rec.src ? "local" : "none";
+    stage.dataset.src = rec.src || "";
     stage.dataset.caseTitle = item.title;
-    const flag = plan.local ? "" : (plan.mode === "embed" ? "官方文档页" : "暂无站内预览");
+    const flag = rec.status === "ready" ? "" : (rec.status === "review" ? "待核验" : "待实现");
     stage.append(renderPoster(item.category, flag, glyphOf(item)));
 
     const caption = el("div", "card-caption");
@@ -452,8 +410,8 @@
         const head = el("header", "shelf-head");
         const heading = el("h3", null, meta ? meta.label : group.category);
         heading.id = headId;
-        const previewN = group.items.filter(hasRecut).length;
-        const sub = (meta ? meta.volumeTitle + " · " : "") + previewN + " 可预览 / " + group.items.length;
+        const previewN = group.items.filter(isReady).length;
+        const sub = (meta ? meta.volumeTitle + " · " : "") + previewN + " 已实现 / " + group.items.length;
         head.append(heading, el("p", null, sub));
         const grid = el("div", "grid");
         group.items.forEach(function (item) { grid.append(renderCard(item, qToks)); });
@@ -502,8 +460,8 @@
 
   function renderCase(item, qToks, flat, openHidden) {
     reader.setAttribute("aria-labelledby", "case-title");
-    const plan = previewPlan(item);
-    const status = statusLine(plan);
+    const rec = previewRecord(item);
+    const status = statusLine(rec);
     const bar = el("div", "reader-toolbar");
     const close = document.createElement("button");
     close.type = "button";
@@ -629,8 +587,8 @@
     aboutEl.append(el("h2", null, "怎么用这份画廊"));
     const steps = el("ol", "steps");
     [
-      ["看效果", "画廊只播放站内复刻。只有官方文档页的条目标成「官方页面」，不把文档壳当成已经核验的效果。"],
-      ["打开", "有复刻时，案例页先放复刻，也可以改切官方文档页。"],
+      ["看效果", "画廊只播放已经做成的本地参考组件。没做完的标成待实现或待核验。"],
+      ["打开", "案例页放的是同一套本地组件。官方地址只在新标签页打开，不会嵌进画面。"],
       ["复制", "提示词保持原文。提示词里的品牌、价格和数字是示例，不是外部统计。"]
     ].forEach(function (step) {
       const li = el("li");
@@ -688,7 +646,7 @@
     frame.setAttribute("aria-hidden", "true");
     frame.setAttribute("scrolling", "no");
     frame.addEventListener("load", function () { host.classList.add("is-ready"); });
-    applyFrame(frame, mode, src, host.dataset.caseTitle || "");
+    applyLocalFrame(frame, src, host.dataset.caseTitle || "");
     host.appendChild(frame);
     host.classList.add("is-mounted");
   }
@@ -746,37 +704,42 @@
     mast.inert = Boolean(state.id) && narrowQuery.matches;
   }
 
-  const previewableTotal = ordered.filter(hasRecut).length;
+  const previewableTotal = ordered.filter(isReady).length;
 
   function render() {
     const wasReading = document.body.classList.contains("is-reading");
     const qToks = tokensOf(state.q);
-    const filter = { qToks: qToks, cat: state.cat, src: state.src };
+    const filter = { qToks: qToks, cat: state.cat, src: state.src, view: state.view };
     const filtered = ordered.filter(function (item) { return matches(item, filter); });
     const groups = groupCases(filtered);
     const flat = flatten(groups);
     const willRead = Boolean(state.id);
     const changed = lastId !== state.id;
-    const filtering = Boolean(state.q || state.cat || state.src);
-    const previewableShown = filtered.filter(hasRecut).length;
+    const filtering = Boolean(state.q || state.cat || state.src || state.view);
+    const previewableShown = filtered.filter(isReady).length;
 
     if (q.value !== state.q) q.value = state.q;
     countEl.textContent = filtering
-      ? filtered.length + " / " + ordered.length + " 条 · " + previewableShown + " 可预览"
-      : ordered.length + " 条 · " + previewableTotal + " 可预览";
+      ? filtered.length + " / " + ordered.length + " 条 · " + previewableShown + " 已实现"
+      : ordered.length + " 条 · " + previewableTotal + " 已实现";
     clearBtn.hidden = !filtering;
-    leadEl.textContent = "卡片只播放站内复刻。官方文档页会标明「官方页面」，点开后可以嵌入，但不算已经核验的效果。";
+    leadEl.textContent = "这些是按案例说明独立做的参考组件，不是官方演示的逐像素复刻。没做完的标成待实现。";
     document.getElementById("mast-count").textContent = String(taxonomy.total);
-    document.getElementById("mast-previewable").textContent = previewableTotal + " 可预览";
+    document.getElementById("mast-previewable").textContent = previewableTotal + " 已实现";
     document.getElementById("mast-date").textContent = taxonomy.asOf;
     updateNav(catsEl, "cat", state.cat, function (id) {
       return ordered.filter(function (item) {
-        return matches(item, { qToks: qToks, cat: id, src: state.src });
+        return matches(item, { qToks: qToks, cat: id, src: state.src, view: state.view });
+      }).length;
+    });
+    updateNav(viewsEl, "view", state.view, function (id) {
+      return ordered.filter(function (item) {
+        return matches(item, { qToks: qToks, cat: state.cat, src: state.src, view: id });
       }).length;
     });
     updateNav(sourcesEl, "src", state.src, function (id) {
       return ordered.filter(function (item) {
-        return matches(item, { qToks: qToks, cat: state.cat, src: id });
+        return matches(item, { qToks: qToks, cat: state.cat, src: id, view: state.view });
       }).length;
     });
 
@@ -887,6 +850,14 @@
     state.q = "";
     state.cat = "";
     state.src = "";
+    state.view = "";
+    commit("replace");
+  });
+  viewsEl.addEventListener("click", function (event) {
+    const button = event.target.closest("[data-view]");
+    if (!button) return;
+    const id = button.dataset.view;
+    state.view = id && id === state.view ? "" : id;
     commit("replace");
   });
   app.addEventListener("click", function (event) {
@@ -919,28 +890,12 @@
       commit("replace");
       return;
     }
-    const source = event.target.closest("[data-preview-source]");
-    if (source) {
-      if (source.getAttribute("aria-pressed") === "true") return;
-      const frame = source.closest(".stage").querySelector(".stage-iframe");
-      const viewport = source.closest(".stage").querySelector(".stage-viewport");
-      if (!frame) return;
-      const mode = source.dataset.previewSource;
-      const src = mode === "local" ? frame.dataset.localSrc : frame.dataset.embedSrc;
-      if (!src) return;
-      if (viewport) viewport.classList.remove("is-ready");
-      applyFrame(frame, mode, src, frame.dataset.caseTitle);
-      source.parentElement.querySelectorAll("[data-preview-source]").forEach(function (button) {
-        button.setAttribute("aria-pressed", button === source ? "true" : "false");
-      });
-      return;
-    }
     const copy = event.target.closest("[data-copy]");
     if (copy) copyPrompt(copy);
   });
   document.querySelector(".brand").addEventListener("click", function (event) {
     event.preventDefault();
-    state = { q: "", cat: "", src: "", id: "" };
+    state = { q: "", cat: "", src: "", view: "", id: "" };
     commit("push");
   });
   document.addEventListener("keydown", function (event) {

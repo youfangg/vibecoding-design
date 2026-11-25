@@ -36,6 +36,10 @@
     </div>
     <div class="filters">
       <div class="filter-row">
+        <h2 id="view-heading">进度</h2>
+        <div id="views" class="chip-scroll" role="group" aria-labelledby="view-heading"></div>
+      </div>
+      <div class="filter-row">
         <h2 id="src-heading">来源</h2>
         <div id="sources" class="chip-scroll" role="group" aria-labelledby="src-heading"></div>
       </div>
@@ -55,7 +59,7 @@
       <h2 class="visually-hidden" id="gallery-heading">案例画廊</h2>
       <div class="gallery-bar">
         <p id="count" aria-live="polite" aria-atomic="true">250 条</p>
-        <p class="index-lead" id="index-lead">卡片只播放站内复刻。官方文档页会标明「官方页面」。</p>
+        <p class="index-lead" id="index-lead">参考组件按案例说明独立实现，不是官方演示的逐像素复刻。</p>
         <button type="button" id="clear" hidden>清除筛选</button>
       </div>
       <p class="filter-note" id="filter-note" hidden></p>
@@ -64,7 +68,7 @@
     </section>
     <article class="reader" id="reader" hidden></article>
   </main>
-  <script src="assets/embed-allowlist.js"></script>
+  <script src="previews/status.js"></script>
   <script src="previews/registry.js"></script>
   <script src="library.js"></script>
   <script src="assets/site.js"></script>

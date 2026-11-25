@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>参考组件</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="shell.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script src="kit.js"></script>
+  <script src="host.js"></script>
+  <script src="scenes/enter.js"></script>
+  <script src="scenes/transition.js"></script>
+  <script src="scenes/cursor.js"></script>
+  <script src="scenes/loading.js"></script>
+  <script src="scenes/dataviz.js"></script>
+  <script>
+    (function () {
+      var id = new URLSearchParams(location.search).get("id") || "";
+      var mount = window.SCENES && window.SCENES[id];
+      if (!mount) {
+        document.getElementById("root").textContent = "待实现";
+        window.__preview = { id: id, missing: true, mechanism: "" };
+        return;
+      }
+      mount(document.getElementById("root"));
+    })();
+  </script>
+</body>
+</html>
