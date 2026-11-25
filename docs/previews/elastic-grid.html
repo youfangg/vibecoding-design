@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>青浦十年</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f3eee4; color: #241c16; overflow: hidden; }
+    .scroll { height: 100%; overflow: auto; padding: 14px 14px 40px; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.4rem; }
+    .example { margin: 4px 0 12px; color: #7a6a58; font-size: 12px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tile { min-height: 120px; padding: 10px; display: flex; align-items: flex-end; color: #241c16; font-family: var(--serif); }
+  </style>
+</head>
+<body>
+  <div class="scroll" id="scroll">
+    <h1>青浦十年</h1>
+    <p class="example">示例照片格，滚动时带着弹性滞后</p>
+    <div class="grid" id="grid"></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var photos = [["铁索 · 2016", "#c46a4a"], ["渡口 · 2017", "#7ea0b8"], ["芦苇 · 2018", "#c9b48a"], ["夜航 · 2019", "#23483a"], ["修船 · 2021", "#d7c4a2"], ["新桥 · 2024", "#8a3b2c"]];
+    var grid = document.getElementById("grid");
+    var tiles = photos.map(function (photo) {
+      var tile = document.createElement("article");
+      tile.className = "tile";
+      tile.style.background = photo[1];
+      tile.textContent = photo[0];
+      grid.append(tile);
+      return tile;
+    });
+    var scroll = document.getElementById("scroll");
+    var y = tiles.map(function () { return 0; });
+    var kit = window.PreviewKit;
+    function frame() {
+      var top = scroll.scrollTop;
+      tiles.forEach(function (tile, i) {
+        var target = kit.reduced() ? 0 : Math.sin((top / 80) + i) * 10;
+        y[i] += (target - y[i]) * (kit.reduced() ? 1 : 0.08);
+        tile.style.transform = "translateY(" + y[i].toFixed(2) + "px)";
+      });
+      if (!kit.reduced()) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+    if (!kit.reduced()) {
+      var n = 0;
+      var timer = setInterval(function () {
+        scroll.scrollTop = Math.min(scroll.scrollHeight, scroll.scrollTop + 18);
+        n += 1;
+        if (n > 18) clearInterval(timer);
+      }, 180);
+    }
+  </script>
+</body>
+</html>

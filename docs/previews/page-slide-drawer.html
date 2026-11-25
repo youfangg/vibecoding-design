@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>云帆路线</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #1e2430; color: #f4efe6; overflow: hidden; }
+    .drawer { position: absolute; inset: 0 auto 0 0; width: min(240px, 70%); padding: 20px 16px; background: #141820; }
+    .drawer button, .page button { min-height: 40px; border: 0; background: transparent; color: inherit; text-align: left; }
+    .drawer li { list-style: none; border-top: 1px solid rgba(244,239,230,.2); }
+    .drawer ul { margin: 12px 0 0; padding: 0; }
+    .page { position: absolute; inset: 0; background: #f4efe6; color: #241c16; padding: 16px; transition: transform .45s ease; }
+    .page.is-open { transform: translateX(min(240px, 70%)); }
+    h1 { margin: 8px 0 0; font-family: var(--serif); font-size: 1.6rem; }
+    .open { margin-top: 16px; padding: 0 12px; background: #241c16; color: #f4efe6; }
+    .mask { position: absolute; inset: 0; background: transparent; border: 0; display: none; }
+    .page.is-open .mask { display: block; }
+    .example { margin: 0; color: #7a6a58; font-size: 12px; }
+    @media (prefers-reduced-motion: reduce) { .page { transition: none; } }
+  </style>
+</head>
+<body>
+  <nav class="drawer" id="drawer" aria-label="路线">
+    <p>云帆出行</p>
+    <ul>
+      <li><button type="button">通勤班线 · ¥18</button></li>
+      <li><button type="button">跨城拼车 · ¥76</button></li>
+      <li><button type="button">企业包车 · 询价</button></li>
+    </ul>
+  </nav>
+  <div class="page" id="page">
+    <p class="example">示例线路</p>
+    <h1>今天去哪里</h1>
+    <button class="open" type="button" id="open" aria-expanded="false" aria-controls="drawer">路线</button>
+    <button class="mask" type="button" id="mask" aria-label="关闭路线"></button>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var page = document.getElementById("page");
+    var openBtn = document.getElementById("open");
+    function setOpen(on) {
+      page.classList.toggle("is-open", on);
+      openBtn.setAttribute("aria-expanded", on ? "true" : "false");
+      openBtn.textContent = on ? "关闭" : "路线";
+    }
+    openBtn.addEventListener("click", function () { setOpen(!page.classList.contains("is-open")); });
+    document.getElementById("mask").addEventListener("click", function () { setOpen(false); });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") setOpen(false);
+    });
+  </script>
+</body>
+</html>

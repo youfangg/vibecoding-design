@@ -77,6 +77,13 @@
     "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/click"
   },
   {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/flip-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/flip-button"
+  },
+  {
     "url": "https://animate-ui.com/docs/primitives/animate-ui/highlight",
     "allowed": true,
     "reason": "allowed",
@@ -89,6 +96,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/image-zoom"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/input-otp",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/input-otp"
   },
   {
     "url": "https://animate-ui.com/docs/primitives/animate-ui/liquid-button",
@@ -105,11 +119,32 @@
     "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/motion-grid"
   },
   {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/page-transition",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/page-transition"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/pinned-list",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/pinned-list"
+  },
+  {
     "url": "https://animate-ui.com/docs/primitives/animate-ui/sliding-number",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/sliding-number"
+  },
+  {
+    "url": "https://animate-ui.com/docs/primitives/animate-ui/spring",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://animate-ui.com/docs/primitives/animate-ui/spring"
   },
   {
     "url": "https://demos.gsap.com/demo/flip-carousel/",
@@ -182,6 +217,20 @@
     "finalUrl": "https://kokonutui.com/docs/backgrounds/rain-glass-background"
   },
   {
+    "url": "https://kokonutui.com/docs/buttons/attract-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/attract-button"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/cart-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/cart-button"
+  },
+  {
     "url": "https://kokonutui.com/docs/buttons/hold-button",
     "allowed": true,
     "reason": "allowed",
@@ -194,6 +243,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://kokonutui.com/docs/buttons/morph-popover"
+  },
+  {
+    "url": "https://kokonutui.com/docs/buttons/particle-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://kokonutui.com/docs/buttons/particle-button"
   },
   {
     "url": "https://kokonutui.com/docs/buttons/pull-cord",
@@ -315,6 +371,13 @@
     "finalUrl": "https://magicui.design/docs/components/animated-beam"
   },
   {
+    "url": "https://magicui.design/docs/components/animated-circular-progress-bar",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/animated-circular-progress-bar"
+  },
+  {
     "url": "https://magicui.design/docs/components/animated-theme-toggler",
     "allowed": true,
     "reason": "allowed",
@@ -322,11 +385,25 @@
     "finalUrl": "https://magicui.design/docs/components/animated-theme-toggler"
   },
   {
+    "url": "https://magicui.design/docs/components/aurora-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/aurora-text"
+  },
+  {
     "url": "https://magicui.design/docs/components/blur-fade",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://magicui.design/docs/components/blur-fade"
+  },
+  {
+    "url": "https://magicui.design/docs/components/border-beam",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/border-beam"
   },
   {
     "url": "https://magicui.design/docs/components/confetti",
@@ -378,6 +455,13 @@
     "finalUrl": "https://magicui.design/docs/components/icon-cloud"
   },
   {
+    "url": "https://magicui.design/docs/components/lens",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/lens"
+  },
+  {
     "url": "https://magicui.design/docs/components/morphing-text",
     "allowed": true,
     "reason": "allowed",
@@ -418,6 +502,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://magicui.design/docs/components/smooth-cursor"
+  },
+  {
+    "url": "https://magicui.design/docs/components/terminal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://magicui.design/docs/components/terminal"
   },
   {
     "url": "https://magicui.design/docs/components/text-3d-flip",
@@ -483,6 +574,13 @@
     "finalUrl": "https://nivo.rocks/bar/"
   },
   {
+    "url": "https://nivo.rocks/calendar/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/calendar/"
+  },
+  {
     "url": "https://nivo.rocks/choropleth/",
     "allowed": true,
     "reason": "allowed",
@@ -504,6 +602,13 @@
     "finalUrl": "https://nivo.rocks/pie/"
   },
   {
+    "url": "https://nivo.rocks/radar/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/radar/"
+  },
+  {
     "url": "https://nivo.rocks/sankey/",
     "allowed": true,
     "reason": "allowed",
@@ -523,6 +628,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://nivo.rocks/sunburst/"
+  },
+  {
+    "url": "https://nivo.rocks/treemap/",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://nivo.rocks/treemap/"
   },
   {
     "url": "https://reactbits.dev/components/animated-list",
@@ -889,6 +1001,13 @@
     "finalUrl": "https://ui.aceternity.com/components/background-beams-with-collision"
   },
   {
+    "url": "https://ui.aceternity.com/components/background-cubes-grid",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/background-cubes-grid"
+  },
+  {
     "url": "https://ui.aceternity.com/components/canvas-reveal-effect",
     "allowed": true,
     "reason": "allowed",
@@ -908,6 +1027,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://ui.aceternity.com/components/chromatic-image"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/comet-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/comet-card"
   },
   {
     "url": "https://ui.aceternity.com/components/compare",
@@ -952,6 +1078,13 @@
     "finalUrl": "https://ui.aceternity.com/components/expandable-card"
   },
   {
+    "url": "https://ui.aceternity.com/components/file-upload",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/file-upload"
+  },
+  {
     "url": "https://ui.aceternity.com/components/flip-words",
     "allowed": true,
     "reason": "allowed",
@@ -959,11 +1092,25 @@
     "finalUrl": "https://ui.aceternity.com/components/flip-words"
   },
   {
+    "url": "https://ui.aceternity.com/components/focus-cards",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/focus-cards"
+  },
+  {
     "url": "https://ui.aceternity.com/components/github-globe",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://ui.aceternity.com/components/github-globe"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/glowing-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/glowing-effect"
   },
   {
     "url": "https://ui.aceternity.com/components/gooey-input",
@@ -1036,11 +1183,25 @@
     "finalUrl": "https://ui.aceternity.com/components/notch"
   },
   {
+    "url": "https://ui.aceternity.com/components/parallax-hero-images",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/parallax-hero-images"
+  },
+  {
     "url": "https://ui.aceternity.com/components/parallax-scroll",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://ui.aceternity.com/components/parallax-scroll"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/pixelated-canvas",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/pixelated-canvas"
   },
   {
     "url": "https://ui.aceternity.com/components/placeholders-and-vanish-input",
@@ -1097,6 +1258,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://ui.aceternity.com/components/text-generate-effect"
+  },
+  {
+    "url": "https://ui.aceternity.com/components/text-hover-effect",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://ui.aceternity.com/components/text-hover-effect"
   },
   {
     "url": "https://ui.aceternity.com/components/timeline",
@@ -1351,6 +1519,13 @@
     "finalUrl": "https://www.reactbits.dev/animations/crosshair"
   },
   {
+    "url": "https://www.reactbits.dev/animations/crystalized-ball",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/crystalized-ball"
+  },
+  {
     "url": "https://www.reactbits.dev/animations/cubes",
     "allowed": true,
     "reason": "allowed",
@@ -1365,11 +1540,32 @@
     "finalUrl": "https://www.reactbits.dev/animations/cursor-grid"
   },
   {
+    "url": "https://www.reactbits.dev/animations/dither-veil",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/dither-veil"
+  },
+  {
     "url": "https://www.reactbits.dev/animations/elastic-mesh",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/animations/elastic-mesh"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/electric-border",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/electric-border"
+  },
+  {
+    "url": "https://www.reactbits.dev/animations/electric-logo",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/electric-logo"
   },
   {
     "url": "https://www.reactbits.dev/animations/halftone-reveal",
@@ -1400,6 +1596,13 @@
     "finalUrl": "https://www.reactbits.dev/animations/meta-balls"
   },
   {
+    "url": "https://www.reactbits.dev/animations/metallic-paint",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/metallic-paint"
+  },
+  {
     "url": "https://www.reactbits.dev/animations/pixel-swap",
     "allowed": true,
     "reason": "allowed",
@@ -1428,6 +1631,13 @@
     "finalUrl": "https://www.reactbits.dev/animations/ribbons"
   },
   {
+    "url": "https://www.reactbits.dev/animations/ripple-distortion",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/ripple-distortion"
+  },
+  {
     "url": "https://www.reactbits.dev/animations/scroll-expand",
     "allowed": true,
     "reason": "allowed",
@@ -1449,6 +1659,13 @@
     "finalUrl": "https://www.reactbits.dev/animations/sticker-peel"
   },
   {
+    "url": "https://www.reactbits.dev/animations/strands",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/animations/strands"
+  },
+  {
     "url": "https://www.reactbits.dev/animations/swarm-cursor",
     "allowed": true,
     "reason": "allowed",
@@ -1463,6 +1680,13 @@
     "finalUrl": "https://www.reactbits.dev/animations/target-cursor"
   },
   {
+    "url": "https://www.reactbits.dev/backgrounds/antigravity",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/antigravity"
+  },
+  {
     "url": "https://www.reactbits.dev/backgrounds/aurora",
     "allowed": true,
     "reason": "allowed",
@@ -1470,11 +1694,25 @@
     "finalUrl": "https://www.reactbits.dev/backgrounds/aurora"
   },
   {
+    "url": "https://www.reactbits.dev/backgrounds/balatro",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/balatro"
+  },
+  {
     "url": "https://www.reactbits.dev/backgrounds/ballpit",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/backgrounds/ballpit"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/faulty-terminal",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/faulty-terminal"
   },
   {
     "url": "https://www.reactbits.dev/backgrounds/ferrofluid",
@@ -1489,6 +1727,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/backgrounds/hyperspeed"
+  },
+  {
+    "url": "https://www.reactbits.dev/backgrounds/lightning",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/lightning"
   },
   {
     "url": "https://www.reactbits.dev/backgrounds/liquid-ether",
@@ -1519,6 +1764,13 @@
     "finalUrl": "https://www.reactbits.dev/backgrounds/silk"
   },
   {
+    "url": "https://www.reactbits.dev/backgrounds/threads",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/backgrounds/threads"
+  },
+  {
     "url": "https://www.reactbits.dev/components/accordion-gallery",
     "allowed": true,
     "reason": "allowed",
@@ -1533,11 +1785,39 @@
     "finalUrl": "https://www.reactbits.dev/components/bubble-menu"
   },
   {
+    "url": "https://www.reactbits.dev/components/card-nav",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/card-nav"
+  },
+  {
     "url": "https://www.reactbits.dev/components/card-swap",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/components/card-swap"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/chroma-grid",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/chroma-grid"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/curved-input",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/curved-input"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/decay-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/decay-card"
   },
   {
     "url": "https://www.reactbits.dev/components/depth-carousel",
@@ -1547,11 +1827,39 @@
     "finalUrl": "https://www.reactbits.dev/components/depth-carousel"
   },
   {
+    "url": "https://www.reactbits.dev/components/dome-gallery",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/dome-gallery"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/drift-wall",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/drift-wall"
+  },
+  {
     "url": "https://www.reactbits.dev/components/elastic-slider",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/components/elastic-slider"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/flowing-menu",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/flowing-menu"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/fluid-glass",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/fluid-glass"
   },
   {
     "url": "https://www.reactbits.dev/components/flying-posters",
@@ -1582,6 +1890,13 @@
     "finalUrl": "https://www.reactbits.dev/components/holo-card"
   },
   {
+    "url": "https://www.reactbits.dev/components/infinite-menu",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/infinite-menu"
+  },
+  {
     "url": "https://www.reactbits.dev/components/lanyard",
     "allowed": true,
     "reason": "allowed",
@@ -1589,11 +1904,109 @@
     "finalUrl": "https://www.reactbits.dev/components/lanyard"
   },
   {
+    "url": "https://www.reactbits.dev/components/magic-bento",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/magic-bento"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/model-viewer",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/model-viewer"
+  },
+  {
     "url": "https://www.reactbits.dev/components/morph-slider",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/components/morph-slider"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/option-wheel",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/option-wheel"
+  },
+  {
+    "url": "https://www.reactbits.dev/components/reflective-card",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/components/reflective-card"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/refine-frame",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/refine-frame"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/scrub-field",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/scrub-field"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/shredder",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/shredder"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/sling-button",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/sling-button"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/spring-check",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/spring-check"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/squish-switch",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/squish-switch"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/status-mark",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/status-mark"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/swipe-row",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/swipe-row"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/thought-line",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/thought-line"
+  },
+  {
+    "url": "https://www.reactbits.dev/micro/wake-slider",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/micro/wake-slider"
   },
   {
     "url": "https://www.reactbits.dev/text-animations/ascii-text",
@@ -1610,11 +2023,32 @@
     "finalUrl": "https://www.reactbits.dev/text-animations/blur-text"
   },
   {
+    "url": "https://www.reactbits.dev/text-animations/circular-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/circular-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/curved-loop",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/curved-loop"
+  },
+  {
     "url": "https://www.reactbits.dev/text-animations/decrypted-text",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/text-animations/decrypted-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/depth-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/depth-text"
   },
   {
     "url": "https://www.reactbits.dev/text-animations/echo-text",
@@ -1638,11 +2072,25 @@
     "finalUrl": "https://www.reactbits.dev/text-animations/fold-text"
   },
   {
+    "url": "https://www.reactbits.dev/text-animations/fuzzy-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/fuzzy-text"
+  },
+  {
     "url": "https://www.reactbits.dev/text-animations/glitch-text",
     "allowed": true,
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/text-animations/glitch-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/masked-heading",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/masked-heading"
   },
   {
     "url": "https://www.reactbits.dev/text-animations/particle-text",
@@ -1657,6 +2105,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/text-animations/rotating-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/scrambled-text",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/scrambled-text"
   },
   {
     "url": "https://www.reactbits.dev/text-animations/scroll-float",
@@ -1699,6 +2154,13 @@
     "reason": "allowed",
     "status": 200,
     "finalUrl": "https://www.reactbits.dev/text-animations/tech-text"
+  },
+  {
+    "url": "https://www.reactbits.dev/text-animations/text-cursor",
+    "allowed": true,
+    "reason": "allowed",
+    "status": 200,
+    "finalUrl": "https://www.reactbits.dev/text-animations/text-cursor"
   },
   {
     "url": "https://www.reactbits.dev/text-animations/text-pressure",

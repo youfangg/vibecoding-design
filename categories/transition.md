@@ -1,7 +1,8 @@
 # 过渡与页面切换
 
-本类共 9 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `transition`。复制下方提示词即可用于 AI Coding。
+本类共 10 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `transition`。复制下方提示词即可用于 AI Coding。
 
+- [页面视图转场 / Page Transition](#animate-page-transition)
 ## 目录
 
 - [并行页面转场 / Parallel Page Transitions](#parallel-transitions)
@@ -271,4 +272,32 @@
 【触发】点击切换；也要可用键盘操作。
 【运动】使用 View Transitions 或 clip-path，400–700ms；可选用圆、多边形或星形。不支持的浏览器回退为即时换色。
 【不要】只改颜色却没有遮罩；遮罩动画阻塞无法再次切换。
+```
+
+## 页面视图转场 / Page Transition
+
+<a id="animate-page-transition"></a>
+
+- 来源：AI Coding
+- 作者：Animate UI
+- 日期：采集于 2026-11-25
+- 子类：基于 View Transitions 的路由切换
+- 触发：route change
+- 技术栈：React / Motion / View Transitions
+- 官方演示：https://animate-ui.com/docs/primitives/animate-ui/page-transition
+- 分册锚点：[animate-page-transition](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#animate-page-transition)
+
+路由切换时用 View Transitions 做共享元素或整页擦除，可接入 Next.js、React Router 或 TanStack Router，而不是生硬地卸挂载。
+
+链接：
+
+- [打开 Animate UI Page Transition 演示](https://animate-ui.com/docs/primitives/animate-ui/page-transition)（Animate UI）
+
+### 提示词
+
+```
+【场景】护肤品牌「白潮」官网：从首页「晨间护理三步」卡片进入「海盐洁面」详情。卡片上的产品瓶、名称「海盐洁面 120ml」和价格「¥168」在两次路由之间共享，背景用一次软擦除切到浅沙色详情页。
+【触发】点击卡片、浏览器后退或内部链接时播放；中途再导航则打断并跟上新目标。
+【运动】共享元素 400–600ms  morph 到新位置；其余内容短淡入，不要整页闪白。尊重 prefers-reduced-motion，改为瞬时切换或 150ms 淡入。
+【不要】忘记回退路由；在不支持 View Transitions 的浏览器空白；把不该共享的区块硬连在一起。
 ```

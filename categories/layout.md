@@ -1,7 +1,12 @@
 # 导航与布局变形
 
-本类共 20 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `layout`。复制下方提示词即可用于 AI Coding。
+本类共 25 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `layout`。复制下方提示词即可用于 AI Coding。
 
+- [卡片展开导航 / Card Nav](#rb-card-nav)
+- [流动菜单带 / Flowing Menu](#rb-flowing-menu)
+- [光边便当格 / Magic Bento](#rb-magic-bento)
+- [焦点模糊卡片组 / Focus Cards](#aceternity-focus-cards)
+- [钉选分组列表 / Pinned List](#animate-pinned-list)
 ## 目录
 
 - [整页滑移抽屉导航 / Page-Slide Drawer Nav](#page-slide-drawer)
@@ -587,4 +592,144 @@ Motion 官方 layoutId 示例：两个不同树上的元素被识别为同一个
 【触发】应用事件调用 setSize，或按时间排程一组过渡。
 【运动】外壳宽高与圆角连续变形，内容随预设进入退出。动画过程中避免重复点击造成队列堆积。
 【不要】每种状态都突然切尺寸；内容在变形中被裁切到不可读。
+```
+
+## 卡片展开导航 / Card Nav
+
+<a id="rb-card-nav"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：导航栏弹开成一组功能卡
+- 触发：click / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/components/card-nav
+- 分册锚点：[rb-card-nav](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-card-nav)
+
+顶栏或菜单按钮弹开后，导航变成一排（或一列）卡片，每张卡有自己的标题、短句和链接，关闭时再收回条状。
+
+链接：
+
+- [打开 React Bits Card Nav 演示](https://www.reactbits.dev/components/card-nav)（React Bits）
+
+### 提示词
+
+```
+【场景】出行应用「云帆」官网顶栏：点击「产品」后，导航弹开成三张卡——「通勤班线 / 准点率 96%」「跨城拼车 / 今晚 19:40 还有 2 座」「企业包车 / 发票当天开」。每张卡有一张小图（车窗晨光、高速公路夜色、会议室）。再点空白或 Esc 收起。
+【触发】点击触发器打开；Esc、再次点击或点击遮罩关闭。键盘左右可在卡之间走。
+【运动】条到卡的高度与宽度用 spring，400–600ms；卡内文字 stagger 40–60ms。关闭时反向，不要先卸内容再折叠。
+【不要】打开时把页面布局顶得剧烈跳动；移动端仍用过宽的三列；没有焦点管理。
+```
+
+## 流动菜单带 / Flowing Menu
+
+<a id="rb-flowing-menu"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：行间滑动的液态色带菜单
+- 触发：hover / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/components/flowing-menu
+- 分册锚点：[rb-flowing-menu](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-flowing-menu)
+
+全高或大幅菜单里，一条液态色带在行与行之间滑移，当前行露出横向滚动的图文走马灯。
+
+链接：
+
+- [打开 React Bits Flowing Menu 演示](https://www.reactbits.dev/components/flowing-menu)（React Bits）
+
+### 提示词
+
+```
+【场景】餐厅「北岛」预订站的全屏菜单，四行：午餐 11:30–14:00、晚市 17:30–21:30、酒吧、私人包间。色带滑到「晚市」时，行内跑过「烟熏鲈鱼 / 葱油手擀 / 桂花酒酿」的菜图与价格「¥128 / ¥68 / ¥36」。
+【触发】悬停或焦点移动到一行，色带跟随；键盘上下切换。
+【运动】色带 250–400ms 滑到新行，边缘有一点黏滞；走马灯仅在当前行播放，离开后暂停。
+【不要】所有行同时滚动；色带穿过文字导致对比不足；没有键盘与读屏标签。
+```
+
+## 光边便当格 / Magic Bento
+
+<a id="rb-magic-bento"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：光标边缘光与点击波的功能格
+- 触发：pointer move / click
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/components/magic-bento
+- 分册锚点：[rb-magic-bento](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-magic-bento)
+
+一组大小不一的功能便当格，格内是活的插画或数据，边缘光随光标游走，点击时从落点扩散一圈波纹。
+
+链接：
+
+- [打开 React Bits Magic Bento 演示](https://www.reactbits.dev/components/magic-bento)（React Bits）
+
+### 提示词
+
+```
+【场景】笔记应用「墨蓝」功能页用六格便当介绍：大格「离线先写，联网再同步」配手写页动画；「分享只读链接」；「任务从记要里长出来」显示三条真实任务（写季度综述、约设计师、整理录音）；「白板」「标签」「回收站」。光标靠近时该格边缘走一圈柔光，点击扩散浅波。
+【触发】指针移动更新边缘光；点击播放一次波纹。触屏用点按。
+【运动】边缘光 150–250ms 跟上，不要甩尾太长；波纹 400–600ms 淡出。格内动画各自循环但要节流，离开视口暂停。
+【不要】所有格子同时高亮；把文案只写成「Feature 1」；忽略键盘焦点态。
+```
+
+## 焦点模糊卡片组 / Focus Cards
+
+<a id="aceternity-focus-cards"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：悬停一张则其余失焦
+- 触发：hover / focus
+- 技术栈：React / Motion
+- 官方演示：https://ui.aceternity.com/components/focus-cards
+- 分册锚点：[aceternity-focus-cards](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#aceternity-focus-cards)
+
+一组卡片默认同等清晰；悬停或聚焦其中一张时，其余迅速虚化，被选中的那张保持清晰并略微前移。
+
+链接：
+
+- [打开 Aceternity Focus Cards 演示](https://ui.aceternity.com/components/focus-cards)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】展览「回廊」落地页四张策展卡：「河仓库礼堂」「窄巷咖啡馆」「山顶气象站」「港口书店」，各配一张现场照片与一句说明。悬停「山顶气象站」时它保持清晰，其余三张柔焦，说明「把一座废弃测风塔改成过夜小屋」完整显现。
+【触发】悬停或键盘焦点；离开后 250–350ms 全部回到清晰。
+【运动】模糊 0 到 8–12px，200–300ms；焦点卡轻微上浮 4–8px。不要让文字在模糊层里抖动。
+【不要】只有悬停没有焦点态；一次高亮多张；移动端无法选择。
+```
+
+## 钉选分组列表 / Pinned List
+
+<a id="animate-pinned-list"></a>
+
+- 来源：AI Coding
+- 作者：Animate UI
+- 日期：采集于 2026-11-25
+- 子类：在置顶与普通组之间滑动的项
+- 触发：click / drag
+- 技术栈：React / Motion
+- 官方演示：https://animate-ui.com/docs/primitives/animate-ui/pinned-list
+- 分册锚点：[animate-pinned-list](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-pinned-list)
+
+列表分成置顶与未置顶两组，钉上或取消时该项在两组之间滑移就位，高度与空隙一起补间。
+
+链接：
+
+- [打开 Animate UI Pinned List 演示](https://animate-ui.com/docs/primitives/animate-ui/pinned-list)（Animate UI）
+
+### 提示词
+
+```
+【场景】「墨蓝笔记」侧栏：置顶组有「季度规划」「青浦十年文案」；下方是「会议 11/24」「北岛菜单」「待读」。把「北岛菜单」钉上后，它从下部滑入置顶组第二位，其余行让位。
+【触发】点击钉图标或拖到置顶区；再次点击取消。
+【运动】共享布局 350–500ms，项不瞬移；组标题在变空/变有时高度平滑。
+【不要】顺序错乱或丢失滚动位置；没有「已置顶」的语义提示。reduced-motion 时瞬时换组，不播放滑移。
 ```

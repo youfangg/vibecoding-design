@@ -1,7 +1,15 @@
 # 手势与拖拽
 
-本类共 17 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `gesture`。复制下方提示词即可用于 AI Coding。
+本类共 25 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `gesture`。复制下方提示词即可用于 AI Coding。
 
+- [球面无限菜单 / Infinite Menu](#rb-infinite-menu)
+- [弧形选项轮 / Option Wheel](#rb-option-wheel)
+- [碎纸删除 / Shredder](#rb-shredder)
+- [拖拽微调数值 / Scrub Field](#rb-scrub-field)
+- [滑动操作行 / Swipe Row](#rb-swipe-row)
+- [尾流滑杆 / Wake Slider](#rb-wake-slider)
+- [放大镜检视 / Lens](#magic-lens)
+- [弹簧拉回 / Spring](#animate-spring)
 ## 目录
 
 - [弧形画廊 / Circular Gallery](#circular-gallery)
@@ -502,4 +510,228 @@ iOS 风格的滚轮选择器，可拖、可滑、可吸到刻度。适合时间�
 【触发】抓住绳头下拉超过阈值再松开才切换；未拉够则弹回，不改变状态。提供可访问的名称。
 【运动】绳子用简易物理摆动，拉下有阻力，松开后回弹并完成开关。
 【不要】单击即切换而绳子只是装饰；触屏无法拉动。
+```
+
+## 球面无限菜单 / Infinite Menu
+
+<a id="rb-infinite-menu"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：可拖拽的球面图块菜单
+- 触发：drag / wheel / click
+- 技术栈：React / Three
+- 官方演示：https://www.reactbits.dev/components/infinite-menu
+- 分册锚点：[rb-infinite-menu](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-infinite-menu)
+
+图像块贴在可拖拽的球面上，松手后最近的一块弹到前方并给出标题，适合作品集或目的地选择。
+
+链接：
+
+- [打开 React Bits Infinite Menu 演示](https://www.reactbits.dev/components/infinite-menu)（React Bits）
+
+### 提示词
+
+```
+【场景】建筑设计展「回廊」导航：球面贴着六个项目照片——「河仓库礼堂」「窄巷咖啡馆」「山顶气象站」「小学食堂改造」「港口书店」「夜桥」。拖转球体，松手后最近一项弹到前方，下方出现项目名与城市「青岛」。点击进入案例。
+【触发】拖拽或滚轮旋转；松手吸附；点击前方项进入。
+【运动】拖拽跟手，松手 400–700ms 弹到最近槽位；标题随就位短淡入。惯性不要无限转。
+【不要】没有文字标签就让人猜图；移动端只有细小热区；WebGL 失败时没有列表回退。
+```
+
+## 弧形选项轮 / Option Wheel
+
+<a id="rb-option-wheel"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：可滚可拖的弧形选择器
+- 触发：drag / scroll / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/components/option-wheel
+- 分册锚点：[rb-option-wheel](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-option-wheel)
+
+选项沿一条弧排列，滚轮、拖拽或方向键旋转，远离中心的项会倾斜并变淡，当前项停在前方。
+
+链接：
+
+- [打开 React Bits Option Wheel 演示](https://www.reactbits.dev/components/option-wheel)（React Bits）
+
+### 提示词
+
+```
+【场景】咖啡订阅「北岛月卡」结算页选择烘焙度：弧上五项「浅烘 / 浅中 / 中烘 / 中深 / 深烘」，当前「中烘」正对前方，副文案「坚果、红糖、低酸，适合牛奶」。两侧项倾斜变淡。
+【触发】拖拽、滚轮或上下键旋转；松手吸附到最近项；也可点击一项直接就位。
+【运动】旋转跟手，吸附 300–500ms；非当前项透明度 0.35–0.5，并向弧外倾斜。选定后上方预览豆子照片切换一次。
+【不要】一次转过多项却无吸附；没有当前值的表单语义；reduced-motion 时改普通下拉或列表。
+```
+
+## 碎纸删除 / Shredder
+
+<a id="rb-shredder"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：拖到碎纸口再切成卷条
+- 触发：drag / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/shredder
+- 分册锚点：[rb-shredder](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-shredder)
+
+列表底部有一台碎纸机。把一行拖进去，纸会被切成卷曲纸条落下；也可键盘删除并看到同样的下场。
+
+链接：
+
+- [打开 React Bits Shredder 演示](https://www.reactbits.dev/micro/shredder)（React Bits）
+
+### 提示词
+
+```
+【场景】邮件客户端「昼伏」的垃圾清理：列表里是「会员即将到期」「您的包裹滞留」等真实主题行。底部有一台浅灰碎纸机。把「中奖通知」那行拖到口里，纸被切成细条卷曲落下，并弹出「已删除 1 封，可撤销 5 秒」。
+【触发】拖到碎纸口松手，或选中后按删除；撤销则纸条收回成行。
+【运动】切入 400–700ms，纸条有轻微物理下落；不要瞬间消失。同时删多行时排队，不要卡死。
+【不要】没有撤销；把重要邮件和促销做成无法区分；reduced-motion 时改为划掉并淡出。
+```
+
+## 拖拽微调数值 / Scrub Field
+
+<a id="rb-scrub-field"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：横向拖动的橡皮筋数值芯片
+- 触发：drag / click / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/scrub-field
+- 分册锚点：[rb-scrub-field](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-scrub-field)
+
+一枚数值芯片可横向拖动微调，到边界有橡皮筋回弹，单击则变为可键入。
+
+链接：
+
+- [打开 React Bits Scrub Field 演示](https://www.reactbits.dev/micro/scrub-field)（React Bits）
+
+### 提示词
+
+```
+【场景】修图工具「拾光」右侧面板，「曝光」芯片显示「+0.3 EV」。按住左右拖，数值以 0.1 步进变化，预览图同步。拖到 +2.0 或 -2.0 时橡皮筋拉住。单击芯片后可直接键入「0.5」。
+【触发】拖动改变；单击进入输入；方向键微调；失焦或回车提交。
+【运动】拖拽跟手，边界橡皮筋 200–300ms；数值变化无抖动。输入态下芯片略拓宽。
+【不要】没有单位和范围提示；拖动与输入态冲突；不提供键盘替代。
+```
+
+## 滑动操作行 / Swipe Row
+
+<a id="rb-swipe-row"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：滑出行内操作或整行删除
+- 触发：drag / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/swipe-row
+- 分册锚点：[rb-swipe-row](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-swipe-row)
+
+列表行向一侧滑动露出操作，滑过阈值则执行删除或归档，可跟手并在松手后就位。
+
+链接：
+
+- [打开 React Bits Swipe Row 演示](https://www.reactbits.dev/micro/swipe-row)（React Bits）
+
+### 提示词
+
+```
+【场景】待办「昼伏配送」骑手端：一行「12:20 取 北岛咖啡 / 送 折纸事务所，超时风险」。左滑露出「完成」「改派」；继续滑过阈值则归档，行被收走，顶部提示「已完成，可撤销」。
+【触发】水平拖拽；松手根据阈值打开操作或执行；键盘提供相同操作。
+【运动】跟手，松手 200–300ms 吸附；删除时行高收至 0，约 250ms。不要垂直滚动和滑动打架。
+【不要】没有撤销；操作色块没有文字；把滑动作为唯一删除途径。
+```
+
+## 尾流滑杆 / Wake Slider
+
+<a id="rb-wake-slider"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：拖速会在杆后掀起尾流
+- 触发：drag / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/wake-slider
+- 分册锚点：[rb-wake-slider](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-wake-slider)
+
+没有传统圆钮的细柱滑杆，拖动越快，柄后的尾流越高，停下后尾流落下。
+
+链接：
+
+- [打开 React Bits Wake Slider 演示](https://www.reactbits.dev/micro/wake-slider)（React Bits）
+
+### 提示词
+
+```
+【场景】音乐应用里为「回声」第 48 集调音量：一条由细柱组成的滑杆，当前 68%。拖得快时，柄后的柱子依次抬起像船尾浪，停下后落下，旁边数字同步为「68%」。
+【触发】拖动或点击落点；方向键步进 5%。
+【运动】值跟手更新；尾流高度映射速度，200–400ms 落下。不要让柱子打断当前值的可读性。
+【不要】没有数值与 aria 更新；把尾流做成持续噪音动画；触区过窄。
+```
+
+## 放大镜检视 / Lens
+
+<a id="magic-lens"></a>
+
+- 来源：AI Coding
+- 作者：Magic UI
+- 日期：采集于 2026-11-25
+- 子类：可在图或视频上移动的透镜
+- 触发：pointer move / press
+- 技术栈：React / Motion
+- 官方演示：https://magicui.design/docs/components/lens
+- 分册锚点：[magic-lens](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#magic-lens)
+
+一块圆形或圆角透镜跟随指针，放大图片、视频或细节图中的局部，适合产品材质或地图检视。
+
+链接：
+
+- [打开 Magic UI Lens 演示](https://magicui.design/docs/components/lens)（Magic UI）
+
+### 提示词
+
+```
+【场景】钟表品牌「流光」产品页，主图是一只银色腕表的侧面。指针移到表盘上时出现圆形透镜，放大夜光刻度与「流光 1964」字样；移到表带上看见皮革纹理。透镜旁小字「按住可固定」。
+【触发】指针在图上移动时跟随；按住可固定位置；离开图片后收起。触屏用拖动。
+【运动】透镜 80–120ms 跟上，放大倍率约 1.8–2.2，边缘清晰不要模糊重影。
+【不要】透镜挡住关键操作按钮；在小图上放大到像素块却无提示；没有键盘可及的细节图替代。
+```
+
+## 弹簧拉回 / Spring
+
+<a id="animate-spring"></a>
+
+- 来源：AI Coding
+- 作者：Animate UI
+- 日期：采集于 2026-11-25
+- 子类：被弹簧拴住的可拖元素
+- 触发：pointer drag / release
+- 技术栈：React / Motion
+- 官方演示：https://animate-ui.com/docs/primitives/animate-ui/spring
+- 分册锚点：[animate-spring](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-spring)
+
+元素可被拖离原位，身后是一条可见的弹簧线圈，松开后拉回原处并短暂振铃。
+
+链接：
+
+- [打开 Animate UI Spring 演示](https://animate-ui.com/docs/primitives/animate-ui/spring)（Animate UI）
+
+### 提示词
+
+```
+【场景】活动页「南窗朗诵会」门票卡片可以轻轻拉起来看背面座位图：正面「12 月 4 日 19:30 / 南窗书局 / ¥80」。向下拉，卡片与顶栏之间出现弹簧线圈，松开后弹回，并短暂晃一下。拉过阈值则翻到背面「12 排 7–8 座」。
+【触发】拖拽拉离；松开回弹；超过阈值触发翻面或打开。
+【运动】拖拽跟手，弹簧可见；回弹 400–700ms 并衰减振荡，不要永久晃动。
+【不要】看不出可拖；回弹把页面其它部分带跑；没有非拖拽的打开方式。reduced-motion 时隐藏弹簧，改为点击翻面。
 ```

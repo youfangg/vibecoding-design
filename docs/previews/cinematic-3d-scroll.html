@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>河仓库礼堂</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { margin: 0; background: #14181c; color: #f6f1e8; }
+    canvas { width: 100%; height: 100%; display: block; }
+    p { position: absolute; left: 12px; bottom: 12px; margin: 0; font-family: "Noto Serif SC", serif; }
+    .example { top: 12px; bottom: auto; right: 12px; left: auto; font-size: 12px; color: #cbbba8; font-family: sans-serif; }
+    button { position: absolute; right: 12px; bottom: 12px; min-height: 36px; }
+  </style>
+</head>
+<body>
+  <canvas id="c" width="480" height="300"></canvas>
+  <p class="example">示例分镜 · 透视投影推进，不是外部三维引擎</p>
+  <p id="cap">外立面</p>
+  <button type="button" id="go">推进</button>
+  <script src="kit.js"></script>
+  <script>
+    var canvas = document.getElementById("c");
+    var ctx = canvas.getContext("2d");
+    var z = 4.2;
+    function project(x, y, zz) {
+      var f = 220 / (zz + 0.2);
+      return [240 + x * f, 150 + y * f];
+    }
+    function draw() {
+      ctx.fillStyle = "#14181c";
+      ctx.fillRect(0, 0, 480, 300);
+      ctx.strokeStyle = "#c46a4a";
+      ctx.beginPath();
+      [[-1, -0.6], [1, -0.6], [1, 0.6], [-1, 0.6]].forEach(function (p, i) {
+        var q = project(p[0], p[1], z);
+        if (i === 0) ctx.moveTo(q[0], q[1]); else ctx.lineTo(q[0], q[1]);
+      });
+      ctx.closePath(); ctx.stroke();
+      ctx.strokeStyle = "rgba(231,196,138,.8)";
+      ctx.beginPath();
+      var a = project(-0.08, -1.2, z + 0.4), b = project(0.08, 0.2, z);
+      ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
+      ctx.stroke();
+      document.getElementById("cap").textContent = z < 2.4 ? "梁下光柱" : "外立面";
+    }
+    function go() { z = window.PreviewKit.reduced() ? 2 : 1.8; draw(); }
+    function reset() { z = 4.2; draw(); }
+    document.getElementById("go").addEventListener("click", go);
+    draw();
+    window.__preview = {
+      id: "cinematic-3d-scroll",
+      mechanism: "perspective-dolly",
+      expectAfter: "inside",
+      trigger: go,
+      reset: reset,
+      readRaw: function () { return z < 2.4 ? "inside" : "outside"; },
+      read: function () { return z < 2.4 ? "inside" : "outside"; }
+    };
+  </script>
+</body>
+</html>

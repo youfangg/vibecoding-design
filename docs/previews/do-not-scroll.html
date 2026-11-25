@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>南窗朗诵会</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #1c1714; color: #f6f1e8; overflow: hidden; }
+    .scroll { height: 100%; overflow: auto; }
+    .runway { height: 520%; }
+    .stage {
+      position: sticky; top: 0; height: 100vh;
+      display: grid; place-items: center; padding: 24px 18px 56px;
+    }
+    .kicker { position: absolute; top: 16px; left: 16px; margin: 0; letter-spacing: 0.14em; font-size: 12px; color: #e7c48a; }
+    .example { position: absolute; top: 16px; right: 16px; margin: 0; font-size: 12px; color: #cbbba8; }
+    .word { margin: 0; font-family: var(--serif); font-size: clamp(2.4rem, 8vw, 4.6rem); font-weight: 600; line-height: 1.15; text-align: center; }
+    .trail { position: absolute; font-family: var(--serif); font-size: clamp(2.4rem, 8vw, 4.6rem); color: #9f2d20; opacity: 0.35; transform: translate(10px, 8px); pointer-events: none; }
+    .hint { position: absolute; bottom: 16px; margin: 0; color: #cbbba8; font-size: 13px; }
+    .poem { display: none; max-width: 22rem; }
+    .poem p { margin: 0 0 10px; font-family: var(--serif); font-size: 1.6rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .runway, .trail, .hint { display: none; }
+      .scroll { overflow: auto; }
+      .stage { position: static; height: auto; display: block; padding: 28px 20px; }
+      .poem { display: block; }
+      .word { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll" id="scroll">
+    <p class="kicker">南窗书局 · 朗诵会</p>
+    <p class="example">示例文案</p>
+    <div class="runway" id="runway">
+      <div class="stage">
+        <span class="trail" id="trail" aria-hidden="true"></span>
+        <h1 class="word" id="word">周四晚上</h1>
+        <p class="hint" id="hint">向下滚动，一次只读出一个词</p>
+        <div class="poem" id="poem">
+          <p>周四晚上，把诗读出声。</p>
+          <p>南窗书局 · 本周四 19:30 · 预约席位有限。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var kit = window.PreviewKit;
+    var words = ["周四晚上", "把诗", "读出声", "南窗书局"];
+    var weights = [0.22, 0.16, 0.34, 0.28];
+    var word = document.getElementById("word");
+    var trail = document.getElementById("trail");
+    var scroll = document.getElementById("scroll");
+    var index = 0;
+    var user = false;
+
+    function show(i) {
+      index = i;
+      word.textContent = words[i];
+      trail.textContent = words[i];
+      word.style.letterSpacing = (i === 2 ? "0.12em" : "0.02em");
+    }
+
+    function fromScroll() {
+      var max = scroll.scrollHeight - scroll.clientHeight;
+      var p = max > 0 ? scroll.scrollTop / max : 0;
+      var acc = 0;
+      var next = words.length - 1;
+      for (var i = 0; i < weights.length; i++) {
+        acc += weights[i];
+        if (p <= acc) { next = i; break; }
+      }
+      if (next !== index) show(next);
+    }
+
+    scroll.addEventListener("scroll", function () {
+      user = true;
+      fromScroll();
+    }, { passive: true });
+
+    if (!kit.reduced()) {
+      show(0);
+      setInterval(function () {
+        if (user) return;
+        show((index + 1) % words.length);
+      }, 1700);
+    }
+  </script>
+</body>
+</html>

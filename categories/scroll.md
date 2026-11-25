@@ -1,7 +1,8 @@
 # 滚动叙事
 
-本类共 22 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `scroll`。复制下方提示词即可用于 AI Coding。
+本类共 23 条，来自分册「[滚动叙事与页面转场](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a)」。在 `data/cases.json` 中对应 `category` 为 `scroll`。复制下方提示词即可用于 AI Coding。
 
+- [漂流行进墙 / Drift Wall](#rb-drift-wall)
 ## 目录
 
 - [路径描边进度 / Tracing Beam](#tracing-beam)
@@ -657,4 +658,32 @@ Codrops 演示把滚动编成电影感三维章节：镜头、光照与场景元
 【触发】滚动进度（scrub）。
 【运动】格子变化连续可逆，焦点一次只强调一格或一组，其他格让位但不消失。
 【不要】做成与滚动无关的循环动画；格子重叠挡住可点区域。
+```
+
+## 漂流行进墙 / Drift Wall
+
+<a id="rb-drift-wall"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：透视墙面中不断漂过的图块
+- 触发：scroll / pointer
+- 技术栈：React / Three
+- 官方演示：https://www.reactbits.dev/components/drift-wall
+- 分册锚点：[rb-drift-wall](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a#rb-drift-wall)
+
+一面有透视的图墙持续向深处或一侧漂过，悬停时单块抬起并显示标题，适合作品集或旅行相册的滚动叙事。
+
+链接：
+
+- [打开 React Bits Drift Wall 演示](https://www.reactbits.dev/components/drift-wall)（React Bits）
+
+### 提示词
+
+```
+【场景】旅拍账号「候鸟旅馆」作品志：滚动时一面微微倾斜的照片墙向深处漂去，格子里是真实房间与旅途照片——青岛的蓝窗、大理的天井、京都的窄楼梯、海边晒被单。悬停某张，它向前抬起，左下出现「青岛 · 蓝窗房 / 入住 32 晚」。
+【触发】滚动驱动墙的行进；指针悬停抬起单块；点击进入该房详情。reduced-motion 时改为普通网格，可横滑。
+【运动】墙面匀速或随滚动量轻微加速，透视稳定；抬起 250–400ms，带短阴影。行进不要突然转向。
+【不要】图块密度高到卡顿；没有图片说明；让人无法停下看一张。
 ```

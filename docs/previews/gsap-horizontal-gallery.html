@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>青浦影廊</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #141210; color: #f6f1e8; overflow: hidden; }
+    .vscroll { height: 100%; overflow: auto; }
+    .runway { height: 280%; }
+    .pin { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; }
+    .strip { display: flex; gap: 12px; padding: 0 16px; will-change: transform; }
+    figure { margin: 0; width: min(68vw, 280px); flex: none; }
+    .pic { height: 160px; }
+    figcaption { margin-top: 6px; font-family: var(--serif); }
+    .example { position: absolute; top: 12px; left: 16px; margin: 0; font-size: 12px; color: #cbbba8; }
+    .fallback { display: none; height: 100%; overflow: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      .vscroll { display: none; }
+      .fallback { display: block; }
+      .fallback .strip { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <p class="example">示例影廊 · 上下滚动带动左右移动</p>
+  <div class="vscroll" id="vscroll">
+    <div class="runway"><div class="pin"><div class="strip" id="strip"></div></div></div>
+  </div>
+  <div class="fallback" id="fallback"><div class="strip" id="flat"></div></div>
+  <script src="kit.js"></script>
+  <script>
+    var photos = [["铁索 · 2016", "#c46a4a"], ["渡口 · 2017", "#7ea0b8"], ["芦苇 · 2018", "#c9b48a"], ["夜航 · 2019", "#23483a"], ["新桥 · 2024", "#e7c48a"]];
+    function fill(parent) {
+      photos.forEach(function (photo) {
+        var fig = document.createElement("figure");
+        fig.innerHTML = '<div class="pic"></div><figcaption></figcaption>';
+        fig.querySelector(".pic").style.background = photo[1];
+        fig.querySelector("figcaption").textContent = photo[0];
+        parent.append(fig);
+      });
+    }
+    var strip = document.getElementById("strip");
+    fill(strip);
+    fill(document.getElementById("flat"));
+    var scroller = document.getElementById("vscroll");
+    function sync() {
+      var max = scroller.scrollHeight - scroller.clientHeight;
+      var p = max ? scroller.scrollTop / max : 0;
+      var travel = Math.max(0, strip.scrollWidth - scroller.clientWidth);
+      strip.style.transform = "translateX(" + (-travel * p) + "px)";
+    }
+    scroller.addEventListener("scroll", sync, { passive: true });
+    sync();
+    if (!window.PreviewKit.reduced()) {
+      var n = 0;
+      var timer = setInterval(function () {
+        scroller.scrollTop += 14;
+        n += 1;
+        if (n > 24) clearInterval(timer);
+      }, 160);
+    }
+  </script>
+</body>
+</html>

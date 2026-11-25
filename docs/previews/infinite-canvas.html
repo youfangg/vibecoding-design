@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>织光情绪板</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #e7e1d6; color: #241c16; overflow: hidden; }
+    .bar { position: absolute; z-index: 2; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; align-items: center; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.2rem; }
+    button { min-height: 36px; padding: 0 10px; border: 1px solid #241c16; background: #fffaf4; }
+    .board { position: absolute; inset: 0; touch-action: none; cursor: grab; }
+    .world { position: absolute; left: 0; top: 0; width: 900px; height: 640px; }
+    .note { position: absolute; width: 140px; min-height: 72px; padding: 8px; background: #fffaf4; border: 1px solid #e0d4c4; font-family: var(--serif); }
+    .swatch { position: absolute; width: 90px; height: 120px; }
+    .example { margin: 0; font-size: 12px; color: #6d5e4e; }
+  </style>
+</head>
+<body>
+  <div class="bar"><h1>织光情绪板</h1><p class="example">示例小稿</p><button type="button" id="reset">复位</button></div>
+  <div class="board" id="board" tabindex="0" aria-label="可拖动画布，方向键平移">
+    <div class="world" id="world">
+      <div class="swatch" style="left:180px;top:160px;background:#e7c48a"></div>
+      <div class="note" style="left:300px;top:140px">南窗春季<br>黄花与招牌</div>
+      <div class="swatch" style="left:480px;top:220px;background:#8a3b2c"></div>
+      <div class="note" style="left:420px;top:360px">窗景海报<br>4:5</div>
+    </div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var board = document.getElementById("board");
+    var world = document.getElementById("world");
+    var x = -80, y = -40, drag = null;
+    function paint() { world.style.transform = "translate(" + x + "px," + y + "px)"; }
+    board.addEventListener("pointerdown", function (event) {
+      board.setPointerCapture(event.pointerId);
+      drag = { x: event.clientX - x, y: event.clientY - y };
+    });
+    board.addEventListener("pointermove", function (event) {
+      if (!drag) return;
+      x = event.clientX - drag.x;
+      y = event.clientY - drag.y;
+      paint();
+    });
+    board.addEventListener("pointerup", function () { drag = null; });
+    board.addEventListener("keydown", function (event) {
+      var step = 40;
+      if (event.key === "ArrowLeft") x += step;
+      else if (event.key === "ArrowRight") x -= step;
+      else if (event.key === "ArrowUp") y += step;
+      else if (event.key === "ArrowDown") y -= step;
+      else return;
+      event.preventDefault();
+      paint();
+    });
+    document.getElementById("reset").addEventListener("click", function () { x = -80; y = -40; paint(); });
+    paint();
+  </script>
+</body>
+</html>

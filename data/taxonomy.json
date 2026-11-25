@@ -1,9 +1,9 @@
 {
   "name": "AI Coding 交互动效资料库",
-  "total": 250,
-  "asOf": "2026-11-24",
+  "total": 316,
+  "asOf": "2026-11-25",
   "timezone": "Asia/Shanghai",
-  "notes": "日期与提示词以条目原文为准。2026-11-24 增补 48 条已核验案例，既有 202 条的提示词与措辞未改。总目可检索全部条目并跳转到对应分册。",
+  "notes": "日期与提示词以条目原文为准。2026-11-24 增补 48 条已核验案例，既有 202 条的提示词与措辞未改。总目可检索全部条目并跳转到对应分册。 2026-11-25 增补 66 条已核验案例（全部为 AI Coding 官方演示），既有条目的提示词未改。",
   "sources": [
     {
       "id": "x",
@@ -13,7 +13,7 @@
     {
       "id": "ai",
       "label": "AI Coding",
-      "count": 199
+      "count": 265
     },
     {
       "id": "design",
@@ -26,7 +26,7 @@
       "id": "type",
       "label": "文字动效",
       "slug": "type",
-      "count": 57,
+      "count": 65,
       "volume": "type",
       "volumeTitle": "文字动效与进入离场",
       "file": "categories/type.md"
@@ -44,7 +44,7 @@
       "id": "scroll",
       "label": "滚动叙事",
       "slug": "scroll",
-      "count": 22,
+      "count": 23,
       "volume": "scroll",
       "volumeTitle": "滚动叙事与页面转场",
       "file": "categories/scroll.md"
@@ -53,7 +53,7 @@
       "id": "transition",
       "label": "过渡与页面切换",
       "slug": "transition",
-      "count": 9,
+      "count": 10,
       "volume": "scroll",
       "volumeTitle": "滚动叙事与页面转场",
       "file": "categories/transition.md"
@@ -62,7 +62,7 @@
       "id": "gesture",
       "label": "手势与拖拽",
       "slug": "gesture",
-      "count": 17,
+      "count": 25,
       "volume": "gesture",
       "volumeTitle": "手势、导航与微交互",
       "file": "categories/gesture.md"
@@ -71,7 +71,7 @@
       "id": "layout",
       "label": "导航与布局变形",
       "slug": "layout",
-      "count": 20,
+      "count": 25,
       "volume": "gesture",
       "volumeTitle": "手势、导航与微交互",
       "file": "categories/layout.md"
@@ -80,7 +80,7 @@
       "id": "micro",
       "label": "微交互反馈",
       "slug": "micro",
-      "count": 16,
+      "count": 26,
       "volume": "gesture",
       "volumeTitle": "手势、导航与微交互",
       "file": "categories/micro.md"
@@ -89,7 +89,7 @@
       "id": "flip3d",
       "label": "翻转与 3D",
       "slug": "flip3d",
-      "count": 19,
+      "count": 25,
       "volume": "space",
       "volumeTitle": "三维与光影材质",
       "file": "categories/flip3d.md"
@@ -98,7 +98,7 @@
       "id": "material",
       "label": "光影与材质",
       "slug": "material",
-      "count": 22,
+      "count": 34,
       "volume": "space",
       "volumeTitle": "三维与光影材质",
       "file": "categories/material.md"
@@ -107,7 +107,7 @@
       "id": "particle",
       "label": "粒子与流体",
       "slug": "particle",
-      "count": 20,
+      "count": 27,
       "volume": "particle",
       "volumeTitle": "粒子、流体与光标",
       "file": "categories/particle.md"
@@ -116,7 +116,7 @@
       "id": "cursor",
       "label": "指针与光标",
       "slug": "cursor",
-      "count": 10,
+      "count": 11,
       "volume": "particle",
       "volumeTitle": "粒子、流体与光标",
       "file": "categories/cursor.md"
@@ -125,7 +125,7 @@
       "id": "loading",
       "label": "加载与骨架",
       "slug": "loading",
-      "count": 14,
+      "count": 17,
       "volume": "loading",
       "volumeTitle": "加载与数据可视化",
       "file": "categories/loading.md"
@@ -134,7 +134,7 @@
       "id": "dataviz",
       "label": "数据可视化动效",
       "slug": "dataviz",
-      "count": 16,
+      "count": 20,
       "volume": "loading",
       "volumeTitle": "加载与数据可视化",
       "file": "categories/dataviz.md"
@@ -146,7 +146,7 @@
       "title": "文字动效与进入离场",
       "url": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8",
       "canvasId": "284a2469-eac6-4b3a-aab2-a19e4546c8a8",
-      "count": 65,
+      "count": 73,
       "categories": [
         {
           "id": "enter",
@@ -156,7 +156,7 @@
         {
           "id": "type",
           "label": "文字动效",
-          "count": 57
+          "count": 65
         }
       ]
     },
@@ -165,17 +165,17 @@
       "title": "滚动叙事与页面转场",
       "url": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a",
       "canvasId": "0997f84d-dc82-4e9c-8b53-87bd4e3f697a",
-      "count": 31,
+      "count": 33,
       "categories": [
         {
           "id": "transition",
           "label": "过渡与页面切换",
-          "count": 9
+          "count": 10
         },
         {
           "id": "scroll",
           "label": "滚动叙事",
-          "count": 22
+          "count": 23
         }
       ]
     },
@@ -184,22 +184,22 @@
       "title": "手势、导航与微交互",
       "url": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
       "canvasId": "babcb897-a18b-4b1a-82ec-8b5a06c1f21f",
-      "count": 53,
+      "count": 76,
       "categories": [
         {
           "id": "gesture",
           "label": "手势与拖拽",
-          "count": 17
+          "count": 25
         },
         {
           "id": "layout",
           "label": "导航与布局变形",
-          "count": 20
+          "count": 25
         },
         {
           "id": "micro",
           "label": "微交互反馈",
-          "count": 16
+          "count": 26
         }
       ]
     },
@@ -208,17 +208,17 @@
       "title": "三维与光影材质",
       "url": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
       "canvasId": "ba239dfa-f2ef-4a20-8370-28cb9aca4bc2",
-      "count": 41,
+      "count": 59,
       "categories": [
         {
           "id": "flip3d",
           "label": "翻转与 3D",
-          "count": 19
+          "count": 25
         },
         {
           "id": "material",
           "label": "光影与材质",
-          "count": 22
+          "count": 34
         }
       ]
     },
@@ -227,17 +227,17 @@
       "title": "粒子、流体与光标",
       "url": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9",
       "canvasId": "51a8953b-ee93-4e24-ad7d-13911f879ce9",
-      "count": 30,
+      "count": 38,
       "categories": [
         {
           "id": "particle",
           "label": "粒子与流体",
-          "count": 20
+          "count": 27
         },
         {
           "id": "cursor",
           "label": "指针与光标",
-          "count": 10
+          "count": 11
         }
       ]
     },
@@ -246,17 +246,17 @@
       "title": "加载与数据可视化",
       "url": "https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a",
       "canvasId": "673e7354-127e-4d15-a31c-4b219a01ee8a",
-      "count": 30,
+      "count": 37,
       "categories": [
         {
           "id": "loading",
           "label": "加载与骨架",
-          "count": 14
+          "count": 17
         },
         {
           "id": "dataviz",
           "label": "数据可视化动效",
-          "count": 16
+          "count": 20
         }
       ]
     }

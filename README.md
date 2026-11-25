@@ -2,7 +2,7 @@
 
 这是一份可检索、可复用的交互动效案例库，服务对象是 AI Coding：当你想要某种运动感觉但说不清时，先在库里找到接近的案例，把提示词复制进 AI 编程工具里使用。
 
-本目录整理自 Cursor Pages「采集案例」总目及六个分册，并收入 2026-11-24 核验的一批新增案例，共 **250** 条独立案例。统计截至 **2026-11-24（Asia/Shanghai）**。第一批采于 2026-11-21，2026-11-23 大幅扩编后因篇幅拆成总目加六个分册；2026-11-24 再增补 48 条（见 [NEW-BATCH.md](NEW-BATCH.md)）。既有 202 条的提示词与措辞保持原文。日期与提示词以各条原文为准。
+本目录整理自 Cursor Pages「采集案例」总目及六个分册，并收入 2026-11-24 与 2026-11-25 核验的新增案例，共 **316** 条独立案例。统计截至 **2026-11-25（Asia/Shanghai）**。第一批采于 2026-11-21，2026-11-23 大幅扩编后因篇幅拆成总目加六个分册；2026-11-24 再增补 48 条（见 [NEW-BATCH.md](NEW-BATCH.md)）；2026-11-25 再增补 66 条（见 [NEW-BATCH-2026-11-25.md](NEW-BATCH-2026-11-25.md)）。既有条目的提示词保持原文。日期与提示词以各条原文为准。提示词里的品牌、价格和数字是示例场景，不是外部统计。
 
 对应的 GitHub 仓库 [youfangg/vibecoding-design](https://github.com/youfangg/vibecoding-design) 为**私有仓库**。下面列出的 Cursor Pages 是这份资料库的编辑原件，需要相应访问权限。对外浏览用仓库里的静态站点，见下一节。
 
@@ -23,18 +23,19 @@ python3 -m http.server 4173
 
 然后访问 http://127.0.0.1:4173/docs/
 
-站点是中文界面，可以按关键词检索，并按主类、来源筛选。每条案例给出标题、说明、主类、来源、触发与技术栈、页内预览、官方演示、原始出处（若有）和可复制提示词。
+站点是中文界面。浏览以预览为先：目录是画廊，卡片只播放本站按案例说明独立实现的参考组件，并标明「已实现 · 参考组件」。范围还没对齐的标成「待核验」，还没做成的标成「待实现」。官方地址只作为外链，不会嵌进页面。名称、主类、来源、进度、官方演示和可复制提示词放在一旁。这些组件不是官方演示的逐像素复刻。
+
+当前进度：**316** 已实现，**0** 待核验，**0** 待实现。逐条清单在 [`data/preview-manifest.json`](data/preview-manifest.json)，页面读取由 [`scripts/build-preview-status.py`](scripts/build-preview-status.py) 生成的 [`docs/previews/status.js`](docs/previews/status.js)。`shader-animation-gsap` 用本地固定的 GSAP 3.15.1（`docs/previews/vendor/gsap/`，标准免费许可）去推动片段着色器的均匀量。
+
+可以按关键词检索，并按主类、来源筛选。地址栏保留检索参数和 `#案例id` 深链。每条案例给出标题、说明、主类、来源、触发与技术栈、页内预览、官方演示、原始出处（若有）和可复制提示词。
 
 页内预览有三种状态，打开案例即可看到：
 
-- 官方页面允许被嵌入时，预览舞台用 iframe 打开该演示，下方仍保留官方演示链接。
-- 不允许嵌入、但已经做了站内复刻时，舞台里是按该条中文提示词重做的可交互场景。
-- 两者都有时，舞台默认嵌入官方页面，并可以改切到站内复刻。
-- 两者都没有时，舞台写明「暂无站内预览」，不留空白框。官方演示链接照常可用。
+- 已实现的参考组件在画廊和案例页里用同域 iframe 播放。官方演示只出现为新标签页链接。
+- 待核验的组件可以打开，但进度标明它还没达到案例说明里的范围，不计入已实现。
+- 待实现的条目是一幅标明「待实现」的场景，不留空白框，也不嵌第三方网页。
 
-允许嵌入的地址记在 [`docs/assets/embed-allowlist.js`](docs/assets/embed-allowlist.js)，由 [`scripts/probe-embeds.py`](scripts/probe-embeds.py) 根据响应头和页面里的 `X-Frame-Options`、`frame-ancestors` 生成。站内复刻登记在 [`docs/previews/registry.js`](docs/previews/registry.js)，每个复刻是同名的静态 HTML。
-
-新增一条复刻：在 `docs/previews/` 下新建 `<案例 id>.html`（可引用同目录的 `base.css` 与 `kit.js`），再把这个 id 写进 `registry.js`。复刻要做成有文案、数据和图像的完整场景，尊重 `prefers-reduced-motion`，装饰效果不能挡住内容。官方演示若已在允许列表里，舞台仍优先嵌入官方页面。
+第三方网页不再嵌入画廊或案例页。`scripts/probe-embeds.py` 仍可记录响应头，但站内不根据它加载外站 iframe。参考组件要么是 `docs/previews/<id>.html`，要么登记在 `docs/previews/scenes/*.js` 并由 `docs/previews/frame.html?id=` 挂载。跑 `python3 scripts/build-preview-status.py` 会重写清单和 `status.js`。组件要有示例文案，能用键盘或触控触发，能重放和复位，并尊重 `prefers-reduced-motion`。
 
 重新探测嵌入许可：
 
@@ -61,36 +62,36 @@ https://youfangg.github.io/vibecoding-design/
 
 | 主类 | 标识 | 条数 | 所属分册 | 文件 |
 | --- | --- | --- | --- | --- |
-| 文字动效 | `type` | 57 | 文字动效与进入离场 | [categories/type.md](categories/type.md) |
+| 文字动效 | `type` | 65 | 文字动效与进入离场 | [categories/type.md](categories/type.md) |
 | 进入与离场 | `enter` | 8 | 文字动效与进入离场 | [categories/enter.md](categories/enter.md) |
-| 滚动叙事 | `scroll` | 22 | 滚动叙事与页面转场 | [categories/scroll.md](categories/scroll.md) |
-| 过渡与页面切换 | `transition` | 9 | 滚动叙事与页面转场 | [categories/transition.md](categories/transition.md) |
-| 手势与拖拽 | `gesture` | 17 | 手势、导航与微交互 | [categories/gesture.md](categories/gesture.md) |
-| 导航与布局变形 | `layout` | 20 | 手势、导航与微交互 | [categories/layout.md](categories/layout.md) |
-| 微交互反馈 | `micro` | 16 | 手势、导航与微交互 | [categories/micro.md](categories/micro.md) |
-| 翻转与 3D | `flip3d` | 19 | 三维与光影材质 | [categories/flip3d.md](categories/flip3d.md) |
-| 光影与材质 | `material` | 22 | 三维与光影材质 | [categories/material.md](categories/material.md) |
-| 粒子与流体 | `particle` | 20 | 粒子、流体与光标 | [categories/particle.md](categories/particle.md) |
-| 指针与光标 | `cursor` | 10 | 粒子、流体与光标 | [categories/cursor.md](categories/cursor.md) |
-| 加载与骨架 | `loading` | 14 | 加载与数据可视化 | [categories/loading.md](categories/loading.md) |
-| 数据可视化动效 | `dataviz` | 16 | 加载与数据可视化 | [categories/dataviz.md](categories/dataviz.md) |
+| 滚动叙事 | `scroll` | 23 | 滚动叙事与页面转场 | [categories/scroll.md](categories/scroll.md) |
+| 过渡与页面切换 | `transition` | 10 | 滚动叙事与页面转场 | [categories/transition.md](categories/transition.md) |
+| 手势与拖拽 | `gesture` | 25 | 手势、导航与微交互 | [categories/gesture.md](categories/gesture.md) |
+| 导航与布局变形 | `layout` | 25 | 手势、导航与微交互 | [categories/layout.md](categories/layout.md) |
+| 微交互反馈 | `micro` | 26 | 手势、导航与微交互 | [categories/micro.md](categories/micro.md) |
+| 翻转与 3D | `flip3d` | 25 | 三维与光影材质 | [categories/flip3d.md](categories/flip3d.md) |
+| 光影与材质 | `material` | 34 | 三维与光影材质 | [categories/material.md](categories/material.md) |
+| 粒子与流体 | `particle` | 27 | 粒子、流体与光标 | [categories/particle.md](categories/particle.md) |
+| 指针与光标 | `cursor` | 11 | 粒子、流体与光标 | [categories/cursor.md](categories/cursor.md) |
+| 加载与骨架 | `loading` | 17 | 加载与数据可视化 | [categories/loading.md](categories/loading.md) |
+| 数据可视化动效 | `dataviz` | 20 | 加载与数据可视化 | [categories/dataviz.md](categories/dataviz.md) |
 
 | 来源 | 标识 | 条数 |
 | --- | --- | --- |
 | X | `x` | 8 |
-| AI Coding | `ai` | 199 |
+| AI Coding | `ai` | 265 |
 | 设计站点 | `design` | 43 |
 
-合计 **250** 条。2026-11-24 新增 48 条的分册、来源与主类计数见 [NEW-BATCH.md](NEW-BATCH.md)。
+合计 **316** 条。2026-11-24 新增 48 条见 [NEW-BATCH.md](NEW-BATCH.md)。2026-11-25 新增 66 条见 [NEW-BATCH-2026-11-25.md](NEW-BATCH-2026-11-25.md)。
 
 | 分册 | 条数 | Cursor Page |
 | --- | --- | --- |
-| 文字动效与进入离场 | 65 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8 |
-| 滚动叙事与页面转场 | 31 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a |
-| 手势、导航与微交互 | 53 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f |
-| 三维与光影材质 | 41 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2 |
-| 粒子、流体与光标 | 30 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9 |
-| 加载与数据可视化 | 30 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a |
+| 文字动效与进入离场 | 73 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/284a2469-eac6-4b3a-aab2-a19e4546c8a8 |
+| 滚动叙事与页面转场 | 33 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/0997f84d-dc82-4e9c-8b53-87bd4e3f697a |
+| 手势、导航与微交互 | 76 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f |
+| 三维与光影材质 | 59 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2 |
+| 粒子、流体与光标 | 38 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/51a8953b-ee93-4e24-ad7d-13911f879ce9 |
+| 加载与数据可视化 | 37 | https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/673e7354-127e-4d15-a31c-4b219a01ee8a |
 
 总目上仍保留 20 条已上传预览图的原案例（`gooey-sticky-menu`、`lookbook-hover`、`parallel-transitions`、`do-not-scroll`、`physics-about-me`、`page-slide-drawer`、`scroll-3d-carousel`、`motion-trail`、`split-text`、`circular-gallery`、`macbook-scroll`、`expandable-card`、`tracing-beam`、`shared-layout`、`savor`、`und-ny`、`haoqi`、`artists-247`、`ink-games`、`elastic-grid`）。完整提示词仍以对应分册为准。
 
@@ -120,7 +121,7 @@ https://youfangg.github.io/vibecoding-design/
 
 ## 相关页面（仅作背景，不是本数据集）
 
-下面两页帮助理解资料库的目标和早期预览形态，**不是** `cases.json` 的数据来源，也未计入上述 250 条。
+下面两页帮助理解资料库的目标和早期预览形态，**不是** `cases.json` 的数据来源，也未计入上述 316 条。
 
 - [第一批可预览范式](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/cfa40336-0a3b-41ac-a3af-c36a4af340e7)：用完整的商品、民宿、课程和文章片段做了约 20 个可交互预览（如卡片翻转、透视倾斜、错落入场、骨架流光等），方便先看效果再复制描述。
 - [结构规划](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/b6e47be6-2234-4775-99a2-15e7257579c5)：说明资料库要做可检索、可复用、可落地的交互与动效语言；规划了「主类 → 子类 → 范式」分层、范式卡片字段，以及可复制给 AI 的中文提示词模板。
@@ -130,8 +131,10 @@ https://youfangg.github.io/vibecoding-design/
 ```
 README.md
 NEW-BATCH.md                        # 2026-11-24 增补说明
-data/cases.json                     # 全部 250 条案例（UTF-8，带缩进）
-data/new-cases-2026-11-24.json      # 本批新增的 48 条原文
+NEW-BATCH-2026-11-25.md             # 2026-11-25 增补说明
+data/cases.json                     # 全部 316 条案例（UTF-8，带缩进）
+data/new-cases-2026-11-24.json      # 2026-11-24 新增的 48 条原文
+data/new-cases-2026-11-25.json      # 2026-11-25 新增的 66 条原文
 data/taxonomy.json                  # 来源、主类、分册索引与条数
 categories/<主类>.md                # 按主类拆分，含可复制提示词代码块
 docs/                               # 静态站点，GitHub Pages 从 /docs 发布

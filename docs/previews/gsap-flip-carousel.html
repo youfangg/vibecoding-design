@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>候鸟房型</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f6f1e8; color: #241c16; }
+    .page { height: 100%; padding: 14px; display: flex; flex-direction: column; }
+    .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.3rem; }
+    button { min-height: 36px; padding: 0 10px; border: 1px solid #241c16; background: #fffaf4; }
+    .grid { margin-top: 12px; display: grid; gap: 8px; flex: 1; }
+    .grid.cols { grid-template-columns: 1fr 1fr 1fr; }
+    .grid.feature { grid-template-columns: 1.4fr .8fr; grid-template-rows: 1fr 1fr; }
+    .grid.feature .card:first-child { grid-row: 1 / span 2; }
+    .card { background: #fffaf4; border: 1px solid #e6d9c8; padding: 8px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 90px; }
+    .swatch { flex: 1; min-height: 36px; margin-bottom: 6px; }
+    .example { margin: 4px 0 0; color: #7a6a58; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="bar"><h1>候鸟房型</h1><button type="button" id="toggle" aria-pressed="false">主图 + 侧列</button></div>
+    <p class="example">示例房价 · 布局用 FLIP 补间，不是轨道平移</p>
+    <div class="grid cols" id="grid"></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var rooms = [["蓝窗双人", "¥680", "#7ea0b8"], ["天井大床", "¥820", "#d7c4a2"], ["窄梯阁楼", "¥540", "#c46a4a"]];
+    var grid = document.getElementById("grid");
+    var cards = rooms.map(function (room) {
+      var card = document.createElement("article");
+      card.className = "card";
+      card.innerHTML = '<div class="swatch"></div><b></b><span></span>';
+      card.querySelector(".swatch").style.background = room[2];
+      card.querySelector("b").textContent = room[0];
+      card.querySelector("span").textContent = room[1];
+      grid.append(card);
+      return card;
+    });
+    var feature = false;
+    var kit = window.PreviewKit;
+    function flip(nextFeature) {
+      var first = cards.map(function (card) { return card.getBoundingClientRect(); });
+      feature = nextFeature;
+      grid.className = feature ? "grid feature" : "grid cols";
+      document.getElementById("toggle").setAttribute("aria-pressed", feature ? "true" : "false");
+      document.getElementById("toggle").textContent = feature ? "三列浏览" : "主图 + 侧列";
+      if (kit.reduced()) return;
+      cards.forEach(function (card, i) {
+        var last = card.getBoundingClientRect();
+        var dx = first[i].left - last.left;
+        var dy = first[i].top - last.top;
+        var sx = first[i].width / last.width;
+        var sy = first[i].height / last.height;
+        card.animate([
+          { transform: "translate(" + dx + "px," + dy + "px) scale(" + sx + "," + sy + ")" },
+          { transform: "none" }
+        ], { duration: 480, easing: "cubic-bezier(.2,.8,.2,1)" });
+      });
+    }
+    document.getElementById("toggle").addEventListener("click", function () { flip(!feature); });
+  </script>
+</body>
+</html>

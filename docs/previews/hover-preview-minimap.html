@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>回廊展览</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f4efe6; color: #241c16; overflow: hidden; }
+    .page { height: 100%; display: grid; grid-template-columns: 1fr 92px; }
+    .works { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; padding: 12px; align-content: start; }
+    button.work { aspect-ratio: 1; border: 0; padding: 0; }
+    .side { position: relative; background: #241c16; color: #f6f1e8; }
+    .full { position: absolute; inset: 0 0 86px 0; display: grid; place-items: end start; padding: 8px; font-family: var(--serif); }
+    .map { position: absolute; right: 8px; bottom: 8px; width: 72px; height: 72px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: #f6f1e8; padding: 3px; }
+    .map i { background: #d9cec0; }
+    .map i.on { background: #8a3b2c; }
+    .example { position: absolute; top: 8px; left: 8px; margin: 0; font-size: 12px; color: #cbbba8; }
+    @media (max-width: 640px) { .page { grid-template-columns: 1fr; } .side { min-height: 140px; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="works" id="works"></div>
+    <aside class="side">
+      <p class="example">示例作品</p>
+      <div class="full" id="full">回廊 01</div>
+      <div class="map" id="map" aria-hidden="true"></div>
+    </aside>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var colors = ["#7ea0b8", "#c46a4a", "#e7c48a", "#23483a", "#d7c4a2", "#8a3b2c", "#c9d0dc", "#efe2c4", "#6d5e4e", "#f3eee6", "#a85a3c", "#1d3348"];
+    var works = document.getElementById("works");
+    var full = document.getElementById("full");
+    var map = document.getElementById("map");
+    var cells = colors.map(function (_, i) {
+      var mark = document.createElement("i");
+      map.append(mark);
+      return mark;
+    });
+    function select(i) {
+      full.style.background = colors[i];
+      full.style.color = i === 9 || i === 2 || i === 7 ? "#241c16" : "#f6f1e8";
+      full.textContent = "回廊 " + String(i + 1).padStart(2, "0");
+      cells.forEach(function (cell, n) { cell.classList.toggle("on", n === i); });
+    }
+    colors.forEach(function (color, i) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.className = "work";
+      button.style.background = color;
+      button.setAttribute("aria-label", "回廊 " + (i + 1));
+      button.addEventListener("pointerenter", function () { select(i); });
+      button.addEventListener("focus", function () { select(i); });
+      button.addEventListener("click", function () { select(i); });
+      works.append(button);
+    });
+    select(0);
+  </script>
+</body>
+</html>

@@ -1,7 +1,19 @@
 # 光影与材质
 
-本类共 22 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `material`。复制下方提示词即可用于 AI Coding。
+本类共 34 条，来自分册「[三维与光影材质](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2)」。在 `data/cases.json` 中对应 `category` 为 `material`。复制下方提示词即可用于 AI Coding。
 
+- [抖动揭示幕 / Dither Veil](#rb-dither-veil)
+- [电流边框 / Electric Border](#rb-electric-border)
+- [闪电标识 / Electric Logo](#rb-electric-logo)
+- [液态金属涂覆 / Metallic Paint](#rb-metallic-paint)
+- [灰度回彩网格 / Chroma Grid](#rb-chroma-grid)
+- [溶蚀卡片 / Decay Card](#rb-decay-card)
+- [流体玻璃折射 / Fluid Glass](#rb-fluid-glass)
+- [镜面身份卡 / Reflective Card](#rb-reflective-card)
+- [油漆旋涡背景 / Balatro](#rb-balatro)
+- [沿边走的光梁 / Border Beam](#magic-border-beam)
+- [像素画布畸变 / Pixelated Canvas](#aceternity-pixelated-canvas)
+- [自适应发光边 / Glowing Effect](#aceternity-glowing-effect)
 ## 目录
 
 - [时装 Lookbook 悬停覆盖 / Lookbook Hover Effects](#lookbook-hover)
@@ -655,4 +667,340 @@
 【触发】指针在图上移动；离开后 200–300ms 回正。触屏可改为跟随触摸或关闭。
 【运动】色差与倾斜跟手但有短滞后，幅度小到主体仍可辨认。
 【不要】分离过大导致图像破碎；对所有配图都启用。
+```
+
+## 抖动揭示幕 / Dither Veil
+
+<a id="rb-dither-veil"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：光标把一位抖动图烧回彩色
+- 触发：pointer move / idle
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/animations/dither-veil
+- 分册锚点：[rb-dither-veil](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-dither-veil)
+
+照片先呈现为一位抖动的黑白网点，光标经过处像被烧掉一层纱，露出全彩，离开后又逐格织回去。
+
+链接：
+
+- [打开 React Bits Dither Veil 演示](https://www.reactbits.dev/animations/dither-veil)（React Bits）
+
+### 提示词
+
+```
+【场景】「青浦影像」专题封面是一张码头铁索的照片，默认是粗颗粒的黑白抖动。光标走过的地方烧回彩色：锈、湿木和傍晚的水。离开后网点从边缘一格格织回来。左下角标题「铁索 · 2019」。
+【触发】指针移动揭示；静止数秒后慢慢织回。点击可把全图锁定为彩色。
+【运动】揭示半径跟手，边缘是硬边网点而不是高斯模糊；织回要慢（1–1.5s）且按格。
+【不要】默认就全彩只加一层滤镜；WebGL 失败时没有静态原图；把效果铺在正文上。reduced-motion 时直接显示彩色原图。
+```
+
+## 电流边框 / Electric Border
+
+<a id="rb-electric-border"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：沿边缘窜动并在近处跳火的电流
+- 触发：pointer proximity / idle
+- 技术栈：React / Canvas
+- 官方演示：https://www.reactbits.dev/animations/electric-border
+- 分册锚点：[rb-electric-border](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-electric-border)
+
+任何卡片或按钮的轮廓上爬着细电流，靠近光标时更密、更亮，偶尔向外迸出火花。
+
+链接：
+
+- [打开 React Bits Electric Border 演示](https://www.reactbits.dev/animations/electric-border)（React Bits）
+
+### 提示词
+
+```
+【场景】音乐节「灯塔将亮」票种卡「内场通票 ¥680」，深色底，边框有细电流缓缓爬行。光标靠近右上角时该处电流加密，偶尔迸出一两点火花。卡上写「含 12 月 4 日全部场次 · 剩余 126 张」。
+【触发】空闲时低频游走；指针靠近加强；点击可短促放电一次。
+【运动】电流沿路径连续，不要一闪一闪的 PNG 循环；火花粒子立即消失。性能上只在可见时绘制。
+【不要】电流粗到盖住文字；整页每个元素都带电；忽略 reduced-motion（改为静态细边）。
+```
+
+## 闪电标识 / Electric Logo
+
+<a id="rb-electric-logo"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：从标识轮廓上跃出的电弧
+- 触发：idle / pointer
+- 技术栈：React / Canvas
+- 官方演示：https://www.reactbits.dev/animations/electric-logo
+- 分册锚点：[rb-electric-logo](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-electric-logo)
+
+把 Logo 或短词变成活的闪电轮廓，电弧沿边缘流动，并会从尖角处向外跃出。
+
+链接：
+
+- [打开 React Bits Electric Logo 演示](https://www.reactbits.dev/animations/electric-logo)（React Bits）
+
+### 提示词
+
+```
+【场景】户外品牌「原野」导航栏左侧标识是一个简化的山形与「原野」二字，深色顶栏上，细电沿着山脊和笔画走，偶尔从山尖跃出短弧。旁边是「霜降配色 · 限量 200」。
+【触发】空闲循环；指针靠近时电弧更活跃。
+【运动】电弧贴合 SVG 轮廓，跃出短、收得快；不要把标识本身扭曲变形。
+【不要】对比不足导致标识不可认；在大段文字上使用；reduced-motion 时显示静态线稿标识。
+```
+
+## 液态金属涂覆 / Metallic Paint
+
+<a id="rb-metallic-paint"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：液态铬在标识上流动
+- 触发：pointer / idle
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/animations/metallic-paint
+- 分册锚点：[rb-metallic-paint](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-metallic-paint)
+
+一层液态铬或液态金属在 Logo 或短标题上流过，表面有高光和黏滞，可被指针搅动。
+
+链接：
+
+- [打开 React Bits Metallic Paint 演示](https://www.reactbits.dev/animations/metallic-paint)（React Bits）
+
+### 提示词
+
+```
+【场景】钟表品牌「流光」发布页，单词「LUMINA」被一层液态铬缓缓涂满，高光从左上滑到右下。指针可以轻轻搅动金属表面。下方是「1964 手动上链 · 限量 50」。
+【触发】进入后自动涂覆一次；此后指针搅动；离开后表面慢慢抚平。
+【运动】金属有黏滞与反射，不要像纯色渐变扫过。涂覆约 1–1.5s，搅动阻尼明显。
+【不要】用在长段落；WebGL 不可用时没有纯色字回退；闪烁或摩尔纹过强。
+```
+
+## 灰度回彩网格 / Chroma Grid
+
+<a id="rb-chroma-grid"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：聚光灯把灰照片唤回彩色
+- 触发：pointer move
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/components/chroma-grid
+- 分册锚点：[rb-chroma-grid](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-chroma-grid)
+
+网格里的照片默认是灰度，一束聚光随光标移动，被照到的卡片恢复彩色，离开后慢慢退回灰度。
+
+链接：
+
+- [打开 React Bits Chroma Grid 演示](https://www.reactbits.dev/components/chroma-grid)（React Bits）
+
+### 提示词
+
+```
+【场景】「候鸟旅馆」房源网格：青岛蓝窗、大理天井、京都窄梯、海边晒被。默认都是灰度。光标移到「青岛蓝窗」上，这张恢复蓝色窗框与橙瓦，标题「青岛 · 蓝窗房 / 从 ¥480 晚」显现。
+【触发】指针移动更新聚光；触屏点按锁定一张。
+【运动】颜色恢复 200–350ms，退回更慢一点。聚光边缘柔软，一次主要照亮一张，邻近可有弱光。
+【不要】全部同时彩色；灰度对比差到看不清构图；没有标题的纯图网格。reduced-motion 时始终彩色，只用边框表示焦点。
+```
+
+## 溶蚀卡片 / Decay Card
+
+<a id="rb-decay-card"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：指针把图像撕开再自行缝合
+- 触发：pointer move / leave
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/components/decay-card
+- 分册锚点：[rb-decay-card](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-decay-card)
+
+一张图片卡在指针经过时像被撕开或熔化，露出底层或破口，离开后自行拉回完整。
+
+链接：
+
+- [打开 React Bits Decay Card 演示](https://www.reactbits.dev/components/decay-card)（React Bits）
+
+### 提示词
+
+```
+【场景】时尚看片「白潮」中间季形象卡：一张人物靠在生锈铁门上的照片。指针划过时，画面像湿颜料被撕开一道口，底下隐约是同一场景的反转片。离开后破口在 600–900ms 内缝合。
+【触发】指针在卡上移动产生破口；离开后自动修复。
+【运动】撕裂跟手，边缘有黏连，不要马赛克方块。修复用弹性而不是硬切。
+【不要】破口常驻导致主体不可认；在文字卡上使用；无 WebGL 时整卡空白。reduced-motion 时关闭撕裂，只保留静止照片。
+```
+
+## 流体玻璃折射 / Fluid Glass
+
+<a id="rb-fluid-glass"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：可变形的玻璃体折射后方内容
+- 触发：pointer / idle
+- 技术栈：React / Three
+- 官方演示：https://www.reactbits.dev/components/fluid-glass
+- 分册锚点：[rb-fluid-glass](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-fluid-glass)
+
+一枚三维玻璃体放在标题、图片或视频前方，折射后方内容，跟随指针，并可在几种形状之间融化切换。
+
+链接：
+
+- [打开 React Bits Fluid Glass 演示](https://www.reactbits.dev/components/fluid-glass)（React Bits）
+
+### 提示词
+
+```
+【场景】护肤品牌「白潮」英雄区：标题「把海里的盐，放进洗手台」上方悬浮一滴玻璃，折射后方的浪与瓶子。指针移动时玻璃体跟随并拉长，点击在「水滴 / 薄片 / 卵石」三种形状间融化切换。
+【触发】指针移动跟随；点击或按钮切换形状；空闲时缓慢呼吸。
+【运动】折射真实、边缘有厚度；形变 500–800ms 融化，不要瞬间换 mesh。
+【不要】玻璃挡住全部标题无法阅读；高性能消耗时没有降级；reduced-motion 时改为静止玻璃。
+```
+
+## 镜面身份卡 / Reflective Card
+
+<a id="rb-reflective-card"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：倾斜时反射环境或循环影像
+- 触发：pointer move
+- 技术栈：React / WebGL
+- 官方演示：https://www.reactbits.dev/components/reflective-card
+- 分册锚点：[rb-reflective-card](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-reflective-card)
+
+一张金属质感的身份卡或会员卡，倾斜时反射摄像头画面或一段循环视频，并在边缘打出高光。
+
+链接：
+
+- [打开 React Bits Reflective Card 演示](https://www.reactbits.dev/components/reflective-card)（React Bits）
+
+### 提示词
+
+```
+【场景】「流光」会员卡预览：金属卡面写「LUMINA CLUB · 林夏 · MEMBER 026」，右下有小型表盘纹样。指针倾斜卡片时，卡面反射一段工坊循环影像（齿轮、光源），边缘打出一条白光。
+【触发】指针移动改变倾角与高光；无摄像头时只用循环视频或环境贴图，不要向用户强要权限。
+【运动】倾斜跟手、阻尼短；反射与高光同步。松开或离开后 300–500ms 回正。
+【不要】未经说明就打开摄像头；反射强到文字读不清；移动端没有等价的轻倾效果。reduced-motion 时保持平视静止卡面。
+```
+
+## 油漆旋涡背景 / Balatro
+
+<a id="rb-balatro"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：可被光标搅动的油漆着色器
+- 触发：pointer / click
+- 技术栈：React / OGL
+- 官方演示：https://www.reactbits.dev/backgrounds/balatro
+- 分册锚点：[rb-balatro](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#rb-balatro)
+
+一层像素感的油漆旋涡铺在背景，光标可以搅动颜料，点击激起漩涡，风格鲜明但不应当抢走前景文字。
+
+链接：
+
+- [打开 React Bits Balatro 演示](https://www.reactbits.dev/backgrounds/balatro)（React Bits）
+
+### 提示词
+
+```
+【场景】独立游戏「灯塔将亮」预告页：背景是深红与金的油漆在旋，像素边缘清晰。光标搅动颜料，点击激起一小涡。前景是清晰的标题「灯塔将亮」与日期「12 月 4 日，南窗书局隔壁的旧仓库」。
+【触发】指针移动搅动；点击激涡；离开视口暂停着色器。
+【运动】油漆黏滞、像素感保留；不要高频率闪烁。前景文字与按钮始终高对比。
+【不要】把背景对比做到字不可读；低端设备没有降帧或静态回退；reduced-motion 时冻结一帧油漆。
+```
+
+## 沿边走的光梁 / Border Beam
+
+<a id="magic-border-beam"></a>
+
+- 来源：AI Coding
+- 作者：Magic UI
+- 日期：采集于 2026-11-25
+- 子类：一束光沿容器边框旅行
+- 触发：idle loop
+- 技术栈：React / Motion
+- 官方演示：https://magicui.design/docs/components/border-beam
+- 分册锚点：[magic-border-beam](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#magic-border-beam)
+
+一束短光沿着卡片或按钮的边框循环旅行，用于强调定价卡、高亮功能或进行中的容器，而不是满屏扫光。
+
+链接：
+
+- [打开 Magic UI Border Beam 演示](https://magicui.design/docs/components/border-beam)（Magic UI）
+
+### 提示词
+
+```
+【场景】「云帆出行」定价区三张卡，中间「企业包车」被标为「团队在用」。一条浅青的短光沿该卡圆角边框缓缓走一圈。卡上写「含司机与发票 · 起 ¥680 / 趟」。
+【触发】进入视口后循环；非推荐卡无光梁。
+【运动】光梁 2.5–4s 走完一圈，亮度克制，经过圆角时不要断裂。
+【不要】三张卡同时走光；光梁粗到像霓虹广告；reduced-motion 时改为静态描边。
+```
+
+## 像素画布畸变 / Pixelated Canvas
+
+<a id="aceternity-pixelated-canvas"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：把图像打成可被指针搅动的像素
+- 触发：pointer move
+- 技术栈：React / Canvas
+- 官方演示：https://ui.aceternity.com/components/pixelated-canvas
+- 分册锚点：[aceternity-pixelated-canvas](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-pixelated-canvas)
+
+把任意图片转成像素画布，指针在上面搅动会产生局部畸变，类似某些设计系统站点的交互封面。
+
+链接：
+
+- [打开 Aceternity Pixelated Canvas 演示](https://ui.aceternity.com/components/pixelated-canvas)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】「织光工作室」作品封面用一张办公室窗边的照片，被打成粗像素。指针经过时局部像素被搅开又弹回，像在拨动马赛克。下方「为南窗书局做的季节海报」。
+【触发】指针移动扰动；离开后 300–500ms 复位。
+【运动】像素块有黏滞弹性，不要整图随机闪烁。像素尺寸保证主体仍可辨认。
+【不要】默认分辨率低到完全抽象却无原图入口；性能上全屏无节流。reduced-motion 时显示未扰动的像素图或原图。
+```
+
+## 自适应发光边 / Glowing Effect
+
+<a id="aceternity-glowing-effect"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：贴合任意容器的游走辉光
+- 触发：pointer / idle
+- 技术栈：React / Motion
+- 官方演示：https://ui.aceternity.com/components/glowing-effect
+- 分册锚点：[aceternity-glowing-effect](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/ba239dfa-f2ef-4a20-8370-28cb9aca4bc2#aceternity-glowing-effect)
+
+一道辉光贴合卡片或按钮的真实轮廓游走或随指针滑动，可套在任意容器上，而不是固定矩形贴图。
+
+链接：
+
+- [打开 Aceternity Glowing Effect 演示](https://ui.aceternity.com/components/glowing-effect)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】协作工具「墨蓝」功能卡「从会议里长出任务」，圆角容器边有一道柔和白青辉光随指针在边缘滑动，像光在金属包边上走。卡内是三条真实任务和一段 42:18 的会议时长。
+【触发】指针在卡上时辉光跟随最近点；离开后回到缓慢沿边循环或熄灭。
+【运动】辉光贴合圆角，不要在拐角断开；跟随 80–150ms。亮度克制，深浅主题都要可见但不刺眼。
+【不要】与电流边框简单地重复成同一套火花；辉光泄漏到邻卡。reduced-motion 时改为静态细边，不再游走。
 ```

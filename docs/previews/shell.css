@@ -1,0 +1,16 @@
+html, body { height: 100%; }
+body { margin: 0; background: #f6f1e8; color: #241c16; font-family: "Noto Sans SC", "PingFang SC", sans-serif; }
+.host-page { height: 100%; display: flex; flex-direction: column; min-height: 0; }
+.host-bar { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-bottom: 1px solid #e4d8c8; }
+.host-bar h1 { margin: 0; font-size: 1.05rem; font-family: "Noto Serif SC", serif; font-weight: 600; }
+.host-note, .host-limit { margin: 0; color: #7a6a58; font-size: 12px; }
+.host-note { flex: 1; }
+.host-reset { min-height: 32px; padding: 0 10px; border: 1px solid #241c16; background: #fffaf4; }
+.host-body { flex: 1; min-height: 0; position: relative; overflow: auto; }
+.host-limit { padding: 0 10px 8px; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid #9f2d20; outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

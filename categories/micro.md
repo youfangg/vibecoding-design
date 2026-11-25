@@ -1,7 +1,17 @@
 # 微交互反馈
 
-本类共 16 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `micro`。复制下方提示词即可用于 AI Coding。
+本类共 26 条，来自分册「[手势、导航与微交互](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f)」。在 `data/cases.json` 中对应 `category` 为 `micro`。复制下方提示词即可用于 AI Coding。
 
+- [弧形输入条 / Curved Input](#rb-curved-input)
+- [弹弓发送 / Sling Button](#rb-sling-button)
+- [弹簧勾选 / Spring Check](#rb-spring-check)
+- [挤压开关 / Squish Switch](#rb-squish-switch)
+- [拖放上传 / File Upload](#aceternity-file-upload)
+- [铁屑磁吸按钮 / Magnet Button](#kokonut-attract-button)
+- [粒子完成按钮 / Particle Button](#kokonut-particle-button)
+- [就地变成数量步进 / Cart Button](#kokonut-cart-button)
+- [弹出式验证码格 / Input OTP](#animate-input-otp)
+- [翻面按钮 / Flip Button](#animate-flip-button)
 ## 目录
 
 - [光标拖尾图集 / Image Motion Trail](#motion-trail)
@@ -471,4 +481,284 @@
 【触发】指针靠近或穿过；离开后回正。
 【运动】弹簧回正带一两下衰减，不要永久抖动。触屏可改为按住拖拽。
 【不要】整条页面布局被线的形变撑动；动画停不下来。
+```
+
+## 弧形输入条 / Curved Input
+
+<a id="rb-curved-input"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：文字与按钮贴在弧上的输入栏
+- 触发：focus / submit
+- 技术栈：React / Motion / SVG
+- 官方演示：https://www.reactbits.dev/components/curved-input
+- 分册锚点：[rb-curved-input](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-curved-input)
+
+搜索或留言输入条整体弯成弧，文字、插入符和提交按钮都沿着曲线走，提交时有一次轻反馈。
+
+链接：
+
+- [打开 React Bits Curved Input 演示](https://www.reactbits.dev/components/curved-input)（React Bits）
+
+### 提示词
+
+```
+【场景】播客「回声」节目页底部的留言弧：「对第 48 集《在夜船上读书》说一句」。占位「你在哪一页合上的？」用户输入「我在码头那章停了很久。」插入符贴着弧走，右侧是弧上的「送出」按钮。
+【触发】聚焦开始输入；提交播放一次短反馈；失焦保持已输入文本。
+【运动】字符沿弧排列，插入符不离线；提交按钮 150–250ms 轻按，成功后弧上闪一句「已送到第 48 集」。
+【不要】弯曲到难以阅读或选中；移动端键盘把弧顶出屏幕却无滚动；缺少 label 与错误态。
+```
+
+## 弹弓发送 / Sling Button
+
+<a id="rb-sling-button"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：拉回再松开的弹射发送
+- 触发：pointer drag / release
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/sling-button
+- 分册锚点：[rb-sling-button](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-sling-button)
+
+发送按钮可以像弹弓一样被拉回，松开后向前弹出以完成发送；拉力不够则弹回原位。
+
+链接：
+
+- [打开 React Bits Sling Button 演示](https://www.reactbits.dev/micro/sling-button)（React Bits）
+
+### 提示词
+
+```
+【场景】即时通讯「潮汐」聊天页，输入框已写好「晚上七点在北岛见，我先占座。」发送键是一枚小石子按钮。向下拉满后松开，按钮弹向前方，消息入列，状态从「发送中」到「已送达」。拉得不够则弹回，不发送。
+【触发】按住下拉，松开时按拉力阈值决定发送或取消；键盘仍可用 Enter 直接发送。
+【运动】拉伸跟手，带橡皮筋感；发送 250–400ms 弹出并复位；失败回弹 300ms。
+【不要】阈值不明导致误发；没有普通点击/回车的后备；把弹弓用在破坏性、不可撤销的操作上。
+```
+
+## 弹簧勾选 / Spring Check
+
+<a id="rb-spring-check"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：一次弹簧完成勾选与划线
+- 触发：click / keyboard
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/spring-check
+- 分册锚点：[rb-spring-check](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-spring-check)
+
+勾选一行时，弹簧先填满方框、再勾出对勾，同时在标签上划掉一条线，取消则反向收回。
+
+链接：
+
+- [打开 React Bits Spring Check 演示](https://www.reactbits.dev/micro/spring-check)（React Bits）
+
+### 提示词
+
+```
+【场景】旅行清单「候鸟」：三行「带护照复印件」「确认青岛蓝窗房 12/4 入住」「给南窗书局发取书短信」。勾选第一行时，方框被弹簧填满，对勾画出，文字「带护照复印件」被一条稳稳的线划过。
+【触发】点击行或复选框；空格在聚焦时切换。
+【运动】填充、对勾、划线是一次 350–500ms 的连贯弹簧，不要分成三段生硬动画。取消时反向 250–350ms。
+【不要】漏掉真实的 checkbox 语义；划线把字衬得无法阅读；组里没有全选/计数。reduced-motion 时改为瞬时勾选与划线。
+```
+
+## 挤压开关 / Squish Switch
+
+<a id="rb-squish-switch"></a>
+
+- 来源：AI Coding
+- 作者：React Bits
+- 日期：采集于 2026-11-25
+- 子类：拇指会被速度拉长并撞停
+- 触发：click / drag
+- 技术栈：React / Motion
+- 官方演示：https://www.reactbits.dev/micro/squish-switch
+- 分册锚点：[rb-squish-switch](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#rb-squish-switch)
+
+开关滑块随甩动速度被拉长，撞到两端时挤扁再回弹，比普通开关更有物理感。
+
+链接：
+
+- [打开 React Bits Squish Switch 演示](https://www.reactbits.dev/micro/squish-switch)（React Bits）
+
+### 提示词
+
+```
+【场景】天气应用「潮汐」的通知设置：「降雨前提醒我」一行，右侧是开关。打开时滑块被速度拉长，撞到右端挤扁再回弹，标签从「关闭」换成「已开启 · 提前 30 分钟」。
+【触发】点击切换；也可拖到另一端松开。
+【运动】位移 200–350ms，拉伸与挤压跟速度走，结束有短回弹。不要无限抖动。
+【不要】没有选中态对比；把开关做得过大或拖得脱出轨道；忽略开关的可访问名称。reduced-motion 时取消拉伸与碰撞，只做位置切换。
+```
+
+## 拖放上传 / File Upload
+
+<a id="aceternity-file-upload"></a>
+
+- 来源：AI Coding
+- 作者：Aceternity UI
+- 日期：采集于 2026-11-25
+- 子类：带网格背景与微交互的拖放上传
+- 触发：drag / click
+- 技术栈：React / Motion
+- 官方演示：https://ui.aceternity.com/components/file-upload
+- 分册锚点：[aceternity-file-upload](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#aceternity-file-upload)
+
+一个带背景网格的上传区，支持拖放与点击选择，文件进入时有入场与进度，失败有明确回退。
+
+链接：
+
+- [打开 Aceternity File Upload 演示](https://ui.aceternity.com/components/file-upload)（Aceternity UI）
+
+### 提示词
+
+```
+【场景】「青浦影像」投稿页：虚线框写「把作品拖到这里，或选择文件」，背景是浅网格。拖入三张图「码头铁索.jpg 2.4MB」「湿窗.jpg 1.8MB」「河面黄昏.jpg 3.1MB」后，每张以缩略图落入列表，下有进度条，完成后显示尺寸与「可删除」。
+【触发】拖入、点击选择或键盘激活；校验失败就地提示。
+【运动】文件卡 250–400ms 落入，进度平滑；删除时收起高度。拖入悬停时框线与网格轻微点亮。
+【不要】没有类型/大小限制说明；失败只 toast 一下就丢文件；进度假跳到 100%。
+```
+
+## 铁屑磁吸按钮 / Magnet Button
+
+<a id="kokonut-attract-button"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-25
+- 子类：铁屑随磁场倒向按钮
+- 触发：pointer move / hover
+- 技术栈：React / Canvas
+- 官方演示：https://kokonutui.com/docs/buttons/attract-button
+- 分册锚点：[kokonut-attract-button](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-attract-button)
+
+呼叫行动按钮周围有一圈铁屑或细针，它们顺着磁场排列，并随光标向按钮倾斜，与普通磁吸位移不是同一效果。
+
+链接：
+
+- [打开 Kokonut Magnet Button 演示](https://kokonutui.com/docs/buttons/attract-button)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】课程站点「山海科考」报名区，主按钮「预约公开课」。按钮周围是一圈细铁屑，平时沿按钮外磁场排列；光标靠近时铁屑倒向指针与按钮之间，像被吸住。按钮文案下有「12 月 6 日 · 青岛观象台」。
+【触发】指针在按钮附近移动时更新磁场；离开后 300–500ms 回到环状排列。
+【运动】铁屑转动要跟手但带一点阻尼，不要闪烁。按钮本身可有轻微磁吸位移，幅度克制。
+【不要】铁屑挡住文字；做成廉价粒子喷发；reduced-motion 时只保留静止构图与普通悬停。
+```
+
+## 粒子完成按钮 / Particle Button
+
+<a id="kokonut-particle-button"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-25
+- 子类：异步动作后勾画与粒子爆发
+- 触发：click / async process
+- 技术栈：React / Motion
+- 官方演示：https://kokonutui.com/docs/buttons/particle-button
+- 分册锚点：[kokonut-particle-button](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-particle-button)
+
+用于异步操作的状态按钮：进行中显示spinner，成功时画出对勾并爆出一小圈粒子，失败则回退到可重试。
+
+链接：
+
+- [打开 Kokonut Particle Button 演示](https://kokonutui.com/docs/buttons/particle-button)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】票务「南窗书局朗诵会」座位页，按钮「锁定 2 个座位」。点击后按钮进入加载，文案「正在锁定…」，成功则画出对勾并爆出一小圈纸屑般的粒子，文案改为「已锁定 12 排 7–8 座，10 分钟内付款」。
+【触发】点击发起请求；成功/失败各播一次；可重试。
+【运动】spinner 不打断按钮宽度；对勾 300–450ms 画出；粒子 400–600ms 散开并消失，数量克制。
+【不要】成功粒子无限循环；失败仍显示成功；没有加载与禁用态导致连点。reduced-motion 时取消粒子，只切换文案与对勾。
+```
+
+## 就地变成数量步进 / Cart Button
+
+<a id="kokonut-cart-button"></a>
+
+- 来源：AI Coding
+- 作者：Kokonut UI
+- 日期：采集于 2026-11-25
+- 子类：加购后在原位展开步进器
+- 触发：click / press
+- 技术栈：React / Motion
+- 官方演示：https://kokonutui.com/docs/buttons/cart-button
+- 分册锚点：[kokonut-cart-button](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#kokonut-cart-button)
+
+「加入」按钮在原位变形为带加减的数量步进，数量为 1 时可以收到回收桶，长按加减可持续改变。
+
+链接：
+
+- [打开 Kokonut Cart Button 演示](https://kokonutui.com/docs/buttons/cart-button)（Kokonut UI）
+
+### 提示词
+
+```
+【场景】咖啡店「北岛」小程序点单：「桂花酒酿拿铁 ¥36」旁是「加入」。点一次，按钮在原位展开成「−  1  +」，再点加到 2。减到 0 时出现垃圾桶并收回成「加入」。长按加减会重复步进。
+【触发】点击加入或加减；长按重复；到 0 收起。
+【运动】宽度与内容 300–450ms 变形，数字滑动切换。不要跳出页面或另开抽屉才改数量。
+【不要】没有最大库存限制；动画期间丢点击；读屏无法听到数量变化。
+```
+
+## 弹出式验证码格 / Input OTP
+
+<a id="animate-input-otp"></a>
+
+- 来源：AI Coding
+- 作者：Animate UI
+- 日期：采集于 2026-11-25
+- 子类：逐格弹入与粘贴错落入场
+- 触发：focus / submit
+- 技术栈：React / Motion
+- 官方演示：https://animate-ui.com/docs/primitives/animate-ui/input-otp
+- 分册锚点：[animate-input-otp](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-input-otp)
+
+验证码输入格在键入时逐字弹出，粘贴整段时按格错落入场，API 与常见 OTP 输入兼容，需保证可访问。
+
+链接：
+
+- [打开 Animate UI Input OTP 演示](https://animate-ui.com/docs/primitives/animate-ui/input-otp)（Animate UI）
+
+### 提示词
+
+```
+【场景】「星港支付」转账确认：标题「输入短信验证码」，说明「已发送至 138 **** 2164」。六格空位，用户键入 4 时该格弹入；若一次粘贴「839201」，六格从左到右 stagger 弹出。成功后短促勾选，进入「已转账 ¥1,280 给折纸事务所」。
+【触发】键入、退格、粘贴；满格自动提交或等用户确认。
+【运动】单字 180–250ms 弹出；粘贴 stagger 40–60ms。错误时格子轻摇一次并清空。
+【不要】阻断粘贴；用无标签的裸 input；错误不说明原因。reduced-motion 时取消弹出，直接显示已填数字。
+```
+
+## 翻面按钮 / Flip Button
+
+<a id="animate-flip-button"></a>
+
+- 来源：AI Coding
+- 作者：Animate UI
+- 日期：采集于 2026-11-25
+- 子类：悬停翻到背面的行动按钮
+- 触发：hover / focus
+- 技术栈：React / Motion
+- 官方演示：https://animate-ui.com/docs/primitives/animate-ui/flip-button
+- 分册锚点：[animate-flip-button](https://cursor.com/canvas/store-1cd43420-43a9-43f1-9c13-da70c2d85a9f/babcb897-a18b-4b1a-82ec-8b5a06c1f21f#animate-flip-button)
+
+按钮在悬停或聚焦时沿轴翻到背面，背面给出补充信息或另一种行动，离开后翻回。
+
+链接：
+
+- [打开 Animate UI Flip Button 演示](https://animate-ui.com/docs/primitives/animate-ui/flip-button)（Animate UI）
+
+### 提示词
+
+```
+【场景】「白潮」产品卡底部按钮，正面「加入购物袋 · ¥168」；悬停翻到背面「库存 14 件 · 今日截单 18:00」。聚焦时同样翻转，方便键盘用户。
+【触发】悬停或聚焦翻转；离开或失焦翻回。点击仍执行加入。
+【运动】沿水平或垂直轴 300–450ms 翻转，背面不可在翻到一半时被点到。
+【不要】背面信息只存在于动画里、读屏读不到；翻转时布局高度跳动。
 ```

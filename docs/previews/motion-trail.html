@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>候鸟作品志</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f6f1e8; color: #241c16; overflow: hidden; }
+    .page { height: 100%; padding: 16px; display: flex; flex-direction: column; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.45rem; }
+    .example { margin: 4px 0 0; color: #7a6a58; font-size: 12px; }
+    ul { list-style: none; padding: 0; margin: 14px 0 0; }
+    li { border-top: 1px solid #e5d8c8; }
+    a { display: flex; justify-content: space-between; padding: 10px 0; color: inherit; text-decoration: none; }
+    .trail { position: fixed; inset: 0; pointer-events: none; }
+    .shot { position: absolute; width: 72px; height: 54px; border: 3px solid #fffaf4; box-shadow: 0 6px 14px rgba(36,28,22,.18); }
+    .strip { display: flex; gap: 8px; margin-top: auto; }
+    .strip i { width: 64px; height: 44px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="trail" id="trail"></div>
+  <div class="page">
+    <h1>候鸟旅馆 · 作品志</h1>
+    <p class="example">示例房间，光标拖尾不挡住链接</p>
+    <ul>
+      <li><a href="#qingdao">青岛蓝窗 <span>2019</span></a></li>
+      <li><a href="#dali">大理天井 <span>2021</span></a></li>
+      <li><a href="#kyoto">京都窄梯 <span>2023</span></a></li>
+    </ul>
+    <div class="strip" id="strip" hidden></div>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var shots = [
+      ["#7ea0b8", "青岛"],
+      ["#d7c4a2", "大理"],
+      ["#c46a4a", "京都"],
+      ["#23483a", "庭院"]
+    ];
+    var trail = document.getElementById("trail");
+    var nodes = [];
+    var n = 0;
+    function tile(color, label) {
+      var el = document.createElement("i");
+      el.className = "shot";
+      el.style.background = color;
+      el.textContent = "";
+      el.style.color = "#fffaf4";
+      el.style.fontFamily = "serif";
+      el.style.fontSize = "12px";
+      el.style.display = "grid";
+      el.style.placeItems = "end start";
+      el.style.padding = "4px";
+      el.append(label);
+      return el;
+    }
+    function drop(x, y) {
+      var shot = shots[n % shots.length];
+      n += 1;
+      var el = tile(shot[0], shot[1]);
+      el.style.left = (x - 20) + "px";
+      el.style.top = (y - 16) + "px";
+      trail.append(el);
+      nodes.push(el);
+      if (nodes.length > 6) nodes.shift().remove();
+    }
+    var kit = window.PreviewKit;
+    if (kit.reduced() || !kit.finePointer()) {
+      var strip = document.getElementById("strip");
+      strip.hidden = false;
+      shots.forEach(function (shot) {
+        var el = tile(shot[0], shot[1]);
+        el.style.position = "static";
+        strip.append(el);
+      });
+    } else {
+      document.addEventListener("pointermove", function (event) {
+        if (event.pointerType === "touch") return;
+        drop(event.clientX, event.clientY);
+      });
+      var t = 0;
+      var timer = setInterval(function () {
+        t += 1;
+        drop(80 + (t % 5) * 36, 120 + (t % 3) * 28);
+        if (t > 8) clearInterval(timer);
+      }, 420);
+    }
+  </script>
+</body>
+</html>

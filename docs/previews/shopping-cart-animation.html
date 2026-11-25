@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>北岛点单</title>
+  <link rel="stylesheet" href="base.css">
+  <style>
+    body { background: #f7f2ea; color: #241c16; }
+    .page { height: 100%; padding: 16px; display: flex; flex-direction: column; }
+    .bar { display: flex; justify-content: space-between; align-items: center; }
+    h1 { margin: 0; font-family: var(--serif); font-size: 1.4rem; }
+    .bag { min-height: 40px; padding: 0 12px; border: 1px solid #241c16; background: #fffaf4; }
+    .bag b { font-variant-numeric: tabular-nums; }
+    .card { margin-top: 18px; padding: 12px; background: #fffaf4; border: 1px solid #eadfce; display: grid; grid-template-columns: 72px 1fr; gap: 12px; }
+    .cup { width: 72px; height: 72px; background: #e7d3c0; }
+    button.add { margin-top: 16px; min-height: 44px; border: 0; background: #8a3b2c; color: #fffaf4; font-family: var(--serif); font-size: 1.05rem; }
+    .example { margin: 6px 0 0; color: #7a6a58; font-size: 12px; }
+    .fly { position: fixed; width: 28px; height: 28px; background: #e7d3c0; border: 1px solid #241c16; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="bar"><h1>北岛点单</h1><button class="bag" type="button" id="bag">购物袋 <b id="count">0</b></button></div>
+    <p class="example">示例价格</p>
+    <article class="card">
+      <div class="cup" id="cup" aria-hidden="true"></div>
+      <div><b>桂花酒酿拿铁</b><p>热 / 少糖 · ¥36</p></div>
+    </article>
+    <button class="add" type="button" id="add">加入购物袋</button>
+  </div>
+  <script src="kit.js"></script>
+  <script>
+    var count = 0;
+    var add = document.getElementById("add");
+    var bag = document.getElementById("bag");
+    var kit = window.PreviewKit;
+    function bump() {
+      count += 1;
+      document.getElementById("count").textContent = String(count);
+    }
+    function fly() {
+      if (kit.reduced()) { bump(); return; }
+      var from = document.getElementById("cup").getBoundingClientRect();
+      var to = bag.getBoundingClientRect();
+      var node = document.createElement("div");
+      node.className = "fly";
+      node.style.left = from.left + "px";
+      node.style.top = from.top + "px";
+      document.body.append(node);
+      var start = performance.now();
+      function frame(now) {
+        var t = Math.min(1, (now - start) / 560);
+        var x = from.left + (to.left - from.left) * t;
+        var y = from.top + (to.top - from.top) * t - Math.sin(t * Math.PI) * 70;
+        node.style.transform = "translate(" + (x - from.left) + "px," + (y - from.top) + "px) scale(" + (1 - t * 0.6) + ")";
+        if (t < 1) requestAnimationFrame(frame);
+        else { node.remove(); bump(); }
+      }
+      requestAnimationFrame(frame);
+    }
+    add.addEventListener("click", fly);
+  </script>
+</body>
+</html>
