@@ -52,18 +52,21 @@
     svg.appendChild(path);
     ui.body.append(svg);
     var drawn = 0;
-    function play() {
+    function rewind() {
       drawn = 0;
       path.style.transition = "none";
       path.setAttribute("stroke-dashoffset", "220");
+    }
+    function play() {
+      rewind();
       requestAnimationFrame(function () {
-        path.style.transition = H.reduced() ? "none" : "stroke-dashoffset .8s linear";
+        path.style.transition = H.reduced() ? "none" : "stroke-dashoffset .4s linear";
         path.setAttribute("stroke-dashoffset", "0");
         drawn = 1;
       });
     }
     ui.reset.addEventListener("click", play);
-    H.expose("world-map", "route-line-draw", { trigger: play, read: function () { return drawn; } });
+    H.expose("world-map", "route-line-draw", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return drawn; } });
     play();
   };
 
@@ -88,13 +91,13 @@
         path.style.transition = H.reduced() ? "none" : "stroke-dashoffset .7s ease";
         path.setAttribute("stroke-dashoffset", "0");
       }
-      ui.reset.addEventListener("click", function () {
+      function rewind() {
         drawn = 0;
         path.style.transition = "none";
         path.setAttribute("stroke-dashoffset", "300");
-        setTimeout(play, 30);
-      });
-      H.expose(id, "stroke-draw", { trigger: play, read: function () { return drawn; } });
+      }
+      ui.reset.addEventListener("click", rewind);
+      H.expose(id, "stroke-draw", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return drawn; } });
       play();
     };
   }
@@ -111,8 +114,9 @@
       arc.style.transition = H.reduced() ? "none" : "stroke-dasharray .6s ease";
       arc.setAttribute("stroke-dasharray", "90 200");
     }
-    ui.reset.addEventListener("click", function () { shown = 0; arc.setAttribute("stroke-dasharray", "0 200"); setTimeout(play, 30); });
-    H.expose("nivo-pie", "pie-sector-grow", { trigger: play, read: function () { return shown; } });
+    function rewind() { shown = 0; arc.setAttribute("stroke-dasharray", "0 200"); }
+    ui.reset.addEventListener("click", function () { rewind(); setTimeout(play, 30); });
+    H.expose("nivo-pie", "pie-sector-grow", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return shown; } });
     play();
   };
 
@@ -137,8 +141,9 @@
         c.style.background = ["#e7c48a", "#c46a4a", "#7ea0b8", "#23483a"][i % 4];
       });
     }
-    ui.reset.addEventListener("click", function () { on = 0; cells.forEach(function (c) { c.style.background = "#efe6d8"; }); });
-    H.expose("nivo-choropleth", "regions-fade-in", { trigger: play, read: function () { return on; } });
+    function rewind() { on = 0; cells.forEach(function (c) { c.style.transition = "none"; c.style.background = "#efe6d8"; }); }
+    ui.reset.addEventListener("click", rewind);
+    H.expose("nivo-choropleth", "regions-fade-in", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return on; } });
     play();
   };
 
@@ -198,8 +203,9 @@
       ctx.arc(150, 60, 4, 0, Math.PI * 2);
       ctx.fill();
     }
+    function rewind() { shown = 0; ctx.clearRect(0, 0, 220, 100); }
     ui.reset.addEventListener("click", play);
-    H.expose("magic-dotted-map", "dot-grid-and-pins", { trigger: play, read: function () { return shown; } });
+    H.expose("magic-dotted-map", "dot-grid-and-pins", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return shown; } });
     play();
   };
 
@@ -217,8 +223,9 @@
       liquid.style.transition = H.reduced() ? "none" : "height .6s ease";
       liquid.style.height = "70%";
     }
-    ui.reset.addEventListener("click", function () { level = 10; liquid.style.height = "10%"; });
-    H.expose("kokonut-liquid-gauge", "liquid-height", { trigger: play, read: function () { return level; } });
+    function rewind() { level = 10; liquid.style.transition = "none"; liquid.style.height = "10%"; }
+    ui.reset.addEventListener("click", rewind);
+    H.expose("kokonut-liquid-gauge", "liquid-height", { trigger: play, reset: rewind, expectAfter: 70, page: ui.page, read: function () { return level; } });
   };
 
   S["kokonut-spending-ring"] = function (root) {
@@ -230,8 +237,13 @@
       ui.body.querySelector("#a").setAttribute("stroke-dasharray", "70 200");
       ui.body.querySelector("#b").setAttribute("stroke-dasharray", "40 200");
     }
-    ui.reset.addEventListener("click", function () { shown = 0; ui.body.querySelector("#a").setAttribute("stroke-dasharray", "0 200"); ui.body.querySelector("#b").setAttribute("stroke-dasharray", "0 200"); });
-    H.expose("kokonut-spending-ring", "two-arc-share", { trigger: play, read: function () { return shown; } });
+    function rewind() {
+      shown = 0;
+      ui.body.querySelector("#a").setAttribute("stroke-dasharray", "0 200");
+      ui.body.querySelector("#b").setAttribute("stroke-dasharray", "0 200");
+    }
+    ui.reset.addEventListener("click", rewind);
+    H.expose("kokonut-spending-ring", "two-arc-share", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return shown; } });
     play();
   };
 
@@ -317,8 +329,9 @@
       grown = 1;
       poly.setAttribute("points", H.reduced() ? "60,20 100,60 60,95 25,60" : "60,20 100,60 60,95 25,60");
     }
-    ui.reset.addEventListener("click", function () { grown = 0; poly.setAttribute("points", "60,60 60,60 60,60 60,60"); setTimeout(play, 30); });
-    H.expose("nivo-radar", "polygon-grows", { trigger: play, read: function () { return grown; } });
+    function rewind() { grown = 0; poly.setAttribute("points", "60,60 60,60 60,60 60,60"); }
+    ui.reset.addEventListener("click", function () { rewind(); setTimeout(play, 30); });
+    H.expose("nivo-radar", "polygon-grows", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return grown; } });
     play();
   };
 
@@ -342,8 +355,9 @@
         else if (i % 3 === 1) c.style.background = "#8a3b2c";
       });
     }
-    ui.reset.addEventListener("click", function () { on = 0; cells.forEach(function (c) { c.style.background = "#efe6d8"; }); });
-    H.expose("nivo-calendar", "day-cells-color", { trigger: play, read: function () { return on; } });
+    function rewind() { on = 0; cells.forEach(function (c) { c.style.background = "#efe6d8"; }); }
+    ui.reset.addEventListener("click", rewind);
+    H.expose("nivo-calendar", "day-cells-color", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return on; } });
     play();
   };
 
@@ -360,7 +374,8 @@
     ui.body.append(map);
     var drilled = 0;
     map.firstChild.addEventListener("click", function () { drilled = 1; map.firstChild.textContent = "通勤 36 趟"; });
-    ui.reset.addEventListener("click", function () { drilled = 0; map.firstChild.textContent = "通勤"; });
-    H.expose("nivo-treemap", "area-drill", { trigger: function () { map.firstChild.click(); }, read: function () { return drilled; } });
+    function rewind() { drilled = 0; map.firstChild.textContent = "通勤"; }
+    ui.reset.addEventListener("click", rewind);
+    H.expose("nivo-treemap", "area-drill", { trigger: function () { map.firstChild.click(); }, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return drilled; } });
   };
 })();

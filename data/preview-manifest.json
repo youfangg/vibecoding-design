@@ -4,33 +4,33 @@
     "category": "enter",
     "title": "逐字错落入场 / Split Text",
     "intended": "逐字错落入场 · in-view",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/split-text.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "do-not-scroll",
     "category": "type",
     "title": "口语节奏逐词 / Scroll-Driven Kinetic Type",
     "intended": "口语节奏逐词显现 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/do-not-scroll.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "physics-about-me",
     "category": "type",
     "title": "物理碎裂正文 / Physics-Breaking Type",
     "intended": "滚动触发的物理碎裂 · scroll enter",
-    "mechanism": "滚动触发的物理碎裂",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=physics-about-me",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "blur-fade",
@@ -41,7 +41,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=blur-fade",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animated-list",
@@ -52,7 +52,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=animated-list",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "bounce-cards",
@@ -63,7 +63,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=bounce-cards",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "vertical-cut-reveal",
@@ -74,326 +74,326 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=vertical-cut-reveal",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-ascii-text",
     "category": "type",
     "title": "ASCII 密度字 / ASCII Text",
     "intended": "字符密度排成大字 · load / in-view",
-    "mechanism": "字符密度排成大字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-ascii-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-blur-text",
     "category": "type",
     "title": "逐字去模糊 / Blur Text",
     "intended": "文字去模糊入场 · in-view",
-    "mechanism": "文字去模糊入场",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-blur-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-decrypted-text",
     "category": "type",
     "title": "解密文本 / Decrypted Text",
     "intended": "乱码收敛成正文 · in-view",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/rb-decrypted-text.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-falling-text",
     "category": "type",
     "title": "坠落文字 / Falling Text",
     "intended": "物理坠落字母 · in-view / click",
-    "mechanism": "物理坠落字母",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-falling-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-glitch-text",
     "category": "type",
     "title": "故障文字 / Glitch Text",
     "intended": "色差与切片故障 · in-view / hover",
-    "mechanism": "色差与切片故障",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-glitch-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-particle-text",
     "category": "type",
     "title": "粒子文字 / Particle Text",
     "intended": "字形离散为粒子 · in-view / pointer",
-    "mechanism": "字形离散为粒子",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-particle-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-rotating-text",
     "category": "type",
     "title": "轮换词 / Rotating Text",
     "intended": "句中关键词轮换 · interval",
-    "mechanism": "句中关键词轮换",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-rotating-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-scroll-float",
     "category": "type",
     "title": "滚动悬浮字 / Scroll Float",
     "intended": "滚动时字符悬浮错位 · scroll",
-    "mechanism": "滚动时字符悬浮错位",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-scroll-float",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-scroll-velocity",
     "category": "type",
     "title": "速度字重 / Scroll Velocity",
     "intended": "滚动速度驱动字形 · scroll velocity",
-    "mechanism": "滚动速度驱动字形",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-scroll-velocity",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-shuffle",
     "category": "type",
     "title": "洗牌字 / Shuffle",
     "intended": "字符洗牌复位 · in-view",
-    "mechanism": "字符洗牌复位",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-shuffle",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-split-flap",
     "category": "type",
     "title": "翻牌字 / Split Flap Text",
     "intended": "机械翻牌 · in-view / value change",
-    "mechanism": "机械翻牌",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-split-flap",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-text-pressure",
     "category": "type",
     "title": "压力变字 / Text Pressure",
     "intended": "指针压力改变字形 · pointer proximity",
-    "mechanism": "指针压力改变字形",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-text-pressure",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-true-focus",
     "category": "type",
     "title": "对焦标题 / True Focus",
     "intended": "当前词对焦其余虚化 · interval / scroll / hover",
-    "mechanism": "当前词对焦其余虚化",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-true-focus",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-variable-proximity",
     "category": "type",
     "title": "近距可变字体 / Variable Proximity",
     "intended": "距离驱动可变字体 · pointer proximity",
-    "mechanism": "距离驱动可变字体",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-variable-proximity",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-warp-text",
     "category": "type",
     "title": "扭曲字 / Warp Text",
     "intended": "标题网格扭曲 · idle / pointer",
-    "mechanism": "标题网格扭曲",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-warp-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-morphing-text",
     "category": "type",
     "title": "变形文字 / Morphing Text",
     "intended": "词与词之间形态过渡 · interval",
-    "mechanism": "词与词之间形态过渡",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-morphing-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-video-text",
     "category": "type",
     "title": "视频字 / Video Text",
     "intended": "字内填充视频 · load",
-    "mechanism": "字内填充视频",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-video-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-text-3d-flip",
     "category": "type",
     "title": "立体翻字 / Text 3D Flip",
     "intended": "三维翻面换词 · interval / click",
-    "mechanism": "三维翻面换词",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-text-3d-flip",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-letter-3d-swap",
     "category": "type",
     "title": "三维换字 / Letter 3D Swap",
     "intended": "按字母三维替换 · hover / change",
-    "mechanism": "按字母三维替换",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-letter-3d-swap",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-scramble-hover",
     "category": "type",
     "title": "悬停乱码 / Scramble Hover",
     "intended": "悬停时字符乱码复位 · hover / focus",
-    "mechanism": "悬停时字符乱码复位",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-scramble-hover",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-text-along-path",
     "category": "type",
     "title": "路径排字 / Text Along Path",
     "intended": "文字沿路径运动 · scroll / loop",
-    "mechanism": "文字沿路径运动",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-text-along-path",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-variable-hover",
     "category": "type",
     "title": "逐字可变悬停 / Variable Font Hover By Letter",
     "intended": "悬停逐字改轴 · hover / focus",
-    "mechanism": "悬停逐字改轴",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-variable-hover",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-flip-words",
     "category": "type",
     "title": "翻转换词 / Flip Words",
     "intended": "句中翻转换词 · interval",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/aceternity-flip-words.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-typewriter",
     "category": "type",
     "title": "打字机 / Typewriter Effect",
     "intended": "逐字打出 · in-view",
-    "mechanism": "逐字打出",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-typewriter",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-text-generate",
     "category": "type",
     "title": "生成文字 / Text Generate Effect",
     "intended": "逐词生成显现 · in-view",
-    "mechanism": "逐词生成显现",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-text-generate",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "scroll-text-motion",
     "category": "type",
     "title": "滚动字运动 / On-Scroll Text Motion",
     "intended": "滚动驱动字形运动 · scroll",
-    "mechanism": "滚动驱动字形运动",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=scroll-text-motion",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "codrops-3d-text-scroll",
     "category": "type",
     "title": "滚动三维字柱 / 3D Text Scroll",
     "intended": "圆柱或三维字随滚动转 · scroll",
-    "mechanism": "圆柱或三维字随滚动转",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=codrops-3d-text-scroll",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animated-letters-shader",
     "category": "type",
     "title": "着色器字母 / Animated Letters Shader",
     "intended": "GLSL 交互字母 · pointer / time",
-    "mechanism": "GLSL 交互字母",
-    "status": "todo",
-    "entrypoint": "",
-    "limitation": "",
-    "evidence": ""
+    "mechanism": "type.js",
+    "status": "review",
+    "entrypoint": "previews/frame.html?id=animated-letters-shader",
+    "limitation": "画布逐字位移，不是着色器。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "letter-shuffle-menu",
     "category": "type",
     "title": "字母洗牌菜单 / Letter Shuffle Menu",
     "intended": "菜单项字母洗牌 · hover / menu open",
-    "mechanism": "菜单项字母洗牌",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=letter-shuffle-menu",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-halftone-reveal",
@@ -404,7 +404,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-halftone-reveal",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "canvas-reveal-effect",
@@ -415,7 +415,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=canvas-reveal-effect",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "motion-exit-animation",
@@ -426,18 +426,18 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=motion-exit-animation",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-spoiler-text",
     "category": "type",
     "title": "剧透遮盖 / Spoiler Text",
     "intended": "点击揭开遮盖文字 · click / hover",
-    "mechanism": "点击揭开遮盖文字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-spoiler-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "parallel-transitions",
@@ -448,7 +448,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=parallel-transitions",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "und-ny",
@@ -459,194 +459,194 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=und-ny",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "tracing-beam",
     "category": "scroll",
     "title": "路径描边进度 / Tracing Beam",
     "intended": "路径描边进度 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/tracing-beam.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "savor",
     "category": "scroll",
     "title": "Savor 食物科技叙事滚动",
     "intended": "章节揭示与气泡转场 · scroll / route change",
-    "mechanism": "章节揭示与气泡转场",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=savor",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "artists-247",
     "category": "scroll",
     "title": "24/7 Artists 音乐站滚动叙事",
     "intended": "音乐单页滚动叙事 · scroll",
-    "mechanism": "音乐单页滚动叙事",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=artists-247",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "elastic-grid",
     "category": "scroll",
     "title": "弹性滞后网格 / Elastic Grid Scroll",
     "intended": "弹性滞后网格 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/elastic-grid.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "container-scroll",
     "category": "scroll",
     "title": "容器滚动缩放 / Container Scroll Animation",
     "intended": "钉住容器缩放 · scroll",
-    "mechanism": "钉住容器缩放",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=container-scroll",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "sticky-scroll-reveal",
     "category": "scroll",
     "title": "粘滞滚动揭示 / Sticky Scroll Reveal",
     "intended": "侧栏粘滞与内容切换 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/sticky-scroll-reveal.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "hero-parallax",
     "category": "scroll",
     "title": "英雄视差 / Hero Parallax",
     "intended": "多层图片视差 · scroll",
-    "mechanism": "多层图片视差",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=hero-parallax",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "parallax-grid-scroll",
     "category": "scroll",
     "title": "视差网格滚动 / Parallax Grid Scroll",
     "intended": "多列网格视差 · scroll",
-    "mechanism": "多列网格视差",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=parallax-grid-scroll",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-scroll-expand",
     "category": "scroll",
     "title": "滚动扩展 / Scroll Expand",
     "intended": "滚动扩开媒体 · scroll",
-    "mechanism": "滚动扩开媒体",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-scroll-expand",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-scroll-progress",
     "category": "scroll",
     "title": "滚动进度 / Scroll Progress",
     "intended": "页面阅读进度 · scroll",
-    "mechanism": "页面阅读进度",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-scroll-progress",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-stacking-cards",
     "category": "scroll",
     "title": "堆叠卡片 / Stacking Cards",
     "intended": "滚动堆叠卡 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/fancy-stacking-cards.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-sticky-footer",
     "category": "scroll",
     "title": "粘滞页脚 / Sticky Footer",
     "intended": "页脚从页面下揭出 · scroll end",
-    "mechanism": "页脚从页面下揭出",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-sticky-footer",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cinematic-3d-scroll",
     "category": "scroll",
     "title": "电影感三维滚动 / Cinematic 3D Scroll",
     "intended": "电影感三维章节 · scroll",
-    "mechanism": "simplified",
-    "status": "review",
+    "mechanism": "standalone-html",
+    "status": "ready",
     "entrypoint": "previews/cinematic-3d-scroll.html",
-    "limitation": "CSS 分层推移，不是真实三维摄像机或网格，因此不计入已实现。",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "limitation": "透视投影推进，不是外部三维引擎。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "infinite-layers-grid",
     "category": "scroll",
     "title": "无限视差网格 / Infinite Layers Grid",
     "intended": "无缝平铺视差网格 · scroll",
-    "mechanism": "无缝平铺视差网格",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=infinite-layers-grid",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "circle-text-scroll",
     "category": "scroll",
     "title": "滚动三维圆字 / 3D Text Circle Scroll",
     "intended": "圆环三维字随滚动 · scroll",
-    "mechanism": "圆环三维字随滚动",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=circle-text-scroll",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-timeline",
     "category": "scroll",
     "title": "滚动时间线 / Timeline",
     "intended": "竖向时间线揭示 · scroll",
-    "mechanism": "竖向时间线揭示",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-timeline",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "lamp-effect",
     "category": "scroll",
     "title": "灯光章节头 / Lamp Effect",
     "intended": "灯光照亮章节 · in-view / scroll",
-    "mechanism": "灯光照亮章节",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=lamp-effect",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "repeating-image-transition",
@@ -657,7 +657,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=repeating-image-transition",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "motion-path-transition",
@@ -668,7 +668,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=motion-path-transition",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-pixel-transition",
@@ -679,7 +679,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-pixel-transition",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-pixel-swap",
@@ -690,7 +690,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-pixel-swap",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-compare",
@@ -701,7 +701,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=aceternity-compare",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-animated-modal",
@@ -712,1085 +712,1085 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=aceternity-animated-modal",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "circular-gallery",
     "category": "gesture",
     "title": "弧形画廊 / Circular Gallery",
     "intended": "弧形画廊拖拽浏览 · drag / scroll / keyboard",
-    "mechanism": "弧形画廊拖拽浏览",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=circular-gallery",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "vaul-drawer",
     "category": "gesture",
     "title": "跟手抽屉 / Vaul",
     "intended": "跟手与惯性抽屉 · drag / click",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/vaul-drawer.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "card-stack",
     "category": "gesture",
     "title": "可投掷卡堆 / Stack",
     "intended": "拖掷卡堆 · drag / flick / click",
-    "mechanism": "拖掷卡堆",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=card-stack",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "reorder-list",
     "category": "gesture",
     "title": "拖拽重排列表 / Reorder Items",
     "intended": "拖拽重排与布局计算 · drag",
-    "mechanism": "拖拽重排与布局计算",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=reorder-list",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "palmer-grid",
     "category": "gesture",
     "title": "Palmer 可拖商品网格",
     "intended": "可拖商品网格与 Flip 详情 · load / drag / wheel / click",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/palmer-grid.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "page-slide-drawer",
     "category": "layout",
     "title": "整页滑移抽屉导航 / Page-Slide Drawer Nav",
     "intended": "整页滑移揭示底层菜单 · click",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/page-slide-drawer.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "expandable-card",
     "category": "layout",
     "title": "可展开卡片 / Expandable Card",
     "intended": "共享元素展开 · click",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/expandable-card.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "shared-layout",
     "category": "layout",
     "title": "共享布局动画 / Shared Layout Animation",
     "intended": "共享布局动画 · state / selection change",
-    "mechanism": "共享布局动画",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=shared-layout",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "motion-trail",
     "category": "micro",
     "title": "光标拖尾图集 / Image Motion Trail",
     "intended": "光标拖尾图集 · pointer move",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/motion-trail.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "dock",
     "category": "micro",
     "title": "磁吸 Dock / macOS Dock",
     "intended": "磁吸缩放 Dock · pointer proximity",
-    "mechanism": "磁吸缩放 Dock",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=dock",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-elastic-slider",
     "category": "gesture",
     "title": "弹性滑杆 / Elastic Slider",
     "intended": "可拉弹的滑杆 · drag",
-    "mechanism": "可拉弹的滑杆",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-elastic-slider",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-lanyard",
     "category": "gesture",
     "title": "证件挂绳 / Lanyard",
     "intended": "三维挂绳物理 · drag",
-    "mechanism": "三维挂绳物理",
-    "status": "todo",
-    "entrypoint": "",
-    "limitation": "",
-    "evidence": ""
+    "mechanism": "gesture.js",
+    "status": "review",
+    "entrypoint": "previews/frame.html?id=rb-lanyard",
+    "limitation": "二维摆绳，不是三维挂绳网格。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-draggable-card",
     "category": "gesture",
     "title": "可拖卡片 / Draggable Card",
     "intended": "自由拖拽卡片 · drag",
-    "mechanism": "自由拖拽卡片",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-draggable-card",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-gravity",
     "category": "gesture",
     "title": "重力场 / Gravity",
     "intended": "元素受重力掉落 · pointer / physics",
-    "mechanism": "元素受重力掉落",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-gravity",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cult-kanban",
     "category": "gesture",
     "title": "看板拖拽 / Kanban Board",
     "intended": "看板列间拖拽 · drag",
-    "mechanism": "看板列间拖拽",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=cult-kanban",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-wheel-picker",
     "category": "gesture",
     "title": "滚轮选择 / Wheel Picker",
     "intended": "iOS 式滚轮 · drag / wheel",
-    "mechanism": "iOS 式滚轮",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-wheel-picker",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-slide-to-confirm",
     "category": "gesture",
     "title": "滑动确认 / Slide to Confirm",
     "intended": "滑块确认动作 · drag",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/kokonut-slide-to-confirm.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-hold-button",
     "category": "gesture",
     "title": "长按确认 / Hold Button",
     "intended": "长按填充确认 · pointer hold",
-    "mechanism": "长按填充确认",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-hold-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-morph-slider",
     "category": "gesture",
     "title": "变形滑块 / Morph Slider",
     "intended": "滑块控制形态变形 · drag",
-    "mechanism": "滑块控制形态变形",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-morph-slider",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "infinite-canvas",
     "category": "gesture",
     "title": "无限画布 / Infinite Canvas",
     "intended": "可拖无限画布 · drag / wheel / pinch",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/infinite-canvas.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "shopping-cart-animation",
     "category": "gesture",
     "title": "加入购物车导引 / Shopping Cart Animation",
     "intended": "从商品飞向购物车 · click add-to-cart",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/shopping-cart-animation.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "resizable-navbar",
     "category": "layout",
     "title": "可收缩导航 / Resizable Navbar",
     "intended": "滚动时导航收缩 · scroll",
-    "mechanism": "滚动时导航收缩",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=resizable-navbar",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-tabs",
     "category": "layout",
     "title": "动画标签页 / Animated Tabs",
     "intended": "滑块标签切换 · click / keyboard",
-    "mechanism": "滑块标签切换",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-tabs",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "accordion-gallery",
     "category": "layout",
     "title": "手风琴画廊 / Accordion Gallery",
     "intended": "展开式图片手风琴 · hover / click",
-    "mechanism": "展开式图片手风琴",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=accordion-gallery",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-gooey-nav",
     "category": "layout",
     "title": "黏液导航 / Gooey Nav",
     "intended": "黏液感选中指示 · click / hover",
-    "mechanism": "黏液感选中指示",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-gooey-nav",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-bubble-menu",
     "category": "layout",
     "title": "气泡菜单 / Bubble Menu",
     "intended": "气泡散开菜单 · click",
-    "mechanism": "气泡散开菜单",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-bubble-menu",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-folder",
     "category": "layout",
     "title": "文件夹 / Folder",
     "intended": "文件夹开合 · click",
-    "mechanism": "文件夹开合",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-folder",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-auto-height",
     "category": "layout",
     "title": "自动高度 / Auto Height",
     "intended": "内容变化时高度动画 · content change",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-auto-height.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-bottom-nav",
     "category": "layout",
     "title": "底部导航 / Bottom Navigation",
     "intended": "底部导航滑块与收起 · click / scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-bottom-nav.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-highlight",
     "category": "layout",
     "title": "滑块高亮 / Highlight",
     "intended": "高亮在项目间滑动 · click / hover / controlled",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-highlight.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cult-toolbar-expandable",
     "category": "layout",
     "title": "可展开工具栏 / Toolbar Expandable",
     "intended": "工具栏展开更多操作 · click",
-    "mechanism": "工具栏展开更多操作",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=cult-toolbar-expandable",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-marking-menu",
     "category": "layout",
     "title": "标记菜单 / Marking Menu",
     "intended": "径向标记菜单 · press / context menu",
-    "mechanism": "径向标记菜单",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-marking-menu",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-status-island",
     "category": "layout",
     "title": "状态岛 / Status Island",
     "intended": "动态岛式状态条 · status change / click",
-    "mechanism": "动态岛式状态条",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-status-island",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-click-spark",
     "category": "micro",
     "title": "点击火花 / Click Spark",
     "intended": "点击爆出火花 · click",
-    "mechanism": "点击爆出火花",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-click-spark",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-magnet",
     "category": "micro",
     "title": "磁吸元素 / Magnet",
     "intended": "近距磁吸位移 · pointer proximity",
-    "mechanism": "近距磁吸位移",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-magnet",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-sticker-peel",
     "category": "micro",
     "title": "贴纸撕开 / Sticker Peel",
     "intended": "贴纸角被撕起 · hover / drag",
-    "mechanism": "贴纸角被撕起",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-sticker-peel",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-liquid-button",
     "category": "micro",
     "title": "液体按钮 / Liquid Button",
     "intended": "悬停液体填充 · hover / focus",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-liquid-button.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-gooey-input",
     "category": "micro",
     "title": "黏液输入 / Gooey Input",
     "intended": "输入框黏液反馈 · focus / submit",
-    "mechanism": "输入框黏液反馈",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-gooey-input",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "vanish-input",
     "category": "micro",
     "title": "占位消失输入 / Placeholders And Vanish Input",
     "intended": "占位词轮换并在提交时消失 · idle cycle / submit",
-    "mechanism": "占位词轮换并在提交时消失",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=vanish-input",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "link-preview",
     "category": "micro",
     "title": "链接预览 / Link Preview",
     "intended": "悬停链接预览卡 · hover / focus",
-    "mechanism": "悬停链接预览卡",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=link-preview",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "direction-aware-hover",
     "category": "micro",
     "title": "方向感知悬停 / Direction Aware Hover",
     "intended": "从进入方向覆盖 · hover / focus",
-    "mechanism": "从进入方向覆盖",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=direction-aware-hover",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-image-zoom",
     "category": "micro",
     "title": "图像变焦 / Image Zoom",
     "intended": "指针位置变焦 · hover / click",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-image-zoom.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "scroll-3d-carousel",
     "category": "flip3d",
     "title": "滚动 3D 走马灯 / On-Scroll 3D Carousel",
     "intended": "滚动驱动的 3D 旋转画廊 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/scroll-3d-carousel.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "macbook-scroll",
     "category": "flip3d",
     "title": "滚动开合笔记本 / MacBook Scroll",
     "intended": "滚动开合的笔记本 · scroll",
-    "mechanism": "滚动开合的笔记本",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=macbook-scroll",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "ink-games",
     "category": "flip3d",
     "title": "INK Games 单画布与传送门卡",
     "intended": "单画布传送门卡 · pointer move / scroll enter",
-    "mechanism": "单画布传送门卡",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=ink-games",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "lookbook-hover",
     "category": "material",
     "title": "时装 Lookbook 悬停覆盖 / Lookbook Hover Effects",
     "intended": "液态玻璃与材质覆盖 · hover",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/lookbook-hover.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "haoqi",
     "category": "material",
     "title": "HAOQI.DESIGN 玻璃与双栈同步",
     "intended": "DOM 与 WebGL 同步的玻璃折射 · scroll / pointer",
-    "mechanism": "DOM 与 WebGL 同步的玻璃折射",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=haoqi",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-3d-marquee",
     "category": "flip3d",
     "title": "三维跑马灯 / 3D Marquee",
     "intended": "透视网格跑马灯 · idle loop",
-    "mechanism": "透视网格跑马灯",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-3d-marquee",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-3d-pin",
     "category": "flip3d",
     "title": "三维图钉 / 3D Animated Pin",
     "intended": "悬停弹出的三维钉 · hover / focus",
-    "mechanism": "悬停弹出的三维钉",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-3d-pin",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-3d-card",
     "category": "flip3d",
     "title": "三维卡片 / 3D Card Effect",
     "intended": "光标倾斜的三维卡 · pointer move",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/aceternity-3d-card.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-cubes",
     "category": "flip3d",
     "title": "立方体阵列 / Cubes",
     "intended": "可交互立方体阵列 · pointer / scroll",
-    "mechanism": "可交互立方体阵列",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-cubes",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-depth-carousel",
     "category": "flip3d",
     "title": "景深走马灯 / Depth Carousel",
     "intended": "有景深的卡片走马灯 · drag / click / keyboard",
-    "mechanism": "有景深的卡片走马灯",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-depth-carousel",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-flying-posters",
     "category": "flip3d",
     "title": "飞行海报 / Flying Posters",
     "intended": "三维空间中的飞行海报 · scroll / pointer",
-    "mechanism": "三维空间中的飞行海报",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-flying-posters",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "github-globe",
     "category": "flip3d",
     "title": "GitHub 地球仪 / GitHub Globe",
     "intended": "三维地球与连线 · idle / pointer",
-    "mechanism": "三维地球与连线",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=github-globe",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "apple-cards-carousel",
     "category": "flip3d",
     "title": "Apple 式卡片走马灯 / Apple Cards Carousel",
     "intended": "可点开的卡片走马灯 · drag / click / keyboard",
-    "mechanism": "可点开的卡片走马灯",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=apple-cards-carousel",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "wobble-card",
     "category": "flip3d",
     "title": "晃动卡 / Wobble Card",
     "intended": "光标晃动的卡片 · pointer move",
-    "mechanism": "光标晃动的卡片",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=wobble-card",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "r3f-carousels",
     "category": "flip3d",
     "title": "实验性三维走马灯 / R3F Experimental Carousels",
     "intended": "React Three Fiber 实验走马灯 · drag / scroll",
-    "mechanism": "React Three Fiber 实验走马灯",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=r3f-carousels",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-card-swap",
     "category": "flip3d",
     "title": "卡片对换 / Card Swap",
     "intended": "两张卡三维对换 · click / drag",
-    "mechanism": "两张卡三维对换",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-card-swap",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-css-box",
     "category": "flip3d",
     "title": "CSS 三维盒 / 3D CSS Box",
     "intended": "纯 CSS 三维盒子 · pointer / drag",
-    "mechanism": "纯 CSS 三维盒子",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-css-box",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-page-flip",
     "category": "flip3d",
     "title": "翻页 / Page Flip",
     "intended": "书页翻转 · click / drag",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/kokonut-page-flip.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-silk",
     "category": "material",
     "title": "丝绸背景 / Silk",
     "intended": "丝绸光泽着色器 · idle",
-    "mechanism": "丝绸光泽着色器",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-silk",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-aurora",
     "category": "material",
     "title": "极光 / Aurora",
     "intended": "极光色带背景 · idle",
-    "mechanism": "极光色带背景",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-aurora",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-hyperspeed",
     "category": "material",
     "title": "超空间 / Hyperspeed",
     "intended": "超空间速度线 · idle",
-    "mechanism": "超空间速度线",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-hyperspeed",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-liquid-glass",
     "category": "material",
     "title": "液态玻璃 / Liquid Glass",
     "intended": "液态玻璃界面 · idle / pointer",
-    "mechanism": "液态玻璃界面",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-liquid-glass",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-spotlight",
     "category": "material",
     "title": "聚光灯 / Spotlight",
     "intended": "跟随光标的聚光 · pointer move",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/aceternity-spotlight.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-holo-card",
     "category": "material",
     "title": "全息卡 / Holo Card",
     "intended": "全息彩虹卡 · pointer move",
-    "mechanism": "全息彩虹卡",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-holo-card",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "beams-collision",
     "category": "material",
     "title": "碰撞光束 / Background Beams With Collision",
     "intended": "会碰撞的背景光束 · idle loop",
-    "mechanism": "会碰撞的背景光束",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=beams-collision",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-vortex",
     "category": "material",
     "title": "涡流背景 / Vortex Background",
     "intended": "涡流着色器 · idle",
-    "mechanism": "涡流着色器",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-vortex",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "gemini-effect",
     "category": "material",
     "title": "Gemini 式光效 / Google Gemini Effect",
     "intended": "滚动驱动的光场 · scroll",
-    "mechanism": "滚动驱动的光场",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=gemini-effect",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "svg-mask-effect",
     "category": "material",
     "title": "SVG 遮罩揭示 / SVG Mask Effect",
     "intended": "遮罩擦除揭示 · pointer / scroll",
-    "mechanism": "遮罩擦除揭示",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=svg-mask-effect",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "evervault-card",
     "category": "material",
     "title": "加密视觉卡 / Evervault Card",
     "intended": "加密网格与光标扰动 · pointer move",
-    "mechanism": "加密网格与光标扰动",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=evervault-card",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cult-fluted-glass",
     "category": "material",
     "title": "长槽玻璃 / Fluted Glass",
     "intended": "长槽玻璃折射 · idle / pointer",
-    "mechanism": "长槽玻璃折射",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=cult-fluted-glass",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cult-morph-surface",
     "category": "material",
     "title": "变形表面 / Morph Surface",
     "intended": "表面形态变化 · state change / hover",
-    "mechanism": "表面形态变化",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=cult-morph-surface",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "bayer-dithering",
     "category": "material",
     "title": "拜耳抖动 / Bayer Dithering",
     "intended": "抖动网点材质 · idle / hover",
-    "mechanism": "抖动网点材质",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=bayer-dithering",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "ps1-jitter-shader",
     "category": "material",
     "title": "PS1 抖动着色器 / PS1 Jitter Shader",
     "intended": "复古主机顶点抖动 · idle / pointer",
-    "mechanism": "复古主机顶点抖动",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=ps1-jitter-shader",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "scan-effect",
     "category": "material",
     "title": "深度扫描 / Scan Effect",
     "intended": "WebGPU 深度图扫描 · scroll / pointer / auto",
-    "mechanism": "WebGPU 深度图扫描",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=scan-effect",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "shader-animation-gsap",
     "category": "material",
     "title": "GSAP 驱动着色器 / Shader Animation GSAP",
     "intended": "滚动与点击驱动的着色器 · click / scroll / drag",
-    "mechanism": "滚动与点击驱动的着色器",
-    "status": "todo",
-    "entrypoint": "",
-    "limitation": "",
-    "evidence": ""
+    "mechanism": "material.js",
+    "status": "review",
+    "entrypoint": "previews/frame.html?id=shader-animation-gsap",
+    "limitation": "自写时间轴驱动像素涟漪，不是 GSAP。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "grid-to-full-preview",
     "category": "material",
     "title": "网格到全幅预览 / Grid To Full Preview",
     "intended": "clip-path 拼图式预览 · hover",
-    "mechanism": "clip-path 拼图式预览",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=grid-to-full-preview",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "sdf-lens-blur",
     "category": "material",
     "title": "SDF 镜头模糊 / SDF Lens Blur",
     "intended": "形状镜头模糊 · pointer / scroll",
-    "mechanism": "形状镜头模糊",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=sdf-lens-blur",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "gooey-sticky-menu",
     "category": "particle",
     "title": "黏性粘滞菜单 / Gooey Sticky Menu",
     "intended": "液态粘滞菜单 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/gooey-sticky-menu.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-meta-balls",
     "category": "particle",
     "title": "超球粒子 / Meta Balls",
     "intended": "融合超球 · idle / pointer",
-    "mechanism": "融合超球",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-meta-balls",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-ribbons",
     "category": "particle",
     "title": "流继线带 / Ribbons",
     "intended": "高光丝带 · idle / pointer",
-    "mechanism": "高光丝带",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-ribbons",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-laser-flow",
     "category": "particle",
     "title": "激光流 / Laser Flow",
     "intended": "辅向激光流 · idle / pointer",
-    "mechanism": "辅向激光流",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-laser-flow",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-particles",
     "category": "particle",
     "title": "粒子场 / Particles",
     "intended": "可交互粒子背景 · pointer / idle",
-    "mechanism": "可交互粒子背景",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-particles",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-liquid-ether",
     "category": "particle",
     "title": "乙醚液体 / Liquid Ether",
     "intended": "流体色场背景 · idle / pointer",
-    "mechanism": "流体色场背景",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-liquid-ether",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-plasma",
     "category": "particle",
     "title": "等离子体 / Plasma",
     "intended": "等离子色场 · idle",
-    "mechanism": "等离子色场",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-plasma",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-ballpit",
     "category": "particle",
     "title": "波波池 / Ballpit",
     "intended": "物理球体池 · pointer / physics",
-    "mechanism": "物理球体池",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-ballpit",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-ferrofluid",
     "category": "particle",
     "title": "磁流体 / Ferrofluid",
     "intended": "磁性流体 · pointer / idle",
-    "mechanism": "磁性流体",
-    "status": "todo",
-    "entrypoint": "",
-    "limitation": "",
-    "evidence": ""
+    "mechanism": "particle.js",
+    "status": "review",
+    "entrypoint": "previews/frame.html?id=rb-ferrofluid",
+    "limitation": "尖刺朝向力场，不是磁流体体积网格。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animata-boids",
     "category": "particle",
     "title": "鸟群系统 / Boids Ecosystem",
     "intended": "群体仿真 · idle / pointer avoid",
-    "mechanism": "群体仿真",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=animata-boids",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "dreamy-particles",
     "category": "particle",
     "title": "梦境粒子 / Dreamy Particles",
     "intended": "GPGPU 互动粒子 · pointer",
-    "mechanism": "GPGPU 互动粒子",
-    "status": "todo",
-    "entrypoint": "",
-    "limitation": "",
-    "evidence": ""
+    "mechanism": "particle.js",
+    "status": "review",
+    "entrypoint": "previews/frame.html?id=dreamy-particles",
+    "limitation": "CPU 粒子聚拢，不是 GPGPU。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "codrops-adrift",
     "category": "particle",
     "title": "漂流拖尾 / A Drift",
     "intended": "流动与拖尾 · pointer / scroll",
-    "mechanism": "流动与拖尾",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=codrops-adrift",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-ink",
     "category": "particle",
     "title": "墨水背景 / Ink Background",
     "intended": "墨水渲染 · idle / pointer",
-    "mechanism": "墨水渲染",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-ink",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-caustics",
     "category": "particle",
     "title": "焦散光珠 / Caustics Background",
     "intended": "水面焦散光 · idle",
-    "mechanism": "水面焦散光",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-caustics",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-rain-glass",
     "category": "particle",
     "title": "玻璃雨滴 / Rain Glass Background",
     "intended": "玻璃上的雨滴 · idle",
-    "mechanism": "玻璃上的雨滴",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-rain-glass",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-confetti",
     "category": "particle",
     "title": "彩带祝贺 / Confetti",
     "intended": "成功态彩带 · success event",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/magic-confetti.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-cool-mode",
     "category": "particle",
     "title": "点击粒子 / Cool Mode",
     "intended": "点击爆出粒子 · click",
-    "mechanism": "点击爆出粒子",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-cool-mode",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-click",
     "category": "particle",
     "title": "点击视觉效果 / Click",
     "intended": "落点波纹与粒子 · click",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-click.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-elastic-mesh",
     "category": "particle",
     "title": "弹性网格 / Elastic Mesh",
     "intended": "可揠的弹性网 · pointer",
-    "mechanism": "可揠的弹性网",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-elastic-mesh",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-blob-cursor",
@@ -1801,7 +1801,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-blob-cursor",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-splash-cursor",
@@ -1809,10 +1809,10 @@
     "title": "飘洒光标 / Splash Cursor",
     "intended": "流体飘洒拖尾 · pointer move",
     "mechanism": "cursor.js",
-    "status": "ready",
+    "status": "review",
     "entrypoint": "previews/frame.html?id=rb-splash-cursor",
-    "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "limitation": "粒子飞溅，不是流体方程。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-target-cursor",
@@ -1823,7 +1823,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-target-cursor",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-crosshair",
@@ -1834,7 +1834,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-crosshair",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-cursor-grid",
@@ -1845,7 +1845,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-cursor-grid",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-pixel-trail",
@@ -1856,7 +1856,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-pixel-trail",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-swarm-cursor",
@@ -1867,7 +1867,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-swarm-cursor",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-smooth-cursor",
@@ -1878,7 +1878,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=magic-smooth-cursor",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-pointer",
@@ -1889,7 +1889,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=magic-pointer",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animata-cursor-tracker",
@@ -1900,7 +1900,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=animata-cursor-tracker",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "multi-step-loader",
@@ -1911,7 +1911,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=multi-step-loader",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "lattice-loader",
@@ -1922,18 +1922,18 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=lattice-loader",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animata-wide-card-skeleton",
     "category": "loading",
     "title": "宽卡骨架到内容 / Wide Card Skeleton",
     "intended": "骨架到真实内容的布局变形 · data resolve",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animata-wide-card-skeleton.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animata-list-skeleton",
@@ -1944,7 +1944,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=animata-list-skeleton",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animata-split-reveal",
@@ -1955,7 +1955,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=animata-split-reveal",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animata-vertical-tiles",
@@ -1966,7 +1966,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=animata-vertical-tiles",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cult-loading-carousel",
@@ -1977,7 +1977,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=cult-loading-carousel",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "motion-line-reveal",
@@ -1988,7 +1988,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=motion-line-reveal",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "motion-svg-spinner",
@@ -1999,7 +1999,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=motion-svg-spinner",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "motion-infinite-loading",
@@ -2010,7 +2010,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=motion-infinite-loading",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "image-generation-loader",
@@ -2021,18 +2021,18 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=image-generation-loader",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-motion-grid",
     "category": "loading",
     "title": "点阵动画格 / Motion Grid",
     "intended": "帧动画点阵 · loading / status",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-motion-grid.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-ai-loading",
@@ -2043,7 +2043,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=kokonut-ai-loading",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "number-ticker",
@@ -2054,7 +2054,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=number-ticker",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animated-beam",
@@ -2065,18 +2065,18 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=animated-beam",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-bar",
     "category": "dataviz",
     "title": "Nivo 柱状图弹簧生长",
     "intended": "柱状图弹簧生长 · data load / change",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/nivo-bar.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "world-map",
@@ -2087,7 +2087,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=world-map",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-line",
@@ -2098,7 +2098,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-line",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-stream",
@@ -2109,7 +2109,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-stream",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-pie",
@@ -2120,7 +2120,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-pie",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-choropleth",
@@ -2131,7 +2131,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-choropleth",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-sankey",
@@ -2142,7 +2142,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-sankey",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-sunburst",
@@ -2153,7 +2153,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-sunburst",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-dotted-map",
@@ -2164,18 +2164,18 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=magic-dotted-map",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-sliding-number",
     "category": "dataviz",
     "title": "滑动数字 / Sliding Number",
     "intended": "滚轮式数位切换 · value change",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/animate-sliding-number.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-liquid-gauge",
@@ -2186,7 +2186,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=kokonut-liquid-gauge",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-spending-ring",
@@ -2197,7 +2197,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=kokonut-spending-ring",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-icon-cloud",
@@ -2208,7 +2208,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=magic-icon-cloud",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-orbiting-circles",
@@ -2219,337 +2219,337 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=magic-orbiting-circles",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "scroll-blur-typography",
     "category": "type",
     "title": "滚动去模糊字 / Scroll Blur Typography",
     "intended": "滚动驱动的模糊揭示 · scroll",
-    "mechanism": "滚动驱动的模糊揭示",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=scroll-blur-typography",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "type-shuffle-animation",
     "category": "type",
     "title": "LCD 洗牌字 / Type Shuffle Animation",
     "intended": "终端式字符洗牌切换 · load / click",
-    "mechanism": "终端式字符洗牌切换",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=type-shuffle-animation",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "on-scroll-typography-animations",
     "category": "type",
     "title": "滚动字体组 / On-Scroll Typography Animations",
     "intended": "多种滚动驱动字体变形 · scroll",
-    "mechanism": "多种滚动驱动字体变形",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=on-scroll-typography-animations",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "line-type-effect",
     "category": "type",
     "title": "字线悬停 / Line & Letter Hover Animations",
     "intended": "行与字母的悬停变形 · hover",
-    "mechanism": "行与字母的悬停变形",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=line-type-effect",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "on-scroll-svg-filter-text",
     "category": "type",
     "title": "滚动 SVG 滤镜字 / On-Scroll SVG Filter Text",
     "intended": "滚动触发的 SVG 滤镜扭曲 · scroll / replay",
-    "mechanism": "滚动触发的 SVG 滤镜扭曲",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=on-scroll-svg-filter-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "terminal-typography-hover",
     "category": "type",
     "title": "终端字悬停 / Terminal-like Typography Hover",
     "intended": "终端风格的字符与光标悬停 · hover",
-    "mechanism": "终端风格的字符与光标悬停",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=terminal-typography-hover",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-plucked-text",
     "category": "type",
     "title": "弹拨标题 / Plucked Text",
     "intended": "弦上文字的弹拨物理 · pointer drag / strum",
-    "mechanism": "弦上文字的弹拨物理",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-plucked-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-cradle-text",
     "category": "type",
     "title": "牛顿摆标题 / Cradle Text",
     "intended": "字母如牛顿摆传击 · pointer / in-view intro",
-    "mechanism": "字母如牛顿摆传击",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-cradle-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-shadow-text",
     "category": "type",
     "title": "日晷阴影字 / Shadow Text",
     "intended": "按时钟与指针投射长影 · clock / pointer proximity",
-    "mechanism": "按时钟与指针投射长影",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-shadow-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-marker-text",
     "category": "type",
     "title": "手绘标记字 / Marker Text",
     "intended": "高亮线框随阅读顺序描出 · in-view",
-    "mechanism": "高亮线框随阅读顺序描出",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-marker-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-extruded-text",
     "category": "type",
     "title": "挤压立体字 / Extruded Text",
     "intended": "指针照明的键帽式挤出字 · pointer move / press",
-    "mechanism": "指针照明的键帽式挤出字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-extruded-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-media-between-text",
     "category": "type",
     "title": "字间展开媒体 / Media Between Text",
     "intended": "两词之间展开图像或视频 · hover / in-view / ref",
-    "mechanism": "两词之间展开图像或视频",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-media-between-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-breathing-text",
     "category": "type",
     "title": "呼吸可变字 / Breathing Text",
     "intended": "可变字体的持续呼吸 · idle loop",
-    "mechanism": "可变字体的持续呼吸",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-breathing-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-letter-swap",
     "category": "type",
     "title": "悬停竖向换字 / Letter Swap",
     "intended": "悬停时字母垂直替换 · hover",
-    "mechanism": "悬停时字母垂直替换",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-letter-swap",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-scramble-in",
     "category": "type",
     "title": "乱码落入 / Scramble In",
     "intended": "前方乱码推进的揭示 · in-view",
-    "mechanism": "前方乱码推进的揭示",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-scramble-in",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-scroll-and-swap",
     "category": "type",
     "title": "滚动竖向换字 / Scroll and Swap Text",
     "intended": "滚动进度驱动的竖向换字 · scroll",
-    "mechanism": "滚动进度驱动的竖向换字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-scroll-and-swap",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-underline-to-background",
     "category": "type",
     "title": "下划线扩成底色 / Underline To Background",
     "intended": "下划线扩张为文字底色 · hover / in-view",
-    "mechanism": "下划线扩张为文字底色",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-underline-to-background",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-text-highlighter",
     "category": "type",
     "title": "方向高亮笔 / Text Highlighter",
     "intended": "可指定方向的高亮揭示 · hover / in-view",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/fancy-text-highlighter.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-dia-text-reveal",
     "category": "type",
     "title": "色带扫过揭示 / Dia Text Reveal",
     "intended": "水平色带扫过后落成主题色 · in-view / repeat",
-    "mechanism": "水平色带扫过后落成主题色",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-dia-text-reveal",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-squiggly-text",
     "category": "type",
     "title": "蠕动滤镜字 / Squiggly Text",
     "intended": "SVG 湍流位移的蠕动字 · idle loop",
-    "mechanism": "SVG 湍流位移的蠕动字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-squiggly-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-canvas-text",
     "category": "type",
     "title": "画布曲线填字 / Canvas Text",
     "intended": "裁切在字形里的彩色曲线 · idle loop",
-    "mechanism": "裁切在字形里的彩色曲线",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-canvas-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-tech-text",
     "category": "type",
     "title": "路径化字标 / Tech Text",
     "intended": "指针下字母变为虚线路径 · pointer proximity",
-    "mechanism": "指针下字母变为虚线路径",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-tech-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-fold-text",
     "category": "type",
     "title": "折纸展开字 / Fold Text",
     "intended": "纸张折痕式逐行展开 · in-view",
-    "mechanism": "纸张折痕式逐行展开",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-fold-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-stroke-text",
     "category": "type",
     "title": "描边填字 / Stroke Text",
     "intended": "先描边再灌注填色 · in-view",
-    "mechanism": "先描边再灌注填色",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-stroke-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-echo-text",
     "category": "type",
     "title": "回声拖尾字 / Echo Text",
     "intended": "多重残影收束成一词 · in-view",
-    "mechanism": "多重残影收束成一词",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-echo-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "on-scroll-layout-formations",
     "category": "scroll",
     "title": "滚动拼装布局 / On-Scroll Layout Formations",
     "intended": "钉住视口直到布局拼合完成 · scroll pin",
-    "mechanism": "钉住视口直到布局拼合完成",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=on-scroll-layout-formations",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "staggered-3d-grid",
     "category": "scroll",
     "title": "交错三维网格 / Staggered 3D Grid Animations",
     "intended": "柱面透视的滚动网格 · scroll",
-    "mechanism": "柱面透视的滚动网格",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=staggered-3d-grid",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "one-element-scroll",
     "category": "scroll",
     "title": "单元素路径滚动 / One Element Scroll",
     "intended": "同一元素翻转到连续锚点 · scroll scrub",
-    "mechanism": "同一元素翻转到连续锚点",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=one-element-scroll",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "gsap-horizontal-gallery",
     "category": "scroll",
     "title": "横向滚动画廊 / Horizontal Scrolling Gallery",
     "intended": "竖向滚轮驱动的横向画廊 · scroll",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/gsap-horizontal-gallery.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "gsap-scrubbed-bento",
     "category": "scroll",
     "title": "滚动擦洗便当格 / Scrubbed Bento Gallery",
     "intended": "滚动进度擦洗的便当格画廊 · scroll scrub",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/gsap-scrubbed-bento.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-theme-toggler",
@@ -2560,183 +2560,183 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=magic-theme-toggler",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "hover-preview-minimap",
     "category": "micro",
     "title": "悬停全幅预览与小地图 / Hover Preview Mini Map",
     "intended": "全页预览配合光标小地图 · hover",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/hover-preview-minimap.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "ease-reverse-clip-menu",
     "category": "layout",
     "title": "反向缓动裁切菜单 / Ease Reverse Clip Menu",
     "intended": "开关使用不同缓动的裁切菜单 · click / toggle",
-    "mechanism": "开关使用不同缓动的裁切菜单",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=ease-reverse-clip-menu",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "context-aware-fixed",
     "category": "layout",
     "title": "情境感知固定物 / Context-Aware Fixed Elements",
     "intended": "固定标识随内容让位或显现 · scroll intersection",
-    "mechanism": "固定标识随内容让位或显现",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=context-aware-fixed",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-pull-cord",
     "category": "gesture",
     "title": "拉绳开关 / Pull Cord",
     "intended": "绳索物理的灯绳开关 · pointer drag / release",
-    "mechanism": "绳索物理的灯绳开关",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-pull-cord",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-tear-button",
     "category": "micro",
     "title": "撕票确认 / Tear Button",
     "intended": "沿齿孔撕下票根以确认 · pointer drag",
-    "mechanism": "沿齿孔撕下票根以确认",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-tear-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-morph-popover",
     "category": "layout",
     "title": "按钮长成表单 / Morph Popover",
     "intended": "按钮展开为表单再收成确认 · click / submit",
-    "mechanism": "按钮展开为表单再收成确认",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-morph-popover",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-undo-button",
     "category": "micro",
     "title": "倒计时撤销 / Undo Button",
     "intended": "沿按钮边缘倒计时的撤销窗 · click / keyboard undo",
-    "mechanism": "沿按钮边缘倒计时的撤销窗",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-undo-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-ai-voice",
     "category": "micro",
     "title": "语音波形输入 / AI Voice",
     "intended": "录音波形与回放确认 · press to talk",
-    "mechanism": "录音波形与回放确认",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-ai-voice",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-elastic-line",
     "category": "micro",
     "title": "弹性线 / Elastic Line",
     "intended": "指针拉拽的弹簧 SVG 线 · pointer move",
-    "mechanism": "指针拉拽的弹簧 SVG 线",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-elastic-line",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-notch",
     "category": "layout",
     "title": "浮动槽口导航 / Notch",
     "intended": "贴边槽口在状态间变形 · click / route change",
-    "mechanism": "贴边槽口在状态间变形",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-notch",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cult-dynamic-island",
     "category": "layout",
     "title": "灵动岛 / Dynamic Island",
     "intended": "多尺寸预设的变形状态岛 · state change",
-    "mechanism": "多尺寸预设的变形状态岛",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=cult-dynamic-island",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "cloth-carousel",
     "category": "flip3d",
     "title": "布料海报走马灯 / Cloth Posters Carousel",
     "intended": "WebGPU 布料模拟的无限走马灯 · virtual scroll / click",
-    "mechanism": "simplified",
-    "status": "review",
+    "mechanism": "standalone-html",
+    "status": "ready",
     "entrypoint": "previews/cloth-carousel.html",
-    "limitation": "简化色带弯曲，不是布料物理仿真，因此不计入已实现。",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "limitation": "质点弹簧网格，不是外部布料求解器。",
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "fancy-box-carousel",
     "category": "flip3d",
     "title": "立方盒走马灯 / Box Carousel",
     "intended": "可拖拽的立方体侧面走马灯 · drag / autoplay",
-    "mechanism": "可拖拽的立方体侧面走马灯",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=fancy-box-carousel",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-chromatic-image",
     "category": "material",
     "title": "色差位移图 / Chromatic Image",
     "intended": "指针驱动的色差、位移与倾斜 · pointer move",
-    "mechanism": "指针驱动的色差、位移与倾斜",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-chromatic-image",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "gsap-flip-carousel",
     "category": "flip3d",
     "title": "FLIP 走马灯 / FLIP Carousel",
     "intended": "用 FLIP 记录布局再补间的走马灯 · click / drag",
-    "mechanism": "file",
+    "mechanism": "standalone-html",
     "status": "ready",
     "entrypoint": "previews/gsap-flip-carousel.html",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-glyph-matrix",
     "category": "particle",
     "title": "字形矩阵 / Glyph Matrix",
     "intended": "画布上缓慢突变的字符格 · idle loop",
-    "mechanism": "画布上缓慢突变的字符格",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-glyph-matrix",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-ai-text-loading",
@@ -2747,106 +2747,106 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=kokonut-ai-text-loading",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-curved-loop",
     "category": "type",
     "title": "曲线循环字 / Curved Loop",
     "intended": "沿弧线循环的可拖标语 · idle / drag",
-    "mechanism": "沿弧线循环的可拖标语",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-curved-loop",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-circular-text",
     "category": "type",
     "title": "环形绕字 / Circular Text",
     "intended": "绕圆旋转的环排标题 · idle loop / hover",
-    "mechanism": "绕圆旋转的环排标题",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-circular-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-fuzzy-text",
     "category": "type",
     "title": "绒毛抖动字 / Fuzzy Text",
     "intended": "悬停加剧的绒毛振动字 · idle / hover",
-    "mechanism": "悬停加剧的绒毛振动字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-fuzzy-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-masked-heading",
     "category": "type",
     "title": "蒙版透图标题 / Masked Heading",
     "intended": "字内透出漂移纹理的揭示 · in-view / idle",
-    "mechanism": "字内透出漂移纹理的揭示",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-masked-heading",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-scrambled-text",
     "category": "type",
     "title": "光标扰动字 / Scrambled Text",
     "intended": "随光标位置扭曲的正文 · pointer proximity",
-    "mechanism": "随光标位置扭曲的正文",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-scrambled-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-aurora-text",
     "category": "type",
     "title": "极光字 / Aurora Text",
     "intended": "字内流动的极光渐变 · idle loop",
-    "mechanism": "字内流动的极光渐变",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-aurora-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-terminal",
     "category": "type",
     "title": "终端打字日志 / Terminal",
     "intended": "逐行打出的产品终端窗 · in-view / interval",
-    "mechanism": "逐行打出的产品终端窗",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-terminal",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-text-hover-effect",
     "category": "type",
     "title": "轮廓扫光字 / Text Hover Effect",
     "intended": "悬停描出渐变轮廓的字 · hover / pointer move",
-    "mechanism": "悬停描出渐变轮廓的字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "type.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-text-hover-effect",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-drift-wall",
     "category": "scroll",
     "title": "漂流行进墙 / Drift Wall",
     "intended": "透视墙面中不断漂过的图块 · scroll / pointer",
-    "mechanism": "透视墙面中不断漂过的图块",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "scroll.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-drift-wall",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-page-transition",
@@ -2857,458 +2857,458 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=animate-page-transition",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-card-nav",
     "category": "layout",
     "title": "卡片展开导航 / Card Nav",
     "intended": "导航栏弹开成一组功能卡 · click / keyboard",
-    "mechanism": "导航栏弹开成一组功能卡",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-card-nav",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-flowing-menu",
     "category": "layout",
     "title": "流动菜单带 / Flowing Menu",
     "intended": "行间滑动的液态色带菜单 · hover / keyboard",
-    "mechanism": "行间滑动的液态色带菜单",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-flowing-menu",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-magic-bento",
     "category": "layout",
     "title": "光边便当格 / Magic Bento",
     "intended": "光标边缘光与点击波的功能格 · pointer move / click",
-    "mechanism": "光标边缘光与点击波的功能格",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-magic-bento",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-infinite-menu",
     "category": "gesture",
     "title": "球面无限菜单 / Infinite Menu",
     "intended": "可拖拽的球面图块菜单 · drag / wheel / click",
-    "mechanism": "可拖拽的球面图块菜单",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-infinite-menu",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-option-wheel",
     "category": "gesture",
     "title": "弧形选项轮 / Option Wheel",
     "intended": "可滚可拖的弧形选择器 · drag / scroll / keyboard",
-    "mechanism": "可滚可拖的弧形选择器",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-option-wheel",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-curved-input",
     "category": "micro",
     "title": "弧形输入条 / Curved Input",
     "intended": "文字与按钮贴在弧上的输入栏 · focus / submit",
-    "mechanism": "文字与按钮贴在弧上的输入栏",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-curved-input",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-shredder",
     "category": "gesture",
     "title": "碎纸删除 / Shredder",
     "intended": "拖到碎纸口再切成卷条 · drag / keyboard",
-    "mechanism": "拖到碎纸口再切成卷条",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-shredder",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-sling-button",
     "category": "micro",
     "title": "弹弓发送 / Sling Button",
     "intended": "拉回再松开的弹射发送 · pointer drag / release",
-    "mechanism": "拉回再松开的弹射发送",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-sling-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-scrub-field",
     "category": "gesture",
     "title": "拖拽微调数值 / Scrub Field",
     "intended": "横向拖动的橡皮筋数值芯片 · drag / click / keyboard",
-    "mechanism": "横向拖动的橡皮筋数值芯片",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-scrub-field",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-spring-check",
     "category": "micro",
     "title": "弹簧勾选 / Spring Check",
     "intended": "一次弹簧完成勾选与划线 · click / keyboard",
-    "mechanism": "一次弹簧完成勾选与划线",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-spring-check",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-squish-switch",
     "category": "micro",
     "title": "挤压开关 / Squish Switch",
     "intended": "拇指会被速度拉长并撞停 · click / drag",
-    "mechanism": "拇指会被速度拉长并撞停",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-squish-switch",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-swipe-row",
     "category": "gesture",
     "title": "滑动操作行 / Swipe Row",
     "intended": "滑出行内操作或整行删除 · drag / keyboard",
-    "mechanism": "滑出行内操作或整行删除",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-swipe-row",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-wake-slider",
     "category": "gesture",
     "title": "尾流滑杆 / Wake Slider",
     "intended": "拖速会在杆后掀起尾流 · drag / keyboard",
-    "mechanism": "拖速会在杆后掀起尾流",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-wake-slider",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-lens",
     "category": "gesture",
     "title": "放大镜检视 / Lens",
     "intended": "可在图或视频上移动的透镜 · pointer move / press",
-    "mechanism": "可在图或视频上移动的透镜",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-lens",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-focus-cards",
     "category": "layout",
     "title": "焦点模糊卡片组 / Focus Cards",
     "intended": "悬停一张则其余失焦 · hover / focus",
-    "mechanism": "悬停一张则其余失焦",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-focus-cards",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-file-upload",
     "category": "micro",
     "title": "拖放上传 / File Upload",
     "intended": "带网格背景与微交互的拖放上传 · drag / click",
-    "mechanism": "带网格背景与微交互的拖放上传",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-file-upload",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-attract-button",
     "category": "micro",
     "title": "铁屑磁吸按钮 / Magnet Button",
     "intended": "铁屑随磁场倒向按钮 · pointer move / hover",
-    "mechanism": "铁屑随磁场倒向按钮",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-attract-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-particle-button",
     "category": "micro",
     "title": "粒子完成按钮 / Particle Button",
     "intended": "异步动作后勾画与粒子爆发 · click / async process",
-    "mechanism": "异步动作后勾画与粒子爆发",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-particle-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "kokonut-cart-button",
     "category": "micro",
     "title": "就地变成数量步进 / Cart Button",
     "intended": "加购后在原位展开步进器 · click / press",
-    "mechanism": "加购后在原位展开步进器",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=kokonut-cart-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-input-otp",
     "category": "micro",
     "title": "弹出式验证码格 / Input OTP",
     "intended": "逐格弹入与粘贴错落入场 · focus / submit",
-    "mechanism": "逐格弹入与粘贴错落入场",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=animate-input-otp",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-pinned-list",
     "category": "layout",
     "title": "钉选分组列表 / Pinned List",
     "intended": "在置顶与普通组之间滑动的项 · click / drag",
-    "mechanism": "在置顶与普通组之间滑动的项",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "layout.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=animate-pinned-list",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-spring",
     "category": "gesture",
     "title": "弹簧拉回 / Spring",
     "intended": "被弹簧拴住的可拖元素 · pointer drag / release",
-    "mechanism": "被弹簧拴住的可拖元素",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "gesture.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=animate-spring",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "animate-flip-button",
     "category": "micro",
     "title": "翻面按钮 / Flip Button",
     "intended": "悬停翻到背面的行动按钮 · hover / focus",
-    "mechanism": "悬停翻到背面的行动按钮",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "micro.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=animate-flip-button",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-depth-text",
     "category": "flip3d",
     "title": "层叠视差字 / Depth Text",
     "intended": "随指针错动的挤出层叠字 · pointer move / in-view",
-    "mechanism": "随指针错动的挤出层叠字",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-depth-text",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-dither-veil",
     "category": "material",
     "title": "抖动揭示幕 / Dither Veil",
     "intended": "光标把一位抖动图烧回彩色 · pointer move / idle",
-    "mechanism": "光标把一位抖动图烧回彩色",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-dither-veil",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-electric-border",
     "category": "material",
     "title": "电流边框 / Electric Border",
     "intended": "沿边缘窜动并在近处跳火的电流 · pointer proximity / idle",
-    "mechanism": "沿边缘窜动并在近处跳火的电流",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-electric-border",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-electric-logo",
     "category": "material",
     "title": "闪电标识 / Electric Logo",
     "intended": "从标识轮廓上跃出的电弧 · idle / pointer",
-    "mechanism": "从标识轮廓上跃出的电弧",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-electric-logo",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-metallic-paint",
     "category": "material",
     "title": "液态金属涂覆 / Metallic Paint",
     "intended": "液态铬在标识上流动 · pointer / idle",
-    "mechanism": "液态铬在标识上流动",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-metallic-paint",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-chroma-grid",
     "category": "material",
     "title": "灰度回彩网格 / Chroma Grid",
     "intended": "聚光灯把灰照片唤回彩色 · pointer move",
-    "mechanism": "聚光灯把灰照片唤回彩色",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-chroma-grid",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-decay-card",
     "category": "material",
     "title": "溶蚀卡片 / Decay Card",
     "intended": "指针把图像撕开再自行缝合 · pointer move / leave",
-    "mechanism": "指针把图像撕开再自行缝合",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-decay-card",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-dome-gallery",
     "category": "flip3d",
     "title": "半球穹顶画廊 / Dome Gallery",
     "intended": "把图像投影在可转的半球面上 · drag / wheel / click",
-    "mechanism": "把图像投影在可转的半球面上",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-dome-gallery",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-fluid-glass",
     "category": "material",
     "title": "流体玻璃折射 / Fluid Glass",
     "intended": "可变形的玻璃体折射后方内容 · pointer / idle",
-    "mechanism": "可变形的玻璃体折射后方内容",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-fluid-glass",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-reflective-card",
     "category": "material",
     "title": "镜面身份卡 / Reflective Card",
     "intended": "倾斜时反射环境或循环影像 · pointer move",
-    "mechanism": "倾斜时反射环境或循环影像",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-reflective-card",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-model-viewer",
     "category": "flip3d",
     "title": "产品三维观察 / Model Viewer",
     "intended": "自带画框与软阴影的模型查看器 · drag / autoplay",
-    "mechanism": "自带画框与软阴影的模型查看器",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-model-viewer",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-balatro",
     "category": "material",
     "title": "油漆旋涡背景 / Balatro",
     "intended": "可被光标搅动的油漆着色器 · pointer / click",
-    "mechanism": "可被光标搅动的油漆着色器",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-balatro",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-border-beam",
     "category": "material",
     "title": "沿边走的光梁 / Border Beam",
     "intended": "一束光沿容器边框旅行 · idle loop",
-    "mechanism": "一束光沿容器边框旅行",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=magic-border-beam",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-comet-card",
     "category": "flip3d",
     "title": "彗星透视卡 / Comet Card",
     "intended": "随指针倾斜的透视产品卡 · pointer move",
-    "mechanism": "随指针倾斜的透视产品卡",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-comet-card",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-background-cubes-grid",
     "category": "flip3d",
     "title": "立方网格涟漪 / Background Cubes Grid",
     "intended": "光标下起伏的立方网格 · pointer move / click",
-    "mechanism": "光标下起伏的立方网格",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-background-cubes-grid",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-parallax-hero-images",
     "category": "flip3d",
     "title": "多层视差英雄图 / Parallax Hero Images",
     "intended": "鼠标驱动不同深度的图片层 · pointer move / in-view",
-    "mechanism": "鼠标驱动不同深度的图片层",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "space.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-parallax-hero-images",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-pixelated-canvas",
     "category": "material",
     "title": "像素画布畸变 / Pixelated Canvas",
     "intended": "把图像打成可被指针搅动的像素 · pointer move",
-    "mechanism": "把图像打成可被指针搅动的像素",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-pixelated-canvas",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "aceternity-glowing-effect",
     "category": "material",
     "title": "自适应发光边 / Glowing Effect",
     "intended": "贴合任意容器的游走辉光 · pointer / idle",
-    "mechanism": "贴合任意容器的游走辉光",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "material.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=aceternity-glowing-effect",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-text-cursor",
@@ -3319,84 +3319,84 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-text-cursor",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-ripple-distortion",
     "category": "particle",
     "title": "水面位移畸变 / Ripple Distortion",
     "intended": "指针在内容上掀起衰减的水面 · pointer / click",
-    "mechanism": "指针在内容上掀起衰减的水面",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-ripple-distortion",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-strands",
     "category": "particle",
     "title": "玻璃球中的光谱丝 / Strands",
     "intended": "在磨砂球里扭结并鼓起的光丝 · pointer / idle",
-    "mechanism": "在磨砂球里扭结并鼓起的光丝",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-strands",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-crystalized-ball",
     "category": "particle",
     "title": "晶格电球 / Crystalized Ball",
     "intended": "带电裂纹与尘埃的玻璃球 · pointer / idle",
-    "mechanism": "带电裂纹与尘埃的玻璃球",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-crystalized-ball",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-lightning",
     "category": "particle",
     "title": "指向性闪电 / Lightning",
     "intended": "弯向光标并在点击处落下的闪电 · pointer / click",
-    "mechanism": "弯向光标并在点击处落下的闪电",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-lightning",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-faulty-terminal",
     "category": "particle",
     "title": "故障终端墙 / Faulty Terminal",
     "intended": "带磷光拖尾的闪烁字符场 · pointer / click",
-    "mechanism": "带磷光拖尾的闪烁字符场",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-faulty-terminal",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-threads",
     "category": "particle",
     "title": "丝线让路 / Threads",
     "intended": "在光标处分开再弹回的流动丝线 · pointer / idle",
-    "mechanism": "在光标处分开再弹回的流动丝线",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-threads",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-antigravity",
     "category": "particle",
     "title": "反重力粒子环 / Antigravity",
     "intended": "在光标周围升起圆环并在点击时炸开 · pointer / click",
-    "mechanism": "在光标周围升起圆环并在点击时炸开",
-    "status": "todo",
-    "entrypoint": "",
+    "mechanism": "particle.js",
+    "status": "ready",
+    "entrypoint": "previews/frame.html?id=rb-antigravity",
     "limitation": "",
-    "evidence": ""
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-status-mark",
@@ -3407,7 +3407,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-status-mark",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-refine-frame",
@@ -3418,7 +3418,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-refine-frame",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "rb-thought-line",
@@ -3429,7 +3429,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=rb-thought-line",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "magic-circular-progress",
@@ -3440,7 +3440,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=magic-circular-progress",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-radar",
@@ -3451,7 +3451,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-radar",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-calendar",
@@ -3462,7 +3462,7 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-calendar",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   },
   {
     "id": "nivo-treemap",
@@ -3473,6 +3473,6 @@
     "status": "ready",
     "entrypoint": "previews/frame.html?id=nivo-treemap",
     "limitation": "",
-    "evidence": "scripts/test-previews.mjs load + trigger"
+    "evidence": "scripts/test-previews.mjs"
   }
 ]

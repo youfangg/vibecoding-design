@@ -47,13 +47,19 @@
       fn();
       return plays;
     }
+    function paint() {
+      if (api.page) api.page.dataset.state = String(api.read());
+    }
     window.__preview = {
       id: id,
       mechanism: mechanism,
-      trigger: function () { return run(api.trigger); },
-      reset: function () { return run(api.reset || api.trigger); },
+      expectAfter: api.expectAfter,
+      trigger: function () { const value = run(api.trigger); paint(); return value; },
+      reset: function () { const value = run(api.reset || api.trigger); paint(); return value; },
+      readRaw: api.read,
       read: function () { return String(api.read()) + "#" + plays; }
     };
+    paint();
   }
 
   window.Host = { reduced: reduced, shell: shell, el: el, expose: expose };

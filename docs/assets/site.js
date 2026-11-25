@@ -723,7 +723,7 @@
       ? filtered.length + " / " + ordered.length + " 条 · " + previewableShown + " 已实现"
       : ordered.length + " 条 · " + previewableTotal + " 已实现";
     clearBtn.hidden = !filtering;
-    leadEl.textContent = "这些是按案例说明独立做的参考组件，不是官方演示的逐像素复刻。没做完的标成待实现。";
+    leadEl.textContent = "这些是按案例说明独立做的参考组件，不是官方演示的逐像素复刻。范围没对齐的标成待核验。";
     document.getElementById("mast-count").textContent = String(taxonomy.total);
     document.getElementById("mast-previewable").textContent = previewableTotal + " 已实现";
     document.getElementById("mast-date").textContent = taxonomy.asOf;

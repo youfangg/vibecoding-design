@@ -75,7 +75,8 @@ await send("Network.setCacheDisabled", { cacheDisabled: true });
 const statusUrl = BASE + "previews/status.js";
 const statusText = await (await fetch(statusUrl)).text();
 const table = JSON.parse(statusText.replace(/^[\s\S]*?=\s*/, "").replace(/;\s*$/, ""));
-const targets = Object.entries(table).filter(([, row]) => row.status === "ready" || row.status === "review");
+const only = (process.env.PREVIEW_IDS || "").split(",").filter(Boolean);
+const targets = Object.entries(table).filter(([, row]) => row.status === "ready" || row.status === "review").filter(([id]) => !only.length || only.indexOf(id) !== -1);
 const failures = [];
 for (const [id, row] of targets) {
   const url = new URL(row.entry, BASE).href;
@@ -98,15 +99,24 @@ for (const [id, row] of targets) {
     continue;
   }
   if (!report.text || report.missing) failures.push({ id, error: "empty or missing", report });
-  if (row.entry.includes("frame.html") && report.hasTrigger) {
+  if (report.hasTrigger) {
     const changed = await evaluate(`(async () => {
-      const before = window.__preview.read();
+      if (window.__preview.reset) window.__preview.reset();
+      await new Promise((r) => setTimeout(r, 120));
+      const before = window.__preview.readRaw ? window.__preview.readRaw() : window.__preview.read();
       window.__preview.trigger();
-      await new Promise((r) => setTimeout(r, 400));
-      const after = window.__preview.read();
-      return { before, after, changed: before !== after };
+      await new Promise((r) => setTimeout(r, 450));
+      const after = window.__preview.readRaw ? window.__preview.readRaw() : window.__preview.read();
+      const dom = document.querySelector(".host-page") && document.querySelector(".host-page").dataset.state;
+      const expected = window.__preview.expectAfter;
+      const matched = expected == null || String(after) === String(expected) || String(dom) === String(expected);
+      const moved = String(before) !== String(after);
+      const semantic = expected == null ? moved : matched && String(before) !== String(expected);
+      return { before, after, dom, expected, semantic, changed: moved };
     })()`);
-    if (!changed.changed) failures.push({ id, error: "trigger did not change state", changed });
+    if (!changed.semantic) {
+      failures.push({ id, error: "trigger did not reach expected state", changed });
+    }
   }
 }
 
@@ -125,7 +135,7 @@ const summary = {
   checked: targets.length,
   failures: failures.length,
   gallery,
-  failureSample: failures.slice(0, 20)
+  failureSample: failures.slice(0, 40)
 };
 writeFileSync("/tmp/preview-test-report.json", JSON.stringify(summary, null, 2));
 console.log(JSON.stringify(summary, null, 2));

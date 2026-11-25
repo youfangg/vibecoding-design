@@ -36,7 +36,7 @@
     btn.addEventListener("click", function () { go(chapter ? 0 : 1); });
     ui.body.append(btn);
     ui.reset.addEventListener("click", function () { go(0); });
-    H.expose("parallel-transitions", "staggered-crossfade-persistent-badge", { trigger: function () { go(1); }, read: function () { return chapter; } });
+    H.expose("parallel-transitions", "staggered-crossfade-persistent-badge", { trigger: function () { go(1); }, reset: function () { go(0); }, expectAfter: 1, page: ui.page, read: function () { return chapter; } });
     go(0);
   };
 
@@ -59,7 +59,7 @@
     btn.addEventListener("click", function () { go(tone ? 0 : 1); });
     ui.body.append(btn);
     ui.reset.addEventListener("click", function () { go(0); });
-    H.expose("und-ny", "page-color-follows-content", { trigger: function () { go(1); }, read: function () { return tone; } });
+    H.expose("und-ny", "page-color-follows-content", { trigger: function () { go(1); }, reset: function () { go(0); }, expectAfter: 1, page: ui.page, read: function () { return tone; } });
   };
 
   S["repeating-image-transition"] = function (root) {
@@ -89,7 +89,7 @@
     btn.addEventListener("click", function () { paint(which ? 0 : 1); });
     ui.body.append(btn);
     ui.reset.addEventListener("click", function () { paint(0); });
-    H.expose("repeating-image-transition", "repeated-slices-swap", { trigger: function () { paint(1); }, read: function () { return which; } });
+    H.expose("repeating-image-transition", "repeated-slices-swap", { trigger: function () { paint(1); }, reset: function () { paint(0); }, expectAfter: 1, page: ui.page, read: function () { return which; } });
     paint(0);
   };
 
@@ -102,12 +102,15 @@
     slot.style.cssText = "position:absolute;right:16px;top:24px;width:120px;height:72px;border:1px dashed #c4b5a4;display:grid;place-items:center;font-size:12px";
     box.append(thumb, slot);
     var flown = 0;
-    function play() {
+    function rewind() {
       flown = 0;
       thumb.style.transition = "none";
       thumb.style.transform = "none";
+    }
+    function play() {
+      rewind();
       requestAnimationFrame(function () {
-        thumb.style.transition = H.reduced() ? "none" : "transform .6s cubic-bezier(.2,.7,.2,1)";
+        thumb.style.transition = H.reduced() ? "none" : "transform .4s cubic-bezier(.2,.7,.2,1)";
         thumb.style.transform = "translate(180px,-90px) scale(1.4)";
         flown = 1;
       });
@@ -118,7 +121,7 @@
     btn.addEventListener("click", play);
     ui.body.append(btn);
     ui.reset.addEventListener("click", play);
-    H.expose("motion-path-transition", "thumbnail-along-path", { trigger: play, read: function () { return flown; } });
+    H.expose("motion-path-transition", "thumbnail-along-path", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return flown; } });
   };
 
   S["rb-pixel-transition"] = function (root) {
@@ -136,19 +139,25 @@
         for (var x = 0; x < 240; x += block) ctx.fillRect(x, y, block - 1, block - 1);
       }
     }
-    function play() {
+    var timer = 0;
+    function rewind() {
+      clearTimeout(timer);
       step = 0;
+      draw(28, "#1d3348");
+    }
+    function play() {
+      rewind();
       var blocks = H.reduced() ? [4] : [28, 16, 8, 4];
       var colors = ["#1d3348", "#e7c48a"];
       function next() {
         draw(blocks[Math.min(step, blocks.length - 1)], colors[step > 1 ? 1 : 0]);
         step += 1;
-        if (step < blocks.length) setTimeout(next, 160);
+        if (step < blocks.length) timer = setTimeout(next, 80);
       }
       next();
     }
     ui.reset.addEventListener("click", play);
-    H.expose("rb-pixel-transition", "pixelate-then-clear", { trigger: play, read: function () { return step; } });
+    H.expose("rb-pixel-transition", "pixelate-then-clear", { trigger: play, reset: rewind, expectAfter: H.reduced() ? 1 : 4, page: ui.page, read: function () { return step; } });
     play();
   };
 
@@ -174,16 +183,17 @@
         c.style.background = i % 2 ? "#c46a4a" : "#e7c48a";
       });
     }
-    ui.reset.addEventListener("click", function () {
+    function rewind() {
       swapped = 0;
-      cells.forEach(function (c) { c.style.background = "#7ea0b8"; });
-    });
+      cells.forEach(function (c) { c.style.transition = "none"; c.style.background = "#7ea0b8"; });
+    }
+    ui.reset.addEventListener("click", rewind);
     var btn = H.el("button", null, "互换");
     btn.type = "button";
     btn.style.margin = "0 16px";
     btn.addEventListener("click", play);
     ui.body.append(btn);
-    H.expose("rb-pixel-swap", "cells-swap-palette", { trigger: play, read: function () { return swapped; } });
+    H.expose("rb-pixel-swap", "cells-swap-palette", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return swapped; } });
   };
 
   S["aceternity-compare"] = function (root) {
@@ -216,7 +226,7 @@
       set((event.clientX - rect.left) / rect.width * 100);
     });
     ui.reset.addEventListener("click", function () { set(50); });
-    H.expose("aceternity-compare", "before-after-divider", { trigger: function () { set(75); }, read: function () { return Math.round(pos); } });
+    H.expose("aceternity-compare", "before-after-divider", { trigger: function () { set(75); }, reset: function () { set(50); }, expectAfter: 75, page: ui.page, read: function () { return Math.round(pos); } });
   };
 
   function stage(body) {
@@ -248,7 +258,7 @@
     openBtn.addEventListener("click", function () { set(1); });
     close.addEventListener("click", function () { set(0); });
     ui.reset.addEventListener("click", function () { set(0); });
-    H.expose("aceternity-animated-modal", "modal-scale-in", { trigger: function () { set(1); }, read: function () { return open; } });
+    H.expose("aceternity-animated-modal", "modal-scale-in", { trigger: function () { set(1); }, reset: function () { set(0); }, expectAfter: 1, page: ui.page, read: function () { return open; } });
   };
 
   S["magic-theme-toggler"] = function (root) {
@@ -268,12 +278,13 @@
     btn.style.margin = "0 16px";
     btn.addEventListener("click", play);
     ui.body.append(btn);
-    ui.reset.addEventListener("click", function () {
+    function rewind() {
       dark = 0;
       clip.style.transition = "none";
       clip.style.clipPath = "circle(0% at 80% 70%)";
-    });
-    H.expose("magic-theme-toggler", "circle-clip-theme", { trigger: play, read: function () { return dark; } });
+    }
+    ui.reset.addEventListener("click", rewind);
+    H.expose("magic-theme-toggler", "circle-clip-theme", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return dark; } });
   };
 
   S["animate-page-transition"] = function (root) {
@@ -302,7 +313,7 @@
     btn.addEventListener("click", function () { go(n ? 0 : 1); });
     ui.body.append(btn);
     ui.reset.addEventListener("click", function () { go(0); });
-    H.expose("animate-page-transition", "shared-header-page-slide", { trigger: function () { go(1); }, read: function () { return n; } });
+    H.expose("animate-page-transition", "shared-header-page-slide", { trigger: function () { go(1); }, reset: function () { go(0); }, expectAfter: 1, page: ui.page, read: function () { return n; } });
     go(0);
   };
 })();

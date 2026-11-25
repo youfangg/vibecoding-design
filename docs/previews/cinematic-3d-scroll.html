@@ -6,64 +6,57 @@
   <title>河仓库礼堂</title>
   <link rel="stylesheet" href="base.css">
   <style>
-    body { margin: 0; background: #14181c; color: #f6f1e8; overflow: hidden; }
-    .scroll { height: 100%; overflow: auto; }
-    .runway { height: 300%; }
-    .pin { position: sticky; top: 0; height: 100vh; perspective: 700px; overflow: hidden; }
-    .layer { position: absolute; inset: 18% 12%; transform-style: preserve-3d; }
-    .facade { background: #c46a4a; }
-    .beam { left: 42%; right: 42%; top: 0; height: 70%; background: rgba(231,196,138,.45); }
-    .caption { position: absolute; left: 16px; bottom: 16px; margin: 0; font-family: var(--serif); }
-    .example { position: absolute; top: 12px; right: 12px; margin: 0; font-size: 12px; color: #cbbba8; }
-    .stills { display: none; padding: 20px; }
-    .stills div { height: 120px; margin-bottom: 12px; }
-    @media (prefers-reduced-motion: reduce) {
-      .scroll { display: none; }
-      .stills { display: block; }
-    }
+    body { margin: 0; background: #14181c; color: #f6f1e8; }
+    canvas { width: 100%; height: 100%; display: block; }
+    p { position: absolute; left: 12px; bottom: 12px; margin: 0; font-family: "Noto Serif SC", serif; }
+    .example { top: 12px; bottom: auto; right: 12px; left: auto; font-size: 12px; color: #cbbba8; font-family: sans-serif; }
+    button { position: absolute; right: 12px; bottom: 12px; min-height: 36px; }
   </style>
 </head>
 <body>
-  <p class="example">示例分镜 · 无 WebGL</p>
-  <div class="scroll" id="scroll">
-    <div class="runway">
-      <div class="pin" id="pin">
-        <div class="layer facade" id="facade"></div>
-        <div class="layer beam" id="beam"></div>
-        <p class="caption" id="caption">外立面</p>
-      </div>
-    </div>
-  </div>
-  <div class="stills">
-    <div style="background:#c46a4a"></div>
-    <p>外立面</p>
-    <div style="background:#e7c48a"></div>
-    <p>梁下光柱</p>
-  </div>
+  <canvas id="c" width="480" height="300"></canvas>
+  <p class="example">示例分镜 · 透视投影推进，不是外部三维引擎</p>
+  <p id="cap">外立面</p>
+  <button type="button" id="go">推进</button>
   <script src="kit.js"></script>
   <script>
-    var scroll = document.getElementById("scroll");
-    var facade = document.getElementById("facade");
-    var beam = document.getElementById("beam");
-    var caption = document.getElementById("caption");
-    function sync() {
-      var max = scroll.scrollHeight - scroll.clientHeight;
-      var p = max ? scroll.scrollTop / max : 0;
-      facade.style.transform = "translateZ(" + (p * 180) + "px)";
-      beam.style.transform = "translateY(" + ((1 - p) * 40) + "px)";
-      beam.style.opacity = String(0.2 + p * 0.8);
-      caption.textContent = p > 0.55 ? "梁下光柱" : "外立面";
+    var canvas = document.getElementById("c");
+    var ctx = canvas.getContext("2d");
+    var z = 4.2;
+    function project(x, y, zz) {
+      var f = 220 / (zz + 0.2);
+      return [240 + x * f, 150 + y * f];
     }
-    scroll.addEventListener("scroll", sync, { passive: true });
-    sync();
-    if (!window.PreviewKit.reduced()) {
-      var n = 0;
-      var timer = setInterval(function () {
-        scroll.scrollTop += 16;
-        n += 1;
-        if (n > 20) clearInterval(timer);
-      }, 160);
+    function draw() {
+      ctx.fillStyle = "#14181c";
+      ctx.fillRect(0, 0, 480, 300);
+      ctx.strokeStyle = "#c46a4a";
+      ctx.beginPath();
+      [[-1, -0.6], [1, -0.6], [1, 0.6], [-1, 0.6]].forEach(function (p, i) {
+        var q = project(p[0], p[1], z);
+        if (i === 0) ctx.moveTo(q[0], q[1]); else ctx.lineTo(q[0], q[1]);
+      });
+      ctx.closePath(); ctx.stroke();
+      ctx.strokeStyle = "rgba(231,196,138,.8)";
+      ctx.beginPath();
+      var a = project(-0.08, -1.2, z + 0.4), b = project(0.08, 0.2, z);
+      ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
+      ctx.stroke();
+      document.getElementById("cap").textContent = z < 2.4 ? "梁下光柱" : "外立面";
     }
+    function go() { z = window.PreviewKit.reduced() ? 2 : 1.8; draw(); }
+    function reset() { z = 4.2; draw(); }
+    document.getElementById("go").addEventListener("click", go);
+    draw();
+    window.__preview = {
+      id: "cinematic-3d-scroll",
+      mechanism: "perspective-dolly",
+      expectAfter: "inside",
+      trigger: go,
+      reset: reset,
+      readRaw: function () { return z < 2.4 ? "inside" : "outside"; },
+      read: function () { return z < 2.4 ? "inside" : "outside"; }
+    };
   </script>
 </body>
 </html>

@@ -23,7 +23,9 @@ python3 -m http.server 4173
 
 然后访问 http://127.0.0.1:4173/docs/
 
-站点是中文界面。浏览以预览为先：目录是画廊，卡片只播放本站按案例说明独立实现的参考组件，并标明「已实现 · 参考组件」。还没做成的标成「待实现」，范围还没对齐的标成「待核验」。官方地址只作为外链，不会嵌进页面。名称、主类、来源、进度、官方演示和可复制提示词放在一旁。这些组件不是官方演示的逐像素复刻。
+站点是中文界面。浏览以预览为先：目录是画廊，卡片只播放本站按案例说明独立实现的参考组件，并标明「已实现 · 参考组件」。范围还没对齐的标成「待核验」，还没做成的标成「待实现」。官方地址只作为外链，不会嵌进页面。名称、主类、来源、进度、官方演示和可复制提示词放在一旁。这些组件不是官方演示的逐像素复刻。
+
+当前进度：**310** 已实现，**6** 待核验，**0** 待实现。逐条清单在 [`data/preview-manifest.json`](data/preview-manifest.json)，页面读取由 [`scripts/build-preview-status.py`](scripts/build-preview-status.py) 生成的 [`docs/previews/status.js`](docs/previews/status.js)。待核验是 `animated-letters-shader`（画布位移，不是着色器）、`rb-lanyard`（二维摆绳，不是三维挂绳）、`shader-animation-gsap`（自写时间轴，不是 GSAP）、`rb-ferrofluid`（尖刺朝向力场，不是磁流体网格）、`dreamy-particles`（CPU 粒子，不是 GPGPU）、`rb-splash-cursor`（粒子飞溅，不是流体方程）。
 
 可以按关键词检索，并按主类、来源筛选。地址栏保留检索参数和 `#案例id` 深链。每条案例给出标题、说明、主类、来源、触发与技术栈、页内预览、官方演示、原始出处（若有）和可复制提示词。
 
@@ -33,9 +35,7 @@ python3 -m http.server 4173
 - 待核验的组件可以打开，但进度标明它还没达到案例说明里的范围，不计入已实现。
 - 待实现的条目是一幅标明「待实现」的场景，不留空白框，也不嵌第三方网页。
 
-允许嵌入的地址记在 [`docs/assets/embed-allowlist.js`](docs/assets/embed-allowlist.js)，由 [`scripts/probe-embeds.py`](scripts/probe-embeds.py) 根据响应头和页面里的 `X-Frame-Options`、`frame-ancestors` 生成。站内复刻登记在 [`docs/previews/registry.js`](docs/previews/registry.js)，每个复刻是同名的静态 HTML。
-
-新增一条复刻：在 `docs/previews/` 下新建 `<案例 id>.html`（可引用同目录的 `base.css` 与 `kit.js`），再把这个 id 写进 `registry.js`。复刻要做成有文案、数据和图像的完整场景，尊重 `prefers-reduced-motion`，装饰效果不能挡住内容。有复刻时舞台先放复刻。
+第三方网页不再嵌入画廊或案例页。`scripts/probe-embeds.py` 仍可记录响应头，但站内不根据它加载外站 iframe。参考组件要么是 `docs/previews/<id>.html`，要么登记在 `docs/previews/scenes/*.js` 并由 `docs/previews/frame.html?id=` 挂载。跑 `python3 scripts/build-preview-status.py` 会重写清单和 `status.js`。组件要有示例文案，能用键盘或触控触发，能重放和复位，并尊重 `prefers-reduced-motion`。
 
 重新探测嵌入许可：
 

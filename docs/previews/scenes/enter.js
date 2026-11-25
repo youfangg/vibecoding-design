@@ -8,29 +8,27 @@
     line.style.cssText = "margin:24px;font-family:serif;font-size:1.8rem;filter:blur(10px);opacity:0;transform:translateY(12px)";
     ui.body.append(line);
     var phase = 0;
-    function play() {
+    function rewind() {
       phase = 0;
       line.style.transition = "none";
       line.style.filter = "blur(10px)";
       line.style.opacity = "0";
       line.style.transform = "translateY(12px)";
-      if (H.reduced()) {
+    }
+    function play() {
+      rewind();
+      var sharp = function () {
+        line.style.transition = H.reduced() ? "none" : "filter .45s ease, opacity .45s ease, transform .45s ease";
         line.style.filter = "none";
         line.style.opacity = "1";
         line.style.transform = "none";
         phase = 1;
-        return;
-      }
-      requestAnimationFrame(function () {
-        line.style.transition = "filter .7s ease, opacity .7s ease, transform .7s ease";
-        line.style.filter = "none";
-        line.style.opacity = "1";
-        line.style.transform = "none";
-        phase = 1;
-      });
+      };
+      if (H.reduced()) sharp();
+      else requestAnimationFrame(sharp);
     }
     ui.reset.addEventListener("click", play);
-    H.expose("blur-fade", "blur-then-sharp", { trigger: play, read: function () { return phase; } });
+    H.expose("blur-fade", "blur-then-sharp", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return phase; } });
     play();
   };
 
@@ -77,7 +75,7 @@
       if (event.key === "ArrowUp") select(Math.max(0, selected - 1));
     });
     ui.reset.addEventListener("click", play);
-    H.expose("animated-list", "rows-spring-and-select", { trigger: function () { select(1); }, read: function () { return selected; }, reset: play });
+    H.expose("animated-list", "rows-spring-and-select", { trigger: function () { select(1); }, reset: function () { select(0); }, expectAfter: 1, page: ui.page, read: function () { return selected; } });
     play();
   };
 
@@ -103,12 +101,12 @@
         c.style.transform = "translateX(" + x + "px) rotate(" + rot + "deg)";
       });
     }
-    ui.reset.addEventListener("click", function () {
-      cards.forEach(function (c) { c.style.transition = "none"; c.style.transform = "none"; });
+    function rewind() {
       spread = 0;
-      setTimeout(play, 30);
-    });
-    H.expose("bounce-cards", "fan-with-overshoot", { trigger: play, read: function () { return spread; } });
+      cards.forEach(function (c) { c.style.transition = "none"; c.style.transform = "none"; });
+    }
+    ui.reset.addEventListener("click", function () { rewind(); setTimeout(play, 30); });
+    H.expose("bounce-cards", "fan-with-overshoot", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return spread; } });
     play();
   };
 
@@ -118,18 +116,21 @@
     panel.style.cssText = "margin:24px;height:140px;background:#d7e4ea;display:grid;place-items:center;font-family:serif;font-size:1.4rem;clip-path:inset(100% 0 0 0)";
     ui.body.append(panel);
     var opened = 0;
-    function play() {
+    function rewind() {
       opened = 0;
       panel.style.transition = "none";
       panel.style.clipPath = "inset(100% 0 0 0)";
+    }
+    function play() {
+      rewind();
       requestAnimationFrame(function () {
-        panel.style.transition = H.reduced() ? "none" : "clip-path .7s ease";
+        panel.style.transition = H.reduced() ? "none" : "clip-path .45s ease";
         panel.style.clipPath = "inset(0 0 0 0)";
         opened = 1;
       });
     }
     ui.reset.addEventListener("click", play);
-    H.expose("vertical-cut-reveal", "clip-reveal-up", { trigger: play, read: function () { return opened; } });
+    H.expose("vertical-cut-reveal", "clip-reveal-up", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return opened; } });
     play();
   };
 
@@ -160,20 +161,23 @@
       ctx.font = "20px serif";
       ctx.fillText("渡口 · 2017", 16, 160);
     }
+    var job = 0;
+    function rewind() { job += 1; t = 0; draw(0); }
     function play() {
-      t = 0;
-      draw(0);
+      rewind();
+      var mine = job;
       if (H.reduced()) { draw(1); t = 1; return; }
       var start = performance.now();
       function frame(now) {
-        t = Math.min(1, (now - start) / 900);
+        if (mine !== job) return;
+        t = Math.min(1, (now - start) / 280);
         draw(t);
         if (t < 1) requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
     }
     ui.reset.addEventListener("click", play);
-    H.expose("rb-halftone-reveal", "halftone-dots-shrink", { trigger: play, read: function () { return Math.round(t * 10); } });
+    H.expose("rb-halftone-reveal", "halftone-dots-shrink", { trigger: play, reset: rewind, expectAfter: 10, page: ui.page, read: function () { return Math.round(t * 10); } });
     play();
   };
 
@@ -200,26 +204,31 @@
       ctx.fillRect(0, 0, x, 180);
       ctx.globalCompositeOperation = "source-over";
     }
+    var job = 0;
+    function rewind() { job += 1; revealed = 0; paintMask(0); }
     function play() {
-      revealed = 0;
-      paintMask(0);
+      rewind();
+      var mine = job;
       if (H.reduced()) { paintMask(320); revealed = 320; return; }
       var x = 0;
       function frame() {
-        x += 16;
-        paintMask(x);
-        revealed = x;
-        if (x < 320) requestAnimationFrame(frame);
+        if (mine !== job) return;
+        x += 80;
+        var next = Math.min(320, x);
+        paintMask(next);
+        revealed = next;
+        if (next < 320) requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
     }
     canvas.addEventListener("pointermove", function (event) {
       var rect = canvas.getBoundingClientRect();
-      paintMask((event.clientX - rect.left) * (canvas.width / rect.width));
-      revealed = Math.round(event.clientX - rect.left);
+      var next = Math.round((event.clientX - rect.left) * (canvas.width / rect.width));
+      paintMask(next);
+      revealed = next;
     });
     ui.reset.addEventListener("click", play);
-    H.expose("canvas-reveal-effect", "pointer-wipe-mask", { trigger: play, read: function () { return revealed; } });
+    H.expose("canvas-reveal-effect", "pointer-wipe-mask", { trigger: play, reset: rewind, expectAfter: 320, page: ui.page, read: function () { return revealed; } });
     play();
   };
 
@@ -247,6 +256,6 @@
     }
     btn.addEventListener("click", leave);
     ui.reset.addEventListener("click", play);
-    H.expose("motion-exit-animation", "exit-then-unmount-visual", { trigger: leave, read: function () { return gone; }, reset: play });
+    H.expose("motion-exit-animation", "exit-then-unmount-visual", { trigger: leave, reset: play, expectAfter: 1, page: ui.page, read: function () { return gone; } });
   };
 })();

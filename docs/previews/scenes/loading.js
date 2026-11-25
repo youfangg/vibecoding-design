@@ -66,7 +66,9 @@
     box.style.margin = "16px";
     ui.body.append(box);
     var shown = 0;
-    function play() {
+    var timer = 0;
+    function rewind() {
+      clearTimeout(timer);
       shown = 0;
       box.replaceChildren();
       for (var i = 0; i < 3; i++) {
@@ -74,16 +76,19 @@
         bar.style.cssText = "height:14px;margin:8px 0;background:#e6d9c8";
         box.append(bar);
       }
-      setTimeout(function () {
+    }
+    function play() {
+      rewind();
+      timer = setTimeout(function () {
         box.replaceChildren();
         ["桂花拿铁 ¥36", "冷泡 ¥28", "牛胸 ¥128"].forEach(function (text) {
           box.append(H.el("p", null, text));
         });
         shown = 1;
-      }, H.reduced() ? 0 : 500);
+      }, H.reduced() ? 0 : 180);
     }
     ui.reset.addEventListener("click", play);
-    H.expose("animata-list-skeleton", "skeleton-to-rows", { trigger: play, read: function () { return shown; } });
+    H.expose("animata-list-skeleton", "skeleton-to-rows", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return shown; } });
     play();
   };
 
@@ -99,19 +104,23 @@
     wrap.append(H.el("p", null, "南窗已经开门"), left, right);
     ui.body.append(wrap);
     var open = 0;
-    function play() {
+    function rewind() {
       open = 0;
-      left.style.transition = right.style.transition = H.reduced() ? "none" : "transform .5s ease";
+      left.style.transition = right.style.transition = "none";
       left.style.transform = "none";
       right.style.transform = "none";
-      setTimeout(function () {
+    }
+    function play() {
+      rewind();
+      requestAnimationFrame(function () {
+        left.style.transition = right.style.transition = H.reduced() ? "none" : "transform .4s ease";
         left.style.transform = "translateX(-100%)";
         right.style.transform = "translateX(100%)";
         open = 1;
-      }, 40);
+      });
     }
     ui.reset.addEventListener("click", play);
-    H.expose("animata-split-reveal", "split-panels-open", { trigger: play, read: function () { return open; } });
+    H.expose("animata-split-reveal", "split-panels-open", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return open; } });
     play();
   };
 
@@ -128,17 +137,26 @@
     }
     ui.body.append(wrap);
     var gone = 0;
-    function play() {
+    function rewind() {
       gone = 0;
-      tiles.forEach(function (t, i) {
-        t.style.transition = H.reduced() ? "none" : "transform .4s ease";
-        t.style.transitionDelay = H.reduced() ? "0s" : i * 60 + "ms";
+      tiles.forEach(function (t) {
+        t.style.transition = "none";
         t.style.transform = "scaleY(1)";
-        setTimeout(function () { t.style.transform = "scaleY(0)"; gone = 1; }, 50);
+      });
+    }
+    function play() {
+      rewind();
+      requestAnimationFrame(function () {
+        tiles.forEach(function (t, i) {
+          t.style.transition = H.reduced() ? "none" : "transform .35s ease";
+          t.style.transitionDelay = H.reduced() ? "0s" : i * 40 + "ms";
+          t.style.transform = "scaleY(0)";
+        });
+        gone = 1;
       });
     }
     ui.reset.addEventListener("click", play);
-    H.expose("animata-vertical-tiles", "tiles-collapse", { trigger: play, read: function () { return gone; } });
+    H.expose("animata-vertical-tiles", "tiles-collapse", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return gone; } });
     play();
   };
 
@@ -160,18 +178,21 @@
     bar.style.cssText = "margin:24px;padding:16px;background:#fffaf4;clip-path:inset(0 100% 0 0);font-family:serif;font-size:1.4rem";
     ui.body.append(bar);
     var open = 0;
-    function play() {
+    function rewind() {
       open = 0;
       bar.style.transition = "none";
       bar.style.clipPath = "inset(0 100% 0 0)";
+    }
+    function play() {
+      rewind();
       requestAnimationFrame(function () {
-        bar.style.transition = H.reduced() ? "none" : "clip-path .6s ease";
+        bar.style.transition = H.reduced() ? "none" : "clip-path .4s ease";
         bar.style.clipPath = "inset(0 0 0 0)";
         open = 1;
       });
     }
     ui.reset.addEventListener("click", play);
-    H.expose("motion-line-reveal", "horizontal-mask-reveal", { trigger: play, read: function () { return open; } });
+    H.expose("motion-line-reveal", "horizontal-mask-reveal", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return open; } });
     play();
   };
 
@@ -333,19 +354,25 @@
     folded.hidden = true;
     ui.body.append(list, folded);
     var done = 0;
-    function play() {
+    var timer = 0;
+    function rewind() {
+      clearTimeout(timer);
       done = 0;
       list.hidden = false;
       folded.hidden = true;
-      setTimeout(function () {
+      folded.textContent = "";
+    }
+    function play() {
+      rewind();
+      timer = setTimeout(function () {
         done = 1;
         list.hidden = true;
         folded.hidden = false;
         folded.textContent = "已思考 8 秒 · 生成 3 个任务";
-      }, H.reduced() ? 0 : 500);
+      }, H.reduced() ? 0 : 160);
     }
     ui.reset.addEventListener("click", play);
-    H.expose("rb-thought-line", "steps-collapse-to-summary", { trigger: play, read: function () { return done; } });
+    H.expose("rb-thought-line", "steps-collapse-to-summary", { trigger: play, reset: rewind, expectAfter: 1, page: ui.page, read: function () { return done; } });
     play();
   };
 })();

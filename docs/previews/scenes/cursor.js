@@ -51,8 +51,10 @@
       if (!H.reduced()) requestAnimationFrame(tick);
     }
     tick();
-    ui.reset.addEventListener("click", function () { ptr.set(40, 40); });
-    H.expose("rb-blob-cursor", "lagging-blob", { trigger: function () { ptr.set(160, 120); }, read: function () { return Math.round(px); } });
+    var aim = "rest";
+    function home() { aim = "rest"; px = 40; py = 40; ptr.set(40, 40); blob.style.left = "40px"; blob.style.top = "40px"; }
+    ui.reset.addEventListener("click", home);
+    H.expose("rb-blob-cursor", "lagging-blob", { trigger: function () { aim = "away"; ptr.set(160, 120); }, reset: home, expectAfter: "away", page: ui.page, read: function () { return aim; } });
   };
 
   S["rb-splash-cursor"] = function (root) {
@@ -79,9 +81,13 @@
       if (!H.reduced()) requestAnimationFrame(tick);
     }
     tick();
-    function burst() { spawned += 8; for (var i = 0; i < 8; i++) spawn(100, 80); }
-    ui.reset.addEventListener("click", burst);
-    H.expose("rb-splash-cursor", "particle-splash", { trigger: burst, read: function () { return spawned; } });
+    function burst() { spawned += 8; for (var i = 0; i < 8; i++) spawn(100 + i * 6, 80); }
+    function clearDrops() {
+      spawned = 0;
+      while (drops.length) box.removeChild(drops.pop().el);
+    }
+    ui.reset.addEventListener("click", function () { clearDrops(); burst(); });
+    H.expose("rb-splash-cursor", "particle-splash", { trigger: burst, reset: clearDrops, expectAfter: 8, page: ui.page, read: function () { return spawned; } });
   };
 
   S["rb-target-cursor"] = function (root) {
@@ -99,8 +105,10 @@
     target.addEventListener("pointerenter", function () { locked = 1; ring.style.width = "64px"; });
     target.addEventListener("pointerleave", function () { locked = 0; ring.style.width = "28px"; });
     target.addEventListener("focus", function () { locked = 1; ring.style.width = "64px"; });
-    ui.reset.addEventListener("click", function () { locked = 0; ring.style.width = "28px"; place(20, 20); });
-    H.expose("rb-target-cursor", "crosshair-locks-on-target", { trigger: function () { target.focus(); }, read: function () { return locked; } });
+    function lock() { locked = 1; ring.style.width = "64px"; ring.style.left = "140px"; ring.style.top = "80px"; target.focus(); }
+    function unlock() { locked = 0; ring.style.width = "28px"; place(20, 20); }
+    ui.reset.addEventListener("click", unlock);
+    H.expose("rb-target-cursor", "crosshair-locks-on-target", { trigger: lock, reset: unlock, expectAfter: 1, page: ui.page, read: function () { return locked; } });
   };
 
   S["rb-crosshair"] = function (root) {
@@ -113,8 +121,10 @@
     box.append(h, v);
     var y = 0;
     pointer(box, function (x, yy) { v.style.left = x + "px"; h.style.top = yy + "px"; y = yy; });
-    ui.reset.addEventListener("click", function () { v.style.left = "20px"; h.style.top = "20px"; y = 20; });
-    H.expose("rb-crosshair", "fullscreen-crosshair", { trigger: function () { h.style.top = "90px"; y = 90; }, read: function () { return y; } });
+    function home() { v.style.left = "20px"; h.style.top = "20px"; y = 20; }
+    function aim() { v.style.left = "120px"; h.style.top = "90px"; y = 90; }
+    ui.reset.addEventListener("click", home);
+    H.expose("rb-crosshair", "fullscreen-crosshair", { trigger: aim, reset: home, expectAfter: 90, page: ui.page, read: function () { return y; } });
   };
 
   S["rb-cursor-grid"] = function (root) {
@@ -137,8 +147,10 @@
       hit = row * 6 + col;
       cells.forEach(function (c, i) { c.style.background = i === hit ? "#e7c48a" : "transparent"; });
     });
-    ui.reset.addEventListener("click", function () { hit = -1; cells.forEach(function (c) { c.style.background = "transparent"; }); });
-    H.expose("rb-cursor-grid", "cell-under-pointer", { trigger: function () { hit = 3; cells[3].style.background = "#e7c48a"; }, read: function () { return hit; } });
+    function clearHit() { hit = -1; cells.forEach(function (c) { c.style.background = "transparent"; }); }
+    function mark() { hit = 3; cells.forEach(function (c, i) { c.style.background = i === 3 ? "#e7c48a" : "transparent"; }); }
+    ui.reset.addEventListener("click", clearHit);
+    H.expose("rb-cursor-grid", "cell-under-pointer", { trigger: mark, reset: clearHit, expectAfter: 3, page: ui.page, read: function () { return hit; } });
   };
 
   S["rb-pixel-trail"] = function (root) {
@@ -155,8 +167,15 @@
       n += 1;
       setTimeout(function () { p.remove(); }, 600);
     });
-    ui.reset.addEventListener("click", function () { box.querySelectorAll("i").forEach(function (n) { n.remove(); }); });
-    H.expose("rb-pixel-trail", "square-pixel-trail", { trigger: function () { n += 1; }, read: function () { return n; } });
+    function drop() {
+      var p = H.el("i");
+      p.style.cssText = "position:absolute;width:8px;height:8px;background:#241c16;left:48px;top:64px";
+      box.append(p);
+      n += 1;
+    }
+    function clearTrail() { box.querySelectorAll("i").forEach(function (node) { node.remove(); }); n = 0; }
+    ui.reset.addEventListener("click", clearTrail);
+    H.expose("rb-pixel-trail", "square-pixel-trail", { trigger: drop, reset: clearTrail, expectAfter: 1, page: ui.page, read: function () { return n; } });
   };
 
   S["rb-swarm-cursor"] = function (root) {
@@ -184,8 +203,9 @@
       if (!H.reduced()) requestAnimationFrame(tick);
     }
     tick();
-    ui.reset.addEventListener("click", function () { tx = 30; ty = 30; });
-    H.expose("rb-swarm-cursor", "dots-spring-to-pointer", { trigger: function () { tx = 150; ty = 100; }, read: function () { return Math.round(tx); } });
+    function home() { tx = 30; ty = 30; }
+    ui.reset.addEventListener("click", home);
+    H.expose("rb-swarm-cursor", "dots-spring-to-pointer", { trigger: function () { tx = 150; ty = 100; }, reset: home, expectAfter: 150, page: ui.page, read: function () { return Math.round(tx); } });
   };
 
   S["magic-smooth-cursor"] = function (root) {
@@ -205,8 +225,9 @@
       if (!H.reduced()) requestAnimationFrame(tick);
     }
     tick();
-    ui.reset.addEventListener("click", function () { tx = 20; ty = 20; });
-    H.expose("magic-smooth-cursor", "single-lerp-cursor", { trigger: function () { tx = 140; }, read: function () { return Math.round(x); } });
+    function home() { tx = 20; ty = 20; x = 20; y = 20; dot.style.left = "20px"; dot.style.top = "20px"; }
+    ui.reset.addEventListener("click", home);
+    H.expose("magic-smooth-cursor", "single-lerp-cursor", { trigger: function () { tx = 140; ty = 90; }, reset: home, expectAfter: 140, page: ui.page, read: function () { return Math.round(tx); } });
   };
 
   S["magic-pointer"] = function (root) {
@@ -222,8 +243,9 @@
     });
     box.querySelector("a").addEventListener("pointerenter", function () { label = "预约"; tag.textContent = "预约"; });
     box.querySelector("a").addEventListener("pointerleave", function () { label = "页面"; tag.textContent = "页面"; });
-    ui.reset.addEventListener("click", function () { label = "页面"; tag.textContent = "页面"; });
-    H.expose("magic-pointer", "cursor-label", { trigger: function () { label = "预约"; tag.textContent = "预约"; }, read: function () { return label; } });
+    function home() { label = "页面"; tag.textContent = "页面"; }
+    ui.reset.addEventListener("click", home);
+    H.expose("magic-pointer", "cursor-label", { trigger: function () { label = "预约"; tag.textContent = "预约"; tag.style.left = "120px"; tag.style.top = "24px"; }, reset: home, expectAfter: "预约", page: ui.page, read: function () { return label; } });
   };
 
   S["animata-cursor-tracker"] = function (root) {
@@ -234,8 +256,9 @@
     box.append(read);
     var text = "0, 0";
     pointer(box, function (x, y) { text = Math.round(x) + ", " + Math.round(y); read.textContent = text; });
-    ui.reset.addEventListener("click", function () { text = "0, 0"; read.textContent = text; });
-    H.expose("animata-cursor-tracker", "live-coordinates", { trigger: function () { text = "12, 8"; read.textContent = text; }, read: function () { return text; } });
+    function home() { text = "0, 0"; read.textContent = text; }
+    ui.reset.addEventListener("click", home);
+    H.expose("animata-cursor-tracker", "live-coordinates", { trigger: function () { text = "12, 8"; read.textContent = text; }, reset: home, expectAfter: "12, 8", page: ui.page, read: function () { return text; } });
   };
 
   S["rb-text-cursor"] = function (root) {
@@ -253,7 +276,14 @@
       box.append(g);
       setTimeout(function () { g.remove(); }, 700);
     });
-    ui.reset.addEventListener("click", function () { box.querySelectorAll("span").forEach(function (n) { n.remove(); }); n = 0; });
-    H.expose("rb-text-cursor", "glyphs-fall-behind-pointer", { trigger: function () { n += 1; }, read: function () { return n; } });
+    function drop() {
+      var g = H.el("span", null, glyphs[n % glyphs.length]);
+      g.style.cssText = "position:absolute;font-family:serif;font-size:18px;left:36px;top:48px";
+      box.append(g);
+      n += 1;
+    }
+    function clearGlyphs() { box.querySelectorAll("span").forEach(function (node) { node.remove(); }); n = 0; }
+    ui.reset.addEventListener("click", clearGlyphs);
+    H.expose("rb-text-cursor", "glyphs-fall-behind-pointer", { trigger: drop, reset: clearGlyphs, expectAfter: 1, page: ui.page, read: function () { return n; } });
   };
 })();
